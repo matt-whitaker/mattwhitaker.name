@@ -1,0 +1,20 @@
+{
+  "name": "mattwhitaker.name",
+  "version": "0.0.0",
+  "description": "my personal profile site",
+  "main": "index.js",
+  "scripts": {
+    "test": "",
+    "start": "gulp serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.2",
+    "gulp-sass": "^3.1.0",
+    "http-server": "^0.10.0",
+    "less": "^2.7.2"
+  }
+}
