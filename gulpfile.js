@@ -3,10 +3,10 @@ const sass        = require('gulp-sass');
 const browserSync = require('browser-sync').create();
 
 const port = process.env.PORT || 8080;
-const serveRoot = './src';
+const serveRoot = './lib';
 
 // Static server
-gulp.task('serve', ['sass'], function() {
+gulp.task('serve', ['html', 'sass'], function() {
   browserSync.init({
     port,
     injectChanges: true,
@@ -16,15 +16,22 @@ gulp.task('serve', ['sass'], function() {
     }
   });
 
-  gulp.watch("src/**/*.scss", ['sass']);
-  gulp.watch("src/**/*.html").on('change', browserSync.reload);
+  gulp.watch('src/**/*.scss', ['sass']);
+  gulp.watch('src/**/*.html', ['html']);
+  // gulp.watch('src/**/*.html').on('change', browserSync.reload);
 });
 
 // Compile sass into CSS & auto-inject into browsers
-gulp.task('sass', function() {
-  return gulp.src("src/**/*.scss")
+gulp.task('sass', () => {
+  return gulp.src('src/sass/**/*.scss')
     .pipe(sass())
-    .pipe(gulp.dest("src/css"))
+    .pipe(gulp.dest('lib/css'))
+    .pipe(browserSync.stream());
+});
+
+gulp.task('html', () => {
+  return gulp.src('src/**/*.html')
+    .pipe(gulp.dest('lib'))
     .pipe(browserSync.stream());
 });
 
