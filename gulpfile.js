@@ -1,37 +1,45 @@
-const gulp        = require('gulp');
-const sass        = require('gulp-sass');
+const gulp = require('gulp');
+const less = require('gulp-less');
+const inject = require('gulp-inject');
+const htmlmin = require('gulp-htmlmin');
 const browserSync = require('browser-sync').create();
 
 const port = process.env.PORT || 8080;
-const serveRoot = './lib';
+const serveRoot = 'lib';
+const srcRoot = 'src';
 
 // Static server
-gulp.task('serve', ['html', 'sass'], function() {
+gulp.task('serve', ['index', 'less'], function() {
   browserSync.init({
     port,
     injectChanges: true,
-    files: `${serveRoot}/**/*`,
+    files: `./${serveRoot}/**/*`,
     server: {
-      baseDir: `${serveRoot}`
+      baseDir: `./${serveRoot}`
     }
   });
 
-  gulp.watch('src/**/*.scss', ['sass']);
-  gulp.watch('src/**/*.html', ['html']);
-  // gulp.watch('src/**/*.html').on('change', browserSync.reload);
+  gulp.watch([
+    `${srcRoot}/**/*.less`,
+    `${srcRoot}/**/*.html`
+  ], ['index']);
 });
 
-// Compile sass into CSS & auto-inject into browsers
-gulp.task('sass', () => {
-  return gulp.src('src/sass/**/*.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('lib/css'))
-    .pipe(browserSync.stream());
+// Compile less into CSS & auto-inject into browsers
+gulp.task('less', () => {
+  return gulp.src(`${srcRoot}/less/**/*.less`)
+    .pipe(less())
+    .pipe(gulp.dest(`${serveRoot}/css`));
 });
 
-gulp.task('html', () => {
-  return gulp.src('src/**/*.html')
-    .pipe(gulp.dest('lib'))
+gulp.task('index', ['less'], () => {
+
+  const sources = gulp.src([`./${serveRoot}/**/*.css`], {read: false});
+
+  return gulp.src(`${srcRoot}/index.html`)
+    .pipe(inject(sources, { ignorePath: serveRoot }))
+    .pipe(htmlmin({ removeComments: true }))
+    .pipe(gulp.dest(serveRoot))
     .pipe(browserSync.stream());
 });
 
