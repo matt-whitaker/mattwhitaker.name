@@ -1,0 +1,17 @@
+{
+  "name": "mattwhitaker.name",
+  "description": "my personal profile site",
+  "main": "index.js",
+  "authors": [
+    "Matt Whitaker <mattwhitaker.name@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/matt-whitaker/mattwhitaker.name",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

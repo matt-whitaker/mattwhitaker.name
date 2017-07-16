@@ -5,17 +5,26 @@
   "main": "index.js",
   "scripts": {
     "test": "",
-    "start": "gulp serve"
+    "start": "gulp serve",
+    "postinstall": "bower install"
   },
-  "author": "",
+  "author": "Matt Whitaker <mattwhitaker.name@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "bower": "^1.8.0",
     "browser-sync": "^2.18.12",
     "gulp": "^3.9.1",
-    "gulp-inject": "^4.2.0",
     "gulp-htmlmin": "^3.0.0",
+    "gulp-inject": "^4.2.0",
     "gulp-less": "^3.3.2",
-    "gulp-sass": "^4.0.0",
-    "http-server": "^0.10.0"
-  }
+    "gulp-mustache": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "http-server": "^0.10.0",
+    "lodash": "^4.17.4"
+  },
+  "mattwhitaker.name": {
+    "title": "Matt Whitaker",
+    "subtitle": "My simple profile site."
+  },
+  "dependencies": {}
 }
