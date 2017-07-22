@@ -1,10 +1,12 @@
 const R             = require('ramda');
 const through2      = require('through2');
-const { render }      = require('mustache');
+const { render }    = require('mustache');
 const fsPath        = require('path');
 const comments      = require('html-comments');
 
 module.exports = function renderSite (context, config) {
+  const mergeContext = R.merge(context);
+
   const { paths: {
     partials: partialsPath,
     layouts: layoutsPath,
@@ -44,24 +46,22 @@ module.exports = function renderSite (context, config) {
       const pageTemplateBuffer = value.contents;
       const pageTemplate = pageTemplateBuffer.toString();
 
-      const commands = comments.load(pageTemplate, {
+      const layout = comments.load(pageTemplate, {
         keyword: 'useLayout: ',
         removeKeyword: true
-      });
+      })[0] || null;
 
       const renderedPage = render(pageTemplate, context, partials);
 
-      const fullContext = R.merge(context)({
-        $page: renderedPage
-      });
+      const data = { $page: renderedPage };
 
-      if (commands.length) {
-        const layoutTemplateBuffer = layouts[`${commands[0]}`].contents;
+      if (layout) {
+        const layoutTemplateBuffer = layouts[layout].contents;
         const layoutTemplate = layoutTemplateBuffer.toString();
-        console.log(partials);
+
         const renderedLayout = render(
           layoutTemplate,
-          fullContext,
+          mergeContext(data),
           partials);
 
         value.contents = new Buffer.from(renderedLayout);
@@ -70,6 +70,12 @@ module.exports = function renderSite (context, config) {
       }
 
       value.path = value.path.replace(`/${pagesPath}`, '');
+
+      const basename = fsPath.basename(value.path, '.mustache');
+
+      if (basename !== 'index') {
+        value.path =  value.path.replace(`${basename}.mustache`, `${basename}/index.html`)
+      }
 
       this.push(value);
     }, pages);

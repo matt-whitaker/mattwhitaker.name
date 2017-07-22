@@ -70,7 +70,7 @@ gulp.task('html', ['css'], () => {
   const bowerSources = gulp.src(bower(), { read: false });
   const cssSources = gulp.src(`./${serveRoot}/**/*.css`, { read: false });
 
-  context = pkg[pkg.name];
+  const context = pkg[pkg.name];
 
   return gulp.src(`${srcRoot}/**/*.mustache`)
     .pipe(renderSite(context, { paths: {
