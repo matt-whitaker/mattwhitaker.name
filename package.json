@@ -38,7 +38,22 @@
   },
   "mattwhitaker.name": {
     "title": "Matt Whitaker",
-    "subtitle": "My simple profile site."
+    "subtitle": "My simple profile site.",
+    "profileImage": "/assets/images/profile.jpg",
+    "nav": [
+      {
+        "url": "https://github.com/matt-whitaker",
+        "text": "Github"
+      },
+      {
+        "url": "https://www.linkedin.com/in/whitakermatt",
+        "text": "LinkedIn"
+      },
+      {
+        "url": "/resume",
+        "text": "Blog"
+      }
+    ]
   },
   "dependencies": {}
 }
