@@ -5,7 +5,7 @@
 
 version: 2
 jobs:
-  deploy:
+  build:
     machine:
       enabled: true
     branches: master
@@ -13,10 +13,3 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run deploy
-  deploy:
-    machine:
-      enabled: true
-    branches: develop
-    steps:
-      - checkout
-      - run: npm install
