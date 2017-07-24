@@ -1,13 +1,12 @@
-const R             = require('ramda');
 const through2      = require('through2');
-const { render }    = require('mustache');
-const gulpUtil      = require('gulp-util');
+const util          = require('gulp-util');
 const fsPath        = require('path');
 const comments      = require('html-comments');
 const fileType      = require('file-type');
 const AWS           = require('aws-sdk');
 const Promise       = require('bluebird');
 const config        = require('config');
+const handleError   = require('./handleError');
 
 AWS.config.setPromisesDependency(Promise);
 
@@ -48,12 +47,12 @@ module.exports = function deploy () {
         ACL: 'public-read',
         ContentType: mime
       }))
-      .tap(({ ContentType }) => gulpUtil.log(`Uploading ${key} as ${ContentType}`))
+      .tap(({ ContentType }) => util.log(`Uploading ${key} as ${ContentType}`))
       .then((params) => s3.putObject(params).promise())
       .then(() => {
         this.push(chunk);
         next()
       })
-      .catch(next);
+      .catch(util.error);
   });
 };

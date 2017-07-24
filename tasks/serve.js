@@ -15,6 +15,6 @@ module.exports = () => {
       baseDir: `./${srvRoot}`
     }
   });
-  gulp.watch(`${srcRoot}/**/*.less`, ['_css']).on('error', handleError);
-  gulp.watch(`${srcRoot}/**/*.mustache`, ['_html']).on('error', handleError);
+  gulp.watch(`${srcRoot}/**/*.less`, ['css']).on('error', handleError);
+  gulp.watch(`${srcRoot}/**/*.mustache`, ['html']).on('error', handleError);
 };
