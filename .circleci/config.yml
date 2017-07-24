@@ -10,11 +10,6 @@ jobs:
       enabled: true
     steps:
       - checkout
-  test:
-    machine:
-      enabled: true
-    steps:
-      - checkout
       - run:
           name: Install dependencies
           command: npm install
