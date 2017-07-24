@@ -9,4 +9,5 @@ jobs:
       enabled: true
     branches: master
     steps:
+      - checkout
       - run: npm run deploy
