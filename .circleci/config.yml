@@ -16,9 +16,9 @@ jobs:
       - run:
           name: Run tests
           command: npm test
-      - run:
+      - deploy:
           name: Deploy updates
-          command: npm run deploy
-          branches: master
-          environment:
-            NODE_ENV: production
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              NODE_ENV=production npm run deploy
+            fi
