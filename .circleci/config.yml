@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Run tests
           command: npm test
-      - deply:
+      - deploy:
           name: Deploy updates
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
