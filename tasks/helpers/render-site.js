@@ -73,12 +73,6 @@ module.exports = function renderSite (context) {
 
       value.path = value.path.replace(`/${pagesPath}`, '');
 
-      // const basename = fsPath.basename(value.path, '.mustache');
-      //
-      // if (basename !== 'index') {
-      //   value.path =  value.path.replace(`${basename}.mustache`, `${basename}/index.html`);
-      // }
-
       this.push(value);
     }, pages);
 
