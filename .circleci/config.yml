@@ -8,8 +8,18 @@ jobs:
   build:
     machine:
       enabled: true
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
+  deploy:
+    machine:
+      enabled: true
     branches: master
     steps:
       - checkout
       - run: npm install
-      - run: npm run deploy
+      - run:
+        command: npm run deploy
+        environment:
+          NODE_ENV=production

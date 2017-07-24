@@ -14,8 +14,13 @@ const browserSync   = require('browser-sync').create();
 const through2      = require('through2');
 const fsPath        = require('path');
 const config        = require('config');
+const R             = require('ramda');
 
 const { srvRoot, srcRoot, assetsRoot } = config.get('options');
+const pkg = require('./package.json');
+
+const mergeContext = R.merge(config.get('context'));
+const mergeOptions = R.merge(config.get('options'));
 
 const renderSite = require('./tasks/render-site');
 const deploy = require('./tasks/deploy');
@@ -67,8 +72,11 @@ gulp.task('_css', () => gulp.src(`${srcRoot}/less/*.less`)
 gulp.task('_html', () => {
   const cssSources = gulp.src(`./${srvRoot}/**/*.css`, { read: false });
 
+  const context = config.get('context');
+  const { version } = pkg;
+
   return gulp.src(`${srcRoot}/**/*.mustache`)
-    .pipe(renderSite(config.get('context')))
+    .pipe(renderSite(mergeContext({ version })))
     .pipe(inject(cssSources, { ignorePath: srvRoot }))
     .pipe(htmlmin({ removeComments: true }))
     .pipe(rename({ extname: '.html' }))
