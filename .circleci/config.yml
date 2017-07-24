@@ -10,23 +10,20 @@ jobs:
       enabled: true
     steps:
       - checkout
-      - run:
-          name: Install dependencies
-          command: npm install
-      - run:
-          name: Run tests
-          command: npm test
-  deploy:
+  test:
     machine:
       enabled: true
-    branches: master
     steps:
       - checkout
       - run:
           name: Install dependencies
           command: npm install
       - run:
+          name: Run tests
+          command: npm test
+      - run:
           name: Deploy updates
           command: npm run deploy
+          branches: master
           environment:
             NODE_ENV: production
