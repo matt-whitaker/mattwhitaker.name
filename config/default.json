@@ -1,0 +1,35 @@
+{
+  "context": {
+    "title": "Matt Whitaker",
+    "subtitle": "My simple profile site.",
+    "profileImage": "/assets/images/profile.jpg",
+    "google": {
+      "fonts": "https://fonts.googleapis.com/css?family=Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900&amp;subset=latin-ext"
+    },
+    "nav": [
+      {
+        "url": "https://github.com/matt-whitaker",
+        "text": "Github"
+      },
+      {
+        "url": "https://www.linkedin.com/in/whitakermatt",
+        "text": "LinkedIn"
+      },
+      {
+        "url": "/",
+        "text": "Blog"
+      }
+    ]
+  },
+  "options": {
+    "bucket": "mattwhitaker.name",
+    "paths": {
+      "partials": "partials",
+      "layouts": "layouts",
+      "pages": "pages"
+    },
+    "srvRoot": "lib",
+    "srcRoot": "src",
+    "assetsRoot": "assets"
+  }
+}

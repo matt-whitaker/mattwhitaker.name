@@ -3,15 +3,17 @@ const through2      = require('through2');
 const { render }    = require('mustache');
 const fsPath        = require('path');
 const comments      = require('html-comments');
+const config        = require('config');
 
-module.exports = function renderSite (context, config) {
+module.exports = function renderSite (context) {
+  const options = config.get('options');
   const mergeContext = R.merge(context);
 
   const { paths: {
     partials: partialsPath,
     layouts: layoutsPath,
     pages: pagesPath
-  } = {}} = config;
+  } = {}} = options;
 
   const partials = {};
   const layouts = {};
@@ -71,11 +73,11 @@ module.exports = function renderSite (context, config) {
 
       value.path = value.path.replace(`/${pagesPath}`, '');
 
-      const basename = fsPath.basename(value.path, '.mustache');
-
-      if (basename !== 'index') {
-        value.path =  value.path.replace(`${basename}.mustache`, `${basename}/index.html`)
-      }
+      // const basename = fsPath.basename(value.path, '.mustache');
+      //
+      // if (basename !== 'index') {
+      //   value.path =  value.path.replace(`${basename}.mustache`, `${basename}/index.html`);
+      // }
 
       this.push(value);
     }, pages);

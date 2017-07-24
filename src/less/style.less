@@ -4,6 +4,9 @@
 @header-bg-tile: url('/assets/images/dark-brick-wall.png');
 @main-bg-tile: url('/assets/images/concrete-wall.png');
 
+@profile-radius: 2px;
+@profile-border-radius: @profile-radius @profile-radius @profile-radius @profile-radius;
+
 .mw-body {
   font-family: @sans-serif;
   color: @white;
@@ -51,7 +54,7 @@
     img {
       border: 6px solid @white;
       box-shadow: 0 0 1px 3px @black-faded;
-      border-radius: 3px 3px 3px 3px;
+      border-radius: @profile-border-radius;
     }
   }
 
@@ -96,7 +99,7 @@
 
       p {
         font-size: 26px;
-        margin: 20px 60px 0 60px;
+        margin: 20px 60px 0 0px;
         line-height: 1.4em;
       }
     }

@@ -1,3 +1,4 @@
+require('dotenv').config({ });
 const bower         = require('main-bower-files');
 const gulp          = require('gulp');
 const sequence      = require('gulp-sequence');
@@ -11,80 +12,70 @@ const mustache      = require('gulp-mustache');
 const merge         = require('gulp-merge');
 const browserSync   = require('browser-sync').create();
 const through2      = require('through2');
+const fsPath        = require('path');
+const config        = require('config');
 
-const pkg = require('./package.json');
+const { srvRoot, srcRoot, assetsRoot } = config.get('options');
 
 const renderSite = require('./tasks/render-site');
+const deploy = require('./tasks/deploy');
+
+util.log(`Using environment ${process.env.NODE_ENV || 'development'}`);
 
 const port = process.env.PORT || 8080;
-const serveRoot = 'lib';
-const srcRoot = 'src';
-
-const partialsPath = 'partials';
-const layoutsPath = 'layouts';
-const pagesPath = 'pages';
-
 
 const handleError = function (err) {
   util.log(err);
-  this.emit('end')
+  this.emit('end');
 };
 
-// Development server
+gulp.task('deploy', ['build'], () => {
+  return gulp.src(`${srvRoot}/**/*.*`)
+    .pipe(deploy())
+    .on('error', handleError)
+});
+
 gulp.task('serve', ['build'], () => {
   browserSync.init({
     port,
     injectChanges: true,
-    files: `./${serveRoot}/**/*`,
+    files: `./${srvRoot}/**/*`,
     server: {
-      baseDir: `./${serveRoot}`,
-      routes: {
-        '/bower_components': 'bower_components',
-        '/assets': 'assets'
-      }
+      baseDir: `./${srvRoot}`
     }
   });
 
-  return gulp.watch([
-    `${srcRoot}/**/*.less`,
-    `${srcRoot}/**/*.mustache`
-  ], ['html'])
-    .on('error', handleError);
+  gulp.watch(`${srcRoot}/**/*.less`, ['_css']).on('error', handleError);
+  gulp.watch(`${srcRoot}/**/*.mustache`, ['_html']).on('error', handleError);
+  // gulp.watch(`${srvRoot}/**/*.html`, browserSync.reload).on('error', handleError)
 });
 
-/**
- * Cleans the build
- */
-gulp.task('clean', () => gulp.src(serveRoot).pipe(clean()));
+gulp.task('clean', () => gulp.src(srvRoot).pipe(clean()));
 
-/**
- * Compiles less
- */
-gulp.task('css', () => gulp.src(`${srcRoot}/less/*.less`)
+gulp.task('_bower', () => gulp.src(bower(), { base: 'bower_components' })
+  .pipe(gulp.dest(srvRoot)));
+
+gulp.task('_assets', () => gulp.src(`${assetsRoot}/**/*.*`)
+  .pipe(gulp.dest(`${srvRoot}/${assetsRoot}`)));
+
+gulp.task('_css', () => gulp.src(`${srcRoot}/less/*.less`)
   .pipe(less().on('error', handleError))
-  .pipe(gulp.dest(`${serveRoot}/css`)))
-  .on('error', handleError);
+  .pipe(gulp.dest(`${srvRoot}/assets/css`))
+  .pipe(browserSync.stream({ once: true }))
+  .on('error', handleError));
 
-
-gulp.task('html', ['css'], () => {
-  const bowerSources = gulp.src(bower(), { read: false });
-  const cssSources = gulp.src(`./${serveRoot}/**/*.css`, { read: false });
-
-  const context = pkg[pkg.name];
+gulp.task('_html', () => {
+  const cssSources = gulp.src(`./${srvRoot}/**/*.css`, { read: false });
 
   return gulp.src(`${srcRoot}/**/*.mustache`)
-    .pipe(renderSite(context, { paths: {
-      partials: partialsPath,
-      layouts: layoutsPath,
-      pages: pagesPath } }))
-    .pipe(inject(bowerSources, { name: 'bower' }))
-    .pipe(inject(cssSources, { ignorePath: serveRoot }))
+    .pipe(renderSite(config.get('context')))
+    .pipe(inject(cssSources, { ignorePath: srvRoot }))
     .pipe(htmlmin({ removeComments: true }))
     .pipe(rename({ extname: '.html' }))
-    .pipe(gulp.dest(serveRoot))
+    .pipe(gulp.dest(srvRoot))
     .pipe(browserSync.stream({ once: true }))
     .on('error', handleError);
 });
 
 gulp.task('default', ['serve']);
-gulp.task('build', sequence('clean', 'html'));
+gulp.task('build', sequence('clean', '_assets', '_bower', '_css', '_html'));
