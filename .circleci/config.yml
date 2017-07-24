@@ -16,9 +16,11 @@ jobs:
       - run:
           name: Run tests
           command: npm test
-      - deploy:
+      - deply:
           name: Deploy updates
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               NODE_ENV=production npm run deploy
+            else
+              echo "Not master branch so not deploying"
             fi
