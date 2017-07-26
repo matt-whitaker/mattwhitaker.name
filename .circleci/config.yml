@@ -23,6 +23,7 @@ jobs:
               NODE_ENV=production npm run deploy
               echo "Deployed to production"
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              NODE_ENV=qa npm run deploy
               echo "Deployed to QA"
             else
               echo "No deployment performed"
