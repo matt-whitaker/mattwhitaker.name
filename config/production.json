@@ -2,6 +2,16 @@
   "context": {
     "google": {
       "fonts": "https://fonts.googleapis.com/css?family=Titillium+Web:200,300&amp;subset=latin-ext"
-    }
+    },
+    "nav": [
+      {
+        "url": "https://github.com/matt-whitaker",
+        "text": "Github"
+      },
+      {
+        "url": "https://www.linkedin.com/in/whitakermatt",
+        "text": "LinkedIn"
+      }
+    ]
   }
 }
