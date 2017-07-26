@@ -12,10 +12,10 @@ const handleError   = require('./handleError');
 
 AWS.config.setPromisesDependency(Promise);
 
-const yellow  = '#c6b916';
-const green   = '#019100';
-const red     = '#a70005';
-const black   = '#000000';
+const yellow  = 'yellow';
+const green   = 'green';
+const red     = 'red';
+const black   = 'black';
 const env = process.env.NODE_ENV || 'development';
 const { channel, username } = config.get('slack');
 
