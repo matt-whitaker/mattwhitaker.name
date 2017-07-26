@@ -21,8 +21,9 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               NODE_ENV=production npm run deploy
+              echo "Deployed to production"
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              NODE_ENV=qa npm run deploy
+              echo "Deployed to QA"
             else
-              echo "Not master branch so not deploying"
+              echo "No deployment performed"
             fi

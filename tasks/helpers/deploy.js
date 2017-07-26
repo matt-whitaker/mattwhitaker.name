@@ -12,7 +12,7 @@ const handleError   = require('./handleError');
 AWS.config.setPromisesDependency(Promise);
 
 const env = process.env.NODE_ENV || 'development';
-const { channel, username, project } = config.get('slack');
+const { channel, username } = config.get('slack');
 
 const makeSlack = (message) => ({
   attachments:[
