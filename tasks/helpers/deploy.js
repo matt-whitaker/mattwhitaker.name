@@ -7,14 +7,15 @@ const fileType      = require('file-type');
 const AWS           = require('aws-sdk');
 const Promise       = require('bluebird');
 const config        = require('config');
+const colors        = require('colors');
 const handleError   = require('./handleError');
 
 AWS.config.setPromisesDependency(Promise);
 
-const yellow = '#aaaaaa';
-const green = '#aaaaaa';
-const red = '#333333';
-const black = '#000000';
+const yellow  = '#c6b916';
+const green   = '#016700';
+const red     = '#a70005';
+const black   = '#000000';
 const env = process.env.NODE_ENV || 'development';
 const { channel, username } = config.get('slack');
 

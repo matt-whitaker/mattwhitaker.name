@@ -19,6 +19,7 @@
     "bluebird": "^3.5.0",
     "bower": "^1.8.0",
     "browser-sync": "^2.18.12",
+    "colors": "^1.1.2",
     "config": "^1.26.1",
     "dotenv": "^4.0.0",
     "file-type": "^5.2.0",
