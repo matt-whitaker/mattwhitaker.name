@@ -11,17 +11,21 @@ const handleError   = require('./handleError');
 
 AWS.config.setPromisesDependency(Promise);
 
+const yellow = '#aaaaaa';
+const green = '#aaaaaa';
+const red = '#333333';
+const black = '#000000';
 const env = process.env.NODE_ENV || 'development';
 const { channel, username } = config.get('slack');
 
-const makeSlack = (message) => ({
+const makeSlack = (message, color = black) => ({
   attachments:[
     {
       fallback: message,
       text: message,
       channel,
       username,
-      color: "#333333",
+      color,
       fields: [
         {
           title: 'Environment',
@@ -71,7 +75,7 @@ module.exports = function deploy () {
     keys.push(key);
 
     // next();
-    (promise || (promise = postSlack(`Deployment Started`)))
+    (promise || (promise = postSlack(`Deployment Started`, yellow)))
       .then(() => getFileType(chunk))
       .then((mime) => ({
         Bucket: bucket,
@@ -89,7 +93,7 @@ module.exports = function deploy () {
       .catch(util.error);
   }, function (next) {
     // const listText = keys.reduce((text, key) => text + `[Uploaded] ${key}\n`, '');
-    postSlack(`Deployment Successful`)
+    postSlack(`Deployment Successful`, green)
       .then(() => next());
   });
 };
