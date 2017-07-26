@@ -40,6 +40,7 @@
     "main-bower-files": "^2.13.1",
     "mustache": "^2.3.0",
     "ramda": "^0.24.1",
+    "request-promise": "^4.2.1",
     "through2": "^2.0.3",
     "through2-map": "^3.0.0"
   },

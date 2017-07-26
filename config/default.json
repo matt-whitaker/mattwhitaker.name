@@ -22,7 +22,7 @@
     ]
   },
   "options": {
-    "bucket": "mattwhitaker.name",
+    "bucket": "mattwhitaker.name.dev",
     "paths": {
       "partials": "partials",
       "layouts": "layouts",
@@ -31,5 +31,9 @@
     "srvRoot": "lib",
     "srcRoot": "src",
     "assetsRoot": "assets"
+  },
+  "slack": {
+    "username": "deploybot",
+    "channel": "#mattwhitaker-name-dev"
   }
 }

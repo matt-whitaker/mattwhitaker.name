@@ -1,6 +1,7 @@
 const through2      = require('through2');
 const util          = require('gulp-util');
 const fsPath        = require('path');
+const request       = require('request-promise');
 const comments      = require('html-comments');
 const fileType      = require('file-type');
 const AWS           = require('aws-sdk');
@@ -9,6 +10,32 @@ const config        = require('config');
 const handleError   = require('./handleError');
 
 AWS.config.setPromisesDependency(Promise);
+
+const env = process.env.NODE_ENV || 'development';
+const { channel, username, project } = config.get('slack');
+
+const makeSlack = (message) => ({
+  attachments:[
+    {
+      fallback: message,
+      text: message,
+      channel,
+      username,
+      color: "#333333",
+      fields: [
+        {
+          title: 'Environment',
+          value: env
+        }
+      ]
+    }
+  ]
+});
+
+const postSlack = (message) => request.post({
+  uri: process.env.SLACK_WEBHOOK_URL,
+  body: JSON.stringify(makeSlack(message))
+});
 
 const getFileType = (file) => new Promise((res, rej) => {
   const mimeType = fileType(file.contents);
@@ -31,15 +58,21 @@ const getFileType = (file) => new Promise((res, rej) => {
 
 module.exports = function deploy () {
   const options = config.get('options');
+
+  const keys = [];
+  let promise;
+
   return through2.obj(function (chunk, enc, next) {
     const { bucket, srvRoot } = options;
     const { cwd, base, path, history } = chunk;
     const s3 = new AWS.S3();
 
     const key = fsPath.relative(fsPath.resolve(cwd, srvRoot), path);
+    keys.push(key);
 
     // next();
-    getFileType(chunk)
+    (promise || (promise = postSlack(`Deployment Started`)))
+      .then(() => getFileType(chunk))
       .then((mime) => ({
         Bucket: bucket,
         Key: key,
@@ -54,5 +87,9 @@ module.exports = function deploy () {
         next()
       })
       .catch(util.error);
+  }, function (next) {
+    // const listText = keys.reduce((text, key) => text + `[Uploaded] ${key}\n`, '');
+    postSlack(`Deployment Successful`)
+      .then(() => next());
   });
 };

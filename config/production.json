@@ -13,5 +13,8 @@
         "text": "LinkedIn"
       }
     ]
+  },
+  "options": {
+    "bucket": "mattwhitaker.name"
   }
 }
