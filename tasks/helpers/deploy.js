@@ -12,7 +12,7 @@ const handleError   = require('./handleError');
 
 AWS.config.setPromisesDependency(Promise);
 
-const yellow  = '#c6b916';
+const yellow  = '#f4f021';
 const green   = '#019f00';
 const red     = '#a70005';
 const black   = '#000000';
