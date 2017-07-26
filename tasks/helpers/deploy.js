@@ -36,9 +36,9 @@ const makeSlack = (message, color = black) => ({
   ]
 });
 
-const postSlack = (message) => request.post({
+const postSlack = (message, color) => request.post({
   uri: process.env.SLACK_WEBHOOK_URL,
-  body: JSON.stringify(makeSlack(message))
+  body: JSON.stringify(makeSlack(message, color))
 });
 
 const getFileType = (file) => new Promise((res, rej) => {
