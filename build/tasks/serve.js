@@ -1,8 +1,8 @@
 const gulp        = require('gulp');
 const config      = require('config');
-const handleError = require('./helpers/handleError');
+const handleError = require('../utils/handleError');
 
-const { srvRoot, srcRoot } = config.get('options');
+const { srvRoot, srcRoot } = config.get('build');
 
 const port = process.env.PORT || 8080;
 

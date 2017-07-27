@@ -1,9 +1,9 @@
 const config      = require('config');
 const gulp        = require('gulp');
 const deploy      = require('./helpers/deploy');
-const handleError = require('./helpers/handleError');
+const handleError = require('../utils/handleError');
 
-const { srvRoot } = config.get('options');
+const { srvRoot } = config.get('build');
 
 module.exports = () => {
   return gulp.src(`${srvRoot}/**/*.*`)

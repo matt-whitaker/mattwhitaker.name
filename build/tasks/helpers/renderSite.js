@@ -6,14 +6,13 @@ const comments      = require('html-comments');
 const config        = require('config');
 
 module.exports = function renderSite (context) {
-  const options = config.get('options');
   const mergeContext = R.merge(context);
 
-  const { paths: {
+  const {
     partials: partialsPath,
     layouts: layoutsPath,
     pages: pagesPath
-  } = {}} = options;
+  } = config.get('build.paths');
 
   const partials = {};
   const layouts = {};

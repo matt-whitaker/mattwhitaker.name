@@ -1,9 +1,9 @@
 const gulp        = require('gulp');
 const less        = require('gulp-less');
 const config      = require('config');
-const handleError = require('./helpers/handleError');
+const handleError = require('../utils/handleError');
 
-const { srvRoot, srcRoot } = config.get('options');
+const { srvRoot, srcRoot } = config.get('build');
 
 module.exports = () =>
   gulp.src(`${srcRoot}/less/*.less`)

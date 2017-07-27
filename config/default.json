@@ -1,5 +1,5 @@
 {
-  "context": {
+  "site": {
     "title": "Matt Whitaker",
     "subtitle": "My simple profile site.",
     "profileImage": "/assets/images/profile.jpg",
@@ -21,17 +21,24 @@
       }
     ]
   },
-  "options": {
-    "bucket": "mattwhitaker.name.dev",
+
+  "build": {
+    "srvRoot": "lib",
+    "srcRoot": "src",
+    "assetsRoot": "assets",
     "paths": {
       "partials": "partials",
       "layouts": "layouts",
       "pages": "pages"
-    },
-    "srvRoot": "lib",
-    "srcRoot": "src",
-    "assetsRoot": "assets"
+    }
   },
+
+  "aws": {
+    "s3": {
+      "bucket": "mattwhitaker.name.dev"
+    }
+  },
+
   "slack": {
     "username": "deploybot",
     "channel": "#mattwhitaker-name-dev"
