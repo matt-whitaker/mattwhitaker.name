@@ -2,7 +2,7 @@ const R             = require('ramda');
 const through2      = require('through2');
 const { render }    = require('mustache');
 const fsPath        = require('path');
-const comments      = require('html-comments');
+const htmlComments  = require('html-comments');
 const config        = require('config');
 
 module.exports = function renderSite (context) {
@@ -19,8 +19,7 @@ module.exports = function renderSite (context) {
   const pages = {};
 
   return through2.obj(function (chunk, enc, next) {
-
-    const { cwd, base, path, history } = chunk;
+    const { base, path } = chunk;
 
     const isPage = (filename) => filename.startsWith(fsPath.resolve(base, pagesPath));
     const isLayout = (filename) => filename.startsWith(fsPath.resolve(base, layoutsPath));
@@ -43,11 +42,11 @@ module.exports = function renderSite (context) {
 
     next();
   }, function (next) {
-    R.forEachObjIndexed((value, key) => {
+    R.forEachObjIndexed((value) => {
       const pageTemplateBuffer = value.contents;
       const pageTemplate = pageTemplateBuffer.toString();
 
-      const layout = comments.load(pageTemplate, {
+      const layout = htmlComments.load(pageTemplate, {
         keyword: 'useLayout: ',
         removeKeyword: true
       })[0] || null;
