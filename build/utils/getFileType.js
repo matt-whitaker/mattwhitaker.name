@@ -1,4 +1,5 @@
 const fileType  = require('file-type');
+const Promise   = require('bluebird');
 const fsPath    = require('path');
 
 module.exports = (file) => new Promise((res, rej) => {

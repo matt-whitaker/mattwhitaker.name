@@ -43,7 +43,8 @@
     "ramda": "^0.24.1",
     "request-promise": "^4.2.1",
     "through2": "^2.0.3",
-    "through2-map": "^3.0.0"
+    "through2-map": "^3.0.0",
+    "uuid": "^3.1.0"
   },
   "dependencies": {}
 }

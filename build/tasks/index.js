@@ -1,3 +1,8 @@
+const AWS     = require('aws-sdk');
+const Promise = require('bluebird');
+
+AWS.config.setPromisesDependency(Promise);
+
 const deploy  = require('./deploy');
 const serve   = require('./serve');
 const clean   = require('./clean');
