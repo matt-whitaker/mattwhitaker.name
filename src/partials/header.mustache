@@ -1,8 +1,13 @@
-<h1>{{title}}</h1>
-<nav>
-    <ul>
-        {{#nav}}
-        <li><a href="{{{url}}}">{{text}}</a></li>
-        {{/nav}}
-    </ul>
-</nav>
+<header class="mw-header">
+    <img class="mw-site-avatar" src="{{avatarImage}}" />
+    <h1 class="mw-site-title">{{title}}</h1>
+    <nav class="mw-site-nav">
+        <ul class="mw-nav-list">
+            {{#nav}}
+            <li class="mw-nav-item">
+                <a class="mw-nav-link" href="{{url}}">{{text}}</a>
+            </li>
+            {{/nav}}
+        </ul>
+    </nav>
+</header>

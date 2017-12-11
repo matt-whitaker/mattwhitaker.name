@@ -51,9 +51,14 @@ module.exports = function renderSite (context) {
         removeKeyword: true
       })[0] || null;
 
+      const title = htmlComments.load(pageTemplate, {
+          keyword: 'title: ',
+          removeKeyword: true
+        })[0] || null;
+
       const renderedPage = render(pageTemplate, context, partials);
 
-      const data = { $page: renderedPage };
+      const data = { $page: renderedPage, $pageTitle: title };
 
       if (layout) {
         const layoutTemplateBuffer = layouts[layout].contents;
