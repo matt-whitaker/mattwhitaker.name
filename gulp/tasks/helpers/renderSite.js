@@ -1,4 +1,5 @@
 const R             = require('ramda');
+const moment        = require('moment');
 const through2      = require('through2');
 const { render }    = require('mustache');
 const fsPath        = require('path');
@@ -11,12 +12,14 @@ module.exports = function renderSite (context) {
   const {
     partials: partialsPath,
     layouts: layoutsPath,
-    pages: pagesPath
+    pages: pagesPath,
+    blog: blogPath
   } = config.get('build.paths');
 
   const partials = {};
   const layouts = {};
   const pages = {};
+  const blog = {};
 
   return through2.obj(function (chunk, enc, next) {
     const { base, path } = chunk;
@@ -42,7 +45,7 @@ module.exports = function renderSite (context) {
 
     next();
   }, function (next) {
-    R.forEachObjIndexed((value) => {
+    R.forEachObjIndexed((value, key) => {
       const pageTemplateBuffer = value.contents;
       const pageTemplate = pageTemplateBuffer.toString();
 
@@ -56,9 +59,19 @@ module.exports = function renderSite (context) {
           removeKeyword: true
         })[0] || null;
 
+      const date = htmlComments.load(pageTemplate, {
+          keyword: 'date: ',
+          removeKeyword: true
+        })[0] || null;
+
       const renderedPage = render(pageTemplate, context, partials);
 
-      const data = { $page: renderedPage, $pageTitle: title };
+      const data = {
+        $page: renderedPage,
+        pageTitle: title,
+
+        date: moment(date).format('ll')
+      };
 
       if (layout) {
         const layoutTemplateBuffer = layouts[layout].contents;

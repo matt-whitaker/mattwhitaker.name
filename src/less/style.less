@@ -2,6 +2,7 @@
 @import './includes/fonts.less';
 @import './includes/page.less';
 @import './includes/site.less';
+@import './includes/blog.less';
 
 @header-bg-tile: url('/assets/images/dark-brick-wall.png');
 @main-bg-tile: url('/assets/images/concrete-wall.png');
@@ -89,6 +90,34 @@
     .mw-page-title {
       text-align: center;
       margin: 80px 0;
+      font-size: 42px;
+      font-family: @font-primary;
+    }
+  }
+
+  .mw-blog {
+    .blog();
+
+    .mw-blog-date {
+      display: block;
+      font-family: @font-primary;
+      margin-top: 36px;
+      position: relative;
+
+      &:before {
+        position: absolute;
+        top: 50%;
+        left: 13%;
+        transform: translateY(-50%);
+        content: "";
+        border-bottom: 1px solid @black;
+        width: 87%;
+      }
+    }
+
+    .mw-page-title {
+      text-align: center;
+      margin: 20px 0 80px 0;
       font-size: 42px;
       font-family: @font-primary;
     }
