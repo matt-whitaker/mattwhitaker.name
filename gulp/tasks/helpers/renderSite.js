@@ -1,5 +1,6 @@
 const R             = require('ramda');
 const moment        = require('moment');
+const util          = require('gulp-util');
 const through2      = require('through2');
 const { render }    = require('mustache');
 const fsPath        = require('path');
@@ -85,6 +86,13 @@ module.exports = function renderSite (context) {
         value.contents = new Buffer.from(renderedLayout);
       } else {
         value.contents = new Buffer.from(renderedPage);
+      }
+
+      const fileName = fsPath.basename(value.path);
+      const fileBaseName = fsPath.basename(value.path, '.mustache');
+
+      if (fileBaseName !== 'index') {
+        value.path = value.path.replace(fileName, `${fileBaseName}/index.mustache`);
       }
 
       value.path = value.path.replace(`/${pagesPath}`, '');
