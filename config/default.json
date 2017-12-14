@@ -29,7 +29,8 @@
     "paths": {
       "partials": "partials",
       "layouts": "layouts",
-      "pages": "pages"
+      "pages": "pages",
+      "blog": "pages/blog"
     }
   },
 
