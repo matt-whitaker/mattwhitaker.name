@@ -8,6 +8,8 @@ jobs:
   build:
     machine:
       enabled: true
+      node:
+        version: 9.3.0
     steps:
       - checkout
       - run:
