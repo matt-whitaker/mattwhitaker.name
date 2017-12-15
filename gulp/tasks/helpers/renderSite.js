@@ -1,9 +1,13 @@
 const R             = require('ramda');
+const moment        = require('moment');
+const util          = require('gulp-util');
 const through2      = require('through2');
 const { render }    = require('mustache');
 const fsPath        = require('path');
 const htmlComments  = require('html-comments');
 const config        = require('config');
+
+const log = (msg) => util.log(`[renderSite] ${msg}`);
 
 module.exports = function renderSite (context) {
   const mergeContext = R.merge(context);
@@ -11,17 +15,20 @@ module.exports = function renderSite (context) {
   const {
     partials: partialsPath,
     layouts: layoutsPath,
-    pages: pagesPath
+    pages: pagesPath,
+    blog: blogPath
   } = config.get('build.paths');
 
   const partials = {};
   const layouts = {};
   const pages = {};
+  const blog = {};
 
   return through2.obj(function (chunk, enc, next) {
     const { base, path } = chunk;
 
     const isPage = (filename) => filename.startsWith(fsPath.resolve(base, pagesPath));
+    const isBlog = (filename) => filename.startsWith(fsPath.resolve(base, blogPath));
     const isLayout = (filename) => filename.startsWith(fsPath.resolve(base, layoutsPath));
     const isPartial = (filename) => filename.startsWith(fsPath.resolve(base, partialsPath));
 
@@ -40,9 +47,29 @@ module.exports = function renderSite (context) {
         .replace('.mustache', '')] = chunk.contents.toString();
     }
 
+    if (isBlog(path)) {
+      blog[fsPath.relative(fsPath.resolve(base, blogPath), path)
+        .replace('.mustache', '')] = chunk.contents.toString();
+    }
+
     next();
   }, function (next) {
-    R.forEachObjIndexed((value) => {
+    const recentBlogs = R.drop(3, Object.keys(blog)
+      .map((b) => {
+        const date = htmlComments.load(b, {
+            keyword: 'date: ',
+            removeKeyword: true
+          })[0] || null;
+
+        return { blog, date };
+      })
+      .sort((a, b) => {
+        return moment(a.date).format('YYYY-MM-DD') - moment(b.date).format('YYYY-MM-DD');
+      }));
+
+    console.log(recentBlogs.length);
+
+    R.forEachObjIndexed((value, key) => {
       const pageTemplateBuffer = value.contents;
       const pageTemplate = pageTemplateBuffer.toString();
 
@@ -51,9 +78,24 @@ module.exports = function renderSite (context) {
         removeKeyword: true
       })[0] || null;
 
+      const title = htmlComments.load(pageTemplate, {
+          keyword: 'title: ',
+          removeKeyword: true
+        })[0] || null;
+
+      const date = htmlComments.load(pageTemplate, {
+          keyword: 'date: ',
+          removeKeyword: true
+        })[0] || null;
+
       const renderedPage = render(pageTemplate, context, partials);
 
-      const data = { $page: renderedPage };
+      const data = {
+        $page: renderedPage,
+        pageTitle: title,
+
+        date: moment(date).format('ll')
+      };
 
       if (layout) {
         const layoutTemplateBuffer = layouts[layout].contents;
@@ -67,6 +109,13 @@ module.exports = function renderSite (context) {
         value.contents = new Buffer.from(renderedLayout);
       } else {
         value.contents = new Buffer.from(renderedPage);
+      }
+
+      const fileName = fsPath.basename(value.path);
+      const fileBaseName = fsPath.basename(value.path, '.mustache');
+
+      if (fileBaseName !== 'index') {
+        value.path = value.path.replace(fileName, `${fileBaseName}/index.mustache`);
       }
 
       value.path = value.path.replace(`/${pagesPath}`, '');

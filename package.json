@@ -39,9 +39,11 @@
     "http-server": "^0.10.0",
     "lodash": "^4.17.4",
     "main-bower-files": "^2.13.1",
+    "moment": "^2.19.4",
     "mustache": "^2.3.0",
     "ramda": "^0.24.1",
     "request-promise": "^4.2.1",
+    "rimraf": "^2.6.2",
     "through2": "^2.0.3",
     "through2-map": "^3.0.0",
     "uuid": "^3.1.0"

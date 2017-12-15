@@ -40,7 +40,7 @@ module.exports = function deploy () {
       .then((params) => s3.putObject(params).promise())
       .tap(() => this.push(chunk))
       .tap(() => next())
-      .catch(console.error);
+      .tapCatch(console.error);
   }, function (next) {
     return postSlack(`Deployment Successful`, postSlack.colors.green)
       .then(R.tap(() => util.log('Invalidating CDN')))
@@ -60,6 +60,7 @@ module.exports = function deploy () {
           }
         }).promise()))
       .then(() => postSlack(`Invalidation Successful`, postSlack.colors.green))
-      .then(() => next());
+      .then(() => next())
+      .tapCatch(console.error);
   });
 };
