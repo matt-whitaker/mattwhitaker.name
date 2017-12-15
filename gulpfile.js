@@ -5,6 +5,8 @@ const util          = require('gulp-util');
 const browserSync   = require('browser-sync').create();
 const tasks         = require('./gulp/tasks');
 
+require('dotenv').config();
+
 util.log(`Using environment ${process.env.NODE_ENV || 'development'}`);
 
 gulp.browserSync = browserSync;

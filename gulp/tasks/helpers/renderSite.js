@@ -7,6 +7,8 @@ const fsPath        = require('path');
 const htmlComments  = require('html-comments');
 const config        = require('config');
 
+const log = (msg) => util.log(`[renderSite] ${msg}`);
+
 module.exports = function renderSite (context) {
   const mergeContext = R.merge(context);
 
@@ -26,6 +28,7 @@ module.exports = function renderSite (context) {
     const { base, path } = chunk;
 
     const isPage = (filename) => filename.startsWith(fsPath.resolve(base, pagesPath));
+    const isBlog = (filename) => filename.startsWith(fsPath.resolve(base, blogPath));
     const isLayout = (filename) => filename.startsWith(fsPath.resolve(base, layoutsPath));
     const isPartial = (filename) => filename.startsWith(fsPath.resolve(base, partialsPath));
 
@@ -44,8 +47,28 @@ module.exports = function renderSite (context) {
         .replace('.mustache', '')] = chunk.contents.toString();
     }
 
+    if (isBlog(path)) {
+      blog[fsPath.relative(fsPath.resolve(base, blogPath), path)
+        .replace('.mustache', '')] = chunk.contents.toString();
+    }
+
     next();
   }, function (next) {
+    const recentBlogs = R.drop(3, Object.keys(blog)
+      .map((b) => {
+        const date = htmlComments.load(b, {
+            keyword: 'date: ',
+            removeKeyword: true
+          })[0] || null;
+
+        return { blog, date };
+      })
+      .sort((a, b) => {
+        return moment(a.date).format('YYYY-MM-DD') - moment(b.date).format('YYYY-MM-DD');
+      }));
+
+    console.log(recentBlogs.length);
+
     R.forEachObjIndexed((value, key) => {
       const pageTemplateBuffer = value.contents;
       const pageTemplate = pageTemplateBuffer.toString();
