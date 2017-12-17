@@ -1,7 +1,7 @@
 import React from 'react';
 import Markdown from 'markdown-to-jsx';
 import classnames from 'classnames';
-import Nav from './shell/nav';
+import Nav from './nav';
 
 const renderPage = (props) => {
   const { Page } = props;
