@@ -1,13 +1,13 @@
 import fsPath from 'path';
 import config from 'config';
 import colors from 'colors';
+import requireUncached from 'require-uncached';
 import R from 'ramda';
 import moment from 'moment';
 import util from 'gulp-util';
 import through2 from 'through2';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import Markdown from 'markdown-to-jsx';
 import generateDocument from './../utils/generateDocument';
 import Shell from './../../src/components/Shell';
 
@@ -34,7 +34,7 @@ export default function renderPages(context) {
   return through2.obj(function (file, enc, next) {
     log(`rendering ${colors.cyan(fsPath.relative(`${process.cwd()}/src`, file.path))}`);
 
-    const { default: PageComponent, meta = {} } = require(file.path);
+    const { default: PageComponent, meta } = requireUncached(file.path);
     const props = getProps(file, meta);
 
     file.contents = new Buffer.from(render(<Shell {...props} Page={PageComponent} />));
@@ -44,30 +44,3 @@ export default function renderPages(context) {
     next();
   });
 };
-
-// const { base, path } = chunk;
-//
-// const isPage = (filename) => filename.startsWith(fsPath.resolve(base, pagesPath));
-// const isBlog = (filename) => filename.startsWith(fsPath.resolve(base, blogPath));
-// const isLayout = (filename) => filename.startsWith(fsPath.resolve(base, layoutsPath));
-// const isPartial = (filename) => filename.startsWith(fsPath.resolve(base, partialsPath));
-//
-// if (isPage(path)) {
-//     pages[fsPath.relative(fsPath.resolve(base, pagesPath), path)
-//         .replace('.mustache', '')] = chunk;
-// }
-//
-// if (isLayout(path)) {
-//     layouts[fsPath.relative(fsPath.resolve(base, layoutsPath), path)
-//         .replace('.mustache', '')] = chunk;
-// }
-//
-// if (isPartial(path)) {
-//     partials[fsPath.relative(fsPath.resolve(base, partialsPath), path)
-//         .replace('.mustache', '')] = chunk.contents.toString();
-// }
-//
-// if (isBlog(path)) {
-//     blog[fsPath.relative(fsPath.resolve(base, blogPath), path)
-//         .replace('.mustache', '')] = chunk.contents.toString();
-// }

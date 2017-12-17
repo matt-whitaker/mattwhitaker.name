@@ -13,5 +13,5 @@ module.exports = () => {
     }
   });
   gulp.watch('src/**/*.less', ['css']).on('error', handleError);
-  gulp.watch('src/**/*.jsx', ['html']).on('error', handleError);
+  gulp.watch(['src/**/*.jsx', 'src/**/*.js'], ['html']).on('error', handleError);
 };

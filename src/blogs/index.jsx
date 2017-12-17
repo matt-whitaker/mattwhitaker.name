@@ -1,9 +1,9 @@
 import React from 'react';
 
 export const meta = {
-  title: 'Last Three Blogs'
+  title: 'Recent Blogs'
 };
 
-export default ({ Shell }) => (
-  <div style={{textAlign:'center'}}>List of last three blogs</div>
-);
+export default `
+### TODO: Implement list of recent blogs
+`;

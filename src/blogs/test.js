@@ -12,5 +12,9 @@ Some text, maybe a list of one, two three.
 - two
 - three
 
-<h1>Test Header</h1>
+dee dah
+
+|table|test|
+|---|---|
+|hello|world|
 `;
