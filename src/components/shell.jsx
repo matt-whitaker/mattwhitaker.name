@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import Nav from './shell/nav';
 
 export default ({ children, $site, $page }) => [
@@ -7,7 +8,7 @@ export default ({ children, $site, $page }) => [
     <h1 className="mw-site-title">{$site.title}</h1>
     <Nav items={$site.nav} />
   </header>,
-  <main className="mw-main mw-blog">
+  <main className={classnames({ 'mw-main': true, 'mw-blog': $page.blog })}>
     <article>
       { $page.blog ? <time className="mw-blog-date">{$page.blog.date}</time> : null }
       <h1 className="mw-page-title">{$page.title}</h1>

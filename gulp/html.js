@@ -1,6 +1,7 @@
 import gulp from 'gulp';
 import inject from 'gulp-inject';
 import htmlmin from 'gulp-htmlmin';
+import beautify from 'gulp-html-beautify';
 import rename from 'gulp-rename';
 import browserSync from 'browser-sync';
 import config from 'config';
@@ -23,6 +24,7 @@ module.exports = () => {
     .pipe(rename({ extname: '.html' }))
     .pipe(inject(cssSources, { ignorePath: 'lib' }))
     .pipe(htmlmin({ removeComments: true }))
+    .pipe(beautify())
     .pipe(gulp.dest('lib'))
     .pipe(browserSync.stream({ once: true }))
     .on('error', handleError);

@@ -14,7 +14,7 @@ const logPrefix = colors.cyan('renderSite')
 const log = (msg) => util.log(`${logPrefix} ${msg}`);
 
 const isBlog = ({ path, base }) => base.indexOf('blogs') > -1;
-const setBlogPath = (file) => file.path = `${file.base}/blogs/${fsPath.basename(file.path)}`;
+const setBlogPath = (file) => file.path = `${file.base}/blog/${fsPath.basename(file.path)}`;
 const fixPath = R.when(isBlog, setBlogPath);
 
 const getProps = (file, { date, ...meta }) => ({
