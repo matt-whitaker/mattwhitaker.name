@@ -1,3 +1,11 @@
-<!-- useLayout: main -->
-<!-- title: Recent Posts -->
-<div style="text-align: center;">List of last three blogs</div>
+import React from 'react';
+
+export const meta = {
+  title: 'Last Three Blogs'
+};
+
+export default ({ Shell }) => (
+  <Shell>
+    <div style={{textAlign:'center'}}>List of last three blogs</div>
+  </Shell>
+);

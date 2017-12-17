@@ -1,6 +1,11 @@
-<!-- useLayout: main -->
-<!-- title: Site in Development -->
+import React from 'react';
 
-export default function HomePage () {
-    return (<div style="text-align: center;">Come back soon!</div>);
-}
+export const meta = {
+  title: 'Under Development'
+};
+
+export default ({ Shell }) => (
+  <Shell>
+    <div style={{textAlign:'center'}}>Come back soon!</div>
+  </Shell>
+);

@@ -2,18 +2,15 @@ import gulp from 'gulp';
 import inject from 'gulp-inject';
 import htmlmin from 'gulp-htmlmin';
 import rename from 'gulp-rename';
-import merge from 'gulp-merge';
 import browserSync from 'browser-sync';
 import config from 'config';
 import R from 'ramda';
-import renderSite from './tasks/renderSite';
+import renderPages from './tasks/renderPages';
 import handleError from './utils/handleError';
 import pkg from '../package';
 
-const { srvRoot, srcRoot } = config.get('build');
-
 module.exports = () => {
-  const cssSources = gulp.src(`./${srvRoot}/**/*.css`, { read: false });
+  const cssSources = gulp.src('./lib/**/*.css', { read: false });
 
   const { version } = pkg;
 
@@ -21,12 +18,12 @@ module.exports = () => {
     version
   });
 
-  return gulp.src(`${srcRoot}/**/*.mustache`)
-    .pipe(renderSite(context))
-    .pipe(inject(cssSources, { ignorePath: srvRoot }))
-    .pipe(htmlmin({ removeComments: true }))
+  return gulp.src(['src/pages/**/*.jsx', 'src/blogs/**/*.jsx'])
+    .pipe(renderPages(context))
     .pipe(rename({ extname: '.html' }))
-    .pipe(gulp.dest(srvRoot))
+    .pipe(inject(cssSources, { ignorePath: 'lib' }))
+    .pipe(htmlmin({ removeComments: true }))
+    .pipe(gulp.dest('lib'))
     .pipe(browserSync.stream({ once: true }))
     .on('error', handleError);
 };

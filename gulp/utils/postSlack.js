@@ -1,16 +1,16 @@
 import request from 'request';
 import config from 'config';
 
-const { channel, username } = config.get('slack');
+const {channel, username} = config.get('slack');
 
-const yellow  = '#f4f021';
-const green   = '#019f00';
-const red     = '#a70005';
-const black   = '#000000';
+const yellow = '#f4f021';
+const green = '#019f00';
+const red = '#a70005';
+const black = '#000000';
 const env = process.env.NODE_ENV || 'development';
 
 const makeSlack = (message, color = black) => ({
-  attachments:[
+  attachments: [
     {
       fallback: message,
       text: message,
@@ -28,17 +28,17 @@ const makeSlack = (message, color = black) => ({
 });
 
 const postSlack = (message, color) => request.post({
-    uri: process.env.SLACK_WEBHOOK_URL,
-    body: JSON.stringify(makeSlack(message, color))
+  uri: process.env.SLACK_WEBHOOK_URL,
+  body: JSON.stringify(makeSlack(message, color))
 });
 
 Object.assign(postSlack, {
-    colors: {
-        yellow,
-        green,
-        red,
-        black
-    }
+  colors: {
+    yellow,
+    green,
+    red,
+    black
+  }
 });
 
 export default postSlack;

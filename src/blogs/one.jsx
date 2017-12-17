@@ -1,5 +1,13 @@
-<!-- useLayout: blog -->
-<!-- title: Test Blog One -->
-<!-- date: 2016-01-04 -->
+import React from 'react';
 
-<p>Test Blog One</p>
+export const meta = {
+  date: '2017-12-17',
+  title: 'Under Development'
+};
+
+export default ({ Shell }) => (
+  <Shell>
+    <p>Test Blog One</p>
+    <p>Another paragraph</p>
+  </Shell>
+);

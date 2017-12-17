@@ -22,18 +22,6 @@
     ]
   },
 
-  "build": {
-    "srvRoot": "lib",
-    "srcRoot": "src",
-    "assetsRoot": "assets",
-    "paths": {
-      "partials": "partials",
-      "layouts": "layouts",
-      "pages": "pages",
-      "blog": "pages/blog"
-    }
-  },
-
   "aws": {
     "s3": {
       "bucket": "mattwhitaker.name.dev"
