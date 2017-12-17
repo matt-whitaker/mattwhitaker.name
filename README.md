@@ -3,7 +3,7 @@ my personal profile site
 
 ## Writing
 
-The app is built to support two types of views, pages and blogs. Blogs are placed in the `blogs` src directory and pages are placed in the `pages` source directory. Ultimately all this does it make it easier to partition blogs into a `/blog` subroute.
+The app is built to support two types of views, pages and blogs. Blogs are placed in the `blogs` src directory and pages are placed in the `pages` src directory. Ultimately all this does it make it easier to partition blogs into a `/blog` subroute.
 
 Example page:
 

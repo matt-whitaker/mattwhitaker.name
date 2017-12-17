@@ -22,6 +22,6 @@ export default (props) => [
     </article>
   </main>,
   <footer className="mw-footer" style={{textAlign: 'center'}}>
-    { props.$page.blog ? 'prev | next' : null };
+    { props.$page.blog ? 'prev | next' : null }
   </footer>
 ];
