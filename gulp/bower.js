@@ -1,6 +1,6 @@
-const config  = require('config');
-const bower   = require('main-bower-files');
-const gulp    = require('gulp');
+import config from 'config';
+import bower from 'main-bower-files';
+import gulp from 'gulp';
 
 const { srvRoot } = config.get('build');
 

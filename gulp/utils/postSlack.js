@@ -1,5 +1,5 @@
-const request   = require('request-promise');
-const config    = require('config');
+import request from 'request';
+import config from 'config';
 
 const { channel, username } = config.get('slack');
 
@@ -27,16 +27,18 @@ const makeSlack = (message, color = black) => ({
   ]
 });
 
-module.exports = (message, color) => request.post({
-  uri: process.env.SLACK_WEBHOOK_URL,
-  body: JSON.stringify(makeSlack(message, color))
+const postSlack = (message, color) => request.post({
+    uri: process.env.SLACK_WEBHOOK_URL,
+    body: JSON.stringify(makeSlack(message, color))
 });
 
-Object.assign(module.exports, {
-  colors: {
-    yellow,
-    green,
-    red,
-    black
-  }
+Object.assign(postSlack, {
+    colors: {
+        yellow,
+        green,
+        red,
+        black
+    }
 });
+
+export default postSlack;

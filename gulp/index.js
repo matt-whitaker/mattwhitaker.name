@@ -1,5 +1,5 @@
-const AWS     = require('aws-sdk');
-const Promise = require('bluebird');
+import AWS from 'aws-sdk';
+import Promise from 'bluebird';
 
 AWS.config.setPromisesDependency(Promise);
 

@@ -1,14 +1,14 @@
-const gulp          = require('gulp');
-const inject        = require('gulp-inject');
-const htmlmin       = require('gulp-htmlmin');
-const rename        = require('gulp-rename');
-const merge         = require('gulp-merge');
-const browserSync   = require('browser-sync').create();
-const config        = require('config');
-const R             = require('ramda');
-const pkg           = require('../../package.json');
-const renderSite    = require('./helpers/renderSite');
-const handleError   = require('../utils/handleError');
+import gulp from 'gulp';
+import inject from 'gulp-inject';
+import htmlmin from 'gulp-htmlmin';
+import rename from 'gulp-rename';
+import merge from 'gulp-merge';
+import browserSync from 'browser-sync';
+import config from 'config';
+import R from 'ramda';
+import renderSite from './tasks/renderSite';
+import handleError from './utils/handleError';
+import pkg from '../package';
 
 const { srvRoot, srcRoot } = config.get('build');
 

@@ -1,6 +1,6 @@
-const gulp        = require('gulp');
-const config      = require('config');
-const handleError = require('../utils/handleError');
+import gulp from 'gulp';
+import config from 'config';
+import handleError from './utils/handleError';
 
 const { srvRoot, srcRoot } = config.get('build');
 
