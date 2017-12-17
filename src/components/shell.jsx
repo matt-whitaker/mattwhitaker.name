@@ -1,21 +1,27 @@
 import React from 'react';
+import Markdown from 'markdown-to-jsx';
 import classnames from 'classnames';
 import Nav from './shell/nav';
 
-export default ({ children, $site, $page }) => [
+const renderPage = (props) => {
+  const { Page } = props;
+  return typeof Page === 'string' ? <Markdown>{Page}</Markdown> : <Page {...props} />;
+};
+
+export default (props) => [
   <header className="mw-header">
-    <img className="mw-site-avatar" src={$site.avatarImage} />
-    <h1 className="mw-site-title">{$site.title}</h1>
-    <Nav items={$site.nav} />
+    <img className="mw-site-avatar" src={props.$site.avatarImage} />
+    <h1 className="mw-site-title">{props.$site.title}</h1>
+    <Nav items={props.$site.nav} />
   </header>,
-  <main className={classnames({ 'mw-main': true, 'mw-blog': $page.blog })}>
+  <main className={classnames({ 'mw-main': true, 'mw-blog': props.$page.blog })}>
     <article>
-      { $page.blog ? <time className="mw-blog-date">{$page.blog.date}</time> : null }
-      <h1 className="mw-page-title">{$page.title}</h1>
-      {children}
+      { props.$page.blog ? <time className="mw-blog-date">{props.$page.blog.date}</time> : null }
+      <h1 className="mw-page-title">{props.$page.title}</h1>
+      {renderPage(props)}
     </article>
   </main>,
   <footer className="mw-footer" style={{textAlign: 'center'}}>
-    { $page.blog ? 'prev | next' : null };
+    { props.$page.blog ? 'prev | next' : null };
   </footer>
 ];

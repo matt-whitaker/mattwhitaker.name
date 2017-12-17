@@ -7,6 +7,7 @@ import util from 'gulp-util';
 import through2 from 'through2';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import Markdown from 'markdown-to-jsx';
 import generateDocument from './../utils/generateDocument';
 import Shell from './../../src/components/Shell';
 
@@ -35,9 +36,8 @@ export default function renderPages(context) {
 
     const { default: PageComponent, meta = {} } = require(file.path);
     const props = getProps(file, meta);
-    const PageShell = ({ children }) => <Shell {...props}>{children}</Shell>;
 
-    file.contents = new Buffer.from(render(<PageComponent Shell={PageShell} {...props} />));
+    file.contents = new Buffer.from(render(<Shell {...props} Page={PageComponent} />));
 
     fixPath(file);
     this.push(file);

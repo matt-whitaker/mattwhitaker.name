@@ -5,7 +5,5 @@ export const meta = {
 };
 
 export default ({ Shell }) => (
-  <Shell>
-    <div style={{textAlign:'center'}}>List of last three blogs</div>
-  </Shell>
+  <div style={{textAlign:'center'}}>List of last three blogs</div>
 );

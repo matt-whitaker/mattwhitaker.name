@@ -19,7 +19,11 @@ module.exports = () => {
     version
   });
 
-  return gulp.src(['src/pages/**/*.jsx', 'src/blogs/**/*.jsx'])
+  return gulp.src([
+    'src/pages/**/*.jsx',
+    'src/pages/**/*.js',
+    'src/blogs/**/*.jsx',
+    'src/blogs/**/*.js'])
     .pipe(renderPages(context))
     .pipe(rename({ extname: '.html' }))
     .pipe(inject(cssSources, { ignorePath: 'lib' }))
