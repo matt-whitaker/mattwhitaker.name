@@ -82,6 +82,7 @@
 
   .mw-main {
     .page();
+
     font-size: 24px;
     width: 80%;
     margin: 0 auto;
@@ -98,19 +99,22 @@
     .blog();
 
     .mw-blog-date {
-      display: block;
+      display: flex;
       font-family: @font-primary;
       margin-top: 36px;
       position: relative;
 
-      &:before {
-        position: absolute;
-        top: 50%;
-        left: 13%;
-        transform: translateY(-50%);
-        content: "";
-        border-bottom: 1px solid @black;
-        width: 87%;
+      .mw-date-value {
+        line-height: 1em;
+      }
+
+      .mw-date-bar {
+        flex-grow: 1;
+        line-height: 1em;
+        margin: .495em 0;
+        height: .1em;
+        margin-left: 15px;
+        background-color: @black;
       }
     }
 
