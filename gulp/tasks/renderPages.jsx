@@ -29,18 +29,34 @@ const getProps = (file, { date, ...meta }) => ({
 });
 
 export default function renderPages(context) {
-  const render = R.pipe(ReactDOMServer.renderToStaticMarkup, generateDocument(context));
+  const renderPage = R.pipe(ReactDOMServer.renderToStaticMarkup, generateDocument(context));
+
+  let blogs = [];
+  let files = [];
 
   return through2.obj(function (file, enc, next) {
     log(`rendering ${colors.cyan(fsPath.relative(`${process.cwd()}/src`, file.path))}`);
 
     const { default: PageComponent, meta } = requireUncached(file.path);
-    const props = getProps(file, meta);
 
-    file.contents = new Buffer.from(render(<Shell {...props} Page={PageComponent} />));
+    if(isBlog(file)) {
+      const url = `blog/${fsPath.basename(file.path).replace(/(\.jsx|\.js)/, '.html')}`;
+      blogs.push({ ...meta, url });
+    }
 
-    fixPath(file);
-    this.push(file);
+    const render = (props) => renderPage(<Shell {...props} Page={PageComponent} />);
+
+    files.push({ file, render, props: getProps(file, meta) });
+    next();
+  }, function (next) {
+    files.forEach(({ file, render, props }) => {
+      fixPath(file);
+      file.contents = Buffer.from(render({ ...props, blogs }));
+      this.push(file);
+    });
+
+    blogs = [];
+    files = [];
     next();
   });
 };

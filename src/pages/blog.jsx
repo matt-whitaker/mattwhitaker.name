@@ -4,6 +4,8 @@ export const meta = {
   title: 'Recent Blogs'
 };
 
-export default `
-### TODO: Implement list of recent blogs
-`;
+export default ({ blogs }) => blogs.map(({ url, title }) => (
+  <p>
+    <a href={url}>{title}</a>
+  </p>
+));
