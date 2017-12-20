@@ -35,7 +35,6 @@ export default function deploy() {
         ACL: 'public-read',
         ContentType: mime
       }))
-      .tap(({ContentType}) => util.log(`Uploading ${key} as ${ContentType}`))
       .then((params) => s3.putObject(params).promise())
       .tap(() => this.push(chunk))
       .tap(() => next())
