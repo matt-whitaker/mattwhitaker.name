@@ -7,8 +7,7 @@ import through2 from 'through2';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import generateDocument from './../utils/generateDocument';
-import Shell from './../../src/components/Shell';
-
+import Shell from './../../src/components/shell';
 
 const isBlog = ({ path, base }) => base.indexOf('blogs') > -1;
 const setBlogPath = (file) => file.path = `${file.base}/blog/${fsPath.basename(file.path)}`;
