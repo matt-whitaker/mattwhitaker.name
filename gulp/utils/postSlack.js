@@ -1,4 +1,4 @@
-import request from 'request';
+import request from 'request-promise';
 import config from 'config';
 
 const {channel, username} = config.get('slack');
