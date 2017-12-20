@@ -42,7 +42,7 @@ export default function deploy() {
       .tapCatch(console.error);
   }, function (next) {
     return postSlack(`Deployment Successful`, postSlack.colors.green)
-      .then(R.tap(() => print('deploy')('Invalidating CDN')))
+      .then(R.tap(() => print('deploy', 'Invalidating CDN')))
       .then(() => postSlack(`Invalidation Started`, postSlack.colors.yellow))
       .then(
         R.when(() => process.env.AWS_CLOUDFRONT_DISTRIBUTION_ID,
