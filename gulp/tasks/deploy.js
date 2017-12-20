@@ -5,9 +5,6 @@ import util from 'gulp-util';
 import AWS from 'aws-sdk';
 import config from 'config';
 import R from 'ramda';
-import colors from 'colors';
-import request from 'request-promise';
-import handleError from '../utils/handleError';
 import postSlack from '../utils/postSlack';
 import getFileType from '../utils/getFileType';
 
@@ -20,10 +17,9 @@ export default function deploy() {
 
   return through2.obj(function (chunk, enc, next) {
     const bucket = config.get('aws.s3.bucket');
-    const srvRoot = config.get('lib');
     const {cwd, base, path, history} = chunk;
 
-    const key = fsPath.relative(fsPath.resolve(cwd, srvRoot), path);
+    const key = fsPath.relative(fsPath.resolve(cwd, 'lib'), path);
     keys.push(key);
 
     return (promise || (promise = postSlack(`Deployment Started`, postSlack.colors.yellow)))
