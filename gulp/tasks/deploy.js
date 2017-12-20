@@ -20,7 +20,7 @@ export default function deploy() {
 
   return through2.obj(function (chunk, enc, next) {
     const bucket = config.get('aws.s3.bucket');
-    const srvRoot = config.get('build.srvRoot');
+    const srvRoot = config.get('lib');
     const {cwd, base, path, history} = chunk;
 
     const key = fsPath.relative(fsPath.resolve(cwd, srvRoot), path);
