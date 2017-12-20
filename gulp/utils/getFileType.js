@@ -1,16 +1,16 @@
-const fileType  = require('file-type');
-const Promise   = require('bluebird');
-const fsPath    = require('path');
+import fsPath from 'path';
+import fileType from 'file-type';
+import Promise from 'bluebird';
 
-module.exports = (file) => new Promise((res, rej) => {
+const getFileType = (file) => new Promise((res, rej) => {
   const mimeType = fileType(file.contents);
 
   if (!mimeType || !mimeType.mime) {
-    if(fsPath.extname(file.path) === '.html') {
+    if (fsPath.extname(file.path) === '.html') {
       return res('text/html');
     }
 
-    if(fsPath.extname(file.path) === '.css') {
+    if (fsPath.extname(file.path) === '.css') {
       return res('text/css');
     }
 
@@ -19,3 +19,5 @@ module.exports = (file) => new Promise((res, rej) => {
 
   return res(mimeType.mime);
 });
+
+export default getFileType;

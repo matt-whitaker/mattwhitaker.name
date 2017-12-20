@@ -1,6 +1,6 @@
-const util = require('gulp-util');
+import util from 'gulp-util';
 
-module.exports = function handleError (err) {
+export default function handleError(err) {
   util.log(err);
   this.emit('end');
 };
