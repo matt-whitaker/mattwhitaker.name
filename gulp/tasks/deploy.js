@@ -7,6 +7,7 @@ import config from 'config';
 import R from 'ramda';
 import postSlack from '../utils/postSlack';
 import getFileType from '../utils/getFileType';
+import print from './../utils/print';
 
 export default function deploy() {
   const keys = [];
@@ -41,7 +42,7 @@ export default function deploy() {
       .tapCatch(console.error);
   }, function (next) {
     return postSlack(`Deployment Successful`, postSlack.colors.green)
-      .then(R.tap(() => util.log('Invalidating CDN')))
+      .then(R.tap(() => print('deploy')('Invalidating CDN')))
       .then(() => postSlack(`Invalidation Started`, postSlack.colors.yellow))
       .then(
         R.when(() => process.env.AWS_CLOUDFRONT_DISTRIBUTION_ID,
