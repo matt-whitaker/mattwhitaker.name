@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import deploy from './tasks/deploy';
+import deploy from './pipes/deploy';
 import handleError from './utils/handleError';
 import printFiles from './utils/printFiles';
 

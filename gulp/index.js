@@ -6,7 +6,5 @@ AWS.config.setPromisesDependency(Promise);
 export deploy from './deploy';
 export serve from './serve';
 export clean from './clean';
-export bower from './bower';
+export build from './build';
 export assets from './assets';
-export css from './css';
-export html from './html';
