@@ -22,7 +22,9 @@ export default function deploy() {
     const key = fsPath.relative(fsPath.resolve(cwd, 'lib'), path);
     keys.push(key);
 
-    return (promise || (promise = postSlack(`Deployment Started`, postSlack.colors.yellow)))
+    promise = promise || (promise = postSlack(`Deployment Started`, postSlack.colors.yellow));
+
+    return promise
       .then(() => getFileType(chunk))
       .then((mime) => ({
         Bucket: bucket,
