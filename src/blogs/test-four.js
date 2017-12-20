@@ -1,6 +1,6 @@
 export const meta = {
-  date: '2017-10-05',
-  title: 'Under Development'
+  date: '2018-10-05',
+  title: 'Test Blog Four. Really Long Title Test. Like, Really REALLY Long. No, I Mean It, Really REALLY REAAAALLLLLY Long'
 };
 
 export default `

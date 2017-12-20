@@ -10,7 +10,8 @@ import generateDocument from './../utils/generateDocument';
 import Shell from './../../src/components/shell';
 
 const isBlog = ({ path, base }) => base.indexOf('blogs') > -1;
-const setBlogPath = (file) => file.path = `${file.base}/blog/${fsPath.basename(file.path)}`;
+const sortBlog = (a, b) => a.date < b.date;
+const setBlogPath = R.tap((file) => file.path = `${file.base}/blog/${fsPath.basename(file.path)}`);
 const fixPath = R.when(isBlog, setBlogPath);
 
 const getProps = (file, { date, ...meta }) => ({
@@ -42,9 +43,11 @@ export default function renderPages(context) {
     files.push({ file, render, props: getProps(file, meta) });
     next();
   }, function (next) {
+    const sortedBlogs = blogs.sort(sortBlog);
+
     files.forEach(({ file, render, props }) => {
       fixPath(file);
-      file.contents = Buffer.from(render({ ...props, blogs }));
+      file.contents = Buffer.from(render({ ...props, blogs: sortedBlogs }));
       this.push(file);
     });
 
