@@ -5,6 +5,6 @@ import config from 'config';
 
 const color = colors.keyword(config.get('gulp.taskColorKeyword'));
 
-export default (scope) =>
+export default (scope, command = 'Built') =>
   print((path) =>
-    `${color(scope)} Built ${color(strip(path))}`);
+    `${color(scope)} ${command} ${color(strip(path))}`);
