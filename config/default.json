@@ -31,5 +31,9 @@
   "slack": {
     "username": "deploybot",
     "channel": "#mattwhitaker-name-dev"
+  },
+
+  "gulp": {
+    "taskColorKeyword": "darkkhaki"
   }
 }

@@ -8,6 +8,7 @@ import config from 'config';
 import R from 'ramda';
 import renderPages from './tasks/renderPages';
 import handleError from './utils/handleError';
+import printFiles from './utils/printFiles'
 import pkg from '../package';
 
 module.exports = () => {
@@ -30,6 +31,9 @@ module.exports = () => {
     .pipe(htmlmin({ removeComments: true }))
     .pipe(beautify())
     .pipe(gulp.dest('lib'))
+    .pipe(printFiles('html'))
     .pipe(browserSync.stream({ once: true }))
     .on('error', handleError);
 };
+
+//log(`Rendering ${colors.keyword('darkkhaki')(fsPath.relative(`${process.cwd()}/src`, file.path))}`);
