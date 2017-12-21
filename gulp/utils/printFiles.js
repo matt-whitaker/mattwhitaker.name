@@ -3,7 +3,7 @@ import strip from 'strip-color';
 import colors from 'chalk';
 import config from 'config';
 
-const color = colors.keyword(config.get('gulp.taskColorKeyword'));
+const color = colors.keyword(config.get('build.taskColorKeyword'));
 
 export default (scope, command = 'Built') =>
   print((path) =>

@@ -17,7 +17,7 @@
 
   "aws": {
     "s3": {
-      "bucket": "mattwhitaker.name",
+      "bucket": "mattwhitaker.name"
     }
   },
 

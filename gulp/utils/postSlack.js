@@ -15,7 +15,7 @@ const makeSlack = (message, color = black) => ({
       fallback: message,
       text: message,
       channel,
-      username,
+      username: process.env.SLACK_USERNAME,
       color,
       fields: [
         {

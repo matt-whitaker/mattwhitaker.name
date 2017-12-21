@@ -13,21 +13,23 @@ import css          from './css';
 import bower        from './bower';
 import pkg          from '../package';
 
+const { srcRoot, dstRoot } = config.get('build');
+
 module.exports = () => {
   const assetsStream = mergeStream(bower(), css());
   const context = R.merge(config.get('site'))({ version: pkg.version });
 
   return gulp.src([
-    'src/pages/**/*.jsx',
-    'src/pages/**/*.js',
-    'src/blogs/**/*.jsx',
-    'src/blogs/**/*.js'])
+    `${srcRoot}/pages/**/*.jsx`,
+    `${srcRoot}/pages/**/*.js`,
+    `${srcRoot}/blogs/**/*.jsx`,
+    `${srcRoot}/blogs/**/*.js`])
     .pipe(renderPages(context))
     .pipe(rename({ extname: '.html' }))
-    .pipe(inject(assetsStream, { ignorePath: 'lib' }))
+    .pipe(inject(assetsStream, { ignorePath: dstRoot }))
     .pipe(htmlmin({ removeComments: true }))
     .pipe(beautify())
-    .pipe(gulp.dest('lib'))
+    .pipe(gulp.dest(dstRoot))
     .pipe(printFiles('html'))
     .pipe(gulp.browserSync.stream({ once: true }))
     .on('error', handleError);

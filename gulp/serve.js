@@ -1,15 +1,18 @@
 import gulp from 'gulp';
+import config from 'config';
 import handleError from './utils/handleError';
 
 const port = process.env.PORT || 8080;
+
+const dstRoot = config.get('build.dstRoot');
 
 module.exports = () => {
   gulp.browserSync.init({
     port,
     injectChanges: true,
-    files: './lib/**/*',
+    files: `./${dstRoot}/**/*`,
     server: {
-      baseDir: './lib'
+      baseDir: `./${dstRoot}`
     }
   });
   gulp.watch('src/**/*.less', ['css']).on('error', handleError);

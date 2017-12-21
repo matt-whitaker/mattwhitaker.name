@@ -1,6 +1,9 @@
 import gulp from 'gulp';
+import config from 'config';
 import printFiles from './utils/printFiles';
 
-module.exports = () => gulp.src('assets/**/*.*')
-  .pipe(gulp.dest('lib/assets'))
+const { assetsRoot, dstRoot } = config.get('build');
+
+module.exports = () => gulp.src(`${assetsRoot}/**/*.*`)
+  .pipe(gulp.dest(`${dstRoot}/assets`))
   .pipe(printFiles('assets'));

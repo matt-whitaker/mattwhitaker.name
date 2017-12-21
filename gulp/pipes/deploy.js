@@ -1,7 +1,6 @@
 import fsPath from 'path';
 import through2 from 'through2';
 import uuid from 'uuid';
-import util from 'gulp-util';
 import AWS from 'aws-sdk';
 import config from 'config';
 import R from 'ramda';

@@ -29,11 +29,13 @@
   },
 
   "slack": {
-    "username": "deploybot",
     "channel": "#mattwhitaker-name-dev"
   },
 
-  "gulp": {
-    "taskColorKeyword": "darkkhaki"
+  "build": {
+    "taskColorKeyword": "darkkhaki",
+    "srcRoot": "src",
+    "dstRoot": "lib",
+    "assetsRoot": "assets"
   }
 }
