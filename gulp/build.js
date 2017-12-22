@@ -6,7 +6,7 @@ import rename       from 'gulp-rename';
 import config       from 'config';
 import R            from 'ramda';
 import mergeStream  from 'merge-stream';
-import renderPages  from './pipes/renderPages';
+import renderPages  from './streams/renderPages';
 import handleError  from './utils/handleError';
 import printFiles   from './utils/printFiles'
 import css          from './css';

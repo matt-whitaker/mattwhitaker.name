@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import config from 'config'
-import deploy from './pipes/deploy';
+import deploy from './streams/deploy';
 import handleError from './utils/handleError';
 import printFiles from './utils/printFiles';
 
