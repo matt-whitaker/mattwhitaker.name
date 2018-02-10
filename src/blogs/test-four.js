@@ -23,7 +23,7 @@ dee dah
 ## Invaserat sororum
 
 Lorem markdownum isto desideret petit: sinus iussorum mirantur locum tempora.
-Ditia [cum](http://www.quiille.org/truncoque.php) vivere te nomen mox fortunae
+Ditia [cum](/) vivere te nomen mox fortunae
 caret certo nubilus.
 
 ## Corpus prohibetis matris pavidamque ad parum nocent
@@ -55,7 +55,7 @@ Foramina auxilium pronos. Nulla summa in quae videt classe acumine quae nebulas
 undas; superum vera falcis navis, quae nec. Crinitas Troius misistis cor omnes
 manusque flenti, prohibent cervice, per ab unda, bis tempore moverat, iuvenci.
 
-> Memoresque [illi docuique](http://armiger-adlevat.net/) fortis fueris,
+> Memoresque [illi docuique](/) fortis fueris,
 > prohibente ut labore, sed. Vires fores ille Europa. Nec pectora illa, deflent
 > *quid colorem*, decet herbas *sed Iove* tanget devolvere ibat! Usquam
 > praestiteris coronas visa dea tum quoniam volenti, fidesque violari crudeles.
@@ -65,7 +65,7 @@ manusque flenti, prohibent cervice, per ab unda, bis tempore moverat, iuvenci.
 ## Simul exuritque
 
 Adventus ducere navigiis. Tuli dum solita [generosior ab
-comas](http://et.io/thalamos-aeneas) thalamis hostem? Est incurvo curvata
+comas](/) thalamis hostem? Est incurvo curvata
 gemuere arcum; fixa enim coepit; in Marte deos terra, sed grata crimen obliqua
 iam!
 
