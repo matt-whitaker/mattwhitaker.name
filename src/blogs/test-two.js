@@ -1,10 +1,10 @@
 export const meta = {
-  date: '2017-12-05',
-  title: 'Test Blog Two. Really Long Title Test'
+  date: '2017-12-01',
+  title: 'Test Two'
 };
 
 export default `
-# Some Title
+# Test Two
 
 Some text, maybe a list of one, two three.
 
