@@ -46,7 +46,7 @@ export default function renderPages(context) {
     const sortedBlogs = blogs.sort(sortBlog);
 
     files.forEach(({ file, render, props }) => {
-      fixPath(file);
+      fixPath(file); // TODO: This could be a part of the renaming stream
       file.contents = Buffer.from(render({ ...props, blogs: sortedBlogs }));
       this.push(file);
     });
