@@ -19,11 +19,13 @@ module.exports = () => {
   const assetsStream = mergeStream(bower(), css());
   const context = R.merge(config.get('site'))({ version: pkg.version });
 
-  return gulp.src([
-    `${srcRoot}/pages/**/*.jsx`,
-    `${srcRoot}/pages/**/*.js`,
-    `${srcRoot}/blogs/**/*.jsx`,
-    `${srcRoot}/blogs/**/*.js`])
+  const pagesSrc = [`${srcRoot}/pages/**/*.jsx`, `${srcRoot}/pages/**/*.js`];
+  const blogsSrc = [`${srcRoot}/blogs/**/*.jsx`, `${srcRoot}/blogs/**/*.js`];
+  const draftsSrc = process.env.NODE_ENV === 'production'
+    ? []
+    : [`${srcRoot}/drafts/**/*.jsx`, `${srcRoot}/drafts/**/*.js`];
+
+  return gulp.src([...pagesSrc, ...blogsSrc, ...draftsSrc])
     .pipe(renderPages(context))
     .pipe(rename({ extname: '.html' }))
     .pipe(inject(assetsStream, { ignorePath: dstRoot }))

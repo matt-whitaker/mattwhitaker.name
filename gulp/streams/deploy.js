@@ -21,9 +21,7 @@ function invalidateCDN () {
       CallerReference: uuid.v4(),
       Paths: {
         Quantity: 1,
-        Items: [
-          '/*'
-        ]
+        Items: [ '/*' ]
       }
     }
   }).promise();
@@ -59,20 +57,17 @@ export default function deploy() {
       .tap(() => next())
       .tapCatch(console.error);
   }, function (next) {
-    return Promise.resolve({
-        Bucket: bucket
-      })
-      .then((params) => s3.listObjectsV2(params).promise())
+    return s3.listObjectsV2({ Bucket: bucket }).promise()
       .then(({ Contents }) => Contents)
       .map(({ Key }) => Key)
       .then(R.difference(R.__, keys))
       .map((Key) => ({ Key }))
       .then((Objects) => ({ Bucket: bucket, Delete: { Objects } }))
       .then(ifObjectsToDelete((params) => s3.deleteObjects(params).promise()))
-      .tap(() => postSlack(`Deployment Successful`, postSlack.colors.green))
       .tap(() => postSlack(`Invalidation Started`, postSlack.colors.yellow))
       .tap(invalidateCDN)
       .tap(() => postSlack(`Invalidation Successful`, postSlack.colors.green))
+      .tap(() => postSlack(`Deployment Successful`, postSlack.colors.green))
       .tap(() => next())
       .tapCatch(console.error);
   });
