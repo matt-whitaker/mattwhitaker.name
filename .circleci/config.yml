@@ -18,6 +18,14 @@ jobs:
       - run:
           name: Run tests
           command: npm test
+      - environment:
+          name: Deploy updates
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              export AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD
+            elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              export AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_QA
+            fi
       - deploy:
           name: Deploy updates
           command: |
