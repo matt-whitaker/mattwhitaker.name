@@ -1,10 +1,10 @@
 {
-  "context": {
+  "site": {
     "title": "Matt Whitaker",
     "subtitle": "My simple profile site.",
-    "profileImage": "/assets/images/profile.jpg",
+    "avatarImage": "/assets/images/selfie.jpg",
     "google": {
-      "fonts": "https://fonts.googleapis.com/css?family=Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900&amp;subset=latin-ext"
+      "fontsHref": "https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900&amp;subset=latin-ext"
     },
     "nav": [
       {
@@ -16,20 +16,26 @@
         "text": "LinkedIn"
       },
       {
-        "url": "/",
+        "url": "/blog.html",
         "text": "Blog"
       }
     ]
   },
-  "options": {
-    "bucket": "mattwhitaker.name",
-    "paths": {
-      "partials": "partials",
-      "layouts": "layouts",
-      "pages": "pages"
-    },
-    "srvRoot": "lib",
+
+  "aws": {
+    "s3": {
+      "bucket": "mattwhitaker.name.dev"
+    }
+  },
+
+  "slack": {
+    "channel": "#mattwhitaker-name-dev"
+  },
+
+  "build": {
+    "taskColorKeyword": "darkkhaki",
     "srcRoot": "src",
+    "dstRoot": "lib",
     "assetsRoot": "assets"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "context": {
+  "site": {
     "google": {
       "fonts": "https://fonts.googleapis.com/css?family=Titillium+Web:200,300&amp;subset=latin-ext"
     },
@@ -13,5 +13,15 @@
         "text": "LinkedIn"
       }
     ]
+  },
+
+  "aws": {
+    "s3": {
+      "bucket": "mattwhitaker.name"
+    }
+  },
+
+  "slack": {
+    "channel": "#mattwhitaker-name-dev"
   }
 }
