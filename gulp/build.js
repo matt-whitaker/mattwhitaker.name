@@ -22,8 +22,8 @@ module.exports = () => {
   const pagesSrc = [`${srcRoot}/pages/**/*.jsx`, `${srcRoot}/pages/**/*.js`];
   const blogsSrc = [`${srcRoot}/blogs/**/*.jsx`, `${srcRoot}/blogs/**/*.js`];
   const draftsSrc = process.env.NODE_ENV === 'production'
-    ? []
-    : [`${srcRoot}/drafts/**/*.jsx`, `${srcRoot}/drafts/**/*.js`];
+    ? [`!${srcRoot}/blogs/drafts/**/*.jsx`, `!${srcRoot}/blogs/drafts/**/*.js`]
+    : [];
 
   return gulp.src([...pagesSrc, ...blogsSrc, ...draftsSrc])
     .pipe(renderPages(context))
