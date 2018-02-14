@@ -64,9 +64,7 @@ export default function deploy() {
       .map((Key) => ({ Key }))
       .then((Objects) => ({ Bucket: bucket, Delete: { Objects } }))
       .then(ifObjectsToDelete((params) => s3.deleteObjects(params).promise()))
-      .tap(() => postSlack(`Invalidation Started`, postSlack.colors.yellow))
       .tap(invalidateCDN)
-      .tap(() => postSlack(`Invalidation Successful`, postSlack.colors.green))
       .tap(() => postSlack(`Deployment Successful`, postSlack.colors.green))
       .tap(() => next())
       .tapCatch(console.error);
