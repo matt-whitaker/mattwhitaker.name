@@ -22,10 +22,14 @@ jobs:
           name: Deploy updates
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              NODE_ENV=production npm run deploy
+              export NODE_ENV=production
+              export AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD
+              npm run deploy
               echo "Deployed to production"
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              NODE_ENV=qa npm run deploy
+              export NODE_ENV=qa
+              export AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_QA
+              npm run deploy
               echo "Deployed to QA"
             else
               echo "No deployment performed"
