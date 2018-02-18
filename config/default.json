@@ -22,16 +22,6 @@
     ]
   },
 
-  "aws": {
-    "s3": {
-      "bucket": "mattwhitaker.name.dev"
-    }
-  },
-
-  "slack": {
-    "channel": "#mattwhitaker-name-dev"
-  },
-
   "build": {
     "taskColorKeyword": "darkkhaki",
     "srcRoot": "src",

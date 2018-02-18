@@ -13,15 +13,5 @@
         "text": "LinkedIn"
       }
     ]
-  },
-
-  "aws": {
-    "s3": {
-      "bucket": "mattwhitaker.name"
-    }
-  },
-
-  "slack": {
-    "channel": "#mattwhitaker-name-dev"
   }
 }
