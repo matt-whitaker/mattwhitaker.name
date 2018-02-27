@@ -55,6 +55,8 @@ jobs:
               docker tag $DOCKER_NAME $DOCKER_NAME:master
               docker tag $DOCKER_NAME $DOCKER_NAME:$VERSION
             else
+              export VERSION=(cat package.json | jq '.version')
+              echo "$VERSION"
               docker tag $DOCKER_NAME $DOCKER_NAME:develop
             fi
       - run:
