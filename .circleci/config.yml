@@ -26,16 +26,16 @@ jobs:
 
       - run:
         name: Setup Environment
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              export NODE_ENV=production
-              export AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD
-              export AWS_S3_BUCKET=$AWS_S3_BUCKET_PROD
-            elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              export NODE_ENV=qa
-              export AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_QA
-              export AWS_S3_BUCKET=$AWS_S3_BUCKET_QA
-            fi
+        command: |
+          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            export NODE_ENV=production
+            export AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD
+            export AWS_S3_BUCKET=$AWS_S3_BUCKET_PROD
+          elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
+            export NODE_ENV=qa
+            export AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_QA
+            export AWS_S3_BUCKET=$AWS_S3_BUCKET_QA
+          fi
 
       - run:
         name: Deploy S3
