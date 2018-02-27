@@ -40,7 +40,7 @@ jobs:
       - run: npm run deploy
 
       - run: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
-      - run: docker build -t $DOCKER_NAME
+      - run: docker build -t $DOCKER_NAME .
       - run:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
