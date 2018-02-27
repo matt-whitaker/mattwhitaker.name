@@ -41,9 +41,9 @@ jobs:
           name: Deploy S3
           command: npm run deploy
 
-#      - run:
-#        name: Quay Login
-#        command: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
+      - run:
+          name: Quay Login
+          command: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
 #
 #      - run:
 #        name: Build Docker
