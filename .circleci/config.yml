@@ -59,11 +59,12 @@ workflows:
   deploy-static:
     jobs:
       - build
-      - deploy-static
+      - deploy-static:
           requires:
             - build
   publish-docker:
     jobs:
+      - build
       - publish-docker:
           requires:
             - build
