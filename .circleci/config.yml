@@ -1,6 +1,3 @@
-defaults:
-  working_directory: /tmp
-
 version: 2
 jobs:
   build:
@@ -8,6 +5,8 @@ jobs:
       enabled: true
       node:
         version: 9.3.0
+    environment:
+      DOCKER_NAME: quay.io/matt_whitaker/mattwhitaker.name
     steps:
       - checkout
 
@@ -23,31 +22,6 @@ jobs:
           name: test
           command: NODE_ENV=test npm test
 
-      - run: mkdir workspace
-      - run: cp Dockerfile workspace/Dockerfile
-      - run: cp package.json workspace/package.json
-      - run: cp -R lib workspace/lib
-      - run: cp -R bin workspace/bin
-
-      - persist_to_workspace:
-          root: workspace
-          paths:
-            - Dockerfile
-            - package.json
-            - lib
-            - bin
-
-  publish-docker:
-    environment:
-      DOCKER_NAME: quay.io/matt_whitaker/mattwhitaker.name
-    machine:
-      enabled: true
-      node:
-        version: 9.3.0
-    steps:
-      - attach_workspace:
-          at: workspace
-
       - run:
           name: docker login
           command: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
@@ -58,36 +32,12 @@ jobs:
 
       - run:
           name: docker tag
-          command: ./workspace/bin/docker-tag.sh
+          command: ./bin/docker-tag.sh
 
       - run:
           name: docker push
-          command: ./workspace/bin/docker-push.sh
-
-  deploy-static:
-    machine:
-      enabled: true
-      node:
-        version: 9.3.0
-    steps:
-      - attach_workspace:
-          at: workspace
+          command: ./bin/docker-push.sh
 
       - run:
           name: static deploy
-          command: ./workspace/bin/static-deploy.sh
-
-workflows:
-  version: 2
-  deploy-static:
-    jobs:
-      - build
-      - deploy-static:
-          requires:
-            - build
-  publish-docker:
-    jobs:
-      - build
-      - publish-docker:
-          requires:
-            - build
+          command: ./bin/static-deploy.sh
