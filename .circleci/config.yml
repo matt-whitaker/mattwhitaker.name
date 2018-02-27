@@ -21,6 +21,7 @@ jobs:
       - run: npm install
 
       - run:
+          name: npm run build
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               NODE_ENV=production npm run build
@@ -29,6 +30,7 @@ jobs:
             fi
 
       - run:
+          name: npm run deploy
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               NODE_ENV=production \
@@ -46,14 +48,17 @@ jobs:
       - run: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
       - run: docker build -t $DOCKER_NAME .
       - run:
+          name: docker tag
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              export VERSION=(cat package.json | jq '.version')
               docker tag $DOCKER_NAME $DOCKER_NAME:master
               docker tag $DOCKER_NAME $DOCKER_NAME:$VERSION
             else
               docker tag $DOCKER_NAME $DOCKER_NAME:develop
             fi
       - run:
+          name: docker push
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker push $DOCKER_NAME:master
