@@ -54,11 +54,11 @@ jobs:
 
       - run:
           name: docker tag
-          command: ./bin/docker-tag.sh
+          command: ./workspace/bin/docker-tag.sh
 
       - run:
           name: docker push
-          command: ./bin/docker-push.sh
+          command: ./workspace/bin/docker-push.sh
 
   deploy-static:
     machine:
@@ -69,11 +69,9 @@ jobs:
       - attach_workspace:
           at: workspace
 
-      - run: cd workspace
-
       - run:
           name: static deploy
-          command: ./bin/static-deploy.sh
+          command: ./workspace/bin/static-deploy.sh
 
 workflows:
   version: 2
