@@ -7,7 +7,7 @@ version: 2
 jobs:
   build:
     environment:
-      DOCKER_NAME: quay.io/matt-whitaker/mattwhitaker.name
+      DOCKER_NAME: quay.io/matt_whitaker/mattwhitaker.name
     machine:
       enabled: true
       node:
