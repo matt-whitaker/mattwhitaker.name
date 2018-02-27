@@ -69,6 +69,8 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
 
+      - run: ls
+
       - run:
           name: static deploy
           command: ./bin/static-deploy.sh
