@@ -9,8 +9,6 @@ jobs:
       node:
         version: 9.3.0
     steps:
-      - run: mkdir workspace && cd workspace
-
       - checkout
 
       - run:
@@ -25,7 +23,10 @@ jobs:
           name: test
           command: NODE_ENV=test npm test
 
-      # Persist the specified paths (workspace/echo-output) into the workspace for use in downstream job.
+      - run: mkdir workspace
+      - run: cp ./lib ./workspace/lib
+      - run: cp ./bin ./workspace/bin
+
       - persist_to_workspace:
           root: workspace
 
