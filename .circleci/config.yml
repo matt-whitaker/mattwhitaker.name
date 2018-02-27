@@ -20,7 +20,7 @@ jobs:
 
       - run:
           name: build
-          command: /bin/bash bin/build.sh
+          command: ./bin/build.sh
 
       - run:
           name: test
@@ -28,7 +28,7 @@ jobs:
 
       - run:
           name: static deploy
-          command: /bin/bash bin/deploy.sh
+          command: ./bin/static-deploy.sh
 
       - run:
           name: docker login
@@ -40,8 +40,8 @@ jobs:
 
       - run:
           name: docker tag
-          command: /bin/bash bin/docker-tag.sh
+          command: ./bin/docker-tag.sh
 
       - run:
           name: docker push
-          command: /bin/bash bin/docker-push.sh
+          command: ./bin/docker-push.sh
