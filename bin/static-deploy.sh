@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ "${CIRCLE_BRANCH}" == "master" ]; then
   NODE_ENV=production \
   AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD \

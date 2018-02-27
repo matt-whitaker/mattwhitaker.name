@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ "${CIRCLE_BRANCH}" == "master" ]; then
   export VERSION=$(node -pe "require('./package.json').version")
   docker tag $DOCKER_NAME $DOCKER_NAME:master
