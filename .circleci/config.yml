@@ -29,6 +29,8 @@ jobs:
               NODE_ENV=qa npm run build
             fi
 
+      - run: NODE_ENV=test npm test
+
       - run:
           name: npm run deploy
           command: |
