@@ -20,25 +20,27 @@ jobs:
       - checkout
       - run: npm install
 
-      - run: |
-        if [ "${CIRCLE_BRANCH}" == "master" ]; then
-          NODE_ENV=production npm run build
-        else
-          NODE_ENV=qa npm run build
-        fi
+      - run:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              NODE_ENV=production npm run build
+            else
+              NODE_ENV=qa npm run build
+            fi
 
-      - run: |
-        if [ "${CIRCLE_BRANCH}" == "master" ]; then
-          NODE_ENV=production \
-          AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD \
-          AWS_S3_BUCKET=$AWS_S3_BUCKET_PROD \
-          npm run build
-        else
-          NODE_ENV=qa \
-          AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_QA \
-          AWS_S3_BUCKET=$AWS_S3_BUCKET_QA \
-          npm run deploy
-        fi
+      - run:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              NODE_ENV=production \
+              AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD \
+              AWS_S3_BUCKET=$AWS_S3_BUCKET_PROD \
+              npm run build
+            else
+              NODE_ENV=qa \
+              AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_QA \
+              AWS_S3_BUCKET=$AWS_S3_BUCKET_QA \
+              npm run deploy
+            fi
 
 
       - run: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
