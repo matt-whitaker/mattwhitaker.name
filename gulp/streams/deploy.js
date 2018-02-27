@@ -8,7 +8,7 @@ import R from 'ramda';
 import postSlack from '../utils/postSlack';
 import getFileType from '../utils/getFileType';
 
-const bucket = config.get('aws.s3.bucket');
+const bucket = process.env.AWS_S3_BUCKET;
 
 const ifObjectsToDelete = R.ifElse(
   ({ Delete: { Objects } }) => !Objects.length,

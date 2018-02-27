@@ -21,7 +21,9 @@ export default function register() {
   gulp.task('assets', assets);
   gulp.task('clean', clean);
   gulp.task('build', sequence('clean', 'assets', '_build'));
-  gulp.task('deploy', ['build'], deploy);
+
+  gulp.task('deploy', deploy);
+
   gulp.task('serve', ['build'], serve);
   gulp.task('default', ['serve']);
 }

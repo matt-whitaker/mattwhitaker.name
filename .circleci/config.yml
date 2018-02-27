@@ -6,31 +6,65 @@
 version: 2
 jobs:
   build:
+    environment:
+      DOCKER_NAME: quay.io/matt_whitaker/mattwhitaker.name
     machine:
       enabled: true
       node:
         version: 9.3.0
+    branches:
+      only:
+        - master
+        - develop
     steps:
       - checkout
+      - run: npm install
+
       - run:
-          name: Install dependencies
-          command: npm install
-      - run:
-          name: Run tests
-          command: npm test
-      - deploy:
-          name: Deploy updates
+          name: npm run build
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              export NODE_ENV=production
-              export AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD
-              npm run deploy
-              echo "Deployed to production"
-            elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              export NODE_ENV=qa
-              export AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_QA
-              npm run deploy
-              echo "Deployed to QA"
+              NODE_ENV=production npm run build
             else
-              echo "No deployment performed"
+              NODE_ENV=qa npm run build
+            fi
+
+      - run: NODE_ENV=test npm test
+
+      - run:
+          name: npm run deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              NODE_ENV=production \
+              AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD \
+              AWS_S3_BUCKET=$AWS_S3_BUCKET_PROD \
+              npm run build
+            else
+              NODE_ENV=qa \
+              AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_QA \
+              AWS_S3_BUCKET=$AWS_S3_BUCKET_QA \
+              npm run deploy
+            fi
+
+
+      - run: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
+      - run: docker build -t $DOCKER_NAME .
+      - run:
+          name: docker tag
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              export VERSION=$(cat package.json | jq '.version')
+              docker tag $DOCKER_NAME $DOCKER_NAME:master
+              docker tag $DOCKER_NAME $DOCKER_NAME:$VERSION
+            else
+              docker tag $DOCKER_NAME $DOCKER_NAME:develop
+            fi
+      - run:
+          name: docker push
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker push $DOCKER_NAME:master
+              docker push $DOCKER_NAME:$VERSION
+            else
+              docker push $DOCKER_NAME:develop
             fi

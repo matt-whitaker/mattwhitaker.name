@@ -3,8 +3,6 @@ import Promise from 'bluebird';
 import request from 'request-promise';
 import config from 'config';
 
-const {channel, username} = config.get('slack');
-
 const yellow = '#f4f021';
 const green = '#019f00';
 const red = '#a70005';
@@ -18,7 +16,7 @@ const makeSlack = (message, color = black) => ({
     {
       fallback: message,
       text: message,
-      channel,
+      channel: process.env.SLACK_CHANNEL,
       username: process.env.SLACK_USERNAME,
       color,
       fields: [

@@ -5,5 +5,5 @@ export const meta = {
 };
 
 export default () => (
-  <div style={{textAlign:'center'}}>Come back soon!</div>
+  <div style={{textAlign:'center'}}>Come back soon.</div>
 );
