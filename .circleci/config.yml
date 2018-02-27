@@ -10,29 +10,51 @@ jobs:
       enabled: true
       node:
         version: 9.3.0
+    branches:
+      only:
+        - master
+        - develop
     steps:
       - checkout
       - run:
-          name: Install dependencies
-          command: npm install
+        name: Install dependencies
+        command: npm install
+
       - run:
-          name: Run tests
-          command: npm test
-      - deploy:
-          name: Deploy updates
+        name: Run tests
+        command: npm test
+
+      - run:
+        name: Setup Environment
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               export NODE_ENV=production
               export AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD
               export AWS_S3_BUCKET=$AWS_S3_BUCKET_PROD
-              npm run deploy
-              echo "Deployed to production"
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
               export NODE_ENV=qa
               export AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_QA
               export AWS_S3_BUCKET=$AWS_S3_BUCKET_QA
-              npm run deploy
-              echo "Deployed to QA"
-            else
-              echo "No deployment performed"
             fi
+
+      - run:
+        name: Deploy S3
+        command: npm run deploy
+
+#      - run:
+#        name: Quay Login
+#        command: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
+#
+#      - run:
+#        name: Build Docker
+#        command: docker build -t quay.io/matt-whitaker/mattwhitaker.name
+#
+#      - run:
+#        name: Deploy Docker
+#        command: |
+#          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#            docker tag quay.io/matt-whitaker/mattwhitaker.name $DOCKER_REGISTRY/$REPOSITORY:develop
+#            echo "Deployed to production"
+#          elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
+#            echo "Deployed to QA"
+#          fi
