@@ -20,24 +20,26 @@ jobs:
       - checkout
       - run: npm install
 
-      # Set branch specific environment variables
-      - run:
-          name: Setup Environment
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              export NODE_ENV=production
-              export AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD
-              export AWS_S3_BUCKET=$AWS_S3_BUCKET_PROD
-            elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              export NODE_ENV=qa
-              export AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_QA
-              export AWS_S3_BUCKET=$AWS_S3_BUCKET_QA
-            fi
+      - run: |
+        if [ "${CIRCLE_BRANCH}" == "master" ]; then
+          NODE_ENV=production npm run build
+        elif
+          NODE_ENV=qa npm run build
+        fi
 
-      - run: npm run build
-      - run: npm test
+      - run: |
+        if [ "${CIRCLE_BRANCH}" == "master" ]; then
+          NODE_ENV=production \
+          AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD \
+          AWS_S3_BUCKET=$AWS_S3_BUCKET_PROD \
+          npm run build
+        elif
+          NODE_ENV=qa \
+          AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_QA \
+          AWS_S3_BUCKET=$AWS_S3_BUCKET_QA \
+          npm run deploy
+        fi
 
-      - run: npm run deploy
 
       - run: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
       - run: docker build -t $DOCKER_NAME .
@@ -57,13 +59,3 @@ jobs:
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
               docker push $DOCKER_NAME:develop
             fi
-
-#      - run:
-#        name: Deploy Docker
-#        command: |
-#          if [ "${CIRCLE_BRANCH}" == "master" ]; then
-#            docker tag quay.io/matt-whitaker/mattwhitaker.name $DOCKER_REGISTRY/$REPOSITORY:develop
-#            echo "Deployed to production"
-#          elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-#            echo "Deployed to QA"
-#          fi
