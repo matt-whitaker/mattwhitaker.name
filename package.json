@@ -1,6 +1,6 @@
 {
   "name": "mattwhitaker.name",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "my personal profile site",
   "main": "index.js",
   "scripts": {
