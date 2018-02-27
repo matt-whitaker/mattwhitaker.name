@@ -29,6 +29,9 @@ jobs:
 
       - persist_to_workspace:
           root: workspace
+          paths:
+            - lib
+            - bin
 
   publish-docker:
     environment:
