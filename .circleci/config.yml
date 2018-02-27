@@ -24,6 +24,7 @@ jobs:
           command: NODE_ENV=test npm test
 
       - run: mkdir workspace
+      - run: cp Dockerfile workspace/Dockerfile
       - run: cp package.json workspace/package.json
       - run: cp -R lib workspace/lib
       - run: cp -R bin workspace/bin
@@ -31,6 +32,7 @@ jobs:
       - persist_to_workspace:
           root: workspace
           paths:
+            - Dockerfile
             - package.json
             - lib
             - bin
