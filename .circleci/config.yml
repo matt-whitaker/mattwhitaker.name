@@ -24,8 +24,8 @@ jobs:
           command: NODE_ENV=test npm test
 
       - run: mkdir workspace
-      - run: cp ./lib ./workspace/lib
-      - run: cp ./bin ./workspace/bin
+      - run: cp -R lib workspace/lib
+      - run: cp -R bin workspace/bin
 
       - persist_to_workspace:
           root: workspace
