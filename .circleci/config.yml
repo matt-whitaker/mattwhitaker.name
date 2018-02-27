@@ -6,6 +6,8 @@
 version: 2
 jobs:
   build:
+    environment:
+      DOCKER_NAME: quay.io/matt-whitaker/mattwhitaker.name
     machine:
       enabled: true
       node:
@@ -16,14 +18,9 @@ jobs:
         - develop
     steps:
       - checkout
-      - run:
-          name: Install dependencies
-          command: npm install
+      - run: npm install
 
-      - run:
-          name: Run tests
-          command: npm test
-
+      # Set branch specific environment variables
       - run:
           name: Setup Environment
           command: |
@@ -37,18 +34,30 @@ jobs:
               export AWS_S3_BUCKET=$AWS_S3_BUCKET_QA
             fi
 
-      - run:
-          name: Deploy S3
-          command: npm run deploy
+      - run: npm run build
+      - run: npm test
 
+      - run: npm run deploy
+
+      - run: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
+      - run: docker build -t $DOCKER_NAME
       - run:
-          name: Quay Login
-          command: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
-#
-#      - run:
-#        name: Build Docker
-#        command: docker build -t quay.io/matt-whitaker/mattwhitaker.name
-#
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker tag $DOCKER_NAME $DOCKER_NAME:master
+              docker tag $DOCKER_NAME $DOCKER_NAME:$VERSION
+            elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              docker tag $DOCKER_NAME $DOCKER_NAME:develop
+            fi
+      - run:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker push $DOCKER_NAME:master
+              docker push $DOCKER_NAME:$VERSION
+            elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              docker push $DOCKER_NAME:develop
+            fi
+
 #      - run:
 #        name: Deploy Docker
 #        command: |
