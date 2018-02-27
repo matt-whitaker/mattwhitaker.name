@@ -24,12 +24,14 @@ jobs:
           command: NODE_ENV=test npm test
 
       - run: mkdir workspace
+      - run: cp package.json workspace/package.json
       - run: cp -R lib workspace/lib
       - run: cp -R bin workspace/bin
 
       - persist_to_workspace:
           root: workspace
           paths:
+            - package.json
             - lib
             - bin
 
