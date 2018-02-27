@@ -69,7 +69,10 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
 
-      - run: ls
+      - run: ls -a
+      - run: ls workspace -a
+      - run: ls tmp
+      - run: ls tmp/workspace
 
       - run:
           name: static deploy
