@@ -27,10 +27,6 @@ jobs:
           command: NODE_ENV=test npm test
 
       - run:
-          name: static deploy
-          command: ./bin/static-deploy.sh
-
-      - run:
           name: docker login
           command: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
 
@@ -45,3 +41,7 @@ jobs:
       - run:
           name: docker push
           command: ./bin/docker-push.sh
+
+      - run:
+          name: static deploy
+          command: ./bin/static-deploy.sh
