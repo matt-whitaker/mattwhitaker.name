@@ -42,7 +42,7 @@ jobs:
         version: 9.3.0
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: workspace
 
       - run:
           name: docker login
@@ -67,12 +67,12 @@ jobs:
         version: 9.3.0
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: workspace
 
       - run: ls -a
+      - run: ls tmp -a
+      - run: ls tmp/workspace -a
       - run: ls workspace -a
-      - run: ls tmp
-      - run: ls tmp/workspace
 
       - run:
           name: static deploy
