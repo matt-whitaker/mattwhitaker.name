@@ -11,6 +11,8 @@ else
   exit 0
 fi
 
+pip install awscli --upgrade --user && aws --version
+
 echo "Syncing with S3"
 
 aws s3 sync ./lib s3://$AWS_S3_BUCKET/ \

@@ -7,12 +7,12 @@ jobs:
         version: 9.3.0
     environment:
       DOCKER_NAME: quay.io/matt_whitaker/mattwhitaker.name
+    branches:
+      only:
+        - develop
+        - master
     steps:
       - checkout
-
-      - run:
-          name: install aws-cli
-          command: pip install awscli --upgrade --user && aws --version
 
       - run:
           name: install
@@ -45,3 +45,28 @@ jobs:
       - run:
           name: static deploy
           command: ./bin/static-deploy.sh
+  build:
+    machine:
+      enabled: true
+      node:
+        version: 9.3.0
+    environment:
+      DOCKER_NAME: quay.io/matt_whitaker/mattwhitaker.name
+    branches:
+      ignore:
+        - develop
+        - master
+    steps:
+      - checkout
+
+      - run:
+          name: install
+          command: npm install
+
+      - run:
+          name: build
+          command: ./bin/build.sh
+
+      - run:
+          name: test
+          command: NODE_ENV=test npm test
