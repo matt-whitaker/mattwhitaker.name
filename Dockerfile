@@ -1,6 +1,7 @@
-FROM python:3
+FROM node:alpine
 LABEL maintainer="mattwhitaker.name@gmail.com"
 ENV WORKDIR /var/www
-WORKDIR $WORKDIR
 COPY ./lib $WORKDIR
-CMD ["python", "-m", "http.server", "8080"]
+WORKDIR $WORKDIR
+RUN ["npm", "install", "-g", "http-server"]
+CMD ["http-server", "-p", "8080"]
