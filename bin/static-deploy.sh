@@ -15,6 +15,8 @@ elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
 
   echo "Synced with S3"
 
+  aws configure set preview.cloudfront true
+
   aws cloudfront create-invalidation \
     --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID_QA \
     --quiet \
