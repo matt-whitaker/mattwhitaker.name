@@ -20,9 +20,11 @@ elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
 
   echo "Invalidating Cloudfront"
 
+  CLOUDFRONT_ROOT=$(pwd)
+
   aws cloudfront create-invalidation \
     --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID_QA \
-    --paths /lib \
+    --paths "$CLOUDFRONT_ROOT/lib" \
     >/dev/null
 
   echo "Invalidated Cloudfront"
