@@ -14,7 +14,7 @@ elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
   # npm run deploy
 
 
-  aws s3 sync ./lib s3://$AWS_S3_BUCKET_QA/ --delete
+  aws s3 sync ./lib s3://$AWS_S3_BUCKET_QA/ --delete --acl public-read
 
   # echo "Deployed to static site from branch develop"
 fi
