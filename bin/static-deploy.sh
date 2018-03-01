@@ -6,6 +6,9 @@ if [ "${CIRCLE_BRANCH}" == "master" ]; then
 elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
   AWS_S3_BUCKET=$AWS_S3_BUCKET_QA
   AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_QA
+else
+  echo "Not a deployment branch"
+  exit 0
 fi
 
 echo "Syncing with S3"
