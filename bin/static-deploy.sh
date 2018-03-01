@@ -10,14 +10,14 @@ if [ "${CIRCLE_BRANCH}" == "master" ]; then
 elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
   aws s3 sync ./lib s3://$AWS_S3_BUCKET_QA/ \
     --delete \
-    --only-show-errors
+    --quiet \
     --acl public-read
 
   echo "Synced with S3"
 
   aws cloudfront create-invalidation \
     --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID_QA \
-    --only-show-errors
+    --quiet \
     --paths /lib
 
   echo "Invalidated Cloudfront"
