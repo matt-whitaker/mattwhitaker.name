@@ -23,7 +23,6 @@ elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
 
   aws cloudfront create-invalidation \
     --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID_QA \
-    --quiet \
     --paths /lib \
     >/dev/null
 
