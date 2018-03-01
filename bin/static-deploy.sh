@@ -13,7 +13,6 @@ elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
   aws s3 sync ./lib s3://$AWS_S3_BUCKET_QA/ \
     --delete \
     --acl public-read \
-    >/dev/null
 
   echo "Synced with S3"
 
@@ -23,7 +22,6 @@ elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
 
   aws cloudfront create-invalidation \
     --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID_QA \
-    --paths /lib \
     >/dev/null
 
   echo "Invalidated Cloudfront"
