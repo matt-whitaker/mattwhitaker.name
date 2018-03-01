@@ -22,7 +22,7 @@ elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
 
   aws cloudfront create-invalidation \
     --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID_QA \
-    >/dev/null
+    --paths ./*
 
   echo "Invalidated Cloudfront"
 
