@@ -11,4 +11,6 @@ if [ "${CIRCLE_BRANCH}" == "master" ]; then
 elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
   docker push $DOCKER_NAME:develop
   echo "Pushed docker develop"
+else
+  echo "Not a deployment branch"
 fi

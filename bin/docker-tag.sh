@@ -12,4 +12,6 @@ if [ "${CIRCLE_BRANCH}" == "master" ]; then
 elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
   docker tag $DOCKER_NAME $DOCKER_NAME:develop
   echo "Tagged docker with develop"
+else
+  echo "Not a deployment branch"
 fi
