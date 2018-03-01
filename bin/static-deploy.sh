@@ -8,19 +8,19 @@ if [ "${CIRCLE_BRANCH}" == "master" ]; then
 
   echo "Deployed to static site from branch master"
 elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-  # NODE_ENV=qa \
-  # AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_QA \
-  # AWS_S3_BUCKET=$AWS_S3_BUCKET_QA \
-  # npm run deploy
-
-
   aws s3 sync ./lib s3://$AWS_S3_BUCKET_QA/ \
     --delete \
+    --only-show-errors
     --acl public-read
+
+  echo "Synced with S3"
 
   aws cloudfront create-invalidation \
     --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID_QA \
-    --paths /*
+    --only-show-errors
+    --paths /lib
 
-  # echo "Deployed to static site from branch develop"
+  echo "Invalidated Cloudfront"
+
+  echo "Deployed to static site from branch develop"
 fi
