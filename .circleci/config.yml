@@ -68,10 +68,10 @@ workflows:
   build:
     jobs:
       - build
-          branches:
-            only:
-              - develop
-              - master
+        branches:
+          only:
+            - develop
+            - master
 
 #workflows:
 #  version: 2
