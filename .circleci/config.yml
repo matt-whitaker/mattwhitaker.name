@@ -45,7 +45,7 @@ jobs:
       - run:
           name: static deploy
           command: ./bin/static-deploy.sh
-  build:
+  test:
     machine:
       enabled: true
       node:
