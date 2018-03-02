@@ -45,7 +45,7 @@ jobs:
           at: workspace
 
       - run: ls workspace
-      - run: cd workspace && workspace && cp * ..
+      - run: cd workspace && cp * ..
 
       - run:
           name: install
