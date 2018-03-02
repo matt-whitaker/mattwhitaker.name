@@ -23,7 +23,7 @@ jobs:
 
 
       - run: mkdir -p workspace
-      - run: cp {lib,Dockerfile,bin} workspace
+      - run: cp -R {lib,Dockerfile,bin} workspace
       - persist_to_workspace:
           root: workspace
           paths:
