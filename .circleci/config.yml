@@ -21,6 +21,8 @@ jobs:
           name: test
           command: NODE_ENV=test npm test
 
+
+      - run: mkdir workspace
       - persist_to_workspace:
           root: workspace
           paths:
