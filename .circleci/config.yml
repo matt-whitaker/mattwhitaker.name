@@ -7,10 +7,6 @@ jobs:
         version: 9.3.0
     environment:
       DOCKER_NAME: quay.io/matt_whitaker/mattwhitaker.name
-    branches:
-      only:
-        - develop
-        - master
     steps:
       - checkout
 
@@ -50,12 +46,6 @@ jobs:
       enabled: true
       node:
         version: 9.3.0
-    environment:
-      DOCKER_NAME: quay.io/matt_whitaker/mattwhitaker.name
-    branches:
-      ignore:
-        - develop
-        - master
     steps:
       - checkout
 
@@ -70,3 +60,20 @@ jobs:
       - run:
           name: test
           command: NODE_ENV=test npm test
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test:
+        branches:
+          ignore:
+            - develop
+            - master
+  build:
+    jobs:
+      - build:
+        branches:
+          only:
+            - develop
+            - master
