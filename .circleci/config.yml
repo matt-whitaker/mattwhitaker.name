@@ -21,9 +21,14 @@ jobs:
           name: test
           command: NODE_ENV=test npm test
 
+      - run:
+          name: create workspace
+          command: mkdir -p workspace
 
-      - run: mkdir -p workspace
-      - run: cp -R {lib,Dockerfile,bin} workspace
+      - run:
+          name: copy to workspace
+          command: cp cp -R {lib,Dockerfile,bin} workspace
+
       - persist_to_workspace:
           root: workspace
           paths:
@@ -31,7 +36,7 @@ jobs:
             - Dockerfile
             - bin
 
-  deploy:
+  publish-docker:
     machine:
       enabled: true
       node:
@@ -39,12 +44,12 @@ jobs:
     environment:
       DOCKER_NAME: quay.io/matt_whitaker/mattwhitaker.name
     steps:
-      - checkout
-
       - attach_workspace:
           at: workspace
 
-      - run: cd workspace && cp -R * ..
+      - run:
+          name: copy from workspace
+          command: cd workspace && cp -R * ..
 
       - run:
           name: docker login
@@ -62,6 +67,19 @@ jobs:
           name: docker push
           command: ./bin/docker-push.sh
 
+  deploy-static:
+    machine:
+      enabled: true
+      node:
+        version: 9.3.0
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: workspace
+
+      - run: cd workspace && cp -R * ..
+
       - run:
           name: static deploy
           command: ./bin/static-deploy.sh
@@ -71,7 +89,15 @@ workflows:
   deploy:
     jobs:
       - test
-      - deploy:
+      - deploy-static:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - develop
+                - master
+      - publish-docker:
           requires:
             - test
           filters:
