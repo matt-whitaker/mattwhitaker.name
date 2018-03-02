@@ -73,20 +73,11 @@ workflows:
               only:
                 - develop
                 - master
-
-#workflows:
-#  version: 2
-#  test:
-#    jobs:
-#      - test:
-#        branches:
-#          ignore:
-#            - develop
-#            - master
-#  build:
-#    jobs:
-#      - build:
-#        branches:
-#          only:
-#            - develop
-#            - master
+  test:
+    jobs:
+      - test:
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
