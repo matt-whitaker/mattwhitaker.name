@@ -1,6 +1,33 @@
 
 version: 2
 jobs:
+  test:
+    machine:
+      enabled: true
+      node:
+        version: 9.3.0
+    steps:
+      - checkout
+
+      - run:
+          name: install
+          command: npm install
+
+      - run:
+          name: build
+          command: ./bin/build.sh
+
+      - run:
+          name: test
+          command: NODE_ENV=test npm test
+
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - lib
+            - Dockerfile
+            - bin
+
   deploy:
     machine:
       enabled: true
@@ -10,6 +37,12 @@ jobs:
       DOCKER_NAME: quay.io/matt_whitaker/mattwhitaker.name
     steps:
       - checkout
+
+      - attach_workspace:
+          at: workspace
+
+      - run: ls workspace
+      - run: cp -R workspace .
 
       - run:
           name: install
@@ -38,26 +71,6 @@ jobs:
       - run:
           name: static deploy
           command: ./bin/static-deploy.sh
-
-  test:
-    machine:
-      enabled: true
-      node:
-        version: 9.3.0
-    steps:
-      - checkout
-
-      - run:
-          name: install
-          command: npm install
-
-      - run:
-          name: build
-          command: ./bin/build.sh
-
-      - run:
-          name: test
-          command: NODE_ENV=test npm test
 
 workflows:
   version: 2
