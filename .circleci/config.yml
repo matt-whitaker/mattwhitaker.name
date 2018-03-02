@@ -67,7 +67,12 @@ workflows:
   version: 2
   build:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only:
+                - develop
+                - master
 
 #workflows:
 #  version: 2
