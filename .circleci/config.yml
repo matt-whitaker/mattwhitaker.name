@@ -27,7 +27,7 @@ jobs:
 
       - run:
           name: copy to workspace
-          command: cp cp -R {lib,Dockerfile,bin} workspace
+          command: cp -R {lib,Dockerfile,bin} workspace
 
       - persist_to_workspace:
           root: workspace
