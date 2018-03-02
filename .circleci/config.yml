@@ -44,16 +44,7 @@ jobs:
       - attach_workspace:
           at: workspace
 
-      - run: ls workspace
       - run: cd workspace && cp * ..
-
-      - run:
-          name: install
-          command: npm install
-
-      - run:
-          name: build
-          command: ./bin/build.sh
 
       - run:
           name: docker login
