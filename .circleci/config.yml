@@ -1,7 +1,7 @@
 
 version: 2
 jobs:
-  build:
+  deploy:
     machine:
       enabled: true
       node:
@@ -18,10 +18,6 @@ jobs:
       - run:
           name: build
           command: ./bin/build.sh
-
-      - run:
-          name: test
-          command: NODE_ENV=test npm test
 
       - run:
           name: docker login
@@ -65,9 +61,12 @@ jobs:
 
 workflows:
   version: 2
-  build:
+  deploy:
     jobs:
-      - build:
+      - test
+      - deploy:
+          requires:
+            - test
           filters:
             branches:
               only:
