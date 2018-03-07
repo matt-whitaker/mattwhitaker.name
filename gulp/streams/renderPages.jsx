@@ -6,7 +6,6 @@ import moment from 'moment';
 import through2 from 'through2';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import generateDocument from './../utils/generateDocument';
 import Shell from './../../src/components/shell';
 
 const isBlog = ({ path, base }) => base.indexOf('blogs') > -1;
@@ -24,8 +23,8 @@ const getProps = (file, { date, ...meta }) => ({
   }
 });
 
-export default function renderPages(context) {
-  const renderPage = R.pipe(ReactDOMServer.renderToStaticMarkup, generateDocument(context));
+export default function renderPages() {
+  const renderPage = ReactDOMServer.renderToString;
 
   let blogs = [];
   let files = [];
