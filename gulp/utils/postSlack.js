@@ -1,7 +1,6 @@
 import R from 'ramda';
 import Promise from 'bluebird';
 import request from 'request-promise';
-import config from 'config';
 
 const yellow = '#f4f021';
 const green = '#019f00';

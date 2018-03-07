@@ -1,30 +1,26 @@
-import AWS from 'aws-sdk';
-import Promise from 'bluebird';
 import gulp from 'gulp';
 import sequence from 'gulp-sequence';
 import util from 'gulp-util';
 import browserSync from 'browser-sync';
-
-AWS.config.setPromisesDependency(Promise);
-
+import config from 'config';
 import serve from './serve';
 import clean from './clean';
 import build from './build';
 import css from './css';
 import assets from './assets';
+import bower from './bower';
 
-export default function register() {
-  util.log(`Using environment ${process.env.NODE_ENV || 'development'}`);
+util.log(`Using environment ${process.env.NODE_ENV || 'development'}`);
 
-  gulp.browserSync = browserSync.create();
-  gulp.task('_build', build);
-  gulp.task('assets', assets);
-  gulp.task('css', css);
-  gulp.task('clean', clean);
-  gulp.task('build', sequence('clean', 'assets', '_build'));
+const options = config.get('build');
+const bs = browserSync.create();
 
-  gulp.task('serve', ['build'], serve);
-  gulp.task('default', ['serve']);
-}
+gulp.task('_build', build(options, bs));
+gulp.task('assets', assets(options));
+gulp.task('bower', bower(options));
+gulp.task('css', css(options, bs));
+gulp.task('clean', clean(options));
+gulp.task('build', sequence('clean', 'bower', 'assets', 'css', '_build'));
 
-module.exports = register;
+gulp.task('serve', ['build'], serve(options, bs));
+gulp.task('default', ['serve']);

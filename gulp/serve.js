@@ -6,15 +6,17 @@ const port = process.env.PORT || 8080;
 
 const dstRoot = config.get('build.dstRoot');
 
-module.exports = () => {
-  gulp.browserSync.init({
-    port,
-    injectChanges: true,
-    files: `./${dstRoot}/**/*`,
-    server: {
-      baseDir: `./${dstRoot}`
-    }
-  });
-  gulp.watch('src/**/*.less', ['css']).on('error', handleError);
-  gulp.watch(['src/**/*.jsx', 'src/**/*.js'], ['html']).on('error', handleError);
-};
+export default function({ dstRoot }, bs) {
+  return () => {
+    bs.init({
+      port,
+      injectChanges: true,
+      files: `./${dstRoot}/**/*`,
+      server: {
+        baseDir: `./${dstRoot}`
+      }
+    });
+    gulp.watch('src/**/*.less', ['css']).on('error', handleError);
+    gulp.watch(['src/**/*.jsx', 'src/**/*.js'], ['html']).on('error', handleError);
+  };
+}
