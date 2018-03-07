@@ -11,6 +11,7 @@ import deploy from './deploy';
 import serve from './serve';
 import clean from './clean';
 import build from './build';
+import css from './css';
 import assets from './assets';
 
 export default function register() {
@@ -19,6 +20,7 @@ export default function register() {
   gulp.browserSync = browserSync.create();
   gulp.task('_build', build);
   gulp.task('assets', assets);
+  gulp.task('css', css);
   gulp.task('clean', clean);
   gulp.task('build', sequence('clean', 'assets', '_build'));
 
