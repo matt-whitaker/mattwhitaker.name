@@ -6,7 +6,7 @@ const port = process.env.PORT || 8080;
 
 const dstRoot = config.get('build.dstRoot');
 
-export default function({ dstRoot }, bs) {
+export default function({ dstRoot, srcRoot }, bs) {
   return () => {
     bs.init({
       port,
@@ -16,7 +16,8 @@ export default function({ dstRoot }, bs) {
         baseDir: `./${dstRoot}`
       }
     });
-    gulp.watch('src/**/*.less', ['css']).on('error', handleError);
-    gulp.watch(['src/**/*.jsx', 'src/**/*.js'], ['html']).on('error', handleError);
+
+    gulp.watch(`${srcRoot}/**/*.less`, ['css']).on('error', handleError);
+    gulp.watch([`${srcRoot}/**/*.jsx`, `${srcRoot}/**/*.js`], ['html']).on('error', handleError);
   };
 }
