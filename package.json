@@ -7,7 +7,6 @@
     "test": "",
     "start": "gulp",
     "build": "gulp build",
-    "deploy": "gulp deploy",
     "postinstall": "bower install"
   },
   "author": "Matt Whitaker <mattwhitaker.name@gmail.com>",

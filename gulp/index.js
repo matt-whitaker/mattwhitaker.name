@@ -7,7 +7,6 @@ import browserSync from 'browser-sync';
 
 AWS.config.setPromisesDependency(Promise);
 
-import deploy from './deploy';
 import serve from './serve';
 import clean from './clean';
 import build from './build';
@@ -23,8 +22,6 @@ export default function register() {
   gulp.task('css', css);
   gulp.task('clean', clean);
   gulp.task('build', sequence('clean', 'assets', '_build'));
-
-  gulp.task('deploy', deploy);
 
   gulp.task('serve', ['build'], serve);
   gulp.task('default', ['serve']);
