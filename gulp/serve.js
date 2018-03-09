@@ -4,9 +4,9 @@ import handleError from './utils/handleError';
 
 const port = process.env.PORT || 8080;
 
-const dstRoot = config.get('build.dstRoot');
+const { dstRoot, srcRoot } = config.get('build');
 
-export default function({ dstRoot, srcRoot }, bs) {
+export default function(bs) {
   return () => {
     bs.init({
       port,
