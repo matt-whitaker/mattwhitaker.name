@@ -9,16 +9,18 @@ import css from './css';
 import assets from './assets';
 import bower from './bower';
 
-util.log(`Using environment ${process.env.NODE_ENV || 'development'}`);
+export function config(cfg) {
+  util.log(`Using environment ${process.env.NODE_ENV || 'development'}`);
 
-const bs = browserSync.create();
+  const bs = browserSync.create();
 
-gulp.task('html', html(bs));
-gulp.task('assets', assets());
-gulp.task('bower', bower());
-gulp.task('css', css(bs));
-gulp.task('clean', clean());
-gulp.task('build', sequence('clean', 'bower', 'assets', 'css', 'html'));
+  gulp.task('html', html(cfg, bs));
+  gulp.task('assets', assets(cfg));
+  gulp.task('bower', bower(cfg));
+  gulp.task('css', css(cfg, bs));
+  gulp.task('clean', clean(cfg));
+  gulp.task('build', sequence('clean', 'bower', 'assets', 'css', 'html'));
 
-gulp.task('serve', ['build'], serve(bs));
-gulp.task('default', ['serve']);
+  gulp.task('serve', ['build'], serve(cfg, bs));
+  gulp.task('default', ['serve']);
+}

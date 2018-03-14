@@ -1,4 +1,3 @@
-import config           from 'config';
 import gulp             from 'gulp';
 import htmlmin          from 'gulp-htmlmin';
 import beautify         from 'gulp-html-beautify';
@@ -10,12 +9,12 @@ import render           from './transforms/render';
 import handleError      from './utils/handleError';
 import printFiles       from './utils/printFiles';
 
-const { dstRoot } = config.get('build');
+export default function(config, bs) {
+  const { dstRoot } = config.get('build');
 
-export default function(bs) {
   return () => {
-    return templateStream(libStream())
-      .pipe(render(pagesStream()))
+    return templateStream(config, libStream(config))
+      .pipe(render(config, pagesStream(config)))
       .pipe(rename({ extname: '.html' }))
       .pipe(htmlmin({ removeComments: true }))
       .pipe(beautify())

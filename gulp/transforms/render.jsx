@@ -1,5 +1,4 @@
 import fsPath from 'path';
-import config from 'config';
 import toArray from 'stream-to-array';
 import Promise from 'bluebird';
 import requireUncached from 'require-uncached';
@@ -16,7 +15,7 @@ const sortBlog = (a, b) => a.date < b.date;
 const setBlogPath = R.tap((file) => file.path = `${file.base}/blog/${fsPath.basename(file.path)}`);
 const fixPath = R.when(isBlog, setBlogPath);
 
-const getProps = (file, { date, ...meta }) => ({
+const getProps = (config, file, { date, ...meta }) => ({
   $site: config.get('site'),
   $page: {
     blog: isBlog(file) ? {
@@ -26,7 +25,7 @@ const getProps = (file, { date, ...meta }) => ({
   }
 });
 
-export default function render(pagesStream) {
+export default function render(config, pagesStream) {
   return through2.obj(function(templateFile, enc, next) {
     const renderPage = R.pipe(
       ReactDOMServer.renderToString,
@@ -42,7 +41,7 @@ export default function render(pagesStream) {
       })
       .map((page) => {
         const { default: PageComponent, meta } = requireUncached(page.path);
-        const props = getProps(page, meta);
+        const props = getProps(config, page, meta);
         const rendered = renderPage(<Shell {...props} Page={PageComponent} blogs={blogs} />);
 
         fixPath(page);

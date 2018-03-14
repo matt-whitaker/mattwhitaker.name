@@ -1,12 +1,10 @@
 import gulp from 'gulp';
-import config from 'config';
 import handleError from './utils/handleError';
 
-const port = process.env.PORT || 8080;
+export default function(config, bs) {
+  const { dstRoot, srcRoot } = config.get('build');
+  const port = process.env.PORT || 8080;
 
-const { dstRoot, srcRoot } = config.get('build');
-
-export default function(bs) {
   return () => {
     bs.init({
       port,
