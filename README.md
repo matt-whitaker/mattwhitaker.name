@@ -54,6 +54,12 @@ A very basic paragraph element
 
 `npm install` will install both `npm` and `bower` dependencies
 
+To setup `blog-tools` for simultaneous development also run
+
+`npm install --save-dev -f ./blog-tools`
+
+to point the local version to the submodule
+
 ### Environment variables
 
 None
