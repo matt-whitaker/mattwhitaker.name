@@ -20,7 +20,6 @@
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
-    "blog-tools": "git://github.com/matt-whitaker/blog-tools.git#develop",
     "bluebird": "^3.5.0",
     "bower": "^1.8.0",
     "browser-sync": "^2.18.12",
