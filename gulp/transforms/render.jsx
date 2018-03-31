@@ -1,53 +1,83 @@
 import fsPath from 'path';
+import replaceExt from 'replace-ext';
 import toArray from 'stream-to-array';
 import Promise from 'bluebird';
-import requireUncached from 'require-uncached';
 import R from 'ramda';
-import mustache from 'mustache';
-import moment from 'moment';
 import through2 from 'through2';
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import Shell from './../../src/components/shell';
+import { JSDOM } from 'jsdom';
+import createHandlebars from './../utils/handlebars';
 
-const isBlog = ({ path, base }) => base.indexOf('blogs') > -1;
-const sortBlog = (a, b) => a.date < b.date;
-const setBlogPath = R.tap((file) => file.path = `${file.base}/blog/${fsPath.basename(file.path)}`);
-const fixPath = R.when(isBlog, setBlogPath);
 
-const getProps = (config, file, { date, ...meta }) => ({
-  $site: config.get('site'),
-  $page: {
-    blog: isBlog(file) ? {
-      date: moment.utc(date).format('YYYY-MM-DD'),
-    } : null,
-    ...meta
-  }
-});
+const getDate = (path) => fsPath.basename(path).split('-').slice(0, 3).join('-');
+const stripDate = (path) => path.replace(`${getDate(path)}-`, '');
+const sortBlogs = (a, b) => getDate(b.path) > getDate(a.path);
+const fixBlogPath = (file) => file.path = `${file.base}/blog/${fsPath.basename(file.path)}`;
 
-export default function render(config, pagesStream) {
+export default function render(config, streams) {
   return through2.obj(function(templateFile, enc, next) {
-    const renderPage = R.pipe(
-      ReactDOMServer.renderToString,
-      (content) => ({ ...config.get('site'), content }),
-      (context) => mustache.render(templateFile.contents.toString(), context)
-    );
+    const template = templateFile.contents.toString();
+    const addFile = (file) => this.push(file);
 
-    let blogs;
+    createHandlebars({
+      partials: Promise.resolve(toArray(streams.partials)),
+      helpers: Promise.resolve(toArray(streams.helpers))
+    })
+      .then((handlebars) => {
+        return Promise.props({
+          pages: Promise.resolve(toArray(streams.pages)),
+          blogs: Promise.resolve(toArray(streams.blogs)),
+          drafts: Promise.resolve(toArray(streams.drafts))
+        })
+          .then(({ pages, blogs, drafts }) => {
+            const recentBlogs = [...blogs, ...drafts].sort(sortBlogs);
 
-    return Promise.resolve(toArray(pagesStream))
-      .tap((pages) => {
-        blogs = pages.filter(isBlog);
+            const blogList = [];
+
+            recentBlogs.forEach((blog) => {
+              const date = getDate(blog.path);
+              const path = replaceExt(stripDate(fixBlogPath(blog)), '.html');
+              const $site = config.get('site');
+              const $page = {
+                contents: blog.contents.toString(),
+                blog: { date }
+              };
+              const rendered = handlebars.compile(template)({ $page, $site });
+
+              const dom = new JSDOM($page.contents);
+              const h1 = dom.window.document.getElementsByTagName('h1')[0];
+
+              blog.contents = Buffer.from(rendered);
+              blog.path = path;
+
+              blogList.push({
+                url: path.replace(blog.base, ''),
+                title: h1.innerHTML
+              });
+
+              this.push(blog);
+            });
+
+            pages.forEach((page) => {
+              const path = replaceExt(page.path, '.html');
+              const $site = config.get('site');
+              const pageTemplate = page.contents.toString();
+
+              const pageRendered = handlebars.compile(pageTemplate)({ $site, blogs: blogList });
+
+              const $page = {
+                contents: pageRendered
+              };
+
+              const rendered = handlebars.compile(template)({ $page, $site });
+
+              page.contents = Buffer.from(rendered);
+              page.path = path;
+              this.push(page);
+            })
+          })
+          .then(() => next());
       })
-      .map((page) => {
-        const { default: PageComponent, meta } = requireUncached(page.path);
-        const props = getProps(config, page, meta);
-        const rendered = renderPage(<Shell {...props} Page={PageComponent} blogs={blogs} />);
 
-        fixPath(page);
-        page.contents = Buffer.from(rendered);
-        this.push(page);
-      })
-      .then(() => next());
   });
 };

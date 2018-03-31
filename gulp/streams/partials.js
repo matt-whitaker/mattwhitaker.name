@@ -3,7 +3,7 @@ import gulp from 'gulp';
 export default function(config) {
   const { srcRoot } = config.get('build');
 
-  const pagesSrc = [`${srcRoot}/pages/**/*.hbs`];
+  const partialsSrc = [`${srcRoot}/partials/*.hbs`];
 
-  return gulp.src(pagesSrc, { read: true });
+  return gulp.src(partialsSrc, { read: true });
 }
