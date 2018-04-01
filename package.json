@@ -6,34 +6,15 @@
   "scripts": {
     "test": "",
     "start": "gulp",
-    "build": "gulp build",
-    "postinstall": "bower install"
+    "build": "gulp build"
   },
   "author": "Matt Whitaker <mattwhitaker.name@gmail.com>",
   "license": "ISC",
-  "devDependencies": {
-    "aws-sdk": "^2.88.0",
+  "devDependencies": {},
+  "dependencies": {
     "blog-tools": "git://github.com/matt-whitaker/blog-tools.git#develop",
-    "bluebird": "^3.5.0",
-    "bower": "^1.8.0",
-    "browser-sync": "^2.18.12",
     "config": "^1.26.1",
     "dotenv": "^4.0.0",
-    "file-type": "^5.2.0",
-    "gulp": "^3.9.1",
-    "http-server": "^0.10.0",
-    "lodash": "^4.17.4",
-    "merge-stream": "^1.0.1",
-    "mustache": "^2.3.0",
-    "replace-ext": "^1.0.0",
-    "request-promise": "^4.2.1",
-    "require-uncached": "^1.0.3",
-    "rimraf": "^2.6.2",
-    "stream-to-array": "^2.3.0",
-    "strip-color": "^0.1.0",
-    "through2": "^2.0.3",
-    "through2-map": "^3.0.0",
-    "uuid": "^3.1.0"
-  },
-  "dependencies": {}
+    "gulp": "^3.9.1"
+  }
 }
