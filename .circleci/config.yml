@@ -1,71 +1,116 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-# ...
 
 version: 2
 jobs:
-  build:
-    environment:
-      DOCKER_NAME: quay.io/matt_whitaker/mattwhitaker.name
+  test:
     machine:
       enabled: true
       node:
         version: 9.3.0
-    branches:
-      only:
-        - master
-        - develop
     steps:
       - checkout
-      - run: npm install
 
       - run:
-          name: npm run build
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              NODE_ENV=production npm run build
-            else
-              NODE_ENV=qa npm run build
-            fi
-
-      - run: NODE_ENV=test npm test
+          name: install
+          command: npm install
 
       - run:
-          name: npm run deploy
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              NODE_ENV=production \
-              AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD \
-              AWS_S3_BUCKET=$AWS_S3_BUCKET_PROD \
-              npm run build
-            else
-              NODE_ENV=qa \
-              AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_QA \
-              AWS_S3_BUCKET=$AWS_S3_BUCKET_QA \
-              npm run deploy
-            fi
+          name: build
+          command: npx build
 
+      - run:
+          name: test
+          command: NODE_ENV=test npm test
 
-      - run: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
-      - run: docker build -t $DOCKER_NAME .
+      - run:
+          name: create workspace
+          command: mkdir -p workspace
+
+      - run:
+          name: copy to workspace
+          command: cp -R {lib,node_modules} workspace
+
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - lib
+            - node_modules
+
+  publish-docker:
+    machine:
+      enabled: true
+      node:
+        version: 9.3.0
+    environment:
+      DOCKER_NAME: quay.io/matt_whitaker/mattwhitaker.name
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: workspace
+
+      - run:
+          name: copy from workspace
+          command: cd workspace && cp -R * ..
+
+      - run:
+          name: docker login
+          command: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
+
+      - run:
+          name: docker build
+          command: docker build -t $DOCKER_NAME .
+
       - run:
           name: docker tag
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              export VERSION=$(node -pe "require('./package.json').version")
-              docker tag $DOCKER_NAME $DOCKER_NAME:master
-              docker tag $DOCKER_NAME $DOCKER_NAME:$VERSION
-            else
-              docker tag $DOCKER_NAME $DOCKER_NAME:develop
-            fi
+          command: npx docker-tag
+
       - run:
           name: docker push
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              export VERSION=$(node -pe "require('./package.json').version")
-              docker push $DOCKER_NAME:master
-              docker push $DOCKER_NAME:$VERSION
-            else
-              docker push $DOCKER_NAME:develop
-            fi
+          command: npx docker-push
+
+  deploy-static:
+    machine:
+      enabled: true
+      node:
+        version: 9.3.0
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: workspace
+
+      - run: cd workspace && cp -R * ..
+
+      - run:
+          name: static deploy
+          command: npx static-deploy
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - test
+      - deploy-static:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - develop
+                - master
+      - publish-docker:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - develop
+                - master
+  test:
+    jobs:
+      - test:
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master

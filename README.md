@@ -7,52 +7,19 @@ my personal profile site
 
 The app is built to support two types of views, pages and blogs. Blogs are placed in the `blogs` src directory and pages are placed in the `pages` src directory. Ultimately all this does it make it easier to partition blogs into a `/blog` subroute.
 
-Example page:
+### Pages
 
-```
-import React from 'react';
+Pages are written in handlebars.
 
-export const meta = {
-  title: 'Page Title'
-};
+### Blogs
 
-export default () => (
-  <p>Page content here</p>
-);
-```
-
-### Markdown support
-
-App also supports markdown, useful for writing blogs or very simple pages.
-
-Example markdown page (or blog)
-
-```
-export const meta = {
-  date: '2017-10-05',
-  title: 'Blog Title'
-};
-
-export default `
-# A header
-
-A very basic paragraph element
-
-- a
-- short
-- list
-
-|a|table|
-|---|---|
-|hello|world|
-`;
-```
+Blogs are written in markdown.
 
 ## Development
 
 ### Install
 
-`npm install` will install both `npm` and `bower` dependencies
+`npm install` 
 
 ### Environment variables
 
