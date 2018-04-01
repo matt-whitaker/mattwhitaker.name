@@ -4,9 +4,7 @@
   "description": "my personal profile site",
   "main": "index.js",
   "scripts": {
-    "test": "",
-    "start": "gulp",
-    "build": "gulp build"
+    "test": ""
   },
   "author": "Matt Whitaker <mattwhitaker.name@gmail.com>",
   "license": "ISC",
