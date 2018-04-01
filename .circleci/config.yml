@@ -27,7 +27,7 @@ jobs:
 
       - run:
           name: copy to workspace
-          command: cp -R {lib} workspace
+          command: cp -R lib workspace
 
       - persist_to_workspace:
           root: workspace
