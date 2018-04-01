@@ -1,3 +1,3 @@
-export default function renderPageNav(blog) {
+module.exports = function renderPageNav(blog) {
   return blog ? 'prev | next' : null;
-}
+};
