@@ -15,7 +15,7 @@ jobs:
 
       - run:
           name: build
-          command: ./bin/build.sh
+          command: npx build
 
       - run:
           name: test
@@ -27,14 +27,12 @@ jobs:
 
       - run:
           name: copy to workspace
-          command: cp -R {lib,Dockerfile,bin} workspace
+          command: cp -R {lib} workspace
 
       - persist_to_workspace:
           root: workspace
           paths:
             - lib
-            - Dockerfile
-            - bin
 
   publish-docker:
     machine:
@@ -44,6 +42,8 @@ jobs:
     environment:
       DOCKER_NAME: quay.io/matt_whitaker/mattwhitaker.name
     steps:
+      - checkout
+
       - attach_workspace:
           at: workspace
 
@@ -61,11 +61,11 @@ jobs:
 
       - run:
           name: docker tag
-          command: ./bin/docker-tag.sh
+          command: npx docker-tag
 
       - run:
           name: docker push
-          command: ./bin/docker-push.sh
+          command: npx docker-push
 
   deploy-static:
     machine:
@@ -82,7 +82,7 @@ jobs:
 
       - run:
           name: static deploy
-          command: ./bin/static-deploy.sh
+          command: npx static-deploy
 
 workflows:
   version: 2
