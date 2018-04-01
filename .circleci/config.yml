@@ -27,12 +27,13 @@ jobs:
 
       - run:
           name: copy to workspace
-          command: cp -R lib workspace
+          command: cp -R {lib,node_modules} workspace
 
       - persist_to_workspace:
           root: workspace
           paths:
             - lib
+            - node_modules
 
   publish-docker:
     machine:
