@@ -22,11 +22,5 @@
         }
       ]
     }
-  },
-
-  "build": {
-    "srcRoot": "src",
-    "dstRoot": "lib",
-    "assetsRoot": "assets"
   }
 }

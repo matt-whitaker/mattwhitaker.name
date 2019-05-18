@@ -35,39 +35,6 @@ jobs:
             - lib
             - node_modules
 
-  publish-docker:
-    machine:
-      enabled: true
-      node:
-        version: 9.3.0
-    environment:
-      DOCKER_NAME: quay.io/matt_whitaker/mattwhitaker.name
-    steps:
-      - checkout
-
-      - attach_workspace:
-          at: workspace
-
-      - run:
-          name: copy from workspace
-          command: cd workspace && cp -R * ..
-
-      - run:
-          name: docker login
-          command: docker login -u $QUAY_BOT_USER -p $QUAY_BOT_PASS quay.io
-
-      - run:
-          name: docker build
-          command: docker build -t $DOCKER_NAME .
-
-      - run:
-          name: docker tag
-          command: npx docker-tag
-
-      - run:
-          name: docker push
-          command: npx docker-push
-
   deploy-static:
     machine:
       enabled: true
@@ -91,14 +58,6 @@ workflows:
     jobs:
       - test
       - deploy-static:
-          requires:
-            - test
-          filters:
-            branches:
-              only:
-                - develop
-                - master
-      - publish-docker:
           requires:
             - test
           filters:

@@ -5,15 +5,30 @@
   "main": "index.js",
   "scripts": {
     "test": "",
-    "start": "gulp"
+    "build": "webpack --config build/webpack/webpack.config.prod.js",
+    "build:dev": "webpack --config build/webpack/webpack.config.dev.js",
+    "dev": "webpack-dev-server --config build/webpack/webpack.config.dev.js"
   },
   "author": "Matt Whitaker <mattwhitaker.name@gmail.com>",
   "license": "ISC",
-  "devDependencies": {},
   "dependencies": {
-    "blog-tools": "git://github.com/matt-whitaker/blog-tools.git#develop",
-    "config": "^1.26.1",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "acorn": "^6.1.1",
+    "axios": "^0.18.0",
+    "babel-loader": "^8.0.6",
     "dotenv": "^4.0.0",
-    "gulp": "^3.9.1"
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-markdown": "^4.0.8",
+    "react-redux": "^7.0.3",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1",
+    "webpack-merge": "^4.2.1"
   }
 }
