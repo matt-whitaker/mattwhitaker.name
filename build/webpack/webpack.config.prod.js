@@ -5,22 +5,17 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = merge(common, {
   mode: "development",
 
-  devtool: "inline-source-map",
+  devtool: "source-map",
 
   entry: "./src/index.jsx",
 
   output: {
-    filename: "js/app.js"
+    filename: "js/app.min.js"
   },
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/app.css",
-      hmr: true
+      filename: "css/app.min.css"
     })
-  ],
-
-  devServer: {
-    historyApiFallback: true
-  }
+  ]
 });

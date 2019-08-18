@@ -1,16 +1,15 @@
 import React from "react";
 import AppRouter from "../routing/AppRouter";
-import {Route, Switch} from "react-router-dom";
-import BlogRoute from "../routing/routes/BlogRoute";
+import AppRoutes from "../routing/routes/AppRoutes";
+import Shell from "../components/shell/Shell/Shell";
 
 export default class App extends React.Component {
   render() {
     return (
       <AppRouter>
-        <h1>Matt Whitaker!</h1>
-        <Switch>
-          <Route path="/blog" component={BlogRoute} />
-        </Switch>
+        <Shell>
+          <AppRoutes />
+        </Shell>
       </AppRouter>
     );
   }

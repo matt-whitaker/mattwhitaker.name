@@ -15,7 +15,7 @@ jobs:
 
       - run:
           name: build
-          command: npx build
+          command: npm build
 
       - run:
           name: test
@@ -50,7 +50,7 @@ jobs:
 
       - run:
           name: static deploy
-          command: npx static-deploy
+          command: npm static-deploy
 
 workflows:
   version: 2
