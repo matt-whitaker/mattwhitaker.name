@@ -22,6 +22,9 @@
     "config": "^3.1.0",
     "css-loader": "^2.1.1",
     "dotenv": "^4.0.0",
+    "eslint": "^6.2.0",
+    "eslint-config-google": "^0.13.0",
+    "eslint-plugin-react": "^7.14.3",
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
@@ -33,7 +36,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "github-markdown-css": "^3.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
