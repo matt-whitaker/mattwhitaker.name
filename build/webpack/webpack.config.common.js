@@ -6,8 +6,8 @@ const { EnvironmentPlugin } = require('webpack');
 
 const objToEnv = require('../utils/objToEnv');
 
-console.log('Using environment variables: ');
-console.log(objToEnv(config));
+console.log('Using the following configurations:');
+console.log(JSON.stringify(objToEnv(config), null, 2));
 
 module.exports = {
   output: {
