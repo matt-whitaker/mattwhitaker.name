@@ -1,5 +1,6 @@
 const path = require('path');
 const config = require('config');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { EnvironmentPlugin } = require('webpack');
@@ -15,6 +16,9 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
+    new CopyWebpackPlugin([
+      { from: './articles/**/*.md' }
+    ]),
     new EnvironmentPlugin(objToEnv(config)),
     new HtmlWebpackPlugin({
       template: './src/templates/index.html',

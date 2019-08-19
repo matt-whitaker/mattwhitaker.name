@@ -5,7 +5,7 @@ import LoadableMarkdown from "../../components/common/Markdown/LoadableMarkdown"
 export default class ArticleRoute extends React.Component {
   render() {
     return <Route path="/article/*" render={({ match }) => {
-      return <LoadableMarkdown url={`/articles/${match.params[0]}.md`} />;
+      return <LoadableMarkdown url={`/articles/${match.params[0]}/index.md`} />;
     }} />;
   }
 }
