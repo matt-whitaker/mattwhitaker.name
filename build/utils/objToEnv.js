@@ -2,7 +2,7 @@
  * Recurses an object, building environment variables (defined as leaves in the tree) based on the JSON path
  * @param {Object} obj current pointer
  * @param {String} scope currently build prefix
- * @returns {Object}
+ * @return {Object}
  */
 module.exports = function objToEnv(obj, scope = '') {
   return Object.keys(obj).reduce((memo, key) => {
