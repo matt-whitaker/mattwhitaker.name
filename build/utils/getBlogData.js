@@ -1,4 +1,6 @@
-
+/**
+ * getBlogData
+ */
 export function getBlogData() {
 
 }
