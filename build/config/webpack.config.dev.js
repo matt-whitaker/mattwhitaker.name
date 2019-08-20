@@ -22,5 +22,6 @@ module.exports = merge(common, {
 
   devServer: {
     historyApiFallback: true,
+    contentBase: "lib"
   },
 });

@@ -4,14 +4,14 @@
   "description": "my personal profile site",
   "main": "index.js",
   "scripts": {
-    "build": "npm run clean && webpack --config build/webpack/webpack.config.prod.js",
-    "build:dev": "npm run clean && webpack --config build/webpack/webpack.config.dev.js",
-    "dev": "npm run clean && webpack-dev-server --config build/webpack/webpack.config.dev.js",
+    "build": "npm run clean && webpack --config build/config/webpack.config.prod.js",
+    "build:dev": "npm run clean && webpack --config build/config/webpack.config.dev.js",
+    "dev": "npm run clean && webpack-dev-server --config build/config/webpack.config.dev.js",
     "eslint": "eslint src/**/*.js src/**/*.jsx build/**/*.js",
     "clean": "rm -rf lib",
     "stylelint": "stylelint src/**/*.less",
     "test": "npm run stylelint && npm run eslint",
-    "generateBlogManifest": "node ./build/bin/generateBlogManifest.js"
+    "update": "node ./build/bin/generateManifest.js && git add *manifest.json"
   },
   "author": "Matt Whitaker <mattwhitaker.name@gmail.com>",
   "license": "ISC",
@@ -33,17 +33,21 @@
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.6.0",
+    "ramda": "^0.26.1",
     "style-loader": "^0.23.1",
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
     "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1",
-    "webpack-merge": "^4.2.1"
+    "webpack-merge": "^4.2.1",
+    "webpack-shell-plugin": "^0.5.0"
   },
   "dependencies": {
+    "@loadable/component": "^5.10.2",
     "axios": "^0.18.1",
     "github-markdown-css": "^3.0.1",
+    "gray-matter": "^4.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-markdown": "^4.0.8",

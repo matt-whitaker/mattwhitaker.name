@@ -8,7 +8,7 @@ export default class Markdown extends React.PureComponent {
 
     return (
       <div className="mw-markdown markdown-body">
-        <ReactMarkdown source={this.props.children} />
+        <ReactMarkdown source={this.props.children}/>
       </div>
     );
   }

@@ -1,8 +1,12 @@
 {
-  "articles": [
-    "test-four",
-    "test-one",
-    "test-two",
-    "test-three"
-  ]
+    "articles": [
+        {
+            "publishedAt": "2017-11-01T00:00:00.000Z",
+            "title": "Test One"
+        },
+        {
+            "publishedAt": "2017-08-03T00:00:00.000Z",
+            "title": "Test Two"
+        }
+    ]
 }

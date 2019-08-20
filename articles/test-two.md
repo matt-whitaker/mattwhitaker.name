@@ -1,4 +1,9 @@
-# Test One
+---
+publishedAt: 2017-08-03
+title: Test Two
+---
+
+# Test Two
 
 Some text, maybe a list of one, two three.
 
