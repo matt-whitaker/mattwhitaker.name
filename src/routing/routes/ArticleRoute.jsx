@@ -1,11 +1,30 @@
 import React from "react";
 import {Route} from "react-router-dom";
-import LoadableMarkdown from "../../components/common/Markdown/LoadableMarkdown";
+import RemoteResource from "../../containers/remote/RemoteResource";
+import Markdown from "../../components/common/Markdown/Markdown";
 
+/**
+ * ArticleRoute
+ *
+ * Route component which loads markdown based on the slug and renders it.
+ *
+ * @example
+ * ```
+ * <ArticleRoute />
+ * ```
+ */
 export default class ArticleRoute extends React.Component {
+  /**
+   * Render a Route which takes the slug from the URL, loads the corresponding markdown, and renders it.
+   * @returns {React.Element}
+   */
   render() {
     return <Route path="/article/*" render={({match}) => {
-      return <LoadableMarkdown url={`/articles/${match.params[0]}/index.md`}/>;
+      return (
+        <RemoteResource url={`/articles/${match.params[0]}.md`} >
+          {(markdown) => <Markdown>{markdown}</Markdown>}
+        </RemoteResource>
+      );
     }}/>;
   }
 }

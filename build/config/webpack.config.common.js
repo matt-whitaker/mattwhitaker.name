@@ -3,9 +3,11 @@ const config = require('config');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CreateFileWebpack = require('create-file-webpack');
 const { EnvironmentPlugin } = require('webpack');
 const objToEnv = require('../utils/objToEnv');
-const { transform, transformPath } = require('../utils/articles');
+const gm = require('gray-matter');
+const generateManifest = require('../utils/generateManifest');
 
 console.log('Using the following configurations:');
 console.log(JSON.stringify(objToEnv(config), null, 2));
@@ -16,8 +18,29 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
+    /**
+     * Creates the articles manifest file
+     */
+    new CreateFileWebpack({
+      path: './dist/articles/manifest.json',
+      fileName: 'index.js',
+      content: JSON.stringify(generateManifest(), null, 4),
+    }),
+
+    /**
+     * Copies the following:
+     * - Article `.md` files, stripping the front matter
+     */
     new CopyWebpackPlugin([
-      { transform, transformPath, from: './articles/**/*' },
+      {
+        transform(content) {
+          return Promise.resolve(gm(content.toString()).content.trimLeft());
+        },
+        // transformPath(targetPath) {
+        //   return targetPath.replace('.md', '.html');
+        // },
+        from: './articles/**/*',
+      },
     ]),
     new EnvironmentPlugin(objToEnv(config)),
     new HtmlWebpackPlugin({

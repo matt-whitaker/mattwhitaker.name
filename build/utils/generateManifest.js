@@ -10,19 +10,21 @@ module.exports = function generateManifest() {
     .readdirSync(searchDir)
     .map((f) => `${searchDir}/${f}`)
     .filter((p) => path.extname(p) === '.md')
-    .map((p) => fs.readFileSync(p))
-    .map((f) => gm(f.toString()).data)
+    .map((p) => ({ p, f: fs.readFileSync(p) }))
+    .map(({ p, f }) => ({ f, s: path.basename(p, '.md') }))
+    .map(({ f, s: slug }) => ({ slug, ...gm(f.toString()).data }))
+    .filter((d) => !!d.publishedAt)
     .sort((dA, dB) => new Date(dB.publishedAt) - new Date(dA.publishedAt));
 
-  const manifest = { articles };
+  return { articles };
+};
+
+if (require.main === module) {
+  const manifest = module.exports();
 
   try {
     fs.mkdirSync(searchDir, { recursive: true });
   } catch {}
 
   fs.writeFileSync(outputFile, Buffer.from(JSON.stringify(manifest, null, 4)));
-};
-
-if (require.main === module) {
-  module.exports();
 }
