@@ -17,6 +17,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "acorn": "^6.1.1",
@@ -49,6 +50,7 @@
     "axios": "^0.18.1",
     "github-markdown-css": "^3.0.1",
     "gray-matter": "^4.0.2",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-markdown": "^4.0.8",

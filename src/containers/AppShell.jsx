@@ -12,7 +12,7 @@ import Shell from '../components/shell/Shell/Shell';
 export default class AppShell extends React.PureComponent {
   /**
    * Returns the content wrapped in the Shell.
-   * @returns {React.Element}
+   * @return {React.Element}
    */
   render() {
     return (

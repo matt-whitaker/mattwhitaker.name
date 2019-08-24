@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import PropTypes from "prop-types";
 
 /**
  * RemoteResource
@@ -8,20 +9,40 @@ import React from 'react';
  *
  * @example
  * ```
- * <RemoteResource url="/path/to/resource.json">
- *  {(data) => (
- *    <.../>
- *  )}
- * </RemoteResource>
+ * <RemoteResource
+ *   url="/path/to/resource.json"
+ *   render={(data, error) => <.../>}
+ * />
  * ```
  */
 export default class RemoteResource extends React.PureComponent {
+  static propTypes = {
+    /**
+     * Render callback function; its signature matches the Node callback pattern.
+     */
+    render: PropTypes.func.isRequired,
+
+    /**
+     * Optional method to transform the response
+     */
+    transform: PropTypes.func
+  };
+
   /**
    * Kick off the request, asynchronously, and set the data to the state.
+   * Applies the optional transform function to the data.
    * @returns {Promise<void>}
    */
   async componentDidMount() {
-    const { data } = await axios.get(this.props.url);
+    const { url, transform } = this.props;
+    const { data } = await axios.get(url);
+
+    if (transform) {
+      return this.setState({
+        data: transform(data)
+      });
+    }
+
     this.setState({ data });
   }
 
@@ -33,6 +54,6 @@ export default class RemoteResource extends React.PureComponent {
     if (!this.state) {
       return <></>;
     }
-    return this.props.children(this.state.data);
+    return this.props.render(this.state.data);
   }
 }

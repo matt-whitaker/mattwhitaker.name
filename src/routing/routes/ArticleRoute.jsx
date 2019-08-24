@@ -19,12 +19,14 @@ export default class ArticleRoute extends React.Component {
    * @returns {React.Element}
    */
   render() {
-    return <Route path="/article/*" render={({match}) => {
-      return (
-        <RemoteResource url={`/articles/${match.params[0]}.md`} >
-          {(markdown) => <Markdown>{markdown}</Markdown>}
-        </RemoteResource>
-      );
-    }}/>;
+    return <Route
+      path="/article/*"
+      render={({match}) => (
+        <RemoteResource
+          url={`/articles/${match.params[0]}.md`}
+          render={(markdown) => <Markdown>{markdown}</Markdown>}
+        />
+      )}
+    />;
   }
 }
