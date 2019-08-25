@@ -1,6 +1,14 @@
 /**
+ * deepFreeze
+ *
  * Deeply freezes an object, recursing through nested objects.
- * @param {Object} obj
+ *
+ * Usage:
+ * ```
+ * freezeDeep({ a: 'b', c: { d: 'e' } });
+ * ```
+ *
+ * @param {object} obj The root of the object to freeze
  */
 export default function freezeDeep(obj) {
   Object.freeze(obj);

@@ -2,6 +2,8 @@ import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 
 /**
+ * AppRouter
+ *
  * Wrapper for choosing which React Router to use.
  */
 export default class AppRouter extends React.Component {

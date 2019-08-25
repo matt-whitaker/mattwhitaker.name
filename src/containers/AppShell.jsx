@@ -2,17 +2,18 @@ import React from 'react';
 import Shell from '../components/shell/Shell/Shell';
 
 /**
+ * AppShell
+ *
  * Stub container for the Shell component.
  *
- * @example
+ * Usage:
  * ```
  * <AppShell />
  * ```
  */
 export default class AppShell extends React.PureComponent {
   /**
-   * Returns the content wrapped in the Shell.
-   * @return {React.Element}
+   * @returns {React.Element} The shell
    */
   render() {
     return (

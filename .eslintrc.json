@@ -4,12 +4,9 @@
     "es6": true
   },
   "extends": [
-    "google"
+    "google",
+    "plugin:jsdoc/recommended"
   ],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -19,7 +16,8 @@
   },
   "parser": "babel-eslint",
   "plugins": [
-    "react"
+    "react",
+    "jsdoc"
   ],
   "rules": {
     "indent": [2, 2],
@@ -28,6 +26,10 @@
     "no-unused-vars": [0],
     "sort-imports": ["error", {
       "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
-    }]
+    }],
+    "valid-jsdoc": [0],
+    "jsdoc/require-returns-description": [2],
+    "space-before-blocks": [2, "always"],
+    "block-spacing": [2, "always"]
   }
 }

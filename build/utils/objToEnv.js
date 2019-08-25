@@ -1,8 +1,11 @@
 /**
+ * objToEnv
+ *
  * Recurses an object, building environment variables (defined as leaves in the tree) based on the JSON path
- * @param {Object} obj current pointer
- * @param {String} scope currently build prefix
- * @return {Object}
+ *
+ * @param {object} obj current pointer
+ * @param {string} scope currently build prefix
+ * @returns {object} The original object, but frozen
  */
 module.exports = function objToEnv(obj, scope = '') {
   return Object.keys(obj).reduce((memo, key) => {

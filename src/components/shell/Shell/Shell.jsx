@@ -3,17 +3,18 @@ import React from "react";
 import "./Shell.less";
 
 /**
+ * Shell
+ *
  * Root component for the shell of the application
  *
- * @example
+ * Usage:
  * ```
  * <Shell />
  * ```
  */
 export default class Shell extends React.PureComponent {
   /**
-   * Render the shell subcomponents
-   * @returns {React.Element}
+   * @returns {React.Element} The shell subcomponents
    */
   render() {
     return (

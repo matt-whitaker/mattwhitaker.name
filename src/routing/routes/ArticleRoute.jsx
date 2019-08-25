@@ -8,15 +8,15 @@ import Markdown from "../../components/common/Markdown/Markdown";
  *
  * Route component which loads markdown based on the slug and renders it.
  *
- * @example
+ * Usage:
  * ```
  * <ArticleRoute />
  * ```
  */
 export default class ArticleRoute extends React.Component {
   /**
-   * Render a Route which takes the slug from the URL, loads the corresponding markdown, and renders it.
    * @returns {React.Element}
+   * Render a Route which takes the slug from the URL, loads the corresponding markdown, and renders it.
    */
   render() {
     return <Route

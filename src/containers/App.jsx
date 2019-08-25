@@ -4,17 +4,18 @@ import React from 'react';
 import Shell from '../components/shell/Shell/Shell';
 
 /**
+ * App
+ *
  * App root wrapper.
  *
- * @exmaple
+ * Usage:
  * ```
  * <App />
  * ```
  */
 export default class App extends React.Component {
   /**
-   * Returns high level component composition.
-   * @return {React.Element}
+   * @returns {React.Element} The high level component composition.
    */
   render() {
     return (

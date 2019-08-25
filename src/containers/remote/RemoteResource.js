@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
  *
  * Loads the specified resource, passing the value to the render prop method
  *
- * @example
+ * Usage:
  * ```
  * <RemoteResource
  *   url="/path/to/resource.json"
@@ -31,7 +31,6 @@ export default class RemoteResource extends React.PureComponent {
   /**
    * Kick off the request, asynchronously, and set the data to the state.
    * Applies the optional transform function to the data.
-   * @returns {Promise<void>}
    */
   async componentDidMount() {
     const { url, transform } = this.props;
@@ -47,8 +46,7 @@ export default class RemoteResource extends React.PureComponent {
   }
 
   /**
-   * Pass the value ot the render prop method. If the state is not set, render nothing.
-   * @returns {*}
+   * @returns {React.Element} The result of passing in the data to the render propr
    */
   render() {
     if (!this.state) {

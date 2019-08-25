@@ -4,9 +4,11 @@ import ReactMarkdown from "react-markdown";
 import "./Markdown.less";
 
 /**
+ * Markdown
+ *
  * Wrapper component for ReactMarkdown
  *
- * @example
+ * Usage:
  * ```
  * <Markdown>
  *   # Test
@@ -17,11 +19,9 @@ import "./Markdown.less";
  */
 export default class Markdown extends React.PureComponent {
   /**
-   * Render the wrapper
-   * @returns {React.Element}
+   * @returns {React.Element} The wrapper
    */
   render() {
-
     return (
       <div className="mw-markdown markdown-body">
         <ReactMarkdown source={this.props.children}/>
