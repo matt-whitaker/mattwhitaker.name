@@ -9,8 +9,10 @@ const objToEnv = require('../utils/objToEnv');
 const gm = require('gray-matter');
 const generateManifest = require('../utils/generateManifest');
 
+const ENVVARS = objToEnv(config);
+
 console.log('Using the following configurations:');
-console.log(JSON.stringify(objToEnv(config), null, 2));
+console.log(JSON.stringify(ENVVARS, null, 2));
 
 module.exports = {
   output: {
@@ -42,13 +44,14 @@ module.exports = {
         from: './articles/**/*',
       },
     ]),
-    new EnvironmentPlugin(objToEnv(config)),
+    new EnvironmentPlugin(ENVVARS),
     new HtmlWebpackPlugin({
       template: './src/templates/index.html',
+      env: ENVVARS
     }),
   ],
   resolve: {
-    extensions: ['.jsx', '.js'],
+    extensions: ['.jsx', '.js', '.less'],
   },
   module: {
     rules: [

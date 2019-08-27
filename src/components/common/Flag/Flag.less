@@ -1,0 +1,47 @@
+@flag-height: 50px;
+@tail-half-height: @flag-height / 2;
+@tail-width: 33px;
+
+.mw-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 0;
+  border-top: @tail-half-height solid;
+  border-bottom: @tail-half-height solid;
+
+  &.mw-flag-left {
+    border-left: @tail-width solid transparent;
+  }
+
+  &.mw-flag-right {
+    border-right: @tail-width solid transparent;
+  }
+}
+
+/*
+-----------------
+Some old examples
+-----------------
+ */
+
+// From trying to use :before to create a concentric bookmark design
+//&:before {
+//  position: absolute;
+//  z-index: 1;
+//  content: "";
+//  border-top: 41px solid maroon;
+//  border-bottom: 41px solid maroon;
+//  border-left: 45px solid transparent;
+//  top: -41px;
+//  left: -32px;
+//}
+//
+//.mw-flag-body {
+//  height: 82px;
+//  background-color: maroon;
+//  border: solid gold;
+//  border-width: 9px 9px 9px 0;
+//  width: 300px;
+//}

@@ -1,0 +1,36 @@
+@import (reference) "../../../less/globals.less";
+@import (reference) "./../../common/Flag/Flag.less";
+
+@color: @dark-primary;
+@color-lighter: lighten(@dark-primary, 50%);
+@title-font-size: 28px;
+@title-letter-spacing: .09em;
+
+.mw-banner-flag {
+  font-weight: 300;
+
+  height: 100%;
+
+  align-items: center;
+  display: inline-flex;
+
+  .mw-banner-flag-title {
+    vertical-align: middle;
+    font-size: @title-font-size;
+    line-height: @title-font-size;
+    color: @color;
+    text-transform: uppercase;
+    font-family: "Titillium Web", sans-serif;
+    letter-spacing: @title-letter-spacing;
+  }
+
+  .mw-banner-flag-outer {
+    border-top: @tail-half-height solid @color-lighter;
+    border-bottom: @tail-half-height solid @color-lighter;
+  }
+
+  .mw-banner-flag-inner {
+    border-top: @tail-half-height solid @color;
+    border-bottom: @tail-half-height solid @color;
+  }
+}
