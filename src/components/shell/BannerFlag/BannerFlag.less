@@ -8,9 +8,9 @@
 
 .mw-banner-flag {
   font-weight: 300;
+  text-decoration: none;
 
   height: 100%;
-
   align-items: center;
   display: inline-flex;
 
@@ -18,10 +18,15 @@
     vertical-align: middle;
     font-size: @title-font-size;
     line-height: @title-font-size;
-    color: @color;
     text-transform: uppercase;
     font-family: "Titillium Web", sans-serif;
     letter-spacing: @title-letter-spacing;
+    text-decoration: none;
+    color: @color;
+
+    &:hover {
+      color: @color-lighter;
+    }
   }
 
   .mw-banner-flag-outer {

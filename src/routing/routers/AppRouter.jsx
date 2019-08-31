@@ -9,7 +9,7 @@ import React from 'react';
 export default class AppRouter extends React.Component {
   /**
    * Render the correct router and pass in children.
-   * @return {*}
+   * @return {React.Element}
    */
   render() {
     return (

@@ -3,8 +3,6 @@ publishedAt: 2017-11-01
 title: Test One
 ---
 
-# Test One
-
 Some text, maybe a list of one, two three.
 
 - one

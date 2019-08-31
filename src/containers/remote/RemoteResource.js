@@ -12,6 +12,7 @@ import PropTypes from "prop-types";
  * <RemoteResource
  *   url="/path/to/resource.json"
  *   render={(data, error) => <.../>}
+ *   [cache=={Map}]
  * />
  * ```
  */
@@ -25,7 +26,12 @@ export default class RemoteResource extends React.PureComponent {
     /**
      * Optional method to transform the response
      */
-    transform: PropTypes.func
+    transform: PropTypes.func,
+
+    /**
+     *
+     */
+    cache: PropTypes.object
   };
 
   /**
@@ -33,20 +39,27 @@ export default class RemoteResource extends React.PureComponent {
    * Applies the optional transform function to the data.
    */
   async componentDidMount() {
-    const { url, transform } = this.props;
-    const { data } = await axios.get(url);
+    const { url, transform, cache } = this.props;
 
-    if (transform) {
+    if (cache && cache.has('url')) {
       return this.setState({
-        data: transform(data)
+        data: transform ? transform(cache.get('url')) : cache.get('url')
       });
     }
 
-    this.setState({ data });
+    const { data } = await axios.get(url);
+
+    if (cache) {
+      cache.set(url, data);
+    }
+
+    return this.setState({
+      data: transform ? transform(data) : data
+    });
   }
 
   /**
-   * @returns {React.Element} The result of passing in the data to the render propr
+   * @returns {React.Element} The result of passing in the data to the render props
    */
   render() {
     if (!this.state) {

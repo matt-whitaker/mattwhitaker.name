@@ -1,0 +1,39 @@
+@import (reference) "../../../less/globals.less";
+@import (reference) "../../common/Flag/Flag.less";
+
+@color: @dark-primary;
+@color-lighter: lighten(@dark-primary, 50%);
+@nav-item-font-size: 28px;
+
+.mw-banner-nav {
+  display: inline-flex;
+  align-items: center;
+  padding-right: @tail-width * 2;
+
+  .mw-banner-nav-item {
+    padding: 0 @tail-width / 2;
+    text-decoration: none; // todo move to an "ExternalLink" class
+    font-size: @nav-item-font-size;
+    color: @color;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    //&:nth-child(odd) {
+    //  border-right: 1px solid @color;
+    //}
+    //
+    //&:nth-child(even) {
+    //  border-left: 1px solid @color;
+    //}
+
+    &:hover {
+      color: @color-lighter;
+    }
+  }
+}

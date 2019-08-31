@@ -2,6 +2,8 @@ import React from "react";
 
 import "../../../less/reset";
 import "./Shell.less";
+import Banner from "../Banner/Banner";
+import Body from "../Body/Body";
 
 /**
  * Shell
@@ -20,7 +22,10 @@ export default class Shell extends React.PureComponent {
   render() {
     return (
       <div className="mw-shell">
-        {this.props.children}
+        <Banner />
+        <Body>
+          {this.props.children}
+        </Body>
       </div>
     );
   }

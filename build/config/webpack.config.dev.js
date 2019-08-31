@@ -1,3 +1,5 @@
+require('dotenv').config({});
+
 const merge = require('webpack-merge');
 const common = require('./webpack.config.common');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');

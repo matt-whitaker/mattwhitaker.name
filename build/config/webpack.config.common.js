@@ -8,11 +8,9 @@ const { EnvironmentPlugin } = require('webpack');
 const objToEnv = require('../utils/objToEnv');
 const gm = require('gray-matter');
 const generateManifest = require('../utils/generateManifest');
+const GenerateJsonPlugin = require('../utils/GenerateJsonPlugin');
 
-const ENVVARS = objToEnv(config);
-
-console.log('Using the following configurations:');
-console.log(JSON.stringify(ENVVARS, null, 2));
+const envVars = objToEnv(config);
 
 module.exports = {
   output: {
@@ -23,11 +21,7 @@ module.exports = {
     /**
      * Creates the articles manifest file
      */
-    new CreateFileWebpack({
-      path: './dist/articles/manifest.json',
-      fileName: 'index.js',
-      content: JSON.stringify(generateManifest(), null, 4),
-    }),
+    new GenerateJsonPlugin('articles/manifest.json', generateManifest(), null, 4),
 
     /**
      * Copies the following:
@@ -38,16 +32,14 @@ module.exports = {
         transform(content) {
           return Promise.resolve(gm(content.toString()).content.trimLeft());
         },
-        // transformPath(targetPath) {
-        //   return targetPath.replace('.md', '.html');
-        // },
         from: './articles/**/*',
       },
     ]),
-    new EnvironmentPlugin(ENVVARS),
+    new EnvironmentPlugin(envVars),
+    new EnvironmentPlugin(process.env),
     new HtmlWebpackPlugin({
       template: './src/templates/index.html',
-      env: ENVVARS
+      env: { ...envVars, ...process.env },
     }),
   ],
   resolve: {
