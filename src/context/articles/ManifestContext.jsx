@@ -4,8 +4,14 @@ import RemoteResource from "../../containers/remote/RemoteResource";
 import Cache from "../../utils/Cache";
 import autobind from "autobind-decorator";
 
+/**
+ * Cache for the article manifest
+ */
 const articlesManifestCache = Cache.create('articles:manifest');
 
+/**
+ * Context for the article manifest
+ */
 const context = React.createContext({
   articles: [],
   index: {},
@@ -14,8 +20,14 @@ const context = React.createContext({
 
 export default context;
 
+/**
+ * Consumer for the article manifest
+ */
 export const ManifestConsumer = context.Consumer;
 
+/**
+ * Loads and provides the article manifest
+ */
 @autobind
 export class ManifestProvider extends React.PureComponent {
   /**
