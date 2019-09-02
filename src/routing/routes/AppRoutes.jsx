@@ -21,8 +21,8 @@ export default class AppRoutes extends React.PureComponent {
   render() {
     return (
       <Switch>
-        <Route path="/article" component={ArticleRoutes} />
-        <Route path="/" component={Home} />
+        <Route path="/article" component={ArticleRoutes}/>
+        <Route path="/" component={Home}/>
       </Switch>
     );
   }

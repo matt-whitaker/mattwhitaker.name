@@ -22,6 +22,6 @@ module.exports = {
   },
 
   plugins: [
-    new DllPlugin({ name: 'vendor', path: 'lib' }),
+    new DllPlugin({ name: 'vendor', path: 'dist' }),
   ],
 };

@@ -18,6 +18,6 @@ export default class Image extends React.PureComponent {
    */
   render() {
     const { src, children: alt } = this.props;
-    return <img src={src} alt={alt} title={alt} />;
+    return <img src={src} alt={alt} title={alt}/>;
   }
 }

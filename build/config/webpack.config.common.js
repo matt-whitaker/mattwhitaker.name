@@ -14,7 +14,7 @@ const envVars = objToEnv(config);
 
 module.exports = {
   output: {
-    path: path.resolve(process.cwd(), 'lib'),
+    path: path.resolve(process.cwd(), 'dist'),
     publicPath: '/',
   },
   plugins: [
@@ -35,8 +35,20 @@ module.exports = {
         from: './articles/**/*',
       },
     ]),
+
+    /**
+     * Provide environment variables generated from configs for a consistent access pattern
+     */
     new EnvironmentPlugin(envVars),
+
+    /**
+     * Allow local environment variable override
+     */
     new EnvironmentPlugin(process.env),
+
+    /**
+     * Build the HTML
+     */
     new HtmlWebpackPlugin({
       template: './src/templates/index.html',
       env: { ...envVars, ...process.env },

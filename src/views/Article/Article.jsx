@@ -1,30 +1,37 @@
+import { boundClass } from 'autobind-decorator'
 import Markdown from "../../components/common/Markdown/Markdown";
 import RemoteResource from "../../containers/remote/RemoteResource";
 import React from "react";
-
 import Cache from "../../utils/Cache";
+import "./Article.less";
 
 const articleCache = Cache.create('articles:article');
 
+/**
+ * Article view
+ */
+@boundClass
 export default class Article extends React.Component {
-  constructor(props) {
-    super(props);
-
-    // TODO: create a base class to auto bind
-    this.renderArticle = this.renderArticle.bind(this);
-  }
-
+  /**
+   * Render the article
+   * @param markdown
+   * @returns {*}
+   */
   renderArticle(markdown) {
     const { match, manifest } = this.props;
 
     return (
       <div className="mw-article">
-        <h1>{manifest.index.get(match.params[0]).title}</h1>
+        <h1 className="mw-article-title">{manifest.index.get(match.params[0]).title}</h1>
         <Markdown>{markdown}</Markdown>
       </div>
     );
   }
 
+  /**
+   * Render the Article
+   * @returns {*}
+   */
   render() {
     const { match } = this.props;
 

@@ -1,11 +1,8 @@
 import ArticleRoute from "./ArticleRoute";
 import React from "react";
-import RemoteResource from "../../containers/remote/RemoteResource";
 import { Route } from "react-router-dom";
+import { ManifestConsumer } from "../../context/articles/ManifestContext";
 
-import Cache from "../../utils/Cache";
-
-const articlesManifestCache = Cache.create('articles:manifest');
 
 /**
  * ArticleRoutes
@@ -19,31 +16,18 @@ const articlesManifestCache = Cache.create('articles:manifest');
  */
 export default class ArticleRoutes extends React.Component {
   /**
-   * Transform the manifest data to better fit local needs
-   * @param manifest
-   * @returns {{index: *, paths: *}}
-   */
-  transformManifest(manifest) {
-    return {
-      ...manifest,
-      index: manifest.articles.reduce((map, article) => {
-        return map.set(article.slug, article);
-      }, new Map()),
-      paths: manifest.articles.map(({ slug }) => `/article/${slug}`)
-    };
-  }
-
-  /**
    * Render the article routes explicitly defined in the manifest
    * @param manifest
    * @returns {*}
    */
   renderManifestRoutes(manifest) {
+    console.log("ArticleRoutes#renderManifestRoutes");
+    console.log(manifest);
     return (
       <Route
         exact
         path={manifest.paths}
-        render={(props) => (
+        render={(props) => console.log(props) || (
           <ArticleRoute manifest={manifest} {...props} />
         )}
       />
@@ -56,12 +40,9 @@ export default class ArticleRoutes extends React.Component {
    */
   render() {
     return (
-      <RemoteResource
-        cache={articlesManifestCache}
-        url="/articles/manifest.json"
-        transform={this.transformManifest}
-        render={this.renderManifestRoutes}
-      />
+      <ManifestConsumer>
+        {this.renderManifestRoutes}
+      </ManifestConsumer>
     );
   }
 }

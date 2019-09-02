@@ -1,77 +1,46 @@
 ---
 publishedAt: 2017-08-03
-title: Test Two
+title: That's right, baby. I ain't your loverboy Flexo, the guy you love so much. You even love anyone pretending to be him!
 ---
 
-# Test Two
+Kids have names? We can't compete with Mom! Her company is big and evil! Ours is small and neutral! Ah, computer dating. It's like pimping, but you rarely have to use the phrase "upside your head." Oh sure! Blame the wizards!
 
-Some text, maybe a list of one, two three.
+When I was first asked to make a film about my nephew, Hubert Farnsworth, I thought "Why should I? " Then later, Leela made the film. But if I did make it, you can bet there would have been more topless women on motorcycles. Roll film! What are you hacking off? __Is it my torso?!__ *'It is!* ' My precious torso!
 
-- one
-- two
-- three
+## You seem malnourished. Are you suffering from intestinal parasites?
 
-dee dah
+They're like sex, except I'm having them! Is the Space Pope reptilian!? I guess if you want children beaten, you have to do it yourself. Yes. You gave me a dollar and some candy. No! I want to live! There are still too many things I don't own!
 
-|table|test|
-|---|---|
-|hello|world|
+1. That's a popular name today. Little "e", big "B"?
+2. Switzerland is small and neutral! We are more like Germany, ambitious and misunderstood!
+3. In our darkest hour, we can stand erect, with proud upthrust bosoms.
 
-# Terrore inscriptum curvamine addita gravem barbara regnorum
+### Oh, I always feared he might run off like this. Why, why, why didn't I break his legs?
 
-## Invaserat sororum
+That's not soon enough! And why did 'I' have to take a cab? When the lights go out, it's nobody's business what goes on between two consenting adults. I guess if you want children beaten, you have to do it yourself.
 
-Lorem markdownum isto desideret petit: sinus iussorum mirantur locum tempora.
-Ditia [cum](/) vivere te nomen mox fortunae
-caret certo nubilus.
+* Oh, I think we should just stay friends.
+* Oh God, what have I done?
+* Tell her you just want to talk. It has nothing to do with mating.
 
-## Corpus prohibetis matris pavidamque ad parum nocent
+I love this planet! I've got wealth, fame, and access to the depths of sleaze that those things bring. No, she'll probably make me do it. What kind of a father would I be if I said no? This is the worst part. The calm before the battle.
 
-Attonitamque satyri res, sucis cultus, ostendisse humano levatus mundumque
-coniugis tellus sit fratris qua mors. Mortalia terram est simulac pectore
-sanguine abdita cupidoque, adsternunturque capiebat Dryantaque pecudumque aetas.
-Ut referri verae vicinia quascumque leones. Et pharetra **paruerit**, Cephenum
-peioris omnibus, silvis cum. Ulixis perceperat a mutando omnes aquarum Orontes
-inquit, ille, horruit; per est Parnaside, igni Iuppiter quidem.
+There, now he's trapped in a book I wrote: a crummy world of plot holes and spelling errors! When I was first asked to make a film about my nephew, Hubert Farnsworth, I thought "Why should I?" Then later, Leela made the film. But if I did make it, you can bet there would have been more topless women on motorcycles. Roll film!
 
-    ebook_power(processor_hibernate(ultraBank,
-            exploit_active.localhost_newbie_internic(copyright_jumper_unicode,
-            program_e_drive, -2), mode - megabyte));
-    malware_handle_widget(5 + monitorSouthbridge * clockUml, 7366);
-    var fileExtension = computer;
-    if (screenshot == 2) {
-        trollJumper *= ata_mysql_disk;
-        maximizeMms *= ssl_server_rgb;
-    } else {
-        icf_jquery *= python_user_market(del_class_character, 24 + xhtml,
-                affiliateRich + gibibyteSupply);
-    }
-    drive_lock /= rw(quicktimeFileRoom) - text;
+Ooh, name it after me! I just want to talk. It has nothing to do with mating. Fry, that doesn't make sense. Incidentally, you have a dime up your nose. And when we woke up, we had these bodies. What's with you kids? Every other day it's food, food, food. Alright, I'll get you some stupid food.
 
-## Posti caelum at ignavis unda vultuque
+You can see how I lived before I met you. Whoa a real live robot; or is that some kind of cheesy New Year's costume? We're rescuing ya. Why yes! Thanks for noticing.
 
-Foramina auxilium pronos. Nulla summa in quae videt classe acumine quae nebulas
-undas; superum vera falcis navis, quae nec. Crinitas Troius misistis cor omnes
-manusque flenti, prohibent cervice, per ab unda, bis tempore moverat, iuvenci.
+Hey! I'm a porno-dealing monster, what do I care what you think? Ah, the 'Breakfast Club' soundtrack! I can't wait til I'm old enough to feel ways about stuff! It's toe-tappingly tragic! I don't know what you did, Fry, but once again, you screwed up! Now all the planets are gonna start cracking wise about our mamas.
 
-> Memoresque [illi docuique](/) fortis fueris,
-> prohibente ut labore, sed. Vires fores ille Europa. Nec pectora illa, deflent
-> *quid colorem*, decet herbas *sed Iove* tanget devolvere ibat! Usquam
-> praestiteris coronas visa dea tum quoniam volenti, fidesque violari crudeles.
-> Fine utque *umbrae*: viri: subigebat cetera aure rostro Cyllenius tollere nisi
-> saxa **fit tantis** dictis ter!
+We need rest. The spirit is willing, but the flesh is spongy and bruised. No! The kind with looting and maybe starting a few fires! You know the worst thing about being a slave? They make you work, but they don't pay you or let you go.
 
-## Simul exuritque
+Are you crazy? I can't swallow that. Ow, my spirit! No, just a regular mistake. Why not indeed! Well I'da done better, but it's plum hard pleading a case while awaiting trial for that there incompetence.
 
-Adventus ducere navigiis. Tuli dum solita [generosior ab
-comas](/) thalamis hostem? Est incurvo curvata
-gemuere arcum; fixa enim coepit; in Marte deos terra, sed grata crimen obliqua
-iam!
+Bender?! You stole the atom. But, like most politicians, he promised more than he could deliver. And when we woke up, we had these bodies. Bender, this is Fry's decision… and he made it wrong. So it's time for us to interfere in his life.
 
-> Venit pennas, esse socii exhibuit fontibus haud resimas et germanae saucius.
-> Possit mihi defluit Theseus proculcat imago spatiantibus dempto caedis
-> capillis, Phoebum!
+Bender, being God isn't easy. If you do too much, people get dependent on you, and if you do nothing, they lose hope. You have to use a light touch. Like a safecracker, or a pickpocket. Who are those horrible orange men?
 
-Ramos pro, cineres tua expertem cum; et precibus ingemis qui omnes. Per iamdudum
-esse de admoti ultima: tolle vellentem coniuge atram hoc manus longe, est tuae
-hos annos curae.
+I saw you with those two "ladies of the evening" at Elzars. Explain that. Why, those are the Grunka-Lunkas! They work here in the Slurm factory. Yeah. Give a little credit to our public schools. Hey! I'm a porno-dealing monster, what do I care what you think?
+
+If rubbin' frozen dirt in your crotch is wrong, hey I don't wanna be right. Goodbye, cruel world. Goodbye, cruel lamp. Goodbye, cruel velvet drapes, lined with what would appear to be some sort of cruel muslin and the cute little pom-pom curtain pull cords. Cruel though they may be…

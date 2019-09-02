@@ -1,7 +1,6 @@
 import "./Banner.less";
 
 import React from "react";
-import {Link} from "react-router-dom";
 import BannerFlag from "../../shell/BannerFlag/BannerFlag";
 import BannerNav from "../BannerNav/BannerNav";
 
@@ -22,8 +21,8 @@ export default class Banner extends React.Component {
   render() {
     return (
       <div className="mw-banner">
-        <BannerFlag />
-        {/*<BannerNav />*/}
+        <BannerFlag/>
+        <BannerNav/>
       </div>
     );
   }

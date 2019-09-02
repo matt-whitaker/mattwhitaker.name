@@ -31,7 +31,7 @@ export default class RemoteResource extends React.PureComponent {
     /**
      *
      */
-    cache: PropTypes.object
+    cache: PropTypes.object,
   };
 
   /**
@@ -43,7 +43,7 @@ export default class RemoteResource extends React.PureComponent {
 
     if (cache && cache.has('url')) {
       return this.setState({
-        data: transform ? transform(cache.get('url')) : cache.get('url')
+        data: transform ? transform(cache.get('url')) : cache.get('url'),
       });
     }
 
@@ -54,7 +54,7 @@ export default class RemoteResource extends React.PureComponent {
     }
 
     return this.setState({
-      data: transform ? transform(data) : data
+      data: transform ? transform(data) : data,
     });
   }
 

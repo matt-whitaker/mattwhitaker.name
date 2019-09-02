@@ -12,10 +12,14 @@ export default class BannerNav extends React.PureComponent {
    */
   render() {
     return (
-      <div className="mw-banner-nav">
-        <a className="fab fa-github mw-banner-nav-item" href={process.env.GITHUB_URL} />
-        <a className="fab fa-linkedin-in mw-banner-nav-item" href={process.env.LINKEDIN_URL} />
-      </div>
+      <nav className="mw-banner-nav">
+        <a className="mw-banner-nav-item" href={process.env.GITHUB_URL}>
+          <i className="fab fa-github"/>
+        </a>
+        <a className="mw-banner-nav-item" href={process.env.LINKEDIN_URL}>
+          <i className="fab fa-linkedin-in"/>
+        </a>
+      </nav>
     );
   }
 }

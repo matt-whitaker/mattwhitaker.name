@@ -5,6 +5,12 @@ const gm = require('gray-matter');
 const searchDir = path.join(process.cwd(), 'articles');
 const outputFile = path.join(searchDir, 'manifest.json');
 
+/**
+ * Generates a list of published articles based on the metadata ("front-matter")
+ * in the files.
+ *
+ * @returns {object} Manifest with articles, paths, and an index
+ */
 module.exports = function generateManifest() {
   const articles = fs
     .readdirSync(searchDir)
@@ -16,9 +22,14 @@ module.exports = function generateManifest() {
     .filter((d) => !!d.publishedAt)
     .sort((dA, dB) => new Date(dB.publishedAt) - new Date(dA.publishedAt));
 
+  // TODO fix data formatting issue or make sure it renders correctly
+
   return { articles };
 };
 
+/**
+ * Allow to be run as a script
+ */
 if (require.main === module) {
   const manifest = module.exports();
 

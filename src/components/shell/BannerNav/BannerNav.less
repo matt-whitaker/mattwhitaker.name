@@ -8,9 +8,9 @@
 .mw-banner-nav {
   display: inline-flex;
   align-items: center;
-  padding-right: @tail-width * 2;
 
   .mw-banner-nav-item {
+    display: flex;
     padding: 0 @tail-width / 2;
     text-decoration: none; // todo move to an "ExternalLink" class
     font-size: @nav-item-font-size;
@@ -21,16 +21,8 @@
     }
 
     &:last-child {
-      padding-right: 0;
+      padding-right: @tail-width;
     }
-
-    //&:nth-child(odd) {
-    //  border-right: 1px solid @color;
-    //}
-    //
-    //&:nth-child(even) {
-    //  border-left: 1px solid @color;
-    //}
 
     &:hover {
       color: @color-lighter;

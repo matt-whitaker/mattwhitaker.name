@@ -14,7 +14,7 @@ export default class Flag extends React.PureComponent {
    */
   static FLAG_TYPES = {
     LEFT: "left",
-    RIGHT: "right"
+    RIGHT: "right",
   };
 
   /**
@@ -24,7 +24,7 @@ export default class Flag extends React.PureComponent {
     /**
      * @enum FLAG_TYPES
      */
-    type: PropTypes.oneOf(Object.values(Flag.FLAG_TYPES))
+    type: PropTypes.oneOf(Object.values(Flag.FLAG_TYPES)),
   };
 
   /**

@@ -1,7 +1,7 @@
 import AppRouter from '../routing/routers/AppRouter';
 import AppRoutes from '../routing/routes/AppRoutes';
+import AppShell from './AppShell';
 import React from 'react';
-import Shell from '../components/shell/Shell/Shell';
 
 /**
  * App
@@ -20,9 +20,9 @@ export default class App extends React.Component {
   render() {
     return (
       <AppRouter>
-        <Shell>
-          <AppRoutes />
-        </Shell>
+        <AppShell>
+          <AppRoutes/>
+        </AppShell>
       </AppRouter>
     );
   }
