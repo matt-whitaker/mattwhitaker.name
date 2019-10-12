@@ -22,7 +22,7 @@ export default class Article extends React.Component {
 
     return (
       <div className="mw-article">
-        <h1 className="mw-article-title">{manifest.index.get(match.params[0]).title}</h1>
+        <h1 className="mw-article-title" dangerouslySetInnerHTML={{ __html: manifest.index.get(match.params[0]).title }}></h1>
         <Markdown>{markdown}</Markdown>
       </div>
     );

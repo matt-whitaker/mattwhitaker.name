@@ -1,7 +1,9 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 
+
 import "./Markdown.less";
+import { HeadingRenderer } from "../../../utils/markdown";
 
 /**
  * Markdown
@@ -24,7 +26,7 @@ export default class Markdown extends React.PureComponent {
   render() {
     return (
       <div className="mw-markdown markdown-body">
-        <ReactMarkdown source={this.props.children}/>
+        <ReactMarkdown source={this.props.children} renderers={{ heading: HeadingRenderer }}/>
       </div>
     );
   }

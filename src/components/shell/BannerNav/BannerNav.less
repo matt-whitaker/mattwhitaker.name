@@ -1,8 +1,6 @@
 @import (reference) "../../../less/globals.less";
 @import (reference) "../../common/Flag/Flag.less";
 
-@color: @dark-primary;
-@color-lighter: lighten(@dark-primary, 50%);
 @nav-item-font-size: 28px;
 
 .mw-banner-nav {
@@ -14,7 +12,7 @@
     padding: 0 @tail-width / 2;
     text-decoration: none; // todo move to an "ExternalLink" class
     font-size: @nav-item-font-size;
-    color: @color;
+    color: @dark-primary;
 
     &:first-child {
       padding-left: 0;
@@ -25,7 +23,7 @@
     }
 
     &:hover {
-      color: @color-lighter;
+      color: @dark-secondary-lighter;
     }
   }
 }

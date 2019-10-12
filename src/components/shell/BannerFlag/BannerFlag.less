@@ -1,13 +1,11 @@
-@import (reference) "../../../less/globals.less";
-@import (reference) "./../../common/Flag/Flag.less";
+@import (reference) "../../../less/globals";
+@import (reference) "./../../common/Flag/Flag";
 
-@color: @dark-primary;
-@color-lighter: lighten(@dark-primary, 50%);
 @title-font-size: 28px;
 @title-letter-spacing: .09em;
 
 .mw-banner-flag {
-  font-weight: 300;
+  font-weight: @font-weight-title;
   text-decoration: none;
 
   height: 100%;
@@ -15,27 +13,28 @@
   display: inline-flex;
 
   .mw-banner-flag-title {
-    vertical-align: middle;
+    color: @dark-primary;
     font-size: @title-font-size;
     line-height: @title-font-size;
-    text-transform: uppercase;
-    font-family: "Titillium Web", sans-serif;
+    font-family: @font-family-title;
     letter-spacing: @title-letter-spacing;
+
+    vertical-align: middle;
+    text-transform: uppercase;
     text-decoration: none;
-    color: @color;
 
     &:hover {
-      color: @color-lighter;
+      color: @dark-secondary-lighter;
     }
   }
 
   .mw-banner-flag-outer {
-    border-top: @tail-half-height solid @color-lighter;
-    border-bottom: @tail-half-height solid @color-lighter;
+    border-top: @tail-half-height solid @dark-primary-lightest;
+    border-bottom: @tail-half-height solid @dark-primary-lightest;
   }
 
   .mw-banner-flag-inner {
-    border-top: @tail-half-height solid @color;
-    border-bottom: @tail-half-height solid @color;
+    border-top: @tail-half-height solid @dark-primary;
+    border-bottom: @tail-half-height solid @dark-primary;
   }
 }

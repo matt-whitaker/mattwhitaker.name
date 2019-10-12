@@ -9,10 +9,8 @@
   left: 0;
   right: 0;
 
-  transition: box-shadow 100ms, background-color 100ms;
-
   html:not([data-scroll='0']) & {
     background: rgba(#fff, .98) fixed;
-    box-shadow: 0 4px 4px lighten(@dark-primary, 20%);
+    box-shadow: 0 0 8px @dark-primary-lighter;
   }
 }

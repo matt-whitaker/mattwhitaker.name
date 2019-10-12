@@ -24,6 +24,6 @@ module.exports = merge(common, {
 
   devServer: {
     historyApiFallback: true,
-    contentBase: ['dist', 'assets'],
+    contentBase: ['dist', 'assets', 'articles'],
   },
 });

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run clean && webpack --config build/config/webpack.config.prod.js",
     "build:dev": "npm run clean && webpack --config build/config/webpack.config.dev.js",
-    "dev": "npm run clean && webpack-dev-server --config build/config/webpack.config.dev.js",
+    "dev": "npm run clean && webpack-dev-server --watch --config build/config/webpack.config.dev.js",
     "eslint": "eslint src/**/*.js src/**/*.jsx build/**/*.js",
     "clean": "rm -rf lib",
     "stylelint": "stylelint src/**/*.less",

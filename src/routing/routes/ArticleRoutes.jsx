@@ -21,13 +21,11 @@ export default class ArticleRoutes extends React.Component {
    * @returns {*}
    */
   renderManifestRoutes(manifest) {
-    console.log("ArticleRoutes#renderManifestRoutes");
-    console.log(manifest);
     return (
       <Route
         exact
         path={manifest.paths}
-        render={(props) => console.log(props) || (
+        render={(props) => (
           <ArticleRoute manifest={manifest} {...props} />
         )}
       />

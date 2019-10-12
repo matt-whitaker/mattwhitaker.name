@@ -1,10 +1,13 @@
+@import "../../less/globals";
 
 .mw-article {
   .mw-article-title {
+    font-weight: @font-weight-title;
+    font-family: @font-family-primary;
+    line-height: 1.4em;
+
     font-size: 70px;
-    font-weight: 200;
-    font-family: "Open Sans", sans-serif;
-    padding: 140px 5%;
+    padding: @outer-rail * 3 @outer-rail;
     margin: 0 auto;
     text-align: center;
   }
