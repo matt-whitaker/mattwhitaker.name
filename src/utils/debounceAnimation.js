@@ -1,10 +1,10 @@
 /**
  * Creates a function that is continually debounced to the next animation frame
  *
- * @param {Function} fn The function to debounce
+ * @param {Function} fn The function to debounceAnimation
  * @returns {Function} wrapped function
  */
-export default function debounce(fn) {
+export default function debounceAnimation(fn) {
   let frame;
 
   return (...params) => {

@@ -29,7 +29,7 @@ export default class RemoteResource extends React.PureComponent {
     transform: PropTypes.func,
 
     /**
-     *
+     * An optional cache object that the resource will be stored in
      */
     cache: PropTypes.object,
   };

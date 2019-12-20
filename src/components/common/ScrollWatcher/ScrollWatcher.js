@@ -1,9 +1,10 @@
-import debounce from "../../../utils/debounce";
+import debounceAnimation from "../../../utils/debounceAnimation";
 import React from "react";
 
 export default class ScrollWatcher extends React.PureComponent {
   constructor(props) {
     props.dataTarget.dataset.scroll = window.scrollY;
+
     super(props);
   }
   componentDidMount() {
@@ -12,7 +13,7 @@ export default class ScrollWatcher extends React.PureComponent {
     this.setState({
       scrollTarget,
       dataTarget,
-      onEvent: debounce(() => {
+      onEvent: debounceAnimation(() => {
         dataTarget.dataset.scroll = window.scrollY;
       })
     }, () => {
