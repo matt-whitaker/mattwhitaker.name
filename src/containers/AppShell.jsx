@@ -12,17 +12,12 @@ import Shell from '../components/shell/Shell/Shell';
  * <AppShell />
  * ```
  */
-export default class AppShell extends React.PureComponent {
-  /**
-   * @returns {React.Element} The shell
-   */
-  render() {
-    return (
-      <ManifestProvider>
-        <Shell>
-          {this.props.children}
-        </Shell>
-      </ManifestProvider>
-    );
-  }
+export default function AppShell() {
+  return (
+    <ManifestProvider>
+      <Shell>
+        {this.props.children}
+      </Shell>
+    </ManifestProvider>
+  );
 }

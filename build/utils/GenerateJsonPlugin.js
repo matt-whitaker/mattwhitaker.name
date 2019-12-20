@@ -6,6 +6,10 @@ module.exports = function GenerateJsonPlugin(filename, value, replacer, space) {
   this.previousJson = null;
 };
 
+/**
+ *
+ * @param compiler
+ */
 module.exports.prototype.apply = function apply(compiler) {
   const emit = (compilation, callback) => {
     const json = JSON.stringify(this.value, this.replacer, this.space);
