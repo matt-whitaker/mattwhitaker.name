@@ -12,11 +12,11 @@ import Shell from '../components/shell/Shell/Shell';
  * <AppShell />
  * ```
  */
-export default function AppShell() {
+export default function AppShell(props) {
   return (
     <ManifestProvider>
       <Shell>
-        {this.props.children}
+        {props.children}
       </Shell>
     </ManifestProvider>
   );
