@@ -6,8 +6,6 @@ import { ArticleView } from "../../components/views/ArticleView";
 
 import { loadCurrentArticle } from "../../ducks/articles";
 
-import "./Article.less";
-
 /**
  * Provide state and actions to ArticleView
  */

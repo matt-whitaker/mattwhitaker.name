@@ -7,8 +7,8 @@ import React from "react";
  * @constructor
  */
 export const ArticleView = ({ children, title }) => (
-  <div className="mw-article">
-    <h1 className="mw-article-title">{title}</h1>
+  <div className="mw-article-view">
+    <h1 className="mw-article-view-title">{title}</h1>
     {children}
   </div>
 );
