@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./ArticleView.less";
+
 /**
  * Simple view that centers a title and takes children
  * @param props
