@@ -24,7 +24,7 @@ export default class Flag extends React.PureComponent {
     /**
      * @enum FLAG_TYPES
      */
-    type: PropTypes.oneOf(Object.values(Flag.FLAG_TYPES)),
+    type: PropTypes.oneOf(Object.values(Flag.FLAG_TYPES)).isRequired,
   };
 
   /**
@@ -33,7 +33,6 @@ export default class Flag extends React.PureComponent {
    */
   render() {
     const { type, children, className } = this.props;
-    const klassName = className ? ` ${className}` : '';
-    return <div className={`mw-flag mw-flag-${type}${klassName}`}>{children}</div>;
+    return <div className={`mw-flag mw-flag-${type} ${className}`.trim()}>{children}</div>;
   }
 }

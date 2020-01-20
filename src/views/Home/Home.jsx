@@ -4,6 +4,6 @@ import "./Home.less";
 
 export default function Home() {
   return (
-    <div className="mw-home" />
+    <div className="mw-resume" />
   );
 }

@@ -30,6 +30,7 @@
     "valid-jsdoc": [0],
     "jsdoc/require-returns-description": [2],
     "space-before-blocks": [2, "always"],
-    "block-spacing": [2, "always"]
+    "block-spacing": [2, "always"],
+    "react/prop-types": [2]
   }
 }
