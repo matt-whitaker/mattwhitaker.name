@@ -7,8 +7,7 @@ module.exports = function GenerateJsonPlugin(filename, value, replacer, space) {
 };
 
 /**
- *
- * @param compiler
+ * @param {object} compiler
  */
 module.exports.prototype.apply = function apply(compiler) {
   const emit = (compilation, callback) => {

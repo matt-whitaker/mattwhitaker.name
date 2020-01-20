@@ -1,5 +1,5 @@
 import React from 'react';
-import { Provider as ReduxProvider, connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 import Shell from './components/shell/Shell/Shell';
 
@@ -23,7 +23,7 @@ export const connectApp = connect(
  * <App />
  * ```
  */
-export const App = connectApp(class App extends React.PureComponent {
+export class App extends React.PureComponent {
   componentDidMount() {
     const { initialize } = this.props;
 
@@ -39,4 +39,6 @@ export const App = connectApp(class App extends React.PureComponent {
       </AppRouter>
     );
   }
-});
+
+  static Connected = connectApp(App);
+}

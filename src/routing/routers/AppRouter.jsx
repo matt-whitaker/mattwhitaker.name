@@ -1,15 +1,20 @@
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Wrapper for choosing which React Router to use.
  *
- * @param props
+ * @param {object} props
+ * @param {*} props.children
  * @returns {*}
- * @class
  */
 export const AppRouter = ({ children }) => (
   <BrowserRouter>
     {children}
   </BrowserRouter>
 );
+
+AppRouter.propTypes = {
+  children: PropTypes.element,
+};

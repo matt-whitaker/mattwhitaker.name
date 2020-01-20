@@ -12,7 +12,7 @@ const reactRootElement = document.getElementById(reactRoot);
 
 ReactDOM.render(
   <ReduxProvider store={store}>
-    <App/>
+    <App.Connected />
   </ReduxProvider>,
   reactRootElement,
 );

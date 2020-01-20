@@ -13,10 +13,12 @@ import Home from '../../pages/Home/Home';
  * ```
  * <AppRoutes />
  * ```
+ *
+ * @returns {*}
  */
 export const AppRoutes = () => (
   <Switch>
-    <Route path="/article" component={ArticleRoutes}/>
+    <Route path="/article" component={ArticleRoutes.Connected}/>
     <Route path="/" component={Home}/>
   </Switch>
 );

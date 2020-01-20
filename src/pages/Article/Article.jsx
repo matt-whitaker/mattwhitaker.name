@@ -17,7 +17,7 @@ export const connectArticleView = connect(
 /**
  * ArticleView view
  */
-export default connectArticleView(class Article extends React.PureComponent {
+export class Article extends React.PureComponent {
   componentDidMount() {
     const { match, loadCurrentArticle } = this.props;
     loadCurrentArticle(match.params[0]);
@@ -41,4 +41,6 @@ export default connectArticleView(class Article extends React.PureComponent {
       </ArticleView>
     );
   }
-});
+
+  static Connected = connectArticleView(Article);
+}

@@ -24,11 +24,12 @@
     "max-len": [2, { "code": 120 }],
     "object-curly-spacing": [2, "always"],
     "no-unused-vars": [0],
-    "sort-imports": ["error", {
+    "sort-imports": [0, {
       "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
     }],
     "valid-jsdoc": [0],
-    "jsdoc/require-returns-description": [2],
+    "jsdoc/require-returns-description": [0],
+    "jsdoc/require-param-description": [0],
     "space-before-blocks": [2, "always"],
     "block-spacing": [2, "always"],
     "react/prop-types": [2]
