@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import React from "react";
 
 import Markdown from "../../components/common/Markdown/Markdown";
+import { ArticleView } from "../../components/views/ArticleView";
 
 import { loadCurrentArticle } from "../../ducks/articles";
 
@@ -35,14 +36,10 @@ export default connectArticleView(class Article extends React.PureComponent {
       return <></>;
     }
 
-    /**
-     * TODO Create re-usable view component to extract DOM references
-     */
     return (
-      <div className="mw-article">
-        <h1 className="mw-article-title">{currentArticle.title}</h1>
+      <ArticleView title={currentArticle.title}>
         <Markdown>{currentArticle.markdown}</Markdown>
-      </div>
+      </ArticleView>
     );
   }
 });

@@ -6,7 +6,6 @@ import Shell from "./components/shell/Shell/Shell";
 import { AppRouter } from './routing/routers/AppRouter';
 import { AppRoutes } from './routing/routes/AppRoutes';
 
-import { store } from "./redux.setup";
 import { initialize } from "./ducks/initialize";
 
 export const connectApp = connect(

@@ -1,7 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+
 import { ArticleRoutes } from "./ArticleRoutes";
-import Home from "../../views/Home/Home";
+import Home from "../../pages/Home/Home";
 
 /**
  * AppRoutes
