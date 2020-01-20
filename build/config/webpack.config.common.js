@@ -25,7 +25,7 @@ module.exports = {
 
     /**
      * Copies the following:
-     * - Article `.md` files, stripping the front matter
+     * - ArticleView `.md` files, stripping the front matter
      */
     new CopyWebpackPlugin([
       {

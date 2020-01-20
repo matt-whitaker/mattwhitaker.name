@@ -1,49 +1,48 @@
-import { boundClass } from 'autobind-decorator'
-import Markdown from "../../components/common/Markdown/Markdown";
-import RemoteResource from "../../containers/remote/RemoteResource";
+import { connect } from "react-redux";
 import React from "react";
-import Cache from "../../utils/Cache";
+
+import Markdown from "../../components/common/Markdown/Markdown";
+
+import { loadCurrentArticle } from "../../ducks/articles";
+
 import "./Article.less";
 
-const articleCache = Cache.create('articles:article');
+/**
+ * Provide state and actions to ArticleView
+ */
+export const connectArticleView = connect(
+  ({ articles }) => ({ currentArticle: articles.currentArticle }),
+  { loadCurrentArticle },
+);
 
 /**
- * Article view
+ * ArticleView view
  */
-@boundClass
-export default class Article extends React.Component {
-  /**
-   * Render the article
-   * @param markdown
-   * @returns {*}
-   */
-  renderArticle(markdown) {
-    const { match, manifest } = this.props;
-
-    return (
-      <div className="mw-article">
-        <h1
-          className="mw-article-title"
-          dangerouslySetInnerHTML={{ __html: manifest.index.get(match.params[0]).title }}
-        />
-        <Markdown>{markdown}</Markdown>
-      </div>
-    );
+export default connectArticleView(class Article extends React.PureComponent {
+  componentDidMount() {
+    const { match, loadCurrentArticle } = this.props;
+    loadCurrentArticle(match.params[0]);
   }
 
   /**
-   * Render the Article
+   * Render the ArticleView
    * @returns {*}
    */
   render() {
-    const { match } = this.props;
+    const { currentArticle } = this.props;
 
+    if (!currentArticle) {
+      return <></>;
+    }
+
+    /**
+     * TODO Create re-usable view component to extract DOM references
+     */
     return (
-      <RemoteResource
-        cache={articleCache}
-        url={`/articles/${match.params[0]}.md`}
-        render={this.renderArticle}
-      />
+      <div className="mw-article">
+        <h1 className="mw-article-title">{currentArticle.title}</h1>
+        <Markdown>{currentArticle.markdown}</Markdown>
+      </div>
     );
   }
-}
+});

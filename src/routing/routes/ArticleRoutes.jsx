@@ -1,7 +1,15 @@
-import ArticleRoute from "./ArticleRoute";
 import React from "react";
 import { Route } from "react-router-dom";
-import { ManifestConsumer } from "../../context/articles/ManifestContext";
+import { connect } from "react-redux";
+
+import ArticleView from "../../views/Article/Article";
+
+/**
+ * Provide articles manifest to ArticleRoutes
+ */
+export const connectArticleRoutes = connect(
+  ({ articles }) => ({ manifest: articles.manifest })
+);
 
 
 /**
@@ -14,33 +22,15 @@ import { ManifestConsumer } from "../../context/articles/ManifestContext";
  * <ArticleRoutes />
  * ```
  */
-export default class ArticleRoutes extends React.Component {
-  /**
-   * Render the article routes explicitly defined in the manifest
-   * @param manifest
-   * @returns {*}
-   */
-  renderManifestRoutes(manifest) {
-    return (
+export const ArticleRoutes = connectArticleRoutes(({ manifest }) => (
+  <Route
+    exact
+    path={manifest ? manifest.paths: []}
+    render={(_props) => console.log("IT RENDERS") || (
       <Route
-        exact
-        path={manifest.paths}
-        render={(props) => (
-          <ArticleRoute manifest={manifest} {...props} />
-        )}
+        path="/article/*"
+        render={(props) => <ArticleView {..._props} {...props} manifest={manifest} />}
       />
-    );
-  }
-
-  /**
-   * Render manifest routes
-   * @returns {React.Element} The articles' route
-   */
-  render() {
-    return (
-      <ManifestConsumer>
-        {this.renderManifestRoutes}
-      </ManifestConsumer>
-    );
-  }
-}
+    )}
+  />
+));
