@@ -1,9 +1,9 @@
-import React from "react";
-import ReactMarkdown from "react-markdown";
+import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 
-import "./Markdown.less";
-import { HeadingRenderer } from "../../../utils/markdown";
+import './Markdown.less';
+import { HeadingRenderer } from '../../../utils/markdown';
 
 /**
  * Markdown

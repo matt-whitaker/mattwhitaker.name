@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import "./Body.less";
-import BodyNav from "../BodyNav/BodyNav";
+import './Body.less';
+import BodyNav from '../BodyNav/BodyNav';
 
 /**
  * Wrapper for the main content
@@ -9,6 +9,7 @@ import BodyNav from "../BodyNav/BodyNav";
 export default class Body extends React.Component {
   /**
    * Render the Body
+   *
    * @returns {React.Element}
    */
   render() {
@@ -17,6 +18,6 @@ export default class Body extends React.Component {
         <BodyNav/>
         {this.props.children}
       </div>
-    )
+    );
   }
 }

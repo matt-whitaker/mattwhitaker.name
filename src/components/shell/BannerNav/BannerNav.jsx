@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 
-import "./BannerNav.less";
+import './BannerNav.less';
 
 /**
  * Banner navigation
@@ -8,6 +8,7 @@ import "./BannerNav.less";
 export default class BannerNav extends React.PureComponent {
   /**
    * Render the BannerNav
+   *
    * @returns {React.Element}
    */
   render() {

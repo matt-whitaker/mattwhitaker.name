@@ -1,8 +1,8 @@
-import React from "react";
-import Flag from "../../common/Flag/Flag";
+import React from 'react';
+import Flag from '../../common/Flag/Flag';
 
-import "./BannerFlag.less"
-import { Link } from "react-router-dom";
+import './BannerFlag.less';
+import { Link } from 'react-router-dom';
 
 /**
  * Branding with flags
@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 export default class BannerFlag extends React.PureComponent {
   /**
    * Render the BannerFlag
+   *
    * @returns {React.Element}
    */
   render() {

@@ -1,12 +1,12 @@
 import React from 'react';
-import { connect, Provider as ReduxProvider } from "react-redux";
+import { Provider as ReduxProvider, connect } from 'react-redux';
 
-import Shell from "./components/shell/Shell/Shell";
+import Shell from './components/shell/Shell/Shell';
 
 import { AppRouter } from './routing/routers/AppRouter';
 import { AppRoutes } from './routing/routes/AppRoutes';
 
-import { initialize } from "./ducks/initialize";
+import { initialize } from './ducks/initialize';
 
 export const connectApp = connect(
   null,

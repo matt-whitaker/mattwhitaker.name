@@ -1,14 +1,14 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import { connect } from "react-redux";
+import React from 'react';
+import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import ArticleView from "../../pages/Article/Article";
+import ArticleView from '../../pages/Article/Article';
 
 /**
  * Provide articles manifest to ArticleRoutes
  */
 export const connectArticleRoutes = connect(
-  ({ articles }) => ({ manifest: articles.manifest })
+  ({ articles }) => ({ manifest: articles.manifest }),
 );
 
 

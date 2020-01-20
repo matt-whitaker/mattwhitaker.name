@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
 
-import "./Flag.less";
+import './Flag.less';
 
 /**
  * Creates one of those sideways flag lookin' things.
@@ -10,11 +10,12 @@ import "./Flag.less";
 export default class Flag extends React.PureComponent {
   /**
    * Which direction does the flag fly?
+   *
    * @type {{LEFT: "left", RIGHT: "right"}}
    */
   static FLAG_TYPES = {
-    LEFT: "left",
-    RIGHT: "right",
+    LEFT: 'left',
+    RIGHT: 'right',
   };
 
   /**
@@ -29,6 +30,7 @@ export default class Flag extends React.PureComponent {
 
   /**
    * Render the flag
+   *
    * @returns {React.Element}
    */
   render() {

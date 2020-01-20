@@ -1,7 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import "./Resume.less";
+import './Resume.less';
 
+/**
+ *
+ */
 export default function Resume() {
   return (
     <div className="mw-resume">

@@ -1,30 +1,32 @@
-import axios from "axios";
+import axios from 'axios';
 
-import { combineEpics, ofType } from "redux-observable";
-import { delayWhen, map, mergeMap, tap } from "rxjs/operators";
-import { from } from "rxjs";
-import { combineReducers } from "redux";
+import { combineEpics, ofType } from 'redux-observable';
+import { delayWhen, map, mergeMap, tap } from 'rxjs/operators';
+import { from } from 'rxjs';
+import { combineReducers } from 'redux';
 
-import { INITIALIZE } from "./initialize";
+import { INITIALIZE } from './initialize';
 
 // =====================================================================================================================
 
-export const LOAD_ARTICLES_MANIFEST = "LOAD_ARTICLES_MANIFEST";
-export const LOAD_CURRENT_ARTICLE = "LOAD_CURRENT_ARTICLE";
-export const CACHE_ARTICLE = "CACHE_ARTICLE";
-export const SET_CURRENT_ARTICLE = "SET_CURRENT_ARTICLE";
-export const SET_MANIFEST = "SET_MANIFEST";
+export const LOAD_ARTICLES_MANIFEST = 'LOAD_ARTICLES_MANIFEST';
+export const LOAD_CURRENT_ARTICLE = 'LOAD_CURRENT_ARTICLE';
+export const CACHE_ARTICLE = 'CACHE_ARTICLE';
+export const SET_CURRENT_ARTICLE = 'SET_CURRENT_ARTICLE';
+export const SET_MANIFEST = 'SET_MANIFEST';
 
 // =====================================================================================================================
 
 /**
  * Init the lifecycle for loading the articles manifest
+ *
  * @returns {{type: string}}
  */
 export const loadArticlesManifest = () => ({ type: LOAD_ARTICLES_MANIFEST });
 
 /**
  * Init the lifecycle for loading a specific article
+ *
  * @param slug
  * @returns {{type: string, slug: string}}
  */
@@ -32,6 +34,7 @@ export const loadCurrentArticle = (slug) => ({ type: LOAD_CURRENT_ARTICLE, slug 
 
 /**
  * Update (or insert) the cache's copy of the article
+ *
  * @param slug
  * @param article
  * @returns {{type: string, article: {}}}
@@ -40,6 +43,7 @@ export const cacheArticle = (slug, article) => ({ type: CACHE_ARTICLE, slug, art
 
 /**
  * Set the article currently being viewed
+ *
  * @param slug
  * @param article
  * @returns {{type: string, article: {}}}
@@ -48,6 +52,7 @@ export const setCurrentArticle = (slug, article) => ({ type: SET_CURRENT_ARTICLE
 
 /**
  * Set the articles manifest
+ *
  * @param manifest
  * @returns {{type: string, manifest: {}}}
  */
@@ -57,6 +62,9 @@ export const setManifest = (manifest) => ({ type: SET_MANIFEST, manifest });
 
 /**
  * Reducer for the current article
+ *
+ * @param state
+ * @param action
  */
 export const currentArticle = (state = null, action) => {
   if (action.type === SET_CURRENT_ARTICLE) {
@@ -68,6 +76,7 @@ export const currentArticle = (state = null, action) => {
 
 /**
  * Reducer for the cache
+ *
  * @param state
  * @param action
  * @returns {{}}
@@ -77,7 +86,7 @@ export const cache = (state = {}, action) => {
     return {
       [action.article.slug]: action.article,
       ...state,
-    }
+    };
   }
 
   return state;
@@ -85,6 +94,7 @@ export const cache = (state = {}, action) => {
 
 /**
  * Reducer for the manfest
+ *
  * @param state
  * @param action
  * @returns {{}}
@@ -104,11 +114,12 @@ export const reducer = combineReducers({ currentArticle, cache, manifest });
 export const triggerLoadArticlesManifest = (action$) =>
   action$.pipe(
     ofType(INITIALIZE),
-    map(() => loadArticlesManifest())
+    map(() => loadArticlesManifest()),
   );
 
 /**
  * Makes a request for the article, or loads from the cache
+ *
  * @param action$
  * @param state$
  * @returns {*}
@@ -145,6 +156,7 @@ export const requestCurrentArticle = (action$, state$) =>
 
 /**
  * Makes a request for the articles manifest
+ *
  * @param action$
  * @returns {*}
  */
@@ -152,7 +164,7 @@ export const requestArticlesManifest = (action$) =>
   action$.pipe(
     ofType(LOAD_ARTICLES_MANIFEST),
     mergeMap(() =>
-      from(axios.get("/articles/manifest.json"))
+      from(axios.get('/articles/manifest.json'))
         .pipe(
           map(({ data: manifest }) => setManifest({
             ...manifest,

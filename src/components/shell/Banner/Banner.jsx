@@ -1,8 +1,8 @@
-import "./Banner.less";
+import './Banner.less';
 
-import React from "react";
-import BannerFlag from "../../shell/BannerFlag/BannerFlag";
-import BannerNav from "../BannerNav/BannerNav";
+import React from 'react';
+import BannerFlag from '../../shell/BannerFlag/BannerFlag';
+import BannerNav from '../BannerNav/BannerNav';
 
 /**
  * Banner

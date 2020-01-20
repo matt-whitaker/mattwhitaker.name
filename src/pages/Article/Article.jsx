@@ -1,10 +1,10 @@
-import { connect } from "react-redux";
-import React from "react";
+import { connect } from 'react-redux';
+import React from 'react';
 
-import Markdown from "../../components/common/Markdown/Markdown";
-import { ArticleView } from "../../components/views/ArticleView";
+import Markdown from '../../components/common/Markdown/Markdown';
+import { ArticleView } from '../../components/views/ArticleView';
 
-import { loadCurrentArticle } from "../../ducks/articles";
+import { loadCurrentArticle } from '../../ducks/articles';
 
 /**
  * Provide state and actions to ArticleView
@@ -25,6 +25,7 @@ export default connectArticleView(class Article extends React.PureComponent {
 
   /**
    * Render the ArticleView
+   *
    * @returns {*}
    */
   render() {

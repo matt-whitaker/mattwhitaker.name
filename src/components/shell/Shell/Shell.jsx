@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import "../../../less/reset";
-import "./Shell.less";
-import Banner from "../Banner/Banner";
-import Body from "../Body/Body";
-import ScrollWatcher from "../../common/ScrollWatcher/ScrollWatcher";
+import '../../../less/reset';
+import './Shell.less';
+import Banner from '../Banner/Banner';
+import Body from '../Body/Body';
+import ScrollWatcher from '../../common/ScrollWatcher/ScrollWatcher';
 
 /**
  * Shell
