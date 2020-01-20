@@ -1,0 +1,22 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 13.6.0
+      uses: actions/setup-node@v1
+      with:
+        node-version: 13.6.0
+    - name: npm install, build, and test
+      run: |
+        npm ci
+        npm test
+        npm run build --if-present
+      env:
+        CI: true
