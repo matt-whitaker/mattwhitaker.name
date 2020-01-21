@@ -1,16 +1,12 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import { combineEpics, createEpicMiddleware } from "redux-observable";
+import { applyMiddleware, createStore } from "redux";
+import { createEpicMiddleware } from "redux-observable";
 import { createLogger } from "redux-logger";
 
-import { reducer as articlesReducer, epic as articlesEpic } from "./ducks/articles";
+import { rootEpic, rootReducer } from "./ducks";
 
 const epicMiddleware = createEpicMiddleware();
 const loggerMiddleware = createLogger();
 
-const rootReducer = combineReducers({
-  articles: articlesReducer,
-});
-
 export const store = createStore(rootReducer, applyMiddleware(loggerMiddleware, epicMiddleware));
 
-epicMiddleware.run(combineEpics(articlesEpic));
+epicMiddleware.run(rootEpic);

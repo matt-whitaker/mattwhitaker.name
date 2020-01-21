@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import "./BasicView.less";
+import './BasicView.less';
 
 /**
  *
  * @param {{}} props
  * @param {React.Element} props.children
  * @returns {React.Element}
- * @constructor
+ * @class
  */
 export const BasicView = ({ children }) => (
   <div class="mw-basic-view">

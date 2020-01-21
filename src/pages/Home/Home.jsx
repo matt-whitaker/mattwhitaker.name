@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BasicView } from "../../components/views/BasicView/BasicView";
+import { BasicView } from '../../components/views/BasicView/BasicView';
 
 import './Home.less';
 

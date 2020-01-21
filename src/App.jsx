@@ -8,6 +8,9 @@ import { AppRoutes } from './routing/routes/AppRoutes';
 
 import { initialize } from './ducks/initialize';
 
+/**
+ * Provide the initialize action to the App root component
+ */
 export const connectApp = connect(
   null,
   { initialize },
@@ -42,7 +45,7 @@ export class App extends React.PureComponent {
     return (
       <AppRouter>
         <Shell>
-          <AppRoutes/>
+          <AppRoutes />
         </Shell>
       </AppRouter>
     );
