@@ -48,7 +48,7 @@ export class Article extends React.PureComponent {
 
   static propTypes = {
     match: PropTypes.any,
-    loadCurrentArticle: PropTypes.Function,
+    loadCurrentArticle: PropTypes.func,
 
   };
 

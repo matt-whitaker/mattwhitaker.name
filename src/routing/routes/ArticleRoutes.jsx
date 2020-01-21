@@ -36,7 +36,7 @@ export const ArticleRoutes = ({ manifest }) => (
 );
 
 ArticleRoutes.propTypes = {
-  manifest: PropTypes.object.isRequired,
+  manifest: PropTypes.object,
 };
 
 ArticleRoutes.Connected = connectArticleRoutes(ArticleRoutes);
