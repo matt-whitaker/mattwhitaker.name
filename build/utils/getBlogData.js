@@ -1,6 +1,0 @@
-/**
- * getBlogData
- */
-export function getBlogData() {
-
-}

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { BasicView } from "../../components/views/BasicView/BasicView";
+
 import './Home.less';
 
 /**
@@ -7,6 +9,8 @@ import './Home.less';
  */
 export default function Home() {
   return (
-    <div className="mw-resume" />
+    <BasicView>
+      Home :)
+    </BasicView>
   );
 }

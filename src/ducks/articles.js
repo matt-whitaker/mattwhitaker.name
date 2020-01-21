@@ -8,6 +8,7 @@ import { combineReducers } from 'redux';
 import { INITIALIZE } from './initialize';
 
 // =====================================================================================================================
+// Types
 
 export const LOAD_ARTICLES_MANIFEST = 'LOAD_ARTICLES_MANIFEST';
 export const LOAD_CURRENT_ARTICLE = 'LOAD_CURRENT_ARTICLE';
@@ -16,6 +17,7 @@ export const SET_CURRENT_ARTICLE = 'SET_CURRENT_ARTICLE';
 export const SET_MANIFEST = 'SET_MANIFEST';
 
 // =====================================================================================================================
+// Actions
 
 /**
  * Init the lifecycle for loading the articles manifest
@@ -59,6 +61,7 @@ export const setCurrentArticle = (slug, article) => ({ type: SET_CURRENT_ARTICLE
 export const setManifest = (manifest) => ({ type: SET_MANIFEST, manifest });
 
 // =====================================================================================================================
+// Reducers
 
 /**
  * Reducer for the current article
@@ -110,6 +113,7 @@ export const manifest = (state = null, action) => {
 export const reducer = combineReducers({ currentArticle, cache, manifest });
 
 // =====================================================================================================================
+// Epics
 
 export const triggerLoadArticlesManifest = (action$) =>
   action$.pipe(

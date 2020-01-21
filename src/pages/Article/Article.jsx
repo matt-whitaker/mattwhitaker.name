@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Markdown from '../../components/common/Markdown/Markdown';
-import { ArticleView } from '../../components/views/ArticleView';
+import { ArticleView } from '../../components/views/ArticleView/ArticleView';
 
 import { loadCurrentArticle } from '../../ducks/articles';
 
