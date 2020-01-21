@@ -35,6 +35,7 @@ export class App extends React.PureComponent {
 
   /**
    * Render the app
+   *
    * @returns {React.Element}
    */
   render() {
