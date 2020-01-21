@@ -3,7 +3,7 @@ import React from 'react';
 import './Resume.less';
 
 /**
- *
+ * @returns {React.Element}
  */
 export default function Resume() {
   return (
@@ -12,3 +12,4 @@ export default function Resume() {
     </div>
   );
 }
+

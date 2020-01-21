@@ -14,7 +14,7 @@ import React from 'react';
  */
 export default class Image extends React.PureComponent {
   /**
-   * @returns the image
+   * @returns {React.Element} the image
    */
   render() {
     const { src, children: alt } = this.props;

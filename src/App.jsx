@@ -24,12 +24,19 @@ export const connectApp = connect(
  * ```
  */
 export class App extends React.PureComponent {
+  /**
+   * Kick off action to initialize the app
+   */
   componentDidMount() {
     const { initialize } = this.props;
 
     initialize();
   }
 
+  /**
+   * Render the app
+   * @returns {React.Element}
+   */
   render() {
     return (
       <AppRouter>

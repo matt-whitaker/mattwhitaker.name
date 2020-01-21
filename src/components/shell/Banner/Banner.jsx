@@ -16,7 +16,7 @@ import BannerNav from '../BannerNav/BannerNav';
  */
 export default class Banner extends React.Component {
   /**
-   * @returns Banner view root component
+   * @returns {React.Element} Banner view root component
    */
   render() {
     return (

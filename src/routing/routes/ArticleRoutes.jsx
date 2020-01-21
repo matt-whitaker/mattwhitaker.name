@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { Article } from '../../pages/Article/Article';
 
@@ -21,15 +22,21 @@ export const connectArticleRoutes = connect(
  * ```
  * <ArticleRoutes />
  * ```
+ *
+ * @returns {*}
  */
 export const ArticleRoutes = ({ manifest }) => (
   <Route
     exact
     path={manifest ? manifest.paths: []}
     render={() => (
-      <Route path="/article/*" component={Article.Connected} />
+      <Route path='/article/*' component={Article.Connected} />
     )}
   />
 );
+
+ArticleRoutes.propTypes = {
+  manifest: PropTypes.object.isRequired,
+};
 
 ArticleRoutes.Connected = connectArticleRoutes(ArticleRoutes);

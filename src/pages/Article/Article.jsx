@@ -18,6 +18,9 @@ export const connectArticleView = connect(
  * ArticleView view
  */
 export class Article extends React.PureComponent {
+  /**
+   * Fire action to load the article
+   */
   componentDidMount() {
     const { match, loadCurrentArticle } = this.props;
     loadCurrentArticle(match.params[0]);
@@ -41,6 +44,12 @@ export class Article extends React.PureComponent {
       </ArticleView>
     );
   }
+
+  static propTypes = {
+    match: PropTypes.any,
+    loadCurrentArticle: PropTypes.Function,
+
+  };
 
   static Connected = connectArticleView(Article);
 }

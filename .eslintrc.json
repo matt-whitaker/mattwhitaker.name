@@ -32,6 +32,6 @@
     "jsdoc/require-param-description": [0],
     "space-before-blocks": [2, "always"],
     "block-spacing": [2, "always"],
-    "react/prop-types": [2]
+    "react/prop-types": [0]
   }
 }
