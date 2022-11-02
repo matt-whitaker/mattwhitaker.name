@@ -14,6 +14,6 @@
     "blog-tools": "git://github.com/matt-whitaker/blog-tools.git#develop",
     "config": "^1.26.1",
     "dotenv": "^4.0.0",
-    "gulp": "^3.9.1"
+    "gulp": "^4.0.2"
   }
 }
