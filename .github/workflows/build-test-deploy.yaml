@@ -25,6 +25,9 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     needs: ["Build", "Test"]
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
