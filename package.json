@@ -1,16 +1,18 @@
 {
   "name": "mattwhitaker.name",
-  "version": "0.0.7",
+  "version": "0.0.1",
   "description": "my personal profile site",
   "main": "index.js",
   "scripts": {
-    "test": "",
-    "start": "echo \"tbd...\""
+    "test": "npm run test -ws --if-present",
+    "build": "npm run build -ws --if-present"
   },
-  "author": "Matt Whitaker <mattwhitaker.name@gmail.com>",
+  "author": "Matt Whitaker",
   "license": "ISC",
-  "devDependencies": {
-    "dotenv": "16.3.1"
-  },
-  "workspaces": ["packages/*"]
+  "workspaces": [
+    "packages/deploy",
+    "packages/infra",
+    "packages/tools",
+    "packages/www"
+  ]
 }

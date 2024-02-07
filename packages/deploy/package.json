@@ -1,0 +1,11 @@
+{
+  "name": "@mattwhitaker.name/deploy",
+  "version": "0.0.1",
+  "description": "Deployment project for pushing the site",
+  "scripts": {
+    "s3": "./bin/publish-s3.sh",
+    "cloudfront": "./bin/flush-cloudfront.sh"
+  },
+  "author": "Matt Whitaker (https://mattwhitaker.name)",
+  "license": "ISC"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "@mattwhitaker.name/infra",
+  "version": "0.0.1",
+  "description": "Infrastructure package for establishing site components",
+  "scripts": {},
+  "author": "Matt Whitaker (https://mattwhitaker.name)",
+  "license": "ISC"
+}

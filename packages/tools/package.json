@@ -1,0 +1,17 @@
+{
+  "name": "@mattwhitaker.name/tools",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "generate": "../www/bin/generate.js"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "argparse": "^2.0.1",
+    "args": "^5.0.3",
+    "ejs": "^3.1.9"
+  }
+}

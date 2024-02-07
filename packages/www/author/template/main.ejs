@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= site.title %> - <%= title %></title>
+        <link href="<%= stylesheet %>" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="mw-body">
+            <header class="mw-header">
+                <img class="mw-site-avatar" src="<%= site.avatarImage %>" />
+                <h1 class="mw-site-title"><%= site.title %></h1>
+                <nav class="mw-site-nav">
+                    <ul class="mw-nav-list">
+                        <% site.nav.items.forEach(({ url, text }) => { %>
+                            <li class="mw-nav-item">
+                                <a class="mw-nav-link" href="<%= url %>"><%= text %></a>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </nav>
+            </header>
+            <main class="mw-main">
+                <article>
+                    <%- content %>
+                </article>
+            </main>
+        </div>
+    </body>
+</html>
