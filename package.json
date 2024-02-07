@@ -10,7 +10,6 @@
   "author": "Matt Whitaker",
   "license": "ISC",
   "workspaces": [
-    "packages/deploy",
     "packages/infra",
     "packages/tools",
     "packages/www"
