@@ -41,4 +41,5 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: www-assets
+          path: packages/www/dist
       - run: aws s3 sync packages/www/dist s3://${{ vars.WWW_AWS_S3_BUCKET }}
