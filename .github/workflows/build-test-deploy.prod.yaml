@@ -1,5 +1,5 @@
-name: Build, Test, and Deploy (Dev)
-run-name: "Build, Test, and Deploy (Dev)"
+name: Build, Test, and Deploy (Prod)
+run-name: "Build, Test, and Deploy (Prod)"
 on: [push]
 jobs:
   Build:
@@ -25,7 +25,7 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     needs: ["Build", "Test"]
-    environment: "dev"
+    environment: "prod"
     permissions:
       id-token: write
       contents: read
@@ -43,4 +43,4 @@ jobs:
           name: www-assets
           path: packages/www/dist
       - run: aws s3 sync --delete --acl public-read packages/www/dist s3://${{ secrets.WWW_AWS_S3_BUCKET }}
-      - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.WWW_AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/"
+      - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.WWW_AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/" >/dev/null
