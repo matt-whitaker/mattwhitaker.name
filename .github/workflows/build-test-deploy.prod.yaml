@@ -1,9 +1,11 @@
 name: Build, Test, and Deploy (Prod)
 run-name: "Build, Test, and Deploy (Prod)"
-on: 
+
+on:
   push:
     branches:
       - mainline
+
 jobs:
   Build:
     runs-on: ubuntu-latest
@@ -39,8 +41,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
-          role-duration-seconds: 1200
-          role-session-name: WWWDeploySession
       - uses: actions/download-artifact@v4
         with:
           name: www-assets
