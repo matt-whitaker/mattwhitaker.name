@@ -20,10 +20,8 @@ exit 0
 #
 #echo "Invalidating Cloudfront"
 #
-#aws cloudfront create-invalidation \
-#--distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID \
-#--paths "/" \
-#>/dev/null
+# aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID --paths "/" >/dev/null
+
 
 #echo "Invalidated Cloudfront"
 

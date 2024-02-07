@@ -43,3 +43,4 @@ jobs:
           name: www-assets
           path: packages/www/dist
       - run: aws s3 sync --delete --acl public-read packages/www/dist s3://${{ vars.WWW_AWS_S3_BUCKET }}
+      - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/" >/dev/null
