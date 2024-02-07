@@ -1,6 +1,8 @@
 name: Build, Test, and Deploy (Dev)
 run-name: "Build, Test, and Deploy (Dev)"
-on: [push]
+on: 
+  branches:
+    - develop
 jobs:
   Build:
     runs-on: ubuntu-latest
