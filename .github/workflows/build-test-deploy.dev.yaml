@@ -1,14 +1,13 @@
 name: Build, Test, and Deploy (Dev)
 run-name: "Build, Test, and Deploy (Dev)"
 
-on: 
+on:
   push:
     branches:
       - develop
       - mainline
 
 env:
-  WWW_ENVIRONMENT: "dev"
   WWW_ASSETS_DIR: packages/www/dist
   NODE_VERSION: 18
 
@@ -36,7 +35,7 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     needs: ["Build", "Test"]
-    environment: ${{ env.WWW_ENVIRONMENT }}
+    environment: "dev"
     permissions:
       id-token: write
       contents: read
