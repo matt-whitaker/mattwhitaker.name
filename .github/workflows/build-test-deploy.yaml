@@ -31,9 +31,5 @@ jobs:
           aws-region: ${{ vars.AWS_DEFAULT_REGION }}
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
-          role-external-id: ${{ secrets.AWS_ROLE_EXTERNAL_ID }}
-          role-duration-seconds: 1200
-          role-session-name: MySessionName
       - run: aws s3 sync packages/www/dist s3://dev.mattwhitaker.name
-      - run: echo "done?"
+      - run: echo "done??"
