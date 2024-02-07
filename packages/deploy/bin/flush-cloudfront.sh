@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "temporarily disabled"
+exit 0
+
 # TODO Does Github have environments?
 if [ "${CIRCLE_BRANCH}" == "master" ]; then
   AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD
