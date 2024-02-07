@@ -1,7 +1,7 @@
 {
   "name": "@mattwhitaker.name/www",
   "version": "0.0.1",
-  "description": "Website files and build system",
+  "description": "Asset build for main website",
   "scripts": {
     "build": "npm run less && npm run ejs && npm run images",
     "ejs": "./bin/generate.js",

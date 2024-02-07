@@ -1,7 +1,7 @@
 {
   "name": "mattwhitaker.name",
   "version": "0.0.1",
-  "description": "my personal profile site",
+  "description": "Home of my personal websites",
   "main": "index.js",
   "scripts": {
     "test": "npm run test -ws --if-present",
@@ -10,7 +10,6 @@
   "author": "Matt Whitaker",
   "license": "ISC",
   "workspaces": [
-    "packages/infra",
     "packages/tools",
     "packages/www"
   ]

@@ -1,7 +1,7 @@
 {
   "name": "@mattwhitaker.name/tools",
   "version": "0.0.1",
-  "description": "",
+  "description": "Re-usable tools for crafting my static websites",
   "main": "index.js",
   "scripts": {
     "generate": "../www/bin/generate.js"
