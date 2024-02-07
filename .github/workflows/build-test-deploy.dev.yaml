@@ -37,10 +37,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           role-duration-seconds: 1200
-          role-session-name: MySessionName
+          role-session-name: WWWDeploySession
       - uses: actions/download-artifact@v4
         with:
           name: www-assets
           path: packages/www/dist
       - run: aws s3 sync --delete --acl public-read packages/www/dist s3://${{ vars.WWW_AWS_S3_BUCKET }}
-      - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/" >/dev/null
+      - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.WWW_AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/" >/dev/null
