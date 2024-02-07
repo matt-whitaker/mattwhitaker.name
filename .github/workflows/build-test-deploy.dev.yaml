@@ -15,6 +15,7 @@ jobs:
         with:
           name: www-assets
           path: packages/www/dist
+          
   Test:
     runs-on: ubuntu-latest
     needs: ["Build"]
@@ -37,4 +38,7 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           role-duration-seconds: 1200
           role-session-name: MySessionName
-      - run: aws s3 sync packages/www/dist s3://${{ vars.AWS_S3_BUCKET }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: www-assets
+      - run: aws s3 sync packages/www/dist s3://${{ vars.WWW_AWS_S3_BUCKET }}
