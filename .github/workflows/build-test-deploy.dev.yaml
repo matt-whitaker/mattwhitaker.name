@@ -38,4 +38,3 @@ jobs:
           role-duration-seconds: 1200
           role-session-name: MySessionName
       - run: aws s3 sync packages/www/dist s3://${{ vars.AWS_S3_BUCKET }}
-      - run: echo "done??"
