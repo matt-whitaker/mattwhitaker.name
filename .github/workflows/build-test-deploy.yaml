@@ -27,4 +27,6 @@ jobs:
     needs: ["Build", "Test"]
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-west-2
       - run: aws s3 sync packages/www/dist s3://dev.mattwhitaker.name
