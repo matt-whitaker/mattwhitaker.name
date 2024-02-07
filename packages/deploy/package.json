@@ -4,7 +4,8 @@
   "description": "Deployment project for pushing the site",
   "scripts": {
     "s3": "./bin/publish-s3.sh",
-    "cloudfront": "./bin/flush-cloudfront.sh"
+    "cloudfront": "./bin/flush-cloudfront.sh",
+    "deploy": "npm run s3"
   },
   "author": "Matt Whitaker (https://mattwhitaker.name)",
   "license": "ISC"

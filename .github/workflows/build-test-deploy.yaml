@@ -26,4 +26,5 @@ jobs:
     runs-on: ubuntu-latest
     needs: ["Build", "Test"]
     steps:
-      - run: echo "wip"
+      - uses: aws-actions/configure-aws-credentials@v4
+      - run: aws s3 sync packages/www/dist s3://dev.mattwhitaker.name
