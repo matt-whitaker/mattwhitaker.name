@@ -1,5 +1,5 @@
-name: Build, Test, and Deploy
-run-name: "Build, Test, and Deploy"
+name: Build, Test, and Deploy (Dev)
+run-name: "Build, Test, and Deploy (Dev)"
 on: [push]
 jobs:
   Build:
@@ -25,17 +25,18 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     needs: ["Build", "Test"]
+    environment: "dev"
     permissions:
       id-token: write
       contents: read
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-region: us-west-2
+          aws-region: ${{ vars.AWS_DEFAULT_REGION }}
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           role-duration-seconds: 1200
           role-session-name: MySessionName
-      - run: aws s3 sync packages/www/dist s3://dev.mattwhitaker.name
+      - run: aws s3 sync packages/www/dist s3://${{ AWS_S3_BUCKET }}
       - run: echo "done??"
