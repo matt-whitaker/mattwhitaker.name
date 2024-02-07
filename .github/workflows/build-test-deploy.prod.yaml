@@ -1,8 +1,9 @@
 name: Build, Test, and Deploy (Prod)
 run-name: "Build, Test, and Deploy (Prod)"
 on: 
-  branches:
-    - mainline
+  push:
+    branches:
+      - mainline
 jobs:
   Build:
     runs-on: ubuntu-latest
