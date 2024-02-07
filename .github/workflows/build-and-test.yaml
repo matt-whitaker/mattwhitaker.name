@@ -11,4 +11,4 @@ jobs:
           node-version: 18
       - uses: actions/setup-python@v4
       - run: npm ci
-      - run: npm build -ws
+      - run: npm run build -ws
