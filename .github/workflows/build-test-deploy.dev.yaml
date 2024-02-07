@@ -9,7 +9,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-#      - uses: actions/setup-python@v4
       - run: npm ci
       - run: npm run build
       - uses: actions/upload-artifact@v4
@@ -38,5 +37,5 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           role-duration-seconds: 1200
           role-session-name: MySessionName
-      - run: aws s3 sync packages/www/dist s3://${{ AWS_S3_BUCKET }}
+      - run: aws s3 sync packages/www/dist s3://${{ vars.AWS_S3_BUCKET }}
       - run: echo "done??"
