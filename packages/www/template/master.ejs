@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= site.title %> - <%= page.title %></title>
+        <link href="<%= rendered.stylesheet %>" rel="stylesheet" />
+        <link href="<%= site.google.fonts %>" rel="stylesheet" />
+    </head>
+    <body class="mw-body <%= page.class %>">
+        <div>
+            <%- await include("/template/component/nav.ejs") %>
+            <%- await include("/template/component/banner.ejs", { img: page.banner }) %>
+            <%- await include("/template/component/main.ejs", { content: rendered.content }) %>
+            <%- await include("/template/component/footer.ejs") %>
+        </div>
+    </body>
+</html>

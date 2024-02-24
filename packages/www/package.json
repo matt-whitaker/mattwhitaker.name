@@ -3,27 +3,31 @@
   "version": "0.0.1",
   "description": "Asset build for main website",
   "scripts": {
-    "build": "npm run less && npm run ejs && npm run image",
-    "ejs": "bin/ejs.js",
+    "build": "npm run clear && npm run less && npm run template && npm run image",
+    "clear": "rm -rf ./dist",
+    "template": "bin/generate.js",
+    "template:watch": "nodemon bin/generate.js -e ejs,json --ignore dist/",
     "image": "cp -r image ./dist/image",
     "lint": "stylelint style/**/*.less",
     "lint:fix": "npm run lint -- --fix",
-    "less": "npm run lint && lessc style/style.less dist/style.css",
-    "start": "npm rum build && http-server ./dist -p 8080 -o -r"
+    "less": "lessc style/style.less dist/style.css",
+    "less:watch": "nodemon --exec \"lessc style/style.less dist/style.css\" -e css,less --ignore dist/",
+    "serve": "http-server ./dist -p 8080 -c-1 -o -r",
+    "start": "concurrently \"npm run template:watch\" \"npm run less:watch\" \"npm run serve\""
   },
   "author": "Matt Whitaker (https://mattwhitaker.name)",
   "license": "ISC",
   "type": "module",
-  "devDependencies": {
+  "dependencies": {
+    "args": "^5.0.3",
+    "concurrently": "^8.2.2",
     "ejs": "^3.1.9",
+    "http-server": "^14.1.1",
     "less": "4.2.0",
     "markdown-it": "^13.0.2",
+    "nodemon": "^3.0.3",
     "stylelint": "15.11.0",
     "stylelint-config-standard": "34.0.0",
     "stylelint-config-standard-less": "2.0.0"
-  },
-  "dependencies": {
-    "args": "^5.0.3",
-    "http-server": "^14.1.1"
   }
 }

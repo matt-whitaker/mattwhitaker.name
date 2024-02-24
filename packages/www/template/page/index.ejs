@@ -1,0 +1,54 @@
+<%# title Matt Whtiaker %>
+<%# banner /image/temp-pnw-2.webp %>
+<article class="mw-overview">
+    <img class="mw-headshot" src="/image/temp-back.webp" />
+    <article class="mw-info">
+        <header>
+            <h1>Matt Whitaker</h1>
+            <h2>software guy</h2>
+        </header>
+        <main>
+            <!-- hidden inputs -->
+            <input id="mw-slot-1" type="radio" name="tab" checked>
+            <input id="mw-slot-2" type="radio" name="tab">
+            <input id="mw-slot-3" type="radio" name="tab">
+            <input id="mw-slot-4" type="radio" name="tab">
+
+            <!-- Labels for controlling inputs, and serve as the tab navigation -->
+            <label for="mw-slot-1" rel="tab">About</label>
+            <span>-</span>
+            <label for="mw-slot-2" rel="tab">Career</label>
+            <span>-</span>
+            <label for="mw-slot-3" rel="tab">Technology</label>
+            <span>-</span>
+            <label for="mw-slot-4" rel="tab">Leadership</label>
+
+            <!-- Content, controlled by the inputs' checked state, downstream for CSS selection -->
+            <section class="mw-slot-1">
+                <div class="mw-pflair mw-slot-1">
+                    <p class="">about me</p>
+                    <p>An accomplished and versatile full stack software engineer with over a decade of experience in the industry.</p>
+                </div>
+            </section>
+            <section class="mw-slot-2">
+                <div class="mw-pflair mw-slot-2">
+                    <p class="">who i am</p>
+                    <p>An accomplished and versatile full stack software engineer with over a decade of experience in the industry.</p>
+                </div>
+            </section>
+            <section class="mw-slot-3">
+                <div class="mw-pflair mw-slot-3">
+                    <p class="">what i do?</p>
+                    <p>- stack tokens to match the ai example?</p>
+                </div>
+            </section>
+            <section class="mw-slot-4">
+                <div class="mw-pflair mw-slot-4">
+                    <p class="">why i care</p>
+                    <p>what drives me, what are my people oriented focuses in development?</p>
+                    <p>leadership</p>
+                </div>
+            </section>
+        </main>
+    </article>
+</article>

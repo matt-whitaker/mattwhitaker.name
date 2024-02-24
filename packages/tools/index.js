@@ -1,79 +1,81 @@
-import args from "args";
-import { resolve, relative, extname } from "path";
-import { render } from "ejs";
-import { readdir, readFile as _readFile, writeFile as _writeFile } from "fs/promises";
-
-import config from "./cli.config.js";
-
-/**
- * Reads a file 
- * @param {string} fullpath 
- * @returns {Promise<string>} a promise of the file's contents
- */
-export const readFile = async (fullpath) => _readFile(fullpath, "utf8");
+import { basename, extname } from "path";
+import { extractEjsAnnotations, renderEjs } from "./ejs.js";
+import { loadFiles, readFile, resolveOutputPath, resolvePath, writeFile } from "./file.js";
+import { parseArgs } from "./cli.js";
+import { EXT_EJS, ENGINE_EJS, EXT_MD, ENGINE_MD } from "./constants.js";
 
 /**
- * Writes data to a file
- * @param {string} fullpath 
- * @param {string} data 
- * @returns {Promise<void>} a promise mostly useful for error handling
+ *
+ * @async
+ * @param {(ENGINE_EJS,ENGINE_MD)} engine Which templating engine to use
+ * @param {string} template The template to render
+ * @param {object} context The context data to pass in
+ * @param {object} options Optional options for the engine
+ * @returns {string} a rendered template
  */
-export const writeFile = async (fullpath, data) => {
-  return _writeFile(fullpath, data);
+const render = async (engine, template, context, options = {}) => {
+  if (engine === ENGINE_EJS) {
+    return renderEjs(template, context, { async: true, ...options });
+  }
+
+  return "";
 }
 
 /**
- * Resolves a series of components into a path
- * @param  {...string[]} args list of string parts of a path 
- * @returns {string} the resolved path
+ *
+ * @param {(ENGINE_EJS,ENGINE_MD)} engine Which templating engine to use
+ * @param {string} data
+ * @returns {{}}
  */
-export const resolvePath = (...args) => resolve(process.cwd(), ...args);
+const extractAnnotations = (engine, data) => {
+  if (engine === ENGINE_EJS) {
+    return extractEjsAnnotations(data);
+  }
+
+  return {};
+}
 
 /**
- * Loads CLI arguments
- * @param {object} argv 
- * @returns {object} an object of arguments
+ * Generates the HTML of the static site. Supports EJS and Markdown files
+ * @async
+ * @param argv {any[]} list of arguments (such as from a command line call)
+ * @param options {object}
+ * @param options.ext {(EXT_EJS,EXT_MD)[]} list of file extensions to use; loads all files if omitted or empty
+ * @param options.root {string} project root (cwd)
+ * @returns {Promise<void[]>}
  */
-export const parseArgs = (argv) => args.options(config).parse(argv);
+export const buildSite = async (argv, options) => {
+  const args = parseArgs(argv);
+  const output = resolvePath(options.root, args.output);
 
-/**
- * Resolves a path for output, helps with renaming
- * @param {string} path 
- * @param {string} name 
- * @param {string} output 
- * @param {string} ext 
- * @returns {string} a fully resolve and renamed fullpath
- */
-export const resolveOutputPath = (path, name, output, ext) =>
-  resolvePath(path, relative(path, resolvePath(output)), name.replace(extname(name), ext))
+  const [{ site }, pages, template] = await Promise.all([
+    readFile(resolvePath(args.config), JSON.parse),
+    loadFiles(args.pages, true, options.ext),
+    readFile(resolvePath(args.template)),
+  ]);
 
-/**
- * 
- * @param {string} contents 
- * @param {object} context 
- * @returns {string} a rendered EJS template
- */
-export const renderEjs = async (contents, context) => render(contents, context, { async: true })
+  await Promise.all(
+    pages.map(async ({ name, path, data }) => {
+      // extract annotated metadata from the file
+      const page = extractAnnotations(extname(name).slice(1), data);
 
-/**
- * Lists a directory, optionally recursively or filtered by extension
- * @param {string} dir 
- * @param {boolean} recursive 
- * @param {string[]} extensions 
- * @returns {Proimse<object[]>} a promise of a list of files
- */
-export const listDirectory = async (dir, recursive = true, extensions = []) =>
-  (await readdir(resolvePath(dir), { withFileTypes: true, recursive }))
-    .filter(file => !file.isDirectory() && extensions.includes(extname(file.name)));
+      // still need a title at a minimum
+      page.title = page.title || basename(name, extname(name));
 
-/**
- * Loads a directory of files, optionally recursively or filtered by extensions
- * @param {string} dir 
- * @param {boolean} recursive 
- * @param {string[]} extensions 
- * @returns 
- */
-export const loadFiles = async (dir, recursive = true, extensions = []) => Promise.all(
-  (await listDirectory(dir, recursive, extensions))
-    .map(async ({ path, name }) => ({ content: await readFile(resolvePath(path, name)), path, name })));
- 
+      const ctx = {
+        page,
+        site,
+      };
+
+      // render the "inner" page contents, and put it back on the context for main template rendering
+      ctx.rendered = {
+        content: await render(extname(name).slice(1), data, ctx, options),
+        stylesheet: args.stylesheet,
+      };
+
+      // render into main template and write
+      writeFile(
+        resolveOutputPath(output, name),
+        await render(extname(args.template).slice(1), template, ctx, options));
+    }));
+}

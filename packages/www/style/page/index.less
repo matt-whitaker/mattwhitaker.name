@@ -1,0 +1,114 @@
+@import "../include/sizing";
+
+.mw-overview {
+  display: flex;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 50px;
+  width: 100%;
+
+  .mw-headshot {
+    display: block;
+    width: 300px;
+    margin-right: 50px;
+    border-radius: 4px;
+    box-shadow: .10ex .10ex .35ex black;
+  }
+
+  .mw-info {
+    display: block;
+    flex-grow: 1;
+    overflow-x: hidden;
+
+    .mw-pflair {
+      @offset: calc(5% + 4px);
+
+      margin: @small 0;
+      border: 1px solid black;
+      border-radius: @large;
+      width: 105%;
+      position: relative;
+      right: @offset;
+      box-shadow: .02ex .02ex .2ex black;
+      padding: 0 @offset;
+      box-sizing: border-box;
+    }
+
+    header {
+      h1 {
+        margin: @xsmall 0;
+      }
+
+      h2 {
+        font-size: 1em;
+        margin: 0 0 @large;
+      }
+    }
+
+    main {
+      > section {
+        display: none;
+        margin-top: @large;
+      }
+
+      > input {
+        opacity: 0;
+        position: absolute;
+      }
+
+      > label {
+        font-weight: 300;
+        font-size: 1em;
+
+        &:hover {
+          text-shadow: -0.04ex 0 0 black, 0.04ex 0 0 black;
+          cursor: pointer;
+        }
+      }
+
+      > hr {
+        margin: 15px 0;
+      }
+
+      #mw-slot-1:checked {
+        ~ .mw-slot-1 {
+          display: block;
+        }
+
+        ~ [for="mw-slot-1"] {
+          text-shadow: -0.04ex 0 0 black, 0.04ex 0 0 black;
+        }
+      }
+
+      #mw-slot-2:checked {
+        ~ .mw-slot-2 {
+          display: block;
+        }
+
+        ~ [for="mw-slot-2"] {
+          text-shadow: -0.04ex 0 0 black, 0.04ex 0 0 black;
+        }
+      }
+
+      #mw-slot-3:checked {
+        ~ .mw-slot-3 {
+          display: block;
+        }
+
+        ~ [for="mw-slot-3"] {
+          text-shadow: -0.04ex 0 0 black, 0.04ex 0 0 black;
+        }
+      }
+
+      #mw-slot-4:checked {
+        ~ .mw-slot-4 {
+          display: block;
+        }
+
+        ~ [for="mw-slot-4"] {
+          text-shadow: -0.04ex 0 0 black, 0.04ex 0 0 black;
+        }
+      }
+    }
+  }
+}

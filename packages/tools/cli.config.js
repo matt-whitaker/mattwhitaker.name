@@ -1,18 +1,13 @@
 export default [
   {
-    "name": "blogs",
-    "description": "root directory where blogs are stored",
-    "defaultValue": "author/blog"
-  },
-  {
     "name": "pages",
-    "description": "root directory where pages are stored",
-    "defaultValue": "author/page"
+    "description": "root directory where page are stored",
+    "defaultValue": "template/page"
   },
   {
     "name": "template",
     "description": "site wide main template",
-    "defaultValue": "author/template/main.ejs"
+    "defaultValue": "template/master.ejs"
   },
   {
     "name": "stylesheet",
@@ -21,12 +16,12 @@ export default [
   },
   {
     "name": "output",
-    "description": "directory where rendered pages are stored",
+    "description": "directory where rendered page are stored",
     "defaultValue": "dist"
   },
   {
     "name": "config",
     "description": "config file for global site data",
-    "defaultValue": "author/site.config.json"
+    "defaultValue": "site.config.json"
   }
 ]
