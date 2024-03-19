@@ -7,7 +7,7 @@
     "clear": "rm -rf ./dist",
     "template": "bin/generate.js",
     "template:watch": "nodemon bin/generate.js -e ejs,json --ignore dist/",
-    "image": "cp -r image ./dist/image",
+    "image": "cp -r image ./dist",
     "lint": "stylelint style/**/*.less",
     "lint:fix": "npm run lint -- --fix",
     "less": "lessc style/style.less dist/style.css",

@@ -1,6 +1,8 @@
+
+<% if (site.features.nav.enabled) { %>
 <nav class="mw-nav">
-    <% if (site.openToWork) { %>
-    <a href="#">#openToWork</a>
+    <% if (site.features.nav.hire) { %>
+    <a href="#">#hire</a>
     <div>|</div>
     <% } %>
     <a href="#">about</a>
@@ -9,3 +11,4 @@
     <div rel="divider">|</div>
     <a href="#">contact</a>
 </nav>
+<% } %>

@@ -1,0 +1,19 @@
+@import (reference) "../include/sizing.less";
+@import (reference) "../include/fonts.less";
+@import (reference) "../include/colors.less";
+
+.mw-tag {
+  .urbanist(@weight: 300, @size: 1.05em);
+
+  color: @silver;
+  padding: 0 @xsmall 0;
+  background-color: @background-shade;
+  vertical-align: middle;
+  display: inline-block;
+
+  &:hover {
+    text-shadow: -0.04ex 0 .01ex @silver, 0.04ex 0 .01ex @silver;
+
+    cursor: pointer;
+  }
+}

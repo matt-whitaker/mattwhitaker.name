@@ -1,8 +1,8 @@
-@import "include/colors.less";
-@import "include/fonts.less";
+@import (reference) "include/colors.less";
+@import (reference) "include/fonts.less";
 
 // -- RESET --
-@import (inline) 'normalize.css';
+@import (inline,once) 'normalize.css';
 
 // -- GLOBALS --
 
@@ -11,17 +11,21 @@ html, body {
   padding: 0;
   height: 100vh;
   width: 100vw;
-  font-family: @font-secondary;
+
+  .urbanist();
 }
 
 body {
-  background: lightgray;
+  background-image: url("/image/cubes.png");
+  background-color: @background-shade;
 
   > div {
+    display: flex;
+    flex-direction: column;
     position: relative;
     max-width: 1100px;
+    height: 100%;
     margin: 0 auto;
-    //box-shadow: .05em .05em .1em black;
   }
 }
 
@@ -31,18 +35,24 @@ a {
   white-space: nowrap;
 
   &:hover {
-    color: magenta;
+    color: @silver;
     text-decoration: underline;
   }
 }
 
 h1, h2 {
-  font-weight: 300;
-  font-family: @font-primary;
+  .urbanist(@weight: 300)
+}
+
+.mw-podkova {
+  .podkova();
 }
 
 // -- COMPONENTS --
 
 @import "component/banner.less";
 @import "component/nav.less";
+@import "component/icon-marquee.less";
+@import "component/tag.less";
+@import "component/tag-array.less";
 @import "page/index.less";

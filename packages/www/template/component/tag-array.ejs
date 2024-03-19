@@ -1,0 +1,5 @@
+<p class="mw-tag-array">
+    <% for (tag of tags) { %>
+    <%- await include("/template/component/tag.ejs", { tag }) %>
+    <% } %>
+</p>

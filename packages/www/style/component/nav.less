@@ -1,13 +1,15 @@
+@import "../include/colors";
+
 .mw-nav {
   position: absolute;
   display: flex;
-  justify-content: end;
   flex-direction: row;
+  justify-content: center;
   height: 50px;
-  right: 50px;
+  width: 100%;
 
   a, div {
-    color: white;
+    color: @black;
     font-weight: 400;
   }
 
@@ -16,6 +18,7 @@
     align-self: center;
     display: block;
     padding: 0 15px;
+    letter-spacing: .08em;
   }
 
   div {

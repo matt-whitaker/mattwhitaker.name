@@ -1,9 +1,13 @@
 .mw-banner {
+
+  flex-grow: 2;
+
   display: block;
-  background-image: url("/image/temp-pnw-2.webp");
-  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center top;
-  height: 538px;
+  background-position: center 0;
+  background-size: cover;
+  @height: 538px;
+  height: @height;
+  flex-basis: @height;
   width: 100%;
 }

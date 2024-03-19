@@ -1,54 +1,56 @@
-@import "../include/sizing";
+@import (reference) "../include/colors";
+@import (reference) "../include/sizing";
+@import (reference) "../include/fonts";
 
 .mw-overview {
   display: flex;
-  background-color: white;
+  background-color: @page-shade;
   box-sizing: border-box;
   padding: 50px;
   width: 100%;
+  max-height: 400px;
+
+  h1 {
+    .podkova(300, @size: 1.8em);
+
+    margin: (@xsmall / 2) 0 0 0;
+  }
+
+  h2 {
+    .podkova(@size: 1.1em);
+
+    margin: (@xsmall / 2) 0 0 0;
+  }
 
   .mw-headshot {
     display: block;
     width: 300px;
     margin-right: 50px;
     border-radius: 4px;
-    box-shadow: .10ex .10ex .35ex black;
+    box-shadow: .10ex .10ex .35ex @black;
   }
 
   .mw-info {
-    display: block;
-    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
     overflow-x: hidden;
 
-    .mw-pflair {
-      @offset: calc(5% + 4px);
-
-      margin: @small 0;
-      border: 1px solid black;
-      border-radius: @large;
-      width: 105%;
-      position: relative;
-      right: @offset;
-      box-shadow: .02ex .02ex .2ex black;
-      padding: 0 @offset;
-      box-sizing: border-box;
-    }
-
-    header {
-      h1 {
-        margin: @xsmall 0;
-      }
-
-      h2 {
-        font-size: 1em;
-        margin: 0 0 @large;
-      }
-    }
-
     main {
+      @labels: slot-1, slot-2, slot-3, slot-4;
+      .text-shadow(@color: #000) {
+        text-shadow: -0.04ex 0 .01ex @color, 0.04ex 0 .01ex @color;
+      }
+
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+
       > section {
         display: none;
-        margin-top: @large;
+        margin-top: @xsmall;
+        flex-grow: 2;
+        flex-direction: column;
       }
 
       > input {
@@ -56,57 +58,89 @@
         position: absolute;
       }
 
-      > label {
-        font-weight: 300;
-        font-size: 1em;
+      each(@labels, {
+        #mw-@{value}:checked {
+          ~ .mw-@{value} {
+            display: flex;
 
-        &:hover {
-          text-shadow: -0.04ex 0 0 black, 0.04ex 0 0 black;
-          cursor: pointer;
+            > .mw-flair {
+              display: flex
+            }
+          }
+
+          ~ .mw-tabs > [for="mw-@{value}"], ~ [for="mw-@{value}"] {
+            .text-shadow(@color: @gray50);
+          }
+        }
+      })
+
+      .mw-tabs {
+        margin: @small 0 0 0;
+
+        > label {
+          .urbanist(@weight: 300, @size: 18px);
+
+          &:hover {
+            .text-shadow(@color: @gray50);
+
+            cursor: pointer;
+          }
         }
       }
 
-      > hr {
-        margin: 15px 0;
+      .mw-flair {
+        @offset: calc(5% + 4px);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        right: @offset;
+        margin: 0;
+        padding: 0 @offset;
+        width: 105%;
+        height: calc(100% - (@small * 2));
+        box-shadow: 0 0 .3ex @gray50, 0 0 .15ex @black;
+        border: 1px solid transparent;
+        border-radius: @xsmall;
+        box-sizing: border-box;
+
+        line-height: 1.1em;
+
+        p {
+          margin: @xsmall 0 0 0;
+
+          &:first-child {
+            margin: 0;
+          }
+        }
+
+        ul, ol {
+          margin: @xsmall 0 0 0;
+          padding: 0 0 0 @medium;
+        }
+
+        li {
+          margin: 0 0 @xsmall 0;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        .mw-podkova {
+          font-size: 1.2em;
+        }
+
       }
 
-      #mw-slot-1:checked {
-        ~ .mw-slot-1 {
-          display: block;
-        }
+      .mw-standin {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
-        ~ [for="mw-slot-1"] {
-          text-shadow: -0.04ex 0 0 black, 0.04ex 0 0 black;
-        }
-      }
-
-      #mw-slot-2:checked {
-        ~ .mw-slot-2 {
-          display: block;
-        }
-
-        ~ [for="mw-slot-2"] {
-          text-shadow: -0.04ex 0 0 black, 0.04ex 0 0 black;
-        }
-      }
-
-      #mw-slot-3:checked {
-        ~ .mw-slot-3 {
-          display: block;
-        }
-
-        ~ [for="mw-slot-3"] {
-          text-shadow: -0.04ex 0 0 black, 0.04ex 0 0 black;
-        }
-      }
-
-      #mw-slot-4:checked {
-        ~ .mw-slot-4 {
-          display: block;
-        }
-
-        ~ [for="mw-slot-4"] {
-          text-shadow: -0.04ex 0 0 black, 0.04ex 0 0 black;
+        i, svg {
+          margin: 0 12px;
         }
       }
     }

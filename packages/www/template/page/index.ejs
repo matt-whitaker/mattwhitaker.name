@@ -1,7 +1,9 @@
-<%# title Matt Whtiaker %>
-<%# banner /image/temp-pnw-2.webp %>
+<%# title Matt Whitaker %>
+<%# banner /image/lake-sketched-2.png %>
+<%# tech fa-square-js,fa-react,fa-less,fa-node,fa-python,fa-java,fa-aws,fa-docker %>
+<%# tags Front-end component libraries,Standalone web applications,Micro-frontends,Front-facing API services,CRUD services,Orchestrative services,Distributed back-end systems %>
 <article class="mw-overview">
-    <img class="mw-headshot" src="/image/temp-back.webp" />
+    <img class="mw-headshot" src="/image/tmp_me.jpeg" title="AI generated headshot for demo purposes" />
     <article class="mw-info">
         <header>
             <h1>Matt Whitaker</h1>
@@ -15,38 +17,55 @@
             <input id="mw-slot-4" type="radio" name="tab">
 
             <!-- Labels for controlling inputs, and serve as the tab navigation -->
-            <label for="mw-slot-1" rel="tab">About</label>
-            <span>-</span>
-            <label for="mw-slot-2" rel="tab">Career</label>
-            <span>-</span>
-            <label for="mw-slot-3" rel="tab">Technology</label>
-            <span>-</span>
-            <label for="mw-slot-4" rel="tab">Leadership</label>
+            <div class="mw-tabs">
+                <label for="mw-slot-1" rel="tab" tabindex="0">About</label>
+                <% if (site.features.overview.career) { %>
+                <span>-</span>
+                <label for="mw-slot-2" rel="tab" tabindex="0">Career</label>
+                <% } %>
+                <span>-</span>
+                <label for="mw-slot-3" rel="tab" tabindex="0">Technology</label>
+                <span>-</span>
+                <label for="mw-slot-4" rel="tab" tabindex="0">Leadership</label>
+            </div>
 
             <!-- Content, controlled by the inputs' checked state, downstream for CSS selection -->
-            <section class="mw-slot-1">
-                <div class="mw-pflair mw-slot-1">
-                    <p class="">about me</p>
-                    <p>An accomplished and versatile full stack software engineer with over a decade of experience in the industry.</p>
+            <section class="mw-slot mw-slot-1">
+                <div class="mw-flair">
+                    <p>Hi, I'm <span class="mw-podkova">Matt</span>!</p>
+                    &nbsp;
+                    <p>I am a seasoned and versatile full stack software engineer with well over a decade of experience in the industry. This experience spans from adopting and maintaining existing systems, to several greenfield solutions over my career.</p>
+                    <p>I have had the privilege of working on a variety of different web-focused archetypes ranging from administrative interfaces, to distributed backend systems, and to customer success solutions. <span class="mw-tag">learn more</span></p>
                 </div>
             </section>
-            <section class="mw-slot-2">
-                <div class="mw-pflair mw-slot-2">
-                    <p class="">who i am</p>
-                    <p>An accomplished and versatile full stack software engineer with over a decade of experience in the industry.</p>
+            <section class="mw-slot mw-slot-2">
+                <div class="mw-flair mw-standin">
+                    <i class="fa-solid fa-lock fa-6x"></i>
                 </div>
             </section>
-            <section class="mw-slot-3">
-                <div class="mw-pflair mw-slot-3">
-                    <p class="">what i do?</p>
-                    <p>- stack tokens to match the ai example?</p>
+            <section class="mw-slot mw-slot-3">
+                <div class="mw-flair">
+                    <p>Leveraging a variety of technoloiges throughout my career, I have designed and delivered a number of service and system archetypes.</p>
+                    &nbsp;
+                    <%- await include("/template/component/tag-array.ejs", { tags: page.tags.split(",") }) %>
                 </div>
+                <%- await include("/template/component/icon-marquee.ejs", { className: "mw-slot-3", items: page.tech.split(",") }) %>
             </section>
-            <section class="mw-slot-4">
-                <div class="mw-pflair mw-slot-4">
-                    <p class="">why i care</p>
-                    <p>what drives me, what are my people oriented focuses in development?</p>
-                    <p>leadership</p>
+            <section class="mw-slot mw-slot-4">
+                <div class="mw-flair">
+                    <p>I have spent a significant portion of my career taking on leadership roles</p>
+                    <p>
+                        <%- await include("/template/component/tag.ejs", { tag: "Agile - SCRUM" }) %>
+                        Extensive experience driving a variety of SCRUM ceremonies and process, and am able to lead teams through them.
+                    </p>
+                    <p>
+                        <%- await include("/template/component/tag.ejs", { tag: "Lifecycle - Delivery" }) %>
+                        Numerous opportunities to take projects from their earliest conceptions, through team activation and delegation, to release.
+                    </p>
+                    <p>
+                        <%- await include("/template/component/tag.ejs", { tag: "Mentorship - Growth - Success" }) %>
+                        I have successfully mentored engineers in various stages of their career as well as help build teams through hiring.
+                    </p>
                 </div>
             </section>
         </main>
