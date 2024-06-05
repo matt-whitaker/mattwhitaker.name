@@ -73,4 +73,4 @@ export const loadFiles = async (dir, recursive = true, extensions = []) => Promi
  * @returns {string} a fully resolved and renamed filename/path
  */
 export const resolveOutputPath = (output, name, ext = EXT_HTML) =>
-  resolvePath(output, name.replace(extname(name), ext))
+  resolvePath(output, name.replace(extname(name), ext));

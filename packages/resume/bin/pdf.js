@@ -2,18 +2,31 @@
 
 import puppeteer from "puppeteer";
 
+const serverBase = "http://localhost:8080/";
+
 (async () => {
-  const pages = ["resume.html", "cover.html"];
+  try {
+    const pages = process.env.NODE_ENV === "production" ? ["resume.html"] : ["resume.html", "cover.html"];
 
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
 
-  await page.goto("http://localhost:8080/cover", { waitUntil: "networkidle0" });
-  await page.pdf({
-    path: "dist/cover.pdf",
-    format: "Letter",
-    printBackground: true
-  });
+    await page.setViewport({
+      width: 8.5 * 96,
+      height: 11 * 96,
+    });
 
-  await browser.close();
+    for(let i = 0; i < pages.length; i++) {
+      await page.goto(`${serverBase}${pages[i]}`, { waitUntil: "networkidle0" });
+      await page.pdf({
+        path: `dist/${pages[i].split(".")[0]}.pdf`,
+        format: "Letter",
+        printBackground: true
+      });
+    }
+
+    await browser.close();
+  } catch (error) {
+    console.error(`Error! ${error}`);
+  }
 })();

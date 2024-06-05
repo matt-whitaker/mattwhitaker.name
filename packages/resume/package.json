@@ -12,9 +12,11 @@
     "lint:fix": "npm run lint -- --fix",
     "less": "lessc style/index.less dist/resume.css",
     "less:watch": "nodemon --exec \"lessc style/index.less dist/resume.css\" -e css,less --ignore dist/",
-    "serve": "http-server ./dist -p 8080 -c-1 -o -r",
+    "serve": "http-server ./dist -p 8080 -c-1 -r",
     "start": "concurrently \"npm run template:watch\" \"npm run less:watch\" \"npm run serve\"",
-    "pdf": "npm run build && bin/pdf.js"
+    "pdf": "bin/pdf.js",
+    "pdf:save": "cp dist/*.pdf ./pdf",
+    "test:integration": ""
   },
   "author": "Matt Whitaker (https://mattwhitaker.name)",
   "license": "ISC",
