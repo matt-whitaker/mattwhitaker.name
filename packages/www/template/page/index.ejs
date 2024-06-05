@@ -1,15 +1,14 @@
 <%# title Matt Whitaker %>
 <%# banner /image/snoval-bw-manual.png %>
-<%# tech fa-square-js,fa-react,fa-less,fa-node,fa-python,fa-java,fa-aws,fa-docker %>
-<%# tags Front-end component libraries,Standalone web applications,Micro-frontends,Front-facing API services,CRUD services,Orchestrative services,Distributed back-end systems %>
-<article class="mw-overview">
-    <img class="mw-headshot" src="/image/tmp_me.jpeg" title="AI generated headshot for demo purposes" />
-    <article class="mw-info">
+<%# bannerDesc Snoqualmie Falls depiction (ChatGPT/DALL-E) %>
+<main class="mw-overview">
+    <img class="mw-headshot" src="/image/tmp_me.jpeg" title="Picture of myself" alt="Picture of myself" />
+    <div class="mw-info">
         <header>
             <h1>Matt Whitaker</h1>
             <h2>principle front-end engineer | full-stack veteran</h2>
         </header>
-        <main>
+        <section>
             <!-- hidden inputs -->
             <input id="mw-slot-1" type="radio" name="tab" checked>
             <input id="mw-slot-2" type="radio" name="tab">
@@ -32,7 +31,7 @@
             <!-- Content, controlled by the inputs' checked state, downstream for CSS selection -->
             <section class="mw-slot mw-slot-1">
                 <div class="mw-flair">
-                    <p>Hi, I'm <span class="mw-podkova">Matt</span>!</p>
+                    <p class="mw-hello">Hi, I'm <span>Matt</span>!</p>
                     &nbsp;
                     <p>I am a seasoned and versatile full stack software engineer with well over a decade of experience in the industry. This experience spans from adopting and maintaining existing systems, to several greenfield solutions over my career.</p>
                     <p>I have had the privilege of working on a variety of different web-focused archetypes ranging from administrative interfaces, to distributed backend systems, and to customer success solutions. <span class="mw-tag">learn more</span></p>
@@ -47,9 +46,9 @@
                 <div class="mw-flair">
                     <p>Leveraging a variety of technoloiges throughout my career, I have designed and delivered a number of service and system archetypes.</p>
                     &nbsp;
-                    <%- await include("/template/component/tag-array.ejs", { tags: page.tags.split(",") }) %>
+                    <%- await include("/template/component/tag-array.ejs", { tags: ["Front-end component libraries", "Standalone web applications", "Micro-frontends", "Front-facing API services", "CRUD services", "Orchestrative services", "Distributed back-end systems"] }) %>
                 </div>
-                <%- await include("/template/component/icon-marquee.ejs", { className: "mw-slot-3", items: page.tech.split(",") }) %>
+                <%- await include("/template/component/icon-marquee.ejs", { className: "mw-slot-3", items: ["fa-square-js", "fa-react", "fa-less", "fa-node", "fa-python", "fa-java", "fa-aws", "fa-docker"] }) %>
             </section>
             <section class="mw-slot mw-slot-4">
                 <div class="mw-flair">
@@ -68,6 +67,6 @@
                     </p>
                 </div>
             </section>
-        </main>
-    </article>
-</article>
+        </section>
+    </div>
+</main>

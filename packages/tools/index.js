@@ -40,11 +40,13 @@ const extractAnnotations = (engine, data) => {
  * @async
  * @param argv {any[]} list of arguments (such as from a command line call)
  * @param options {object}
+ * @param options.name {string} name for the build
  * @param options.ext {(EXT_EJS,EXT_MD)[]} list of file extensions to use; loads all files if omitted or empty
+ * @param options.exclude {string[]} list of filenames to exclude
  * @param options.root {string} project root (cwd)
  * @returns {Promise<void[]>}
  */
-export const buildSite = async (argv, options) => {
+export const buildPages = async (argv, options) => {
   const args = parseArgs(argv);
   const output = resolvePath(options.root, args.output);
 
@@ -58,6 +60,10 @@ export const buildSite = async (argv, options) => {
     pages.map(async ({ name, path, data }) => {
       // extract annotated metadata from the file
       const page = extractAnnotations(extname(name).slice(1), data);
+
+      if (process.env.NODE_ENV === "production" && options.exclude && options.exclude.includes(name)) {
+        return;
+      }
 
       // still need a title at a minimum
       page.title = page.title || basename(name, extname(name));

@@ -3,14 +3,6 @@
     "title": "Matt Whitaker",
     "google": {
       "fonts": "https://fonts.googleapis.com/css2?family=Podkova:wght@400..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
-    },
-    "fa": {
-      "script": "https://kit.fontawesome.com/48be7dbb92.js"
-    },
-    "features": {
-      "overview": {
-        "career": true
-      }
     }
   }
 }

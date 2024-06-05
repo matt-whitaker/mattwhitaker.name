@@ -1,0 +1,916 @@
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+/* Document
+   ========================================================================== */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+
+/**
+ * Remove the margin in all browsers.
+ */
+
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 10+.
+ */
+
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+
+[hidden] {
+  display: none;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Urbanist', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  color: #2f333d;
+}
+a {
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+}
+a:hover {
+  color: #7c8288;
+  text-decoration: underline;
+}
+h1,
+h2 {
+  font-family: 'Urbanist', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1em;
+  color: #404040;
+}
+@media screen {
+  .mw-body {
+    background-image: url("/image/cubes.png");
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+}
+.mw-scrollbody {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media print {
+  .mw-scrollbody {
+    max-width: 8.5in;
+  }
+}
+@media print {
+  .mw-pagebreak {
+    clear: both;
+    page-break-after: always;
+  }
+}
+@media screen {
+  .mw-pagebreak {
+    display: block;
+    height: 10px;
+  }
+}
+@page {
+  margin: 0;
+  padding: 0;
+}
+.mw-resume {
+  box-sizing: border-box;
+}
+.mw-resume h1,
+.mw-resume h2,
+.mw-resume h3 {
+  font-weight: 300;
+  line-height: 1em;
+}
+.mw-resume p,
+.mw-resume ul,
+.mw-resume li,
+.mw-resume h1,
+.mw-resume h2,
+.mw-resume h3,
+.mw-resume figure {
+  padding: 0;
+  margin: 0;
+}
+.mw-resume .mw-resume-page {
+  background-color: #ffffff;
+  display: flex;
+  width: 816px;
+  height: 1056px;
+  margin: 0 auto;
+}
+.mw-resume .mw-resume-page .pg2 {
+  padding-top: 25px;
+}
+.mw-resume .mw-resume-content {
+  flex-basis: 628.32px;
+  width: 628.32px;
+  padding-left: 25px;
+  box-sizing: border-box;
+}
+.mw-resume .mw-resume-sidebar {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 187.68px;
+  width: 187.68px;
+  background-color: #414654;
+  padding-right: 10px;
+  box-sizing: border-box;
+  text-align: right;
+  height: 1056px;
+}
+.mw-resume .mw-resume-sidebar section {
+  margin-top: 25px;
+}
+.mw-resume .mw-resume-sidebar.pg1::before {
+  display: block;
+  content: "";
+  margin-top: 295px;
+}
+.mw-resume .mw-resume-sidebar :first-child {
+  margin-top: 0;
+}
+.mw-resume .mw-resume-exp,
+.mw-resume .mw-resume-ref {
+  color: #2f333d;
+  font-size: 1em;
+}
+.mw-resume .mw-resume-exp h2,
+.mw-resume .mw-resume-ref h2 {
+  color: #2f333d;
+  border-bottom: 1px solid #2f333d;
+  line-height: 1em;
+  margin-bottom: 25px;
+}
+.mw-resume .mw-resume-exp h2 > span,
+.mw-resume .mw-resume-ref h2 > span {
+  padding-bottom: 1px;
+  border-bottom: 2px solid #2f333d;
+}
+.mw-resume .mw-resume-exp > :not(h2),
+.mw-resume .mw-resume-ref > :not(h2) {
+  font-size: 0.78em;
+}
+.mw-resume .mw-resume-exp li,
+.mw-resume .mw-resume-ref li {
+  line-height: 1.3em;
+  list-style: none;
+}
+.mw-resume .mw-resume-exp li:not(:last-of-type),
+.mw-resume .mw-resume-ref li:not(:last-of-type) {
+  margin-bottom: 3px;
+}
+.mw-resume .mw-resume-exp p + p,
+.mw-resume .mw-resume-ref p + p {
+  padding-top: 5px;
+}
+.mw-resume .mw-resume-text,
+.mw-resume .mw-resume-contact,
+.mw-resume .mw-resume-skills,
+.mw-resume .mw-resume-edu,
+.mw-resume .mw-resume-social,
+.mw-resume .mw-resume-digital,
+.mw-resume .mw-resume-methods {
+  color: #ffffff;
+  font-size: 1em;
+}
+.mw-resume .mw-resume-text h2,
+.mw-resume .mw-resume-contact h2,
+.mw-resume .mw-resume-skills h2,
+.mw-resume .mw-resume-edu h2,
+.mw-resume .mw-resume-social h2,
+.mw-resume .mw-resume-digital h2,
+.mw-resume .mw-resume-methods h2 {
+  color: #ffffff;
+  border-bottom: 1px solid #ffffff;
+  line-height: 1em;
+  margin-bottom: 25px;
+}
+.mw-resume .mw-resume-text h2 > span,
+.mw-resume .mw-resume-contact h2 > span,
+.mw-resume .mw-resume-skills h2 > span,
+.mw-resume .mw-resume-edu h2 > span,
+.mw-resume .mw-resume-social h2 > span,
+.mw-resume .mw-resume-digital h2 > span,
+.mw-resume .mw-resume-methods h2 > span {
+  padding-bottom: 1px;
+  border-bottom: 2px solid #ffffff;
+}
+.mw-resume .mw-resume-text > :not(h2),
+.mw-resume .mw-resume-contact > :not(h2),
+.mw-resume .mw-resume-skills > :not(h2),
+.mw-resume .mw-resume-edu > :not(h2),
+.mw-resume .mw-resume-social > :not(h2),
+.mw-resume .mw-resume-digital > :not(h2),
+.mw-resume .mw-resume-methods > :not(h2) {
+  font-size: 0.78em;
+}
+.mw-resume .mw-resume-text li,
+.mw-resume .mw-resume-contact li,
+.mw-resume .mw-resume-skills li,
+.mw-resume .mw-resume-edu li,
+.mw-resume .mw-resume-social li,
+.mw-resume .mw-resume-digital li,
+.mw-resume .mw-resume-methods li {
+  line-height: 1.3em;
+  list-style: none;
+}
+.mw-resume .mw-resume-text li:not(:last-of-type),
+.mw-resume .mw-resume-contact li:not(:last-of-type),
+.mw-resume .mw-resume-skills li:not(:last-of-type),
+.mw-resume .mw-resume-edu li:not(:last-of-type),
+.mw-resume .mw-resume-social li:not(:last-of-type),
+.mw-resume .mw-resume-digital li:not(:last-of-type),
+.mw-resume .mw-resume-methods li:not(:last-of-type) {
+  margin-bottom: 3px;
+}
+.mw-resume .mw-resume-text p + p,
+.mw-resume .mw-resume-contact p + p,
+.mw-resume .mw-resume-skills p + p,
+.mw-resume .mw-resume-edu p + p,
+.mw-resume .mw-resume-social p + p,
+.mw-resume .mw-resume-digital p + p,
+.mw-resume .mw-resume-methods p + p {
+  padding-top: 5px;
+}
+.mw-resume .mw-resume-alt-header h1,
+.mw-resume .mw-resume-alt-header h2,
+.mw-resume .mw-resume-alt-header address {
+  color: #ffffff;
+}
+.mw-resume .mw-resume-alt-header h1 {
+  float: right;
+  text-align: left;
+  line-height: 0.8em;
+  text-indent: -1px;
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.mw-resume .mw-resume-alt-header h2 {
+  background-color: rgba(47, 51, 61, 0.3);
+  text-align: right;
+  font-size: 0.78em;
+  clear: both;
+  letter-spacing: 0.15em;
+  padding: 6px 16px 6px 6px;
+  margin-right: -10px;
+}
+.mw-resume .mw-resume-header {
+  height: 115px;
+  padding-top: 25px;
+}
+.mw-resume .mw-resume-header h1,
+.mw-resume .mw-resume-header h2,
+.mw-resume .mw-resume-header address {
+  color: #2f333d;
+}
+.mw-resume .mw-resume-header h1 {
+  line-height: 0.78em;
+  text-indent: -1px;
+  font-size: 2.4rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.mw-resume .mw-resume-header h2 {
+  background-color: #ebedf0;
+  letter-spacing: 0.15em;
+  padding: 6px 6px;
+}
+.mw-resume .mw-resume-header address {
+  font-style: normal;
+  margin-top: 4px;
+}
+.mw-resume .mw-resume-ribbon {
+  background-color: rgba(47, 51, 61, 0.3);
+  margin: 25px 0;
+  padding: 25px 0;
+  box-sizing: border-box;
+  width: 816px;
+  float: right;
+  display: flex;
+}
+.mw-resume .mw-resume-ribbon p {
+  flex-basis: 187.68px;
+}
+.mw-resume .mw-resume-ribbon p + p {
+  padding-left: 25px;
+  padding-right: 25px;
+  flex-grow: 1;
+}
+.mw-resume .mw-resume-exp {
+  clear: both;
+  margin-bottom: 20px;
+}
+.mw-resume .mw-resume-exp abbr {
+  text-decoration: none;
+}
+.mw-resume .mw-resume-exp ul {
+  padding-left: 10px;
+}
+.mw-resume .mw-resume-exp li {
+  line-height: 1.3em;
+  margin-bottom: 5px;
+  list-style: none;
+}
+.mw-resume .mw-resume-exp article {
+  display: flex;
+  min-height: 180px;
+  padding-right: 32px;
+}
+.mw-resume .mw-resume-exp article + article section {
+  padding-top: 5px;
+}
+.mw-resume .mw-resume-exp section {
+  flex-basis: 30%;
+}
+.mw-resume .mw-resume-exp section + section {
+  flex-basis: 70%;
+}
+.mw-resume .mw-resume-exp .mw-resume-job-desc li + li {
+  list-style: square;
+  vertical-align: middle;
+  margin-left: 20px;
+}
+.mw-resume .mw-resume-exp .mw-resume-job-title {
+  border-right: 1px solid #2f333d;
+}
+.mw-resume .mw-resume-exp .mw-resume-job-title span:first-of-type {
+  font-weight: 600;
+}
+.mw-resume .mw-resume-exp .mw-resume-job-title em {
+  color: #93969d;
+}
+.mw-resume .mw-resume-exp .mw-resume-job-title p + p {
+  border-top: 1px solid #2f333d;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+.mw-resume .mw-resume-skills {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+.mw-resume .mw-resume-skills li span,
+.mw-resume .mw-resume-skills figcaption span {
+  margin-left: 25px;
+  float: left;
+}
+.mw-resume .mw-resume-skills li span b,
+.mw-resume .mw-resume-skills figcaption span b {
+  color: #B59410;
+}
+.mw-resume .mw-resume-skills figure > span {
+  display: block;
+  text-align: center;
+  margin: 3px 0 3px -10px;
+}
+.mw-resume .mw-resume-skills ul {
+  margin-top: 6px;
+}
+.mw-cover {
+  box-sizing: border-box;
+}
+.mw-cover h1,
+.mw-cover h2,
+.mw-cover h3 {
+  font-weight: 300;
+  line-height: 1em;
+}
+.mw-cover p,
+.mw-cover ul,
+.mw-cover li,
+.mw-cover h1,
+.mw-cover h2,
+.mw-cover h3,
+.mw-cover figure {
+  padding: 0;
+  margin: 0;
+}
+.mw-cover .mw-cover-page {
+  background-color: #ffffff;
+  display: flex;
+  width: 816px;
+  height: 1056px;
+  margin: 0 auto;
+}
+.mw-cover .mw-cover-page .pg2 {
+  padding-top: 25px;
+}
+.mw-cover .mw-cover-page > .pg1 {
+  padding-top: 25px;
+}
+.mw-cover .mw-cover-content {
+  flex-basis: 628.32px;
+  width: 628.32px;
+  padding-left: 25px;
+  box-sizing: border-box;
+}
+.mw-cover .mw-cover-sidebar {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 187.68px;
+  width: 187.68px;
+  background-color: #414654;
+  padding-right: 10px;
+  box-sizing: border-box;
+  text-align: right;
+  height: 1056px;
+}
+.mw-cover .mw-cover-sidebar section {
+  margin-top: 25px;
+}
+.mw-cover .mw-cover-body {
+  color: #2f333d;
+  font-size: 1em;
+}
+.mw-cover .mw-cover-body h2 {
+  color: #2f333d;
+  border-bottom: 1px solid #2f333d;
+  line-height: 1em;
+  margin-bottom: 25px;
+}
+.mw-cover .mw-cover-body h2 > span {
+  padding-bottom: 1px;
+  border-bottom: 2px solid #2f333d;
+}
+.mw-cover .mw-cover-body > :not(h2) {
+  font-size: 0.78em;
+}
+.mw-cover .mw-cover-body li {
+  line-height: 1.3em;
+  list-style: none;
+}
+.mw-cover .mw-cover-body li:not(:last-of-type) {
+  margin-bottom: 3px;
+}
+.mw-cover .mw-cover-body p + p {
+  padding-top: 5px;
+}
+.mw-cover .mw-cover-contact {
+  color: #ffffff;
+  font-size: 1em;
+}
+.mw-cover .mw-cover-contact h2 {
+  color: #ffffff;
+  border-bottom: 1px solid #ffffff;
+  line-height: 1em;
+  margin-bottom: 25px;
+}
+.mw-cover .mw-cover-contact h2 > span {
+  padding-bottom: 1px;
+  border-bottom: 2px solid #ffffff;
+}
+.mw-cover .mw-cover-contact > :not(h2) {
+  font-size: 0.78em;
+}
+.mw-cover .mw-cover-contact li {
+  line-height: 1.3em;
+  list-style: none;
+}
+.mw-cover .mw-cover-contact li:not(:last-of-type) {
+  margin-bottom: 3px;
+}
+.mw-cover .mw-cover-contact p + p {
+  padding-top: 5px;
+}
+.mw-cover .mw-cover-alt-header h1,
+.mw-cover .mw-cover-alt-header h2,
+.mw-cover .mw-cover-alt-header address {
+  color: #ffffff;
+}
+.mw-cover .mw-cover-alt-header h1 {
+  float: right;
+  text-align: left;
+  line-height: 0.8em;
+  text-indent: -1px;
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.mw-cover .mw-cover-alt-header h2 {
+  background-color: rgba(47, 51, 61, 0.3);
+  text-align: right;
+  font-size: 0.78em;
+  clear: both;
+  letter-spacing: 0.15em;
+  padding: 6px 16px 6px 6px;
+  margin-right: -10px;
+}
+.mw-cover .mw-cover-addressee {
+  color: #2f333d;
+  font-size: 1em;
+}
+.mw-cover .mw-cover-addressee h2 {
+  color: #2f333d;
+  border-bottom: 1px solid #2f333d;
+  line-height: 1em;
+  margin-bottom: 25px;
+}
+.mw-cover .mw-cover-addressee h2 > span {
+  padding-bottom: 1px;
+  border-bottom: 2px solid #2f333d;
+}
+.mw-cover .mw-cover-addressee > :not(h2) {
+  font-size: 0.78em;
+}
+.mw-cover .mw-cover-addressee li {
+  line-height: 1.3em;
+  list-style: none;
+}
+.mw-cover .mw-cover-addressee li:not(:last-of-type) {
+  margin-bottom: 3px;
+}
+.mw-cover .mw-cover-addressee p + p {
+  padding-top: 5px;
+}
+.mw-cover .mw-cover-addressee article {
+  padding-top: 25px;
+}
+.mw-cover .mw-cover-addressee h3 {
+  margin-top: 50px;
+}
+.mw-cover .mw-cover-addressee time {
+  display: block;
+}
+.mw-cover .mw-cover-addressee p,
+.mw-cover .mw-cover-addressee address {
+  margin-top: 25px;
+}
+.mw-cover .mw-cover-letter {
+  color: #2f333d;
+  font-size: 1em;
+}
+.mw-cover .mw-cover-letter > :not(h2) {
+  font-size: 0.78em;
+}
+.mw-cover .mw-cover-letter li {
+  line-height: 1.3em;
+  list-style: none;
+}
+.mw-cover .mw-cover-letter li:not(:last-of-type) {
+  margin-bottom: 3px;
+}
+.mw-cover .mw-cover-letter p + p {
+  padding-top: 5px;
+}
+.mw-cover .mw-cover-letter h2 {
+  background-color: #ebedf0;
+  letter-spacing: 0.15em;
+  padding: 6px 6px;
+  margin: 50px 0;
+}
+.mw-cover .mw-cover-letter p {
+  padding-right: 25px;
+}
+.mw-cover .mw-cover-letter p:first-of-type {
+  padding-bottom: 20px;
+}
+.mw-cover .mw-cover-letter p + p {
+  margin-bottom: 10px;
+}
+.mw-cover .mw-cover-letter p:last-of-type {
+  padding-top: 50px;
+}

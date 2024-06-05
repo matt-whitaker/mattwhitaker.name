@@ -1,19 +1,20 @@
 {
-  "name": "@mattwhitaker.name/www",
+  "name": "@mattwhitaker.name/resume",
   "version": "0.0.1",
-  "description": "Asset build for main website",
+  "description": "Asset build for resume",
   "scripts": {
     "build": "npm run clear && npm run less && npm run template && npm run image",
     "clear": "rm -rf ./dist",
-    "template": "bin/template.js --stylesheet main.css",
-    "template:watch": "nodemon bin/template.js -e ejs,json --ignore dist/ --stylesheet main.css",
+    "template": "bin/template.js --stylesheet resume.css",
+    "template:watch": "nodemon bin/template.js -e ejs,json --ignore dist/ --stylesheet resume.css",
     "image": "cp -r image ./dist",
     "lint": "stylelint style/**/*.less",
     "lint:fix": "npm run lint -- --fix",
-    "less": "lessc style/index.less dist/main.css",
-    "less:watch": "nodemon --exec \"lessc style/index.less dist/main.css\" -e css,less --ignore dist/",
+    "less": "lessc style/index.less dist/resume.css",
+    "less:watch": "nodemon --exec \"lessc style/index.less dist/resume.css\" -e css,less --ignore dist/",
     "serve": "http-server ./dist -p 8080 -c-1 -o -r",
-    "start": "concurrently \"npm run template:watch\" \"npm run less:watch\" \"npm run serve\""
+    "start": "concurrently \"npm run template:watch\" \"npm run less:watch\" \"npm run serve\"",
+    "pdf": "npm run build && bin/pdf.js"
   },
   "author": "Matt Whitaker (https://mattwhitaker.name)",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "less": "4.2.0",
     "markdown-it": "^13.0.2",
     "nodemon": "^3.0.3",
+    "puppeteer": "^22.10.0",
     "stylelint": "15.11.0",
     "stylelint-config-standard": "34.0.0",
     "stylelint-config-standard-less": "2.0.0"

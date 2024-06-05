@@ -23,5 +23,10 @@ export default [
     "name": "config",
     "description": "config file for global site data",
     "defaultValue": "site.config.json"
+  },
+  {
+    "name": "dev",
+    "description": "pages to exclude",
+    "defaultValue": false,
   }
 ]

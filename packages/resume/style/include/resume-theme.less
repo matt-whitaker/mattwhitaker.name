@@ -1,0 +1,125 @@
+@well-size-mini: 3px;
+@well-size-lg: 25px;
+@well-size-sm: 10px;
+
+@width: 816px;
+@sidebar-width: .23 * @width;
+@content-width: @width - @sidebar-width;
+@height: 1056px;
+
+@header-height: 115px;
+@header-offset: @well-size-lg;
+@banner-height: @header-height + 40px;
+
+.mw-resume-reset() {
+  box-sizing: border-box;
+
+  h1, h2, h3 {
+    font-weight: 300;
+    line-height: 1em;
+  }
+
+  p, ul, li, h1, h2, h3, figure {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.mw-resume-header(@color) {
+  & {
+    h2 {
+      color: @color;
+      border-bottom: 1px solid @color;
+      line-height: 1em;
+      margin-bottom: @well-size-lg;
+
+      > span {
+        padding-bottom: 1px;
+        border-bottom: 2px solid @color;
+      }
+    }
+  }
+}
+
+.mw-resume-alt-header(@color, @background-color) {
+  h1, h2, address {
+    color: @white;
+  }
+
+  h1 {
+    float: right;
+    text-align: left;
+    line-height: .8em;
+    text-indent: -1px;
+    font-size: 2rem;
+    letter-spacing: .08em;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    background-color: @background-color;
+    text-align: right;
+    font-size: .78em;
+    clear: both;
+    letter-spacing: .15em;
+    padding: 6px (@well-size-sm + 6px) 6px 6px;
+    margin-right: -@well-size-sm;
+  }
+}
+
+.mw-resume-text(@color) {
+  color: @color;
+  font-size: 1em;
+
+  > :not(h2) {
+    font-size: .78em;
+  }
+
+  li {
+    line-height: 1.3em;
+    list-style: none;
+
+    &:not(:last-of-type) {
+      margin-bottom: 3px;
+    }
+  }
+
+  p + p {
+    padding-top: 5px;
+  }
+}
+
+.mw-resume-content() {
+  flex-basis: @content-width;
+  width: @content-width;
+  padding-left: @well-size-lg;
+  box-sizing: border-box;
+}
+
+.mw-resume-sidebar() {
+  display: flex;
+  flex-direction: column;
+  flex-basis: @sidebar-width;
+  width: @sidebar-width;
+  background-color: @blueash;
+  padding-right: @well-size-sm;
+  box-sizing: border-box;
+  text-align: right;
+  height: @height;
+
+  section {
+    margin-top: @well-size-lg;
+  }
+}
+
+.mw-resume-page() {
+  background-color: @white;
+  display: flex;
+  width: @width;
+  height: @height;
+  margin: 0 auto;
+
+  .pg2 {
+    padding-top: @well-size-lg;
+  }
+}

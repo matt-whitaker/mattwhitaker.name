@@ -8,7 +8,6 @@ on:
       - mainline
 
 env:
-  WWW_ASSETS_DIR: packages/www/dist
   NODE_VERSION: 18
 
 jobs:
@@ -20,11 +19,11 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
       - run: npm ci
-      - run: npm run build
+      - run: npm run combined:build
       - uses: actions/upload-artifact@v4
         with:
-          name: www-assets
-          path: ${{ env.WWW_ASSETS_DIR }}
+          name: dist
+          path: dist
           
   Test:
     runs-on: ubuntu-latest
@@ -48,7 +47,7 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
       - uses: actions/download-artifact@v4
         with:
-          name: www-assets
-          path: ${{ env.WWW_ASSETS_DIR }}
+          name: dist
+          path: dist
       - run: aws s3 sync --delete --acl public-read ${{ env.WWW_ASSETS_DIR }} s3://${{ secrets.WWW_AWS_S3_BUCKET }}
       - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.WWW_AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*" >/dev/null
