@@ -5,6 +5,7 @@
   .mw-resume-reset();
 
   .mw-resume-page {
+    position: relative;
     .mw-resume-page();
   }
 
@@ -18,7 +19,7 @@
     &.pg1::before {
       display: block;
       content: "";
-      margin-top: @banner-height + @header-offset + @header-height;
+      margin-top: @banner-height + (@header-offset * 2) + @header-height;
     }
 
     :first-child {
@@ -47,6 +48,13 @@
     .mw-resume-alt-header(@white, fade(@black, 30%));
   }
 
+  .mw-resume-headshot {
+    position: absolute;
+    top: @well-size-sm;
+    left: @well-size-sm;
+    width: @sidebar-width - (@well-size-sm * 2);
+  }
+
   .mw-resume-header {
     height: @header-height;
     padding-top: @header-offset;
@@ -58,12 +66,13 @@
     h1 {
       line-height: .78em;
       text-indent: -1px;
-      font-size: 2.4rem;
+      font-size: 3em;
       letter-spacing: .08em;
       margin-bottom: 8px;
     }
 
     h2 {
+      font-size: 1.1em;
       background-color: lighten(@blueash, 64%);
       letter-spacing: .15em;
       padding: 6px 6px;
@@ -77,13 +86,14 @@
 
   .mw-resume-ribbon {
     background-color: fade(@black, 30%);
-    margin: @well-size-lg 0;
+    margin: (@well-size-lg * 2) 0 @well-size-lg 0;
     padding: @well-size-lg 0;
     box-sizing: border-box;
     width: @width;
-
+    font-size: .9em;
     float: right;
     display: flex;
+    height: 100px;
 
     p {
       flex-basis: @sidebar-width;
@@ -116,11 +126,11 @@
 
     article {
       display: flex;
-      min-height: 180px;
+      min-height: 120px;
 
       + article {
         section {
-          padding-top: 5px;
+          padding-top: @well-size-lg;
         }
       }
 
@@ -140,6 +150,11 @@
         list-style: square;
         vertical-align: middle;
         margin-left: 20px;
+      }
+
+      li + li:last-of-type {
+        list-style: none;
+        margin-left: 0;
       }
     }
 

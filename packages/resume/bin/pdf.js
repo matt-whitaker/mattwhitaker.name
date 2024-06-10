@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import puppeteer from "puppeteer";
-
 const serverBase = "http://localhost:8080/";
 
 (async () => {

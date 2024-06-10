@@ -7,7 +7,7 @@
     "clear": "rm -rf ./dist",
     "template": "bin/template.js --stylesheet main.css",
     "template:watch": "nodemon bin/template.js -e ejs,json --ignore dist/ --stylesheet main.css",
-    "image": "cp -r image ./dist",
+    "image": "cp -r ../common/image ./dist",
     "lint": "stylelint style/**/*.less",
     "lint:fix": "npm run lint -- --fix",
     "less": "lessc style/index.less dist/main.css",
