@@ -62,7 +62,7 @@ export const buildPages = async (argv, options) => {
       // extract annotated metadata from the file
       const page = extractAnnotations(extname(name).slice(1), data);
 
-      if (process.env.NODE_ENV === "production" && options.exclude && options.exclude.includes(name)) {
+      if (options.exclude && options.exclude.includes(name)) {
         return;
       }
 
