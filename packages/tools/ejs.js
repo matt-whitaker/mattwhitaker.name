@@ -15,4 +15,13 @@ export const extractEjsAnnotations = (data) => {
   return obj;
 }
 
+/**
+ * Quick helper to splatter a phone number across spans.
+ * @param phoneNumber
+ * @returns {string}
+ */
+export const obfuscatePhone = (phoneNumber) =>
+  phoneNumber.split("").map(char => /\d/.test(char) ? `<span>${char}</span>` : char).join("");
+
+
 export { render as renderEjs } from "ejs";

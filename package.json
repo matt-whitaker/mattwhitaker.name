@@ -9,7 +9,7 @@
     "pdf": "npm run pdf -ws --if-present",
     "combined:clear": "rm -rf ./dist",
     "combined:build": "npm run combined:clear && npm run build && rsync -avr --ignore-existing packages/www/dist . && rsync -avr --ignore-existing packages/resume/dist .",
-    "combined:serve": "http-server ./dist -p 8080 -c-1 -o -r"
+    "combined:serve": "http-server ./dist -p 8080 -c-1 -r"
   },
   "author": "Matt Whitaker",
   "license": "ISC",

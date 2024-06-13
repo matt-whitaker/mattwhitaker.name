@@ -1,5 +1,5 @@
 import { basename, extname } from "path";
-import { extractEjsAnnotations, renderEjs } from "./ejs.js";
+import { extractEjsAnnotations, obfuscatePhone, renderEjs } from "./ejs.js";
 import { loadFiles, readFile, resolveOutputPath, resolvePath, writeFile } from "./file.js";
 import { parseArgs } from "./cli.js";
 import { EXT_EJS, ENGINE_EJS, EXT_MD, ENGINE_MD } from "./constants.js";
@@ -44,6 +44,7 @@ const extractAnnotations = (engine, data) => {
  * @param options.ext {(EXT_EJS,EXT_MD)[]} list of file extensions to use; loads all files if omitted or empty
  * @param options.exclude {string[]} list of filenames to exclude
  * @param options.root {string} project root (cwd)
+ * @param options.helpers {object} helpers for ejs
  * @returns {Promise<void[]>}
  */
 export const buildPages = async (argv, options) => {
@@ -69,6 +70,7 @@ export const buildPages = async (argv, options) => {
       page.title = page.title || basename(name, extname(name));
 
       const ctx = {
+        obfuscatePhone,
         page,
         site,
       };

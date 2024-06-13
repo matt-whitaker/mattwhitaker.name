@@ -4,30 +4,10 @@
         <div class="mw-cover-sidebar pg1">
             <header class="mw-cover-alt-header">
                 <h1>Matt<br/>Whitaker</h1>
-                <h2>SR+ FRONT-END</h2>
+                <h2>PR. FRONT-END</h2>
             </header>
             <section class="mw-cover-contact">
-                <h2><span>CONTACT</span></h2>
-                <ul>
-                    <li>
-                        <span>
-                            <b>phone</b> <br />
-                            +123 4567 890
-                        </span>
-                    </li>
-                    <li>
-                        <span>
-                            <b>email</b> <br />
-                            hire@mattwhitaker.name
-                        </span>
-                    </li>
-                    <li>
-                        <span>
-                            <b>website</b> <br />
-                            mattwhitaker.name
-                        </span>
-                    </li>
-                </ul>
+                <%- await include("/template/component/contact.ejs") %>
             </section>
         </div>
         <div class="mw-cover-content pg1">
@@ -35,22 +15,21 @@
                 <h2><span>COVER LETTER</span></h2>
                 <article>
                     <time><%= new Date().toDateString() %></time>
-                    <h3>TO</h3>
                     <p>
-                        HIRING MANAGER <br/>
-                        Mr. Hiring Manager Guy
+                        To, <br />
+                        [Hiring Manager]
                     </p>
                     <address>
-                        Company Name <br/>
-                        5678 Maple Avenue <br/>
-                        Springfield, IL 62711
+                        [Company Name] <br/>
+                        [Street] <br/>
+                        [City], [ST] [Zipcode]
                     </address>
                 </article>
             </div>
             <div class="mw-cover-letter">
-                <h2>PRINCIPAL FRONT-END ENGINEER</h2>
+                <h2>[JOB TITLE]</h2>
                 <article>
-                    <p>Dear [Recipient Name],</p>
+                    <p>[Intro, "To the hiring manager or other readers,"]</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis metus at tortor pulvinar varius. Mauris ut pharetra magna. Nullam dapibus vel nisi sed lacinia. Curabitur euismod erat id nisl congue, ac facilisis nisi scelerisque.</p>
                     <p>Vivamus eget metus in sapien euismod tempor. Curabitur a mi metus. Aenean sit amet vestibulum tortor. Nulla facilisi. Donec sollicitudin lorem in orci convallis, nec fringilla elit bibendum. Phasellus eget mi vel velit bibendum iaculis. Aenean nec dui est. Donec dignissim nisi vitae lacus vestibulum, sit amet scelerisque sem ultrices.</p>
                     <p>Nunc volutpat, justo ac dapibus fermentum, eros arcu fermentum libero, vel facilisis libero magna at risus. Integer nec nibh purus. Morbi auctor lorem ac ligula vehicula, nec hendrerit ex condimentum. Ut elementum nec metus sed iaculis. Cras quis varius turpis. In posuere lacus felis, id viverra felis pharetra a.</p>
@@ -61,7 +40,6 @@
 
                     <p>
                         Sincerely, <br/>
-                        <img /> <br />
                         Matt Whitaker
                     </p>
                 </article>

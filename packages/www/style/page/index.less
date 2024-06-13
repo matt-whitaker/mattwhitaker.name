@@ -1,6 +1,6 @@
-@import (reference) "../include/colors";
-@import (reference) "../include/sizing";
-@import (reference) "../include/fonts";
+@import (reference) "../../../common/style/colors";
+@import (reference) "../../../common/style/sizing";
+@import (reference) "../../../common/style/fonts";
 
 .mw-overview {
   display: flex;
@@ -13,16 +13,29 @@
 
   margin-top: calc(100vh - 400px);
 
-  h1 {
-    .podkova(300, @size: 1.8em);
+  a {
+    color: @gold;
+  }
 
+  h1 {
+    .urbanist(300, @size: 2.2em);
     margin: (@xsmall / 2) 0 0 0;
   }
 
   h2 {
-    .podkova(@size: 1.1em);
-
+    .urbanist(@size: 1em, @weight: 300);
     margin: (@xsmall / 2) 0 0 0;
+    font-size: 1.1em;
+    background-color: lighten(@blueash, 64%);
+    letter-spacing: .15em;
+    padding: 6px 6px;
+    text-transform: uppercase;
+  }
+
+  .mw-ribbon {
+    height: 200px;
+    background-color: black;
+    margin-top: -200px;
   }
 
   .mw-headshot {
@@ -39,116 +52,21 @@
     flex-grow: 2;
     overflow-x: hidden;
 
-    > section {
-      @labels: slot-1, slot-2, slot-3, slot-4;
-      .text-shadow(@color: #000) {
-        text-shadow: -0.04ex 0 .01ex @color, 0.04ex 0 .01ex @color;
-      }
+    p {
+      margin: 10px 0 0 0;
+    }
 
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
+    h3 {
+      .urbanist(@weight: 400, @size: 1.1em);
 
-      > section {
-        display: none;
-        margin-top: @xsmall;
-        flex-grow: 2;
-        flex-direction: column;
-      }
+      color: @black;
+      border-bottom: 1px solid @black;
+      line-height: 1em;
+      margin-bottom: 20px;
 
-      > input {
-        opacity: 0;
-        position: absolute;
-      }
-
-      each(@labels, {
-        #mw-@{value}:checked {
-          ~ .mw-@{value} {
-            display: flex;
-
-            > .mw-flair {
-              display: flex
-            }
-          }
-
-          ~ .mw-tabs > [for="mw-@{value}"], ~ [for="mw-@{value}"] {
-            .text-shadow(@color: @gray50);
-          }
-        }
-      })
-
-      .mw-tabs {
-        margin: @small 0 0 0;
-
-        > label {
-          .urbanist(@weight: 300, @size: 18px);
-
-          &:hover {
-            .text-shadow(@color: @gray50);
-
-            cursor: pointer;
-          }
-        }
-      }
-
-      .mw-flair {
-        @offset: calc(5% + 4px);
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        position: relative;
-        right: @offset;
-        margin: 0;
-        padding: 0 @offset;
-        width: 105%;
-        height: calc(100% - (@small * 2));
-        box-shadow: 0 0 .3ex @gray50, 0 0 .15ex @black;
-        border: 1px solid transparent;
-        border-radius: @xsmall;
-        box-sizing: border-box;
-
-        line-height: 1.1em;
-
-        .mw-hello span {
-          .podkova(@size: 1.2em);
-        }
-
-        p {
-          margin: @xsmall 0 0 0;
-
-          &:first-child {
-            margin: 0;
-          }
-        }
-
-        ul, ol {
-          margin: @xsmall 0 0 0;
-          padding: 0 0 0 @medium;
-        }
-
-        li {
-          margin: 0 0 @xsmall 0;
-
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-
-        .mw-podkova {
-          .podkova(@size: 1.2em);
-        }
-
-      }
-
-      .mw-standin {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        i, svg {
-          margin: 0 12px;
-        }
+      > span {
+        padding-bottom: 1px;
+        border-bottom: 2px solid @black;
       }
     }
   }

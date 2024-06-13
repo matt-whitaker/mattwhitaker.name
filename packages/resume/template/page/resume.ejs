@@ -3,28 +3,8 @@
     <div class="mw-resume-page pg1">
         <div class="mw-resume-sidebar pg1">
             <section class="mw-resume-contact">
-                <img class="mw-resume-headshot" src="/image/headshot.jpg"/>
-                <h2><span>CONTACT</span></h2>
-                <ul>
-                    <li>
-                        <span>
-                            <b>phone</b> <br />
-                            +1 (253) 886 0195
-                        </span>
-                    </li>
-                    <li>
-                        <span>
-                            <b>email</b> <br />
-                            hire@mattwhitaker.name
-                        </span>
-                    </li>
-                    <li>
-                        <span>
-                            <b>website</b> <br />
-                            mattwhitaker.name
-                        </span>
-                    </li>
-                </ul>
+                <img class="mw-resume-headshot" src="/image/headshot.jpg" />
+                <%- await include("/template/component/contact.ejs") %>
             </section>
             <section class="mw-resume-skills">
                 <h2><span>SKILLS</span></h2>
@@ -73,7 +53,7 @@
         <div class="mw-resume-content pg1">
             <header class="mw-resume-header">
                 <h1>Matt<br/>Whitaker</h1>
-                <h2>SENIOR+ FRONT-END ENGINEER</h2>
+                <h2>PRINCIPAL FRONT-END ENGINEER</h2>
                 <address>Bellevue, WA</address>
             </header>
             <section class="mw-resume-ribbon">
@@ -96,12 +76,12 @@
                     </section>
                     <section class="mw-resume-job-desc">
                         <ul>
-                            <li>Designed a ground up architecture for a new extensible administrative platform for Smartsheet, both personally developing and leading a small team to implement the vision.</li>
-                            <li>Grew the product through a phase two, with a smaller subset of individuals under my ward, and focused on supporting micro-frontend capabilities to support extension by other teams.</li>
-                            <li>Lead all UX review and implementation strategizing for multiple teams, including (other team members?) building out several additional modules using the new microfrontend patterns.</li>
-                            <li>Served as a principle contact for all broader, company-wide front-end efforts (for my teams) to ensure they followed company best practices</li>
-                            <li>Also contributed more globally by driving full-stack best practices, and solved a number of performance problems in my relevant team(s) domain of monolith capabilities, just to add icing.</li>
-                            <li><b>Skills:</b> HTML, CSS, JavaScript, TypeScript, Java, React, Redux, RxJs, Node.js, Storybook, AWS, Spring, Nginx, Kubernetes, Docker</li>
+                            <li>Lead front-end engineering for a couple small teams, responsible for requirement gathering, design, and implementation of a number of microservices and their respective UIs.</li>
+                            <li>Architected and led the development of a modular administrative platform; oversaw a small team of remote engineers and then transitioned slowly to in-house resources, serving as a technical project and team lead for all UI efforts. Responsible for the successful quality and delivery of the product and worked closely with product and UX to ensure customer needs were met.</li>
+                            <li>As the company generally grew, led the adoption of cross-company UI initiatives for the teams I supported, including micro-frontend pattern adoption and project consistency.</li>
+                            <li>Designed and developed a handful of domain-oriented microservices and helped to generally improve coding and testing practices on all layers.</li>
+                            <li>Took ownership of a few feature areas with no remaining subject-matter experts in order to lead maintenance and solve critical performance issues.</li>
+                            <li><b>Skills:</b> HTML, CSS, JavaScript, TypeScript, Java, React, Redux, RxJs, Node.js, Storybook, AWS, Spring, Nginx, Kubernetes, Docker, Micro-frontend</li>
                         </ul>
                     </section>
                 </article>
@@ -121,7 +101,7 @@
                         <ul>
                             <li>Responsibilities included working with stakeholders and engineering leadership to design and develop a variety of communication-oriented solutions.</li>
                             <li>Designed and developed a third party component which served content-rich in-product customer success messages, replacing an image-only solution.</li>
-                            <li>Worked with stakeholders to design a recommendation system and supporting UIs to replace their reliance on Google Adsense. This enabled marketers to craft higher quality, better targeted campaigns that would be delivered to the correct customers.</li>
+                            <li>Worked with stakeholders to design a recommendation system and supporting UIs to replace their reliance on Google Adsense. The service was tuned to handle hundreds of requests per second, and enabled marketers to deliver higher quality campaigns to the right customer.</li>
                             <li>Led team's adoption of company-wide micro front-end patterns, accessibility guidelines, and UI performance tuning.</li>
                             <li><b>Skills:</b> HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Node.js, Storybook, Python, AWS, ASP.NET, C#, Cassandra, MongoDB, Nginx, Kubernetes, Docker</li>
                         </ul>
@@ -135,7 +115,7 @@
         <div class="mw-resume-sidebar pg2">
             <header class="mw-resume-alt-header">
                 <h1>Matt<br/>Whitaker</h1>
-                <h2>SR+ FRONT-END</h2>
+                <h2>PR. FRONT-END</h2>
             </header>
             <section class="mw-resume-edu">
                 <h2><span>EDUCATION</span></h2>
@@ -192,7 +172,7 @@
                     <section class="mw-resume-job-desc">
                         <p></p>
                         <ul>
-                            <li>Responsibilities included the development of customer products, serving as the team's front-end subject-matter expert, and delivering pixel-perfect UIs.</li>
+                            <li>Responsible for the development of customer products, serving as the team's front-end subject-matter expert, and delivering pixel-perfect UIs.</li>
                             <li>Built and drove many feature areas of a large scale Angular application, Maestro by Madison Performance Group. Supported the team through front-end guidance and leadership.</li>
                             <li>Contributed to Spectrum UI, a novel web-to-MPEG streaming platform framework written in JavaScript and assisted in raising the bar for test coverage.</li>
                             <li>Built a faceted search solution, including Google Maps integrations and a discovery portal for American Homes 4 Rent, and additionally contributed to product ideation to assist the customer's design vision.</li>

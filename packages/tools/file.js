@@ -58,8 +58,8 @@ export const listDirectory = async (dir, recursive = true, exts = []) =>
  * Loads a directory of files, optionally recursively or filtered by extensions
  * @async
  * @param {string} dir directory to load
- * @param {boolean} recursive include subdirectories
- * @param {(EXT_EJS,EXT_MD)[]} extensions include only these extensions
+ * @param {boolean} recursive component subdirectories
+ * @param {(EXT_EJS,EXT_MD)[]} extensions component only these extensions
  * @returns {Promise<File[]>} a promise of a list of loaded files
  */
 export const loadFiles = async (dir, recursive = true, extensions = []) => Promise.all(
