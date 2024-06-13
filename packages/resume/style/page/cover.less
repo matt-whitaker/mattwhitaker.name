@@ -1,0 +1,87 @@
+@import (reference) "../../../common/style/colors.less";
+@import (reference) "../include/resume-theme.less";
+
+.mw-cover {
+  .mw-resume-reset();
+
+  .mw-cover-page {
+    .mw-resume-page();
+
+    > .pg1 {
+      padding-top: @well-size-lg;
+    }
+  }
+
+  .mw-cover-content {
+    .mw-resume-content();
+  }
+
+  .mw-cover-sidebar {
+    .mw-resume-sidebar();
+  }
+
+  .mw-cover-body {
+    .mw-resume-header(@black);
+    .mw-resume-text(@black);
+  }
+
+  .mw-cover-contact {
+    .mw-resume-header(@white);
+    .mw-resume-text(@white);
+  }
+
+  .mw-cover-alt-header {
+    .mw-resume-alt-header(@white, fade(@black, 30%));
+  }
+
+  .mw-cover-addressee {
+    .mw-resume-header(@black);
+    .mw-resume-text(@black);
+
+    article {
+      padding-top: @well-size-lg;
+    }
+
+    h3 {
+      margin-top: 2 * @well-size-lg;
+    }
+
+    time {
+      display: block;
+    }
+
+    p, address {
+      margin-top: @well-size-lg;
+    }
+  }
+
+  .mw-cover-letter {
+    .mw-resume-text(@black);
+
+    h2 {
+      background-color: lighten(@blueash, 64%);
+      letter-spacing: .15em;
+      padding: 6px 6px;
+      margin: 2 * @well-size-lg 0;
+      //font-size: 1.1em;
+    }
+
+    p {
+      padding-right: @well-size-lg;
+
+      &:first-of-type {
+        padding-bottom: 2 * @well-size-sm;
+      }
+
+      & + p {
+        margin-bottom: @well-size-sm;
+      }
+
+      &:last-of-type {
+        padding-top: 2 * @well-size-lg;
+        line-height: 1.4em;
+        font-size: 1.2em;
+      }
+    }
+  }
+}

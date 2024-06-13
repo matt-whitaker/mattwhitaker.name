@@ -5,12 +5,20 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run test -ws --if-present",
-    "build": "npm run build -ws --if-present"
+    "build": "npm run build -ws --if-present",
+    "pdf": "npm run pdf -ws --if-present",
+    "combined:clear": "rm -rf ./dist",
+    "combined:build": "npm run combined:clear && npm run build && rsync -avr --ignore-existing packages/www/dist . && rsync -avr --ignore-existing packages/resume/dist .",
+    "combined:serve": "http-server ./dist -p 8080 -c-1 -r"
   },
   "author": "Matt Whitaker",
   "license": "ISC",
   "workspaces": [
+    "packages/resume",
     "packages/tools",
     "packages/www"
-  ]
+  ],
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
 }

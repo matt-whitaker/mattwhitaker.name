@@ -4,7 +4,6 @@
   "description": "Re-usable tools for crafting my static websites",
   "main": "index.js",
   "scripts": {
-    "generate": "../www/bin/ejs.js"
   },
   "type": "module",
   "author": "",
