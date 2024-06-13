@@ -3,15 +3,24 @@
 @import (reference) "../../../common/style/fonts";
 
 .mw-overview {
+  @height: 400px;
+
   display: flex;
   background-color: @page-shade;
   box-sizing: border-box;
   padding: 50px;
   width: 100%;
-  max-height: 400px;
-  height: 400px;
 
-  margin-top: calc(100vh - 400px);
+  @media (min-width: @phone) {
+    height: @height;
+    margin-top: calc(100vh - @height);
+  }
+
+  @media (max-width: @phone) {
+    height: 100vh;
+    flex-direction: column;
+    font-size: .9em;
+  }
 
   a {
     color: @gold;
@@ -20,6 +29,10 @@
   h1 {
     .urbanist(300, @size: 2.2em);
     margin: (@xsmall / 2) 0 0 0;
+
+    @media (max-width: @phone) {
+      margin-top: 20px;
+    }
   }
 
   h2 {
@@ -40,10 +53,22 @@
 
   .mw-headshot {
     display: block;
-    width: 300px;
     margin-right: 50px;
     border-radius: 4px;
     box-shadow: .10ex .10ex .35ex @black;
+
+    @media (min-width: @phone) and (max-width: @tablet) {
+      display: none;
+    }
+
+    @media (min-width: @tablet) {
+      width: 300px;
+    }
+
+    @media (max-width: @phone) {
+      width: calc(100vw - 100px);
+      height: calc(100vw - 100px);
+    }
   }
 
   .mw-info {
