@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Asset build for resume",
   "scripts": {
-    "build": "npm run clear && npm run less && npm run template && npm run image && npm run pdf",
+    "build": "npm run clear && npm run less && npm run template && npm run image && npm run static",
     "clear": "rm -rf ./dist",
     "template": "bin/template.js --stylesheet resume.css",
     "template:watch": "nodemon bin/template.js -e ejs,json --ignore dist/ --stylesheet resume.css",
@@ -14,8 +14,8 @@
     "less:watch": "nodemon --exec \"lessc style/index.less dist/resume.css\" -e css,less --ignore dist/",
     "serve": "http-server ./dist -p 8080 -c-1 -r",
     "start": "concurrently \"npm run template:watch\" \"npm run less:watch\" \"npm run serve\"",
-    "pdf": "cp -r pdf/*.pdf ./dist",
-    "pdf:generate": "bin/pdf.js --filename resume.html && cp dist/resume.pdf ./pdf"
+    "static": "cp -r static/* ./dist",
+    "generate:resume": "bin/pdf.js --filename resume.html && cp dist/resume.pdf static"
   },
   "author": "Matt Whitaker (https://mattwhitaker.name)",
   "license": "ISC",

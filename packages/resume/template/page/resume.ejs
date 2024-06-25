@@ -1,55 +1,6 @@
 <%# title Resume %>
 <main class="mw-resume">
     <div class="mw-resume-page pg1">
-        <div class="mw-resume-sidebar pg1">
-            <section class="mw-resume-contact">
-                <img class="mw-resume-headshot" src="/image/headshot.jpg" />
-                <%- await include("/template/component/contact.ejs") %>
-            </section>
-            <section class="mw-resume-skills">
-                <h2><span>SKILLS</span></h2>
-                <figure>
-                    <figcaption>LANGUAGE</figcaption>
-                    <ul>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>HTML / CSS</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>JavaScript</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>TypeScript</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Node.js</li>
-                    </ul>
-                </figure>
-                <figure>
-                    <span>- - -</span>
-                    <figcaption>FRAMEWORK</figcaption>
-                    <ul>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>React</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Redux</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; </span>RxJS</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; </span>Jest</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; </span>Cypress</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Storybook</li>
-                    </ul>
-                </figure>
-                <figure>
-                    <span>- - -</span>
-                    <figcaption>INFRASTRUCTURE</figcaption>
-                    <ul>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0;</span>AWS</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Nginx</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0;</span>Docker</li>
-                        <li><span>&#x25A0; &#x25A0;</span>Kubernetes</li>
-                    </ul>
-                </figure>
-            </section>
-            <section class="mw-resume-methods">
-                <h2><span>METHODOLOGY</span></h2>
-                <ul>
-                    <li>Agile / Scrum</li>
-                    <li>Road-mapping</li>
-                    <li>TDD / BDD</li>
-                    <li>CI / CD</li>
-                </ul>
-            </section>
-        </div>
         <div class="mw-resume-content pg1">
             <header class="mw-resume-header">
                 <h1>Matt<br/>Whitaker</h1>
@@ -58,7 +9,7 @@
             </header>
             <section class="mw-resume-ribbon">
                 <p></p>
-                <p>Over a decade of front-end-leaning full-stack engineering including, team leadership and growth, delivering reliable and robust front-end experiences</p>
+                <p>Experienced front-end-leaning software engineer with over a decade of experience building robust, user-friendly web applications. Experienced in product ownership and team leadership, leading small teams to deliver large, complex products.</p>
             </section>
             <div class="mw-resume-exp">
                 <h2><span>PROFESSIONAL EXPERIENCE</span></h2>
@@ -76,12 +27,12 @@
                     </section>
                     <section class="mw-resume-job-desc">
                         <ul>
-                            <li>Led a small team's front-end discipline, later growing the practice as the team grew into multiple; continued to serve as primary subject-matter expert and point of contact for each team's front-end concerns.</li>
-                            <li>Architected and led the development of a modular administrative platform; oversaw a small team of remote engineers and then transitioned slowly to in-house resources, serving as a technical project and team lead for all UI efforts. Responsible for the successful quality and delivery of the product and worked closely with product and UX to ensure customer needs were met.</li>
+                            <li>Led front-end development for a couple of small teams, while also contributing extensively across the stack. Responsible for taking projects from conception to delivery.</li>
+                            <li>Architected and led the development of a modular administrative platform; oversaw a small team of remote engineers and then transitioned gradually to in-house resources, serving as a technical project and team lead for the front-end. Responsible for the successful quality and delivery of the product and worked closely with product and UX to ensure customer needs were met.</li>
                             <li>As the company generally grew, led the adoption of cross-company UI initiatives for the teams I supported, including micro-frontend pattern adoption and project consistency.</li>
                             <li>Designed and developed a handful of domain-oriented microservices and helped to generally improve coding and testing practices on all layers.</li>
-                            <li>Took ownership of a few feature areas with no remaining subject-matter experts in order to lead maintenance and solve critical performance issues.</li>
-                            <li><b>Skills:</b> HTML, CSS, JavaScript, TypeScript, Java, React, Redux, RxJs, Node.js, Storybook, AWS, Spring, Nginx, Kubernetes, Docker, Micro-frontend</li>
+                            <li>Took ownership of critical feature areas with lacking subject-matter experts in order to lead maintenance and solve critical performance issues.</li>
+                            <li><b>Skills:</b> HTML, CSS, JavaScript, TypeScript, Java, React, Redux, RxJs, Node.js, Storybook, AWS, Spring, Nginx, Kubernetes, Docker</li>
                         </ul>
                     </section>
                 </article>
@@ -100,8 +51,8 @@
                     <section class="mw-resume-job-desc">
                         <ul>
                             <li>Responsibilities included working with stakeholders and engineering leadership to design and develop a variety of communication-oriented solutions.</li>
-                            <li>Designed and developed a third party component which served content-rich in-product customer success messages, replacing an image-only solution.</li>
-                            <li>Worked with stakeholders to design a recommendation system and supporting UIs to replace their reliance on Google Adsense. The service was tuned to handle hundreds of requests per second, and enabled marketers to deliver higher quality campaigns to the right customer.</li>
+                            <li>Designed and developed a third-party component that served content-rich in-product customer success messages, replacing an image-only solution.</li>
+                            <li>Worked with stakeholders to design a recommendation system and supporting UIs to replace their reliance on Google Adsense. The service was tuned to handle hundreds of requests per second, and enabled marketers to deliver high-quality campaigns to the right customer.</li>
                             <li>Led team's adoption of company-wide micro front-end patterns, accessibility guidelines, and UI performance tuning.</li>
                             <li><b>Skills:</b> HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Node.js, Storybook, Python, AWS, ASP.NET, C#, Cassandra, MongoDB, Nginx, Kubernetes, Docker</li>
                         </ul>
@@ -109,31 +60,57 @@
                 </article>
             </div>
         </div>
+        <div class="mw-resume-sidebar pg1">
+            <section class="mw-resume-contact">
+                <img class="mw-resume-headshot" src="/image/headshot.jpg" />
+                <%- await include("/template/component/contact.ejs") %>
+            </section>
+            <section class="mw-resume-skills">
+                <h2><span>SKILLS</span></h2>
+                <figure>
+                    <figcaption>LANGUAGE</figcaption>
+                    <ul>
+                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>HTML / CSS</li>
+                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>JavaScript</li>
+                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>TypeScript</li>
+                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Node.js</li>
+                        <li><span>&#x25A0; &#x25A0; &#x25A0;</span>Java</li>
+                    </ul>
+                </figure>
+                <figure>
+                    <span>- - -</span>
+                    <figcaption>FRAMEWORK</figcaption>
+                    <ul>
+                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>React</li>
+                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Redux</li>
+                        <li><span>&#x25A0; &#x25A0; &#x25A0;</span>RxJS</li>
+                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Jest, Cypress</li>
+                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Storybook</li>
+                    </ul>
+                </figure>
+                <figure>
+                    <span>- - -</span>
+                    <figcaption>INFRASTRUCTURE</figcaption>
+                    <ul>
+                        <li><span>&#x25A0; &#x25A0; &#x25A0;</span>AWS</li>
+                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Nginx</li>
+                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Docker</li>
+                        <li><span>&#x25A0; &#x25A0;</span>Kubernetes</li>
+                    </ul>
+                </figure>
+            </section>
+            <section class="mw-resume-methods">
+                <h2><span>METHODOLOGY</span></h2>
+                <ul>
+                    <li>Agile / Scrum</li>
+                    <li>TDD / BDD</li>
+                    <li>CI / CD</li>
+                </ul>
+            </section>
+        </div>
     </div>
     <div class="mw-pagebreak"></div>
     <div class="mw-resume-page pg2">
-        <div class="mw-resume-sidebar pg2">
-            <header class="mw-resume-alt-header">
-                <h1>Matt<br/>Whitaker</h1>
-                <h2>LEAD FRONT-END</h2>
-            </header>
-            <section class="mw-resume-edu">
-                <h2><span>EDUCATION</span></h2>
-                <p>
-                    <span>Bachelor of Science</span> <br/>
-                    <span>Informatics</span>
-                </p>
-                <p>
-                    <b>University of Washington</b>
-                    <address>Seattle, WA</address>
-                </p>
-            </section>
-            <section class="mw-resume-social">
-                <h2><span>SOCIAL</span></h2>
-                <p><b>Github</b><br/> <!--https://github.com/-->matt-whitaker</p>
-                <p><b>LinkedIn</b><br/> <!--https://www.linkedin.com/in/-->whitakermatt</p>
-            </section>
-        </div>
         <div class="mw-resume-content pg2">
             <div class="mw-resume-exp">
                 <h2><span>PROFESSIONAL EXPERIENCE (<abbr title="Continued">CONT.</abbr>)</span></h2>
@@ -152,7 +129,7 @@
                         <ul>
                             <li>Front-end exclusive role focused on maintenance of an Angular/D3.js analytics dashboard.</li>
                             <li>Developed a dynamic tooltip widget that could be used in any chart or visual context.</li>
-                            <li>Enhanced chart UIs with a light/dark theming capability to match the latest UX design system.</li>
+                            <li>Enhanced charts with light/dark theming capabilities to match the latest UX design system.</li>
                             <li><b>Skills:</b> HTML, CSS, SASS, Angular, D3.js</li>
                         </ul>
                     </section>
@@ -171,9 +148,9 @@
                     <section class="mw-resume-job-desc">
                         <p></p>
                         <ul>
-                            <li>Responsible for the development of customer products, serving as the team's front-end subject-matter expert, and delivering pixel-perfect UIs.</li>
-                            <li>Built and drove many feature areas of a large scale Angular application, Maestro by Madison Performance Group. Supported the team through front-end guidance and leadership.</li>
-                            <li>Contributed to Spectrum UI, a novel web-to-MPEG streaming platform framework written in JavaScript and assisted in raising the bar for test coverage.</li>
+                            <li>Responsible for the development of customer products, driving front-end efforts and delivering pixel-perfect UIs.</li>
+                            <li>Contributed to several feature areas of a large scale Angular application, Maestro by Madison Performance Group. Focused in front-end development and mentoring peers in Angular.</li>
+                            <li>Contributed to Spectrum UI, a novel web-to-MPEG streaming platform framework written in JavaScript and assisting in raising the bar for test coverage.</li>
                             <li>Built a faceted search solution, including Google Maps integrations and a discovery portal for American Homes 4 Rent, and additionally contributed to product ideation to assist the customer's design vision.</li>
                             <li><b>Skills:</b> HTML, CSS, SASS, LESS, JavaScript, CoffeeScript, jQuery, Angular, C#, .NET, Bootstrap</li>
                         </ul>
@@ -193,7 +170,7 @@
                     </section>
                     <section class="mw-resume-job-desc">
                         <ul>
-                            <li>Held a couple of roles through the University of Washington</li>
+                            <li>Held a couple of roles at the University of Washington</li>
                             <li>Worked for UWTV, developing a small LAMP stack web application for broadcast operators to communicate across shifts.</li>
                             <li>Worked for the Dept of Student Aid, helping to digitize a number of form-based paper workflows.</li>
                             <li>Designed and ran lab sessions for an introductory Databases class as a Teacher's Assistant</li>
@@ -208,6 +185,28 @@
                     References can be provided by request.
                 </article>
             </div>
+        </div>
+        <div class="mw-resume-sidebar pg2">
+            <header class="mw-resume-alt-header">
+                <h1>Matt<br/>Whitaker</h1>
+                <h2>LEAD FRONT-END</h2>
+            </header>
+            <section class="mw-resume-edu">
+                <h2><span>EDUCATION</span></h2>
+                <p>
+                    <span>Bachelor of Science</span> <br/>
+                    <span>Informatics</span>
+                </p>
+                <p>
+                    <b>University of Washington</b>
+                <address>Seattle, WA</address>
+                </p>
+            </section>
+            <section class="mw-resume-social">
+                <h2><span>SOCIAL</span></h2>
+                <p><b>Github</b><br/> <!--https://github.com/-->matt-whitaker</p>
+                <p><b>LinkedIn</b><br/> <!--https://www.linkedin.com/in/-->whitakermatt</p>
+            </section>
         </div>
     </div>
 </main>

@@ -6,7 +6,7 @@ export default [
   },
   {
     "name": "filename",
-    "description": "specific page for pdf generation",
+    "description": "specific page for static generation",
     "defaultValue": "resume.html"
   },
   {

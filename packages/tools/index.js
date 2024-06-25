@@ -107,7 +107,7 @@ export const generatePdf = async (argv, options) => {
       height: 11 * 96,
     });
 
-    await page.goto(`${serverBase}${filename}`, { waitUntil: "networkidle0" });
+    await page.goto(`http://localhost:8080/${filename}`, { waitUntil: "networkidle0" });
     await page.pdf({
       path: `dist/${filename.split(".")[0]}.pdf`,
       format: "Letter",
