@@ -1,8 +1,9 @@
 import { basename, extname } from "path";
 import { extractEjsAnnotations, obfuscatePhone, renderEjs } from "./ejs.js";
 import { loadFiles, readFile, resolveOutputPath, resolvePath, writeFile } from "./file.js";
-import { parseArgs } from "./cli.js";
 import { EXT_EJS, ENGINE_EJS, EXT_MD, ENGINE_MD } from "./constants.js";
+import { parseArgs } from "./cli.js";
+import puppeteer from "puppeteer";
 
 /**
  *
@@ -62,7 +63,7 @@ export const buildPages = async (argv, options) => {
       // extract annotated metadata from the file
       const page = extractAnnotations(extname(name).slice(1), data);
 
-      if (options.exclude && options.exclude.includes(name)) {
+      if (!args.all && options.exclude && options.exclude.includes(name)) {
         return;
       }
 
@@ -87,3 +88,36 @@ export const buildPages = async (argv, options) => {
         await render(extname(args.template).slice(1), template, ctx, options));
     }));
 }
+
+/**
+ * Produces a PDF of the chosen page; loads via puppet
+ * @param argv {any[]} list of arguments (such as from a command line call)
+ * @param options {object}
+ * @returns {Promise<void>}
+ */
+export const generatePdf = async (argv, options) => {
+  try {
+    const { filename } = parseArgs(argv);
+
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+
+    await page.setViewport({
+      width: 8.5 * 96,
+      height: 11 * 96,
+    });
+
+    await page.goto(`${serverBase}${filename}`, { waitUntil: "networkidle0" });
+    await page.pdf({
+      path: `dist/${filename.split(".")[0]}.pdf`,
+      format: "Letter",
+      printBackground: true
+    });
+
+    await browser.close();
+  } catch (error) {
+    console.error(`Error! ${error}`);
+  }
+}
+
+export { parseArgs } from "./cli.js";

@@ -15,9 +15,7 @@
     "serve": "http-server ./dist -p 8080 -c-1 -r",
     "start": "concurrently \"npm run template:watch\" \"npm run less:watch\" \"npm run serve\"",
     "pdf": "cp -r pdf/*.pdf ./dist",
-    "pdf:resume": "bin/pdf.js --page resume.html && cp dist/resume.pdf ./pdf",
-    "pdf:cover": "bin/pdf.js --page cover.html && cp dist/cover.pdf ./pdf",
-    "test:integration": ""
+    "pdf:generate": "bin/pdf.js --filename resume.html && cp dist/resume.pdf ./pdf"
   },
   "author": "Matt Whitaker (https://mattwhitaker.name)",
   "license": "ISC",

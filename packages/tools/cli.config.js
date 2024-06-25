@@ -5,6 +5,11 @@ export default [
     "defaultValue": "template/page"
   },
   {
+    "name": "filename",
+    "description": "specific page for pdf generation",
+    "defaultValue": "resume.html"
+  },
+  {
     "name": "template",
     "description": "site wide main template",
     "defaultValue": "template/master.ejs"
@@ -26,7 +31,12 @@ export default [
   },
   {
     "name": "dev",
-    "description": "pages to exclude",
+    "description": "",
     "defaultValue": false,
+  },
+  {
+    "name": "all",
+    "description": "overrides any coded-in excludes",
+    "defaultValue": false
   }
 ]
