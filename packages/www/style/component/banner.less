@@ -1,0 +1,22 @@
+@import (reference) "../../../common/style/sizing";
+
+.mw-banner {
+  position: fixed;
+  display: block;
+
+  height: 628px;
+  width: 100%;
+  max-width: 1100px;
+  background-position: center 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @media(min-width: 1100px) {
+    left: 50%;
+    margin-left: -550px;
+  }
+
+  @media(max-width: @phone) {
+    display: none;
+  }
+}
