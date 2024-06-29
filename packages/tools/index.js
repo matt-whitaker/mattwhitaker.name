@@ -41,7 +41,6 @@ const extractAnnotations = (engine, data) => {
  * @async
  * @param argv {any[]} list of arguments (such as from a command line call)
  * @param options {object}
- * @param options.name {string} name for the build
  * @param options.ext {(EXT_EJS,EXT_MD)[]} list of file extensions to use; loads all files if omitted or empty
  * @param options.exclude {string[]} list of filenames to exclude
  * @param options.root {string} project root (cwd)
@@ -49,21 +48,36 @@ const extractAnnotations = (engine, data) => {
  * @returns {Promise<void[]>}
  */
 export const buildPages = async (argv, options) => {
-  const args = parseArgs(argv);
-  const output = resolvePath(options.root, args.output);
+  const { all, config, pages, output, stylesheet, template } = parseArgs(argv, [
+    {
+      "name": "pages",
+      "description": "root directory where page are stored",
+      "defaultValue": "template/page"
+    },
+    {
+      "name": "template",
+      "description": "site wide main template",
+      "defaultValue": "template/master.ejs"
+    },
+    {
+      "name": "stylesheet",
+      "description": "expected stylesheet file",
+      "defaultValue": "style.css"
+    }
+  ]);
 
-  const [{ site }, pages, template] = await Promise.all([
-    readFile(resolvePath(args.config), JSON.parse),
-    loadFiles(args.pages, true, options.ext),
-    readFile(resolvePath(args.template)),
+  const [{ site }, rendered, master] = await Promise.all([
+    readFile(resolvePath(config), JSON.parse),
+    loadFiles(pages, true, options.ext),
+    readFile(resolvePath(template)),
   ]);
 
   await Promise.all(
-    pages.map(async ({ name, path, data }) => {
+    rendered.map(async ({ name, path, data }) => {
       // extract annotated metadata from the file
       const page = extractAnnotations(extname(name).slice(1), data);
 
-      if (!args.all && options.exclude && options.exclude.includes(name)) {
+      if (!all && options.exclude && options.exclude.includes(name)) {
         return;
       }
 
@@ -79,13 +93,13 @@ export const buildPages = async (argv, options) => {
       // render the "inner" page contents, and put it back on the context for main template rendering
       ctx.rendered = {
         content: await render(extname(name).slice(1), data, ctx, options),
-        stylesheet: args.stylesheet,
+        stylesheet: stylesheet,
       };
 
       // render into main template and write
       writeFile(
-        resolveOutputPath(output, name),
-        await render(extname(args.template).slice(1), template, ctx, options));
+        resolveOutputPath(resolvePath(options.root, output), name),
+        await render(extname(template).slice(1), master, ctx, options));
     }));
 }
 
@@ -97,24 +111,35 @@ export const buildPages = async (argv, options) => {
  */
 export const generatePdf = async (argv, options) => {
   try {
-    const { filename } = parseArgs(argv);
+    const { page, output } = parseArgs(argv, [
+      {
+        "name": "page",
+        "description": "specific page for static generation",
+        "defaultValue": "resume.html"
+      },
+      {
+        "name": "output",
+        "description": "distribution directory",
+        "defaultValue": "dist/pdf"
+      },
+    ]);
 
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
+    const $browser = await puppeteer.launch();
+    const $page = await $browser.newPage();
 
-    await page.setViewport({
+    await $page.setViewport({
       width: 8.5 * 96,
       height: 11 * 96,
     });
 
-    await page.goto(`http://localhost:8080/${filename}`, { waitUntil: "networkidle0" });
-    await page.pdf({
-      path: `dist/${filename.split(".")[0]}.pdf`,
+    await $page.goto(`http://localhost:8080/${page}`, { waitUntil: "networkidle0" });
+    await $page.pdf({
+      path: `${output}/${page.split(".")[0]}.pdf`,
       format: "Letter",
       printBackground: true
     });
 
-    await browser.close();
+    await $browser.close();
   } catch (error) {
     console.error(`Error! ${error}`);
   }
