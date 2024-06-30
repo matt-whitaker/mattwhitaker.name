@@ -4,7 +4,7 @@
   "description": "Asset build for resume",
   "scripts": {
     "clear": "rm -rf ./dist",
-    "template": "bin/template.js --stylesheet resume.css",
+    "template": "bin/template.js --stylesheet style/resume.css",
     "template:watch": "nodemon -- \"npm run template\" -e ejs,json --ignore dist/",
     "style": "lessc style/index.less dist/style/resume.css",
     "style:watch": "nodemon --exec \"npm run style\" -e css,less --ignore dist/",
