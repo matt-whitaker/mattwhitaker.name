@@ -1,9 +1,10 @@
 import { basename, extname } from "path";
-import { extractEjsAnnotations, obfuscatePhone, renderEjs } from "./ejs.js";
-import { loadFiles, readFile, resolveOutputPath, resolvePath, writeFile } from "./file.js";
+import { applyHelpers, extractEjsAnnotations, renderEjs } from "./ejs.js";
+import { loadFiles, readFile, resolveOutputPath, resolvePath, tryReadFile, writeFile } from "./file.js";
 import { EXT_EJS, ENGINE_EJS, EXT_MD, ENGINE_MD } from "./constants.js";
 import { parseArgs } from "./cli.js";
 import puppeteer from "puppeteer";
+import { mapStrings } from "./lang.js";
 
 /**
  *
@@ -48,7 +49,7 @@ const extractAnnotations = (engine, data) => {
  * @returns {Promise<void[]>}
  */
 export const buildPages = async (argv, options) => {
-  const { all, config, pages, output, stylesheet, template } = parseArgs(argv, [
+  const { all, config, dev, pages, output, stylesheet, template, lang } = parseArgs(argv, [
     {
       "name": "pages",
       "description": "root directory where page are stored",
@@ -63,19 +64,24 @@ export const buildPages = async (argv, options) => {
       "name": "stylesheet",
       "description": "expected stylesheet file",
       "defaultValue": "style.css"
+    },
+    {
+      "name": "lang",
+      "descripton": "lang file",
+      "defaultValue": "lang.txt"
     }
   ]);
 
-  const [{ site }, rendered, master] = await Promise.all([
+  const [{ site }, rendered, master, strings] = await Promise.all([
     readFile(resolvePath(config), JSON.parse),
     loadFiles(pages, true, options.ext),
     readFile(resolvePath(template)),
+    tryReadFile(resolvePath(lang), mapStrings, {}),
   ]);
 
   await Promise.all(
     rendered.map(async ({ name, path, data }) => {
-      // extract annotated metadata from the file
-      const page = extractAnnotations(extname(name).slice(1), data);
+      const page = extractAnnotations(extname(name).slice(1), data, strings);
 
       if (!all && options.exclude && options.exclude.includes(name)) {
         return;
@@ -85,10 +91,11 @@ export const buildPages = async (argv, options) => {
       page.title = page.title || basename(name, extname(name));
 
       const ctx = {
-        obfuscatePhone,
         page,
         site,
       };
+
+      applyHelpers(ctx, { dev, strings });
 
       // render the "inner" page contents, and put it back on the context for main template rendering
       ctx.rendered = {

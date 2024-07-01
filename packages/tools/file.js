@@ -23,10 +23,11 @@ export const readFile = async (fullpath, parser) =>
  * Reads a file, but swallows errors and returns null instead
  * @param fullpath
  * @param parser
+ * @param fallback
  * @returns {Promise<string>}
  */
-export const tryReadFile = async (fullpath, parser) =>
-  parser ? _readFile(fullpath, "utf8").then(parser).catch(() => null) : _readFile(fullpath, "utf8").catch(() => null)
+export const tryReadFile = async (fullpath, parser, fallback = null) =>
+  parser ? _readFile(fullpath, "utf8").then(parser).catch(() => null) : _readFile(fullpath, "utf8").catch(() => fallback)
 /**
  * Writes data to a file
  * @async

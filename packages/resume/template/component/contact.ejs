@@ -1,20 +1,20 @@
-<h2><span>CONTACT</span></h2>
+<h2><span><%= lookup("h_contact") %></span></h2>
 <ul>
     <li>
         <span>
-            <b>phone</b> <br />
-            <%- obfuscatePhone("+1 (253) 886 0195") %>
+            <b><%= lookup("contact_phone") %></b> <br />
+            <%= hide("+1 (253) 886 0195", "+a (xxx) yyy zzzz") %>
         </span>
     </li>
     <li>
         <span>
-            <b>email</b> <br />
+            <b><%= lookup("contact_email") %></b> <br />
             hire@mattwhitaker.name
         </span>
     </li>
     <li>
         <span>
-            <b>website</b> <br />
+            <b><%= lookup("contact_website") %></b> <br />
             mattwhitaker.name
         </span>
     </li>
