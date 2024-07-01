@@ -19,7 +19,9 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
       - run: npm ci
-      - run: npm run combined:build
+      - run: npm run build
+      - run: npm run pack:resume
+      - run: npm run pack:www
       - uses: actions/upload-artifact@v4
         with:
           name: dist

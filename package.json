@@ -6,11 +6,10 @@
   "scripts": {
     "test": "npm run test -ws --if-present",
     "build": "npm run build -ws --if-present",
-    "static": "npm run static -ws --if-present",
-    "combined:clear": "rm -rf ./dist",
-    "combined:build": "npm run combined:clear && npm run build && rsync -avr --ignore-existing packages/www/dist . && rsync -avr --ignore-existing packages/resume/dist .",
-    "combined:build:all": "npm run combined:clear && npm run build && rsync -avr --ignore-existing packages/www/dist . && rsync -avr --ignore-existing packages/resume/dist .",
-    "combined:serve": "http-server ./dist -p 8080 -c-1 -r"
+    "pack:clear": "rm -rf ./dist",
+    "pack:resume": "rsync -avr --ignore-existing packages/resume/dist .",
+    "pack:www": "rsync -avr --ignore-existing packages/www/dist .",
+    "serve": "http-server ./dist -p 8080 -c-1 -r"
   },
   "author": "Matt Whitaker",
   "license": "ISC",
