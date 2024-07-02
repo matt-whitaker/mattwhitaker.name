@@ -1,0 +1,80 @@
+jobtitle LEAD FRONT-END ENGINEER
+short_jobtitle LEAD FRONT-END
+address Bellevue, WA
+summary Experienced front-end-leaning software engineer with over a decade of experience building robust, user-friendly web applications. Experienced in product ownership and team leadership, leading small teams to deliver large, complex products.
+references References can be provided by request.
+reader_note Get my styled resume <a href="https://mattwhitaker.name/resume.html">https://mattwhitaker.name/resume.html</a>
+
+contact_phone phone
+contact_email email
+contact_website website
+
+h_contact CONTACT
+h_experience PROFESSIONAL EXPERIENCE
+h_skills SKILLS
+h_language LANGUAGE
+h_framework FRAMEWORK
+h_infrastructure INFRASTRUCTURE
+h_methodology METHODOLOGY
+h_continued (<abbr title="Continued">CONT.</abbr>)
+h_references REFERENCE
+h_education EDUCATION
+h_social SOCIAL
+
+smar_jobtitle Senior Software Engineer
+smar_focus Full-stack / Front-end
+smar_years Nov 2018 - Dec 2023
+smar_name Smartsheet
+smar_address Bellevue, WA
+smar_summary Led front-end development for a couple of small teams, while also contributing extensively across the stack. Responsible for taking projects from conception to delivery.
+smar_1 Architected and led the development of a modular administrative platform; oversaw a small team of remote engineers and then transitioned gradually to in-house resources, serving as a technical project and team lead for the front-end. Responsible for the successful quality and delivery of the product and worked closely with product and UX to ensure customer needs were met.
+smar_2 As the company generally grew, led the adoption of cross-company UI initiatives for the teams I supported, including micro-frontend pattern adoption and project consistency.
+smar_3 Designed and developed a handful of domain-oriented microservices and helped to generally improve coding and testing practices on all layers.
+smar_4 Took ownership of critical feature areas with lacking subject-matter experts in order to lead maintenance and solve critical performance issues.
+smar_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, Java, React, Redux, RxJs, Node.js, Express, Storybook, AWS, Spring, Nginx, Kubernetes, Docker
+
+sap_jobtitle Software Design Engineer II
+sap_focus Full-stack
+sap_years Mar 2016 - Nov 2018
+sap_name SAP Concur
+sap_address Bellevue, WA
+sap_summary Responsibilities included working with stakeholders and engineering leadership to design and develop a variety of communication-oriented solutions.
+sap_1 Designed and developed a third-party component that served content-rich in-product customer success messages, replacing an image-only solution.
+sap_2 Worked with stakeholders to design a recommendation system and supporting UIs to replace their reliance on Google Adsense. The service was tuned to handle hundreds of requests per second, and enabled marketers to deliver high-quality campaigns to the right customer.
+sap_3 Led team's adoption of company-wide micro front-end patterns, accessibility guidelines, and UI performance tuning.
+sap_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Node.js, Express, Storybook, Python, AWS, ASP.NET, C#, Cassandra, MongoDB, Nginx, Kubernetes, Docker
+
+appl_jobtitle Front-end Engineer
+appl_years Oct 2015 - Feb 2016
+appl_name Applause
+appl_address Bellevue, WA
+appl_summary Front-end exclusive role focused on maintenance of an Angular/D3.js analytics dashboard.
+appl_1 Developed a dynamic tooltip widget that could be used in any chart or visual context.
+appl_2 Enhanced charts with light/dark theming capabilities to match the latest UX design system.
+appl_skills <b>Skills:</b> HTML, CSS, SASS, Angular, D3.js
+
+slal_jobtitle Software Engineer
+slal_years Jul 2013 - Oct 2015
+slal_name Slalom Consulting
+slal_address Seattle, WA
+slal_summary Responsible for the development of customer products, driving front-end efforts and delivering pixel-perfect UIs.
+slal_1 Contributed to several feature areas of a large scale Angular application, Maestro by Madison Performance Group. Focused in front-end development and mentoring peers in Angular.
+slal_2 Contributed to Spectrum UI, a novel web-to-MPEG streaming platform framework written in JavaScript and assisting in raising the bar for test coverage.
+slal_3 Built a faceted search solution, including Google Maps integrations and a discovery portal for American Homes 4 Rent, and additionally contributed to product ideation to assist the customer's design vision.
+slal_skills <b>Skills:</b> HTML, CSS, SASS, LESS, JavaScript, CoffeeScript, jQuery, Angular, C#, .NET, Bootstrap
+
+uw_jobtitle Web Developer &<br/>Teacher's Assistant
+uw_focus Part-time
+uw_years Jun 2012 - Mar 2013
+uw_name University of Washington
+uw_address Seattle, WA
+uw_summary Held a couple of roles at the University of Washington
+uw_1 Worked for UWTV, developing a small LAMP stack web application for broadcast operators to communicate across shifts.
+uw_2 Worked for the Dept of Student Aid, helping to digitize a number of form-based paper workflows.
+uw_3 Designed and ran lab sessions for an introductory Databases class as a Teacher's Assistant
+uw_skills <b>Skills:</b> HTML, CSS, JavaScript, jQuery, SQL, PHP, (LAMP)
+
+edu_degree Bachelor of Science
+edu_focus Informatics: IA
+edu_school University of Washington
+edu_address Seattle, WA

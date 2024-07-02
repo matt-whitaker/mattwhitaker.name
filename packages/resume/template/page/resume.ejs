@@ -4,59 +4,59 @@
         <div class="mw-resume-content pg1">
             <header class="mw-resume-header">
                 <h1>Matt<br/>Whitaker</h1>
-                <h2>LEAD FRONT-END ENGINEER</h2>
-                <address>Bellevue, WA</address>
+                <h2><%= lookup("jobtitle") %></h2>
+                <address><%= lookup("address") %></address>
             </header>
             <section class="mw-resume-ribbon">
                 <p></p>
-                <p>Experienced front-end-leaning software engineer with over a decade of experience building robust, user-friendly web applications. Experienced in product ownership and team leadership, leading small teams to deliver large, complex products.</p>
+                <p><%= lookup("summary") %></p>
             </section>
             <div class="mw-resume-exp">
-                <h2><span>PROFESSIONAL EXPERIENCE</span></h2>
+                <h2><span><%= lookup("h_experience") %></span></h2>
                 <article>
-                    <section class="mw-resume-job-title">
+                    <header class="mw-resume-job-title">
                         <p>
-                            <span>Senior Software Engineer</span><br/>
-                            <em>Full-stack / Front-end</em><br/>
-                            <span>Nov 2018 - Dec 2023</span>
+                            <span><%= lookup("smar_jobtitle") %></span><br/>
+                            <em><%= lookup("smar_focus") %></em><br/>
+                            <span><%= lookup("smar_years") %></span>
                         </p>
                         <p>
-                            <span>Smartsheet</span><br/>
-                            <address>Bellevue, WA</address>
+                            <span><%= lookup("smar_name") %></span><br/>
+                            <address><%= lookup("smar_address") %></address>
                         </p>
-                    </section>
-                    <section class="mw-resume-job-desc">
+                    </header>
+                    <main class="mw-resume-job-desc">
                         <ul>
-                            <li>Led front-end development for a couple of small teams, while also contributing extensively across the stack. Responsible for taking projects from conception to delivery.</li>
-                            <li>Architected and led the development of a modular administrative platform; oversaw a small team of remote engineers and then transitioned gradually to in-house resources, serving as a technical project and team lead for the front-end. Responsible for the successful quality and delivery of the product and worked closely with product and UX to ensure customer needs were met.</li>
-                            <li>As the company generally grew, led the adoption of cross-company UI initiatives for the teams I supported, including micro-frontend pattern adoption and project consistency.</li>
-                            <li>Designed and developed a handful of domain-oriented microservices and helped to generally improve coding and testing practices on all layers.</li>
-                            <li>Took ownership of critical feature areas with lacking subject-matter experts in order to lead maintenance and solve critical performance issues.</li>
-                            <li><b>Skills:</b> HTML, CSS, JavaScript, TypeScript, Java, React, Redux, RxJs, Node.js, Express, Storybook, AWS, Spring, Nginx, Kubernetes, Docker</li>
+                            <li><%= lookup("smar_summary") %></li>
+                            <li><%= lookup("smar_1") %></li>
+                            <li><%= lookup("smar_2") %></li>
+                            <li><%= lookup("smar_3") %></li>
+                            <li><%= lookup("smar_4") %></li>
+                            <li><%- lookup("smar_skills") %></li>
                         </ul>
-                    </section>
+                    </main>
                 </article>
                 <article>
-                    <section class="mw-resume-job-title">
+                    <header class="mw-resume-job-title">
                         <p>
-                            <span>Software Design Engineer II</span><br/>
-                            <em>Full-stack</em><br/>
-                            <span>Mar 2016 - Nov 2018</span>
+                            <span><%= lookup("sap_jobtitle") %></span><br/>
+                            <em><%= lookup("sap_focus") %></em><br/>
+                            <span><%= lookup("sap_years") %></span>
                         </p>
                         <p>
-                            <span>SAP Concur</span><br/>
-                            <address>Bellevue, WA</address>
+                            <span><%= lookup("sap_name") %></span><br/>
+                            <address><%= lookup("sap_address") %></address>
                         </p>
-                    </section>
-                    <section class="mw-resume-job-desc">
+                    </header>
+                    <main class="mw-resume-job-desc">
                         <ul>
-                            <li>Responsibilities included working with stakeholders and engineering leadership to design and develop a variety of communication-oriented solutions.</li>
-                            <li>Designed and developed a third-party component that served content-rich in-product customer success messages, replacing an image-only solution.</li>
-                            <li>Worked with stakeholders to design a recommendation system and supporting UIs to replace their reliance on Google Adsense. The service was tuned to handle hundreds of requests per second, and enabled marketers to deliver high-quality campaigns to the right customer.</li>
-                            <li>Led team's adoption of company-wide micro front-end patterns, accessibility guidelines, and UI performance tuning.</li>
-                            <li><b>Skills:</b> HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Node.js, Express, Storybook, Python, AWS, ASP.NET, C#, Cassandra, MongoDB, Nginx, Kubernetes, Docker</li>
+                            <li><%= lookup("sap_summary") %></li>
+                            <li><%= lookup("sap_1") %></li>
+                            <li><%= lookup("sap_2") %></li>
+                            <li><%= lookup("sap_3") %></li>
+                            <li><%- lookup("sap_skills") %></li>
                         </ul>
-                    </section>
+                    </main>
                 </article>
             </div>
         </div>
@@ -66,9 +66,9 @@
                 <%- await include("/template/component/contact.ejs") %>
             </section>
             <section class="mw-resume-skills">
-                <h2><span>SKILLS</span></h2>
+                <h2><span><%= lookup("h_skills") %></span></h2>
                 <figure>
-                    <figcaption>LANGUAGE</figcaption>
+                    <figcaption><%= lookup("h_language") %></figcaption>
                     <ul>
                         <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>HTML / CSS</li>
                         <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>JavaScript</li>
@@ -79,7 +79,7 @@
                 </figure>
                 <figure>
                     <span>- - -</span>
-                    <figcaption>FRAMEWORK</figcaption>
+                    <figcaption><%= lookup("h_framework") %></figcaption>
                     <ul>
                         <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>React</li>
                         <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Redux</li>
@@ -91,7 +91,7 @@
                 </figure>
                 <figure>
                     <span>- - -</span>
-                    <figcaption>INFRASTRUCTURE</figcaption>
+                    <figcaption><%= lookup("h_infrastructure") %></figcaption>
                     <ul>
                         <li><span>&#x25A0; &#x25A0; &#x25A0;</span>AWS</li>
                         <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Nginx</li>
@@ -101,7 +101,7 @@
                 </figure>
             </section>
             <section class="mw-resume-methods">
-                <h2><span>METHODOLOGY</span></h2>
+                <h2><span><%= lookup("h_methodology") %></span></h2>
                 <ul>
                     <li>Agile / Scrum</li>
                     <li>TDD / BDD</li>
@@ -114,97 +114,99 @@
     <div class="mw-resume-page pg2">
         <div class="mw-resume-content pg2">
             <div class="mw-resume-exp">
-                <h2><span>PROFESSIONAL EXPERIENCE (<abbr title="Continued">CONT.</abbr>)</span></h2>
+                <h2><span><%= lookup("h_experience") %> <%- lookup("h_continued") %></span></h2>
                 <article>
-                    <section class="mw-resume-job-title">
+                    <header class="mw-resume-job-title">
                         <p>
-                            <span>Front-end Engineer</span><br/>
-                            <span>Oct 2015 - Feb 2016</span>
+                            <span><%= lookup("appl_jobtitle") %></span><br/>
+                            <span><%= lookup("appl_years") %></span>
                         </p>
                         <p>
-                            <span>Applause</span><br/>
-                            <address>Bellevue, WA</address>
+                            <span><%= lookup("appl_name") %></span><br/>
+                        <address><%= lookup("appl_address") %></address>
                         </p>
-                    </section>
-                    <section class="mw-resume-job-desc">
+                    </header>
+                    <main class="mw-resume-job-desc">
                         <ul>
-                            <li>Front-end exclusive role focused on maintenance of an Angular/D3.js analytics dashboard.</li>
-                            <li>Developed a dynamic tooltip widget that could be used in any chart or visual context.</li>
-                            <li>Enhanced charts with light/dark theming capabilities to match the latest UX design system.</li>
-                            <li><b>Skills:</b> HTML, CSS, SASS, Angular, D3.js</li>
+                            <li><%= lookup("appl_summary") %></li>
+                            <li><%= lookup("appl_1") %></li>
+                            <li><%= lookup("appl_2") %></li>
+                            <li><%- lookup("appl_skills") %></li>
                         </ul>
-                    </section>
+                    </main>
                 </article>
                 <article>
-                    <section class="mw-resume-job-title">
+                    <header class="mw-resume-job-title">
                         <p>
-                            <span>Software Engineer</span><br/>
-                            <span>Jul 2013 - Oct 2015</span>
+                            <span><%= lookup("slal_jobtitle") %></span><br/>
+                            <span><%= lookup("slal_years") %></span>
                         </p>
                         <p>
-                            <span>Slalom Consulting</span><br/>
-                            <address>Seattle, WA</address>
+                            <span><%= lookup("slal_name") %></span><br/>
+                        <address><%= lookup("slal_address") %></address>
                         </p>
-                    </section>
-                    <section class="mw-resume-job-desc">
+                    </header>
+                    <main class="mw-resume-job-desc">
                         <p></p>
                         <ul>
-                            <li>Responsible for the development of customer products, driving front-end efforts and delivering pixel-perfect UIs.</li>
-                            <li>Contributed to several feature areas of a large scale Angular application, Maestro by Madison Performance Group. Focused in front-end development and mentoring peers in Angular.</li>
-                            <li>Contributed to Spectrum UI, a novel web-to-MPEG streaming platform framework written in JavaScript and assisting in raising the bar for test coverage.</li>
-                            <li>Built a faceted search solution, including Google Maps integrations and a discovery portal for American Homes 4 Rent, and additionally contributed to product ideation to assist the customer's design vision.</li>
-                            <li><b>Skills:</b> HTML, CSS, SASS, LESS, JavaScript, CoffeeScript, jQuery, Angular, C#, .NET, Bootstrap</li>
+                            <li><%= lookup("slal_summary") %></li>
+                            <li><%= lookup("slal_1") %></li>
+                            <li><%= lookup("slal_2") %></li>
+                            <li><%= lookup("slal_3") %></li>
+                            <li><%- lookup("slal_skills") %></li>
                         </ul>
-                    </section>
+                    </main>
                 </article>
                 <article>
-                    <section class="mw-resume-job-title">
+                    <header class="mw-resume-job-title">
                         <p>
-                            <span>Web Developer &<br/>Teacher's Assistant</span><br/>
-                            <em>Part-time</em><br/>
-                            <span>Jun 2012 - Mar 2013</span>
+                            <span><%- lookup("uw_jobtitle") %></span><br/>
+                            <em><%= lookup("uw_focus") %></em><br/>
+                            <span><%= lookup("uw_years") %></span>
                         </p>
                         <p>
-                            <span>University of Washington</span><br/>
-                            <address>Seattle, WA</address>
+                            <span><%= lookup("uw_name") %></span><br/>
+                        <address><%= lookup("uw_address") %></address>
                         </p>
-                    </section>
-                    <section class="mw-resume-job-desc">
+                    </header>
+                    <main class="mw-resume-job-desc">
                         <ul>
-                            <li>Held a couple of roles at the University of Washington</li>
-                            <li>Worked for UWTV, developing a small LAMP stack web application for broadcast operators to communicate across shifts.</li>
-                            <li>Worked for the Dept of Student Aid, helping to digitize a number of form-based paper workflows.</li>
-                            <li>Designed and ran lab sessions for an introductory Databases class as a Teacher's Assistant</li>
-                            <li><b>Skills:</b> HTML, CSS, JavaScript, jQuery, SQL, PHP, (LAMP)</li>
+                            <li><%= lookup("uw_summary") %></li>
+                            <li><%= lookup("uw_1") %></li>
+                            <li><%= lookup("uw_2") %></li>
+                            <li><%= lookup("uw_3") %></li>
+                            <li><%- lookup("uw_skills") %></li>
                         </ul>
-                    </section>
+                    </main>
                 </article>
             </div>
             <div class="mw-resume-ref">
-                <h2><span>REFERENCES</span></h2>
+                <h2><span><%= lookup("h_references") %></span></h2>
                 <article>
-                    References can be provided by request.
+                    <%= lookup("references") %>
                 </article>
             </div>
         </div>
         <div class="mw-resume-sidebar pg2">
             <header class="mw-resume-alt-header">
                 <h1>Matt<br/>Whitaker</h1>
-                <h2>LEAD FRONT-END</h2>
+                <h2><%= lookup("short_jobtitle") %></h2>
             </header>
             <section class="mw-resume-edu">
-                <h2><span>EDUCATION</span></h2>
+                <h2>
+                    <span><%= lookup("h_education") %></span>
+                </h2>
                 <p>
-                    <span>Bachelor of Science</span> <br/>
-                    <span>Informatics</span>
+                    <span><%= lookup("edu_degree") %></span> <br/>
+                    <span><%= lookup("edu_focus") %></span>
                 </p>
                 <p>
-                    <b>University of Washington</b>
-                <address>Seattle, WA</address>
+                    <b><%= lookup("edu_school") %></b>
+                    <address><%= lookup("edu_address") %></address>
                 </p>
             </section>
             <section class="mw-resume-social">
-                <h2><span>SOCIAL</span></h2>
+                <h2><span><%= lookup("h_social") %></span></h2>
                 <p><b>Github</b><br/> <!--https://github.com/-->matt-whitaker</p>
                 <p><b>LinkedIn</b><br/> <!--https://www.linkedin.com/in/-->whitakermatt</p>
             </section>
