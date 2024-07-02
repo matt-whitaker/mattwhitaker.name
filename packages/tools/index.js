@@ -74,7 +74,7 @@ export const buildPages = async (argv, options) => {
 
   const [{ site }, rendered, master, strings] = await Promise.all([
     readFile(resolvePath(config), JSON.parse),
-    loadFiles(pages, false, options.ext),
+    loadFiles(pages, true, options.ext),
     readFile(resolvePath(template)),
     tryReadFile(resolvePath(lang), mapStrings, {}),
   ]);
