@@ -3,6 +3,7 @@ short_jobtitle LEAD FRONT-END
 address Bellevue, WA
 summary Experienced front-end-leaning software engineer with over a decade of experience building robust, user-friendly web applications. Experienced in product ownership and team leadership, leading small teams to deliver large, complex products.
 references References can be provided by request.
+reader_note Get my styled resume <a href="https://mattwhitaker.name/resume.html">https://mattwhitaker.name/resume.html</a>
 
 contact_phone phone
 contact_email email
