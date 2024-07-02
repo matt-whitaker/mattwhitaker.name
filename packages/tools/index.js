@@ -74,7 +74,7 @@ export const buildPages = async (argv, options) => {
 
   const [{ site }, rendered, master, strings] = await Promise.all([
     readFile(resolvePath(config), JSON.parse),
-    loadFiles(pages, true, options.ext),
+    loadFiles(pages, false, options.ext),
     readFile(resolvePath(template)),
     tryReadFile(resolvePath(lang), mapStrings, {}),
   ]);
@@ -128,7 +128,7 @@ export const generatePdf = async (argv, options) => {
         "name": "output",
         "description": "distribution directory",
         "defaultValue": "dist/pdf"
-      },
+      }
     ]);
 
     const $browser = await puppeteer.launch();

@@ -9,6 +9,7 @@
     "style": "lessc style/index.less dist/style/resume.css",
     "style:watch": "nodemon --exec \"npm run style\" -e css,less --ignore dist/",
     "generate:resume": "bin/pdf.js --page resume.html && mkdir -p static/pdf &&  cp dist/pdf/resume.pdf static/pdf",
+    "generate:resume-ats": "bin/pdf.js --page resume-ats.html && mkdir -p static/pdf &&  cp dist/pdf/resume-ats.pdf static/pdf",
     "static": "cp -r ./../common/static/ dist && cp -r ./static/ ./dist",
     "build": "npm run clear && npm run style && npm run template && npm run static",
     "build:dev": "npm run clear && npm run style && npm run template -- --dev && npm run static",

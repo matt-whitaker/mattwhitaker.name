@@ -137,15 +137,16 @@
       padding-right: 32px;
     }
 
-    section {
+    header {
       flex-basis: 30%;
 
-      + section {
+      + main {
         flex-basis: 70%;
       }
     }
 
     .mw-resume-job-desc {
+      padding-top: @well-size-sm;
       li + li {
         list-style: square;
         vertical-align: middle;
@@ -159,6 +160,7 @@
     }
 
     .mw-resume-job-title {
+      padding-top: @well-size-sm;
       border-right: 1px solid @black;
 
       span:first-of-type {
