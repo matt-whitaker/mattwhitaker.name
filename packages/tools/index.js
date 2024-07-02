@@ -74,6 +74,7 @@ export const buildPages = async (argv, options) => {
 
   const [{ site }, rendered, master, strings] = await Promise.all([
     readFile(resolvePath(config), JSON.parse),
+    // TODO: recursive: false changes the path resolution behavior significantly. Need to solve before this can be changed.
     loadFiles(pages, true, options.ext),
     readFile(resolvePath(template)),
     tryReadFile(resolvePath(lang), mapStrings, {}),
