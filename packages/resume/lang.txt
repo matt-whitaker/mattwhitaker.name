@@ -68,10 +68,10 @@ uw_focus Part-time
 uw_years Jun 2012 - Mar 2013
 uw_name University of Washington
 uw_address Seattle, WA
-uw_summary Held a couple of roles at the University of Washington
+uw_summary Held a couple of roles at the University of Washington.
 uw_1 Worked for UWTV, developing a small LAMP stack web application for broadcast operators to communicate across shifts.
 uw_2 Worked for the Dept of Student Aid, helping to digitize a number of form-based paper workflows.
-uw_3 Designed and ran lab sessions for an introductory Databases class as a Teacher's Assistant
+uw_3 Designed and ran lab sessions for an introductory Databases class as a Teacher's Assistant.
 uw_skills <b>Skills:</b> HTML, CSS, JavaScript, jQuery, SQL, PHP, Apache
 
 vous_jobtitle Ruby on Rails Developer
@@ -80,8 +80,8 @@ vous_years Jan 2011 - Dec 2011
 vous_name Vous Vitamin
 vous_address Seattle, WA
 vous_summary Internship with the startup Vous Vitamin (then Vous Health), where I was a web developer helping to build a Ruby on Rails website.
-vous_1 Built UIs to spec deliveredy by UX
-vous_2 Developed data APIs to drive the UI
+vous_1 Built UIs to spec based on high fidelity designs.
+vous_2 Developed data APIs to drive UI capabilities.
 vous_skills <b>Skills:</b> HTML, CSS, jQuery, Ruby, Ruby on Rails, Apache
 
 edu_degree Bachelor of Science

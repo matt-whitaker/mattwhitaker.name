@@ -68,7 +68,7 @@ export const buildPages = async (argv, options) => {
     },
     {
       "name": "lang",
-      "descripton": "lang file",
+      "description": "lang file",
       "defaultValue": "lang.txt"
     }
   ]);
