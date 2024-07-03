@@ -1,4 +1,5 @@
-import { basename, extname } from "path";
+import fs from "fs-extra";
+import { join, basename, extname } from "path";
 import { applyHelpers, extractEjsAnnotations, renderEjs } from "./ejs.js";
 import { loadFiles, readFile, resolveOutputPath, resolvePath, tryReadFile, writeFile } from "./file.js";
 import { EXT_EJS, ENGINE_EJS, EXT_MD, ENGINE_MD } from "./constants.js";
@@ -153,4 +154,26 @@ export const generatePdf = async (argv, options) => {
   }
 }
 
-export { parseArgs } from "./cli.js";
+/**
+ *
+ * @param argv
+ * @param options
+ * @param options.root {string} project root (cwd)
+ * @returns {Promise<void>}
+ */
+export const copyFiles = async (argv, options) => {
+  const { root } = options;
+  const { source, output } = parseArgs(argv, [
+    {
+      "name": "source",
+      "description": "specific page for static generation",
+      "defaultValue": "static"
+    },
+  ]);
+
+  try {
+    await fs.copy(join(root, source), join(root, output));
+  } catch (err) {
+    console.error(`Error! ${err}`);
+  }
+}

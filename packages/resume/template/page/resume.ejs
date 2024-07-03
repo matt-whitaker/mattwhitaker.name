@@ -179,6 +179,27 @@
                         </ul>
                     </main>
                 </article>
+                <article>
+                    <header class="mw-resume-job-title">
+                        <p>
+                            <span><%- lookup("vous_jobtitle") %></span><br/>
+                            <em><%= lookup("vous_focus") %></em><br/>
+                            <span><%= lookup("vous_years") %></span>
+                        </p>
+                        <p>
+                            <span><%= lookup("vous_name") %></span><br/>
+                        <address><%= lookup("vous_address") %></address>
+                        </p>
+                    </header>
+                    <main class="mw-resume-job-desc">
+                        <ul>
+                            <li><%= lookup("vous_summary") %></li>
+                            <li><%= lookup("vous_1") %></li>
+                            <li><%= lookup("vous_2") %></li>
+                            <li><%- lookup("vous_skills") %></li>
+                        </ul>
+                    </main>
+                </article>
             </div>
             <div class="mw-resume-ref">
                 <h2><span><%= lookup("h_references") %></span></h2>
