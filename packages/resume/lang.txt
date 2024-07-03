@@ -74,7 +74,7 @@ uw_2 Worked for the Dept of Student Aid, helping to digitize a number of form-ba
 uw_3 Designed and ran lab sessions for an introductory Databases class as a Teacher's Assistant
 uw_skills <b>Skills:</b> HTML, CSS, JavaScript, jQuery, SQL, PHP, Apache
 
-vous_jobtitle Ruby Developer Intern
+vous_jobtitle Ruby on Rails Developer
 vous_focus Internship
 vous_years Jan 2011 - Dec 2011
 vous_name Vous Vitamin
