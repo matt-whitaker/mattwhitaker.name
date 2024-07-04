@@ -8,6 +8,7 @@ reader_note Get my styled resume <a href="https://mattwhitaker.name/resume.html"
 contact_phone phone
 contact_email email
 contact_website website
+contact_phone_note Redacted phone number
 
 h_contact CONTACT
 h_experience PROFESSIONAL EXPERIENCE
