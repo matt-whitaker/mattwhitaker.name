@@ -1,5 +1,34 @@
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js');
-  });
-}
+const CACHE_NAME = "mattwhitaker.name";
+
+const urlsToCache = [
+  "/",
+  "/resume.html",
+
+  "/style/main.css",
+  "/style/resume.css",
+
+  "/image/headshot.jpg",
+  "/image/b-roll.jpg",
+  "/image/cubes.jpg",
+  "/image/icon-192x192.jpg",
+  "/image/icon-512x512.jpg"
+];
+
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(urlsToCache)));
+});
+
+self.addEventListener("activate", event => {
+  const cacheWhitelist = [CACHE_NAME];
+
+  event.waitUntil(
+    caches.keys().then(cacheNames => Promise.all(
+      cacheNames.map(cacheName => {
+        if (cacheWhitelist.indexOf(cacheName) === -1) {
+          return caches.delete(cacheName);
+        }
+      })
+    )));
+});
