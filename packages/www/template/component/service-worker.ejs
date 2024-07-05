@@ -1,10 +1,14 @@
-<script type="javascript">
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw-poc.js')
+<% if (worker) { %>
+<script type="text/javascript">
+  console.log("confirm script is executing");
+  if ("serviceWorker" in navigator) {
+    console.log("confirm script is executing, and serviceWorker exists");
+    navigator.serviceWorker.register("<%= worker %>")
       .then(function(registration) {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        console.log("ServiceWorker registration successful with scope: ", registration.scope);
       }, function(error) {
-        console.log('ServiceWorker registration failed: ', error);
+        console.log("ServiceWorker registration failed: ", error);
       });
   }
 </script>
+<% } %>

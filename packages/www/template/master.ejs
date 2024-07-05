@@ -9,8 +9,8 @@
 
         <meta property="og:title" content="<%= page.title %>">
         <meta property="og:description" content="<%- page.description %>">
-        <meta property="og:image" content="https://yourwebsite.com/image/headshot.jpg">
-        <meta property="og:url" content="https://yourwebsite.com">
+        <meta property="og:image" content="https://mattwhitaker.name/image/icon-512x512.jpg">
+        <meta property="og:url" content="https://mattwhitaker.name">
         <meta property="og:type" content="website">
 
         <link rel="manifest" href="/manifest.json">
@@ -21,14 +21,12 @@
         <link href="<%= rendered.stylesheet %>" rel="stylesheet" />
         <link href="<%- site.google.fonts %>" rel="stylesheet" />
 
-        <%- await include("/template/component/service-worker.ejs") %>
+        <%- await include("/template/component/service-worker.ejs", { worker: page.worker }) %>
     </head>
     <body class="mw-body <%= page.class %>">
         <% if (page.banner) { %>
         <%- await include("/template/component/banner.ejs", { img: page.banner, desc: page.bannerDesc }) %>
         <% } %>
-        <div class="mw-scrollbody">
-            <%- rendered.content %>
-        </div>
+        <%- await include("/template/component/scrollbody.ejs", { content: rendered.content }) %>
     </body>
 </html>

@@ -1,20 +1,19 @@
 const CACHE_NAME = "mattwhitaker.name";
-
-const urlsToCache = [
-  "/",
-  "/resume.html",
-
-  "/style/main.css",
-  "/style/resume.css",
-
-  "/image/headshot.jpg",
-  "/image/b-roll.jpg",
-  "/image/cubes.jpg",
-  "/image/icon-192x192.jpg",
-  "/image/icon-512x512.jpg"
-];
-
 self.addEventListener("install", event => {
+  const urlsToCache = [
+    "/",
+    "/resume.html",
+
+    "/style/main.css",
+    "/style/resume.css",
+
+    "/image/headshot.jpg",
+    "/image/b-roll.jpg",
+    "/image/cubes.png",
+    "/image/icon-192x192.jpg",
+    "/image/icon-512x512.jpg"
+  ];
+
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(urlsToCache)));

@@ -1,15 +1,5 @@
-<%# title Matt Whitaker - Cover Letter Template - Lead Front-end Engineer %>
 <main class="mw-cover">
     <div class="mw-cover-page pg1">
-        <div class="mw-cover-sidebar pg1">
-            <header class="mw-cover-alt-header">
-                <h1>Matt<br/>Whitaker</h1>
-                <h2>LEAD FRONT-END</h2>
-            </header>
-            <section class="mw-cover-contact">
-                <%- await include("/template/component/contact.ejs") %>
-            </section>
-        </div>
         <div class="mw-cover-content pg1">
             <div class="mw-cover-addressee">
                 <h2><span>COVER LETTER</span></h2>
@@ -17,26 +7,25 @@
                     <time><%= new Date().toDateString() %></time>
                     <p>
                         To, <br />
-                        [Hiring Manager]
+                        Hiring Manager
                     </p>
                     <address>
-                        [Company Name] <br/>
-                        [Street] <br/>
-                        [City], [ST] [Zipcode]
+                        Nextdoor <br/>
+                        San Fransisco, CA
                     </address>
                 </article>
             </div>
             <div class="mw-cover-letter">
-                <h2>[JOB TITLE]</h2>
+                <h2>SENIOR SOFTWARE ENGINEER (FRONTEND) </h2>
                 <article>
-                    <p>[Intro, "To the hiring manager or other readers,"]</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis metus at tortor pulvinar varius. Mauris ut pharetra magna. Nullam dapibus vel nisi sed lacinia. Curabitur euismod erat id nisl congue, ac facilisis nisi scelerisque.</p>
-                    <p>Vivamus eget metus in sapien euismod tempor. Curabitur a mi metus. Aenean sit amet vestibulum tortor. Nulla facilisi. Donec sollicitudin lorem in orci convallis, nec fringilla elit bibendum. Phasellus eget mi vel velit bibendum iaculis. Aenean nec dui est. Donec dignissim nisi vitae lacus vestibulum, sit amet scelerisque sem ultrices.</p>
-                    <p>Nunc volutpat, justo ac dapibus fermentum, eros arcu fermentum libero, vel facilisis libero magna at risus. Integer nec nibh purus. Morbi auctor lorem ac ligula vehicula, nec hendrerit ex condimentum. Ut elementum nec metus sed iaculis. Cras quis varius turpis. In posuere lacus felis, id viverra felis pharetra a.</p>
-                    <p>Aliquam erat volutpat. In lobortis, lorem et dapibus tincidunt, lectus neque luctus lacus, vel efficitur arcu tortor ac quam. Ut pretium convallis lorem, ac vestibulum magna lacinia sit amet. Suspendisse interdum ante at lacus suscipit, ac fermentum magna convallis. Mauris nec ex ac erat cursus elementum a id elit. Fusce scelerisque nec nunc a egestas.</p>
-                    <p>Fusce dapibus efficitur lectus sit amet consequat. Proin rutrum eros vel lacus ultricies posuere. Curabitur ut sem tincidunt, tempor odio a, vulputate sapien. Donec pharetra, urna eu aliquet finibus, risus ipsum feugiat metus, id suscipit orci lectus non lacus. Curabitur ullamcorper nisl vel ante accumsan, in pharetra nisi interdum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                    <p>Vivamus scelerisque, lectus non malesuada tempor, ex lorem condimentum sapien, id egestas erat dui sed justo. Integer tincidunt libero sed ligula ullamcorper feugiat. Fusce vel risus ac mauris auctor vulputate sit amet sed odio. Suspendisse potenti. Nunc scelerisque sagittis eros, vel pulvinar libero malesuada ut.</p>
-                    <p>Thank you for considering my application. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia nunc vel neque varius, ut suscipit justo pulvinar. In auctor lacus et neque varius, a varius purus accumsan. Sed non risus quis libero interdum blandit in sit amet ex. Donec tristique nisl at risus vulputate, sed tristique nisl laoreet. Proin tincidunt purus non dolor malesuada, sit amet bibendum ex interdum.</p>
+                    <p>To whom this may reach,</p>
+
+                    <p>I am excited to submit my application for the role of Senior Software Engineer (Frontend) at Nextdoor. In this next step of my career I am looking for a role where I can leverage 12 years of front-end-leaning experience to lead a growing company’s efforts to scale and deliver amazing user experiences. In particular I am looking for a company that values good user experience and the attention to detail the front-end deserves.</p>
+                    <p>I consider myself a user advocate, and am passionate about building good looking user interfaces which seek to enable people. In my last role, one of my biggest responsibilities was to ensure business goals and UX vision translated into a consistent product: I had numerous opportunities to advocate for the user and align expectations between product and UX. Additionally, while I’m no designer, I have an attention to detail and eye for aesthetics which makes it easy for me to work with UX designers to achieve the best look, feel, and behavior of products.</p>
+                    <p>When reviewing the job description, I noticed a common theme with the expectations--line by line these were responsibilities I've held, enjoyed, and desire in a new role. My career path has given me a deep skillset in front-end development, but also a broad base of knowledge up and down the stack. I’ve spent a majority of my career owning the full lifecycle of delivery of products, and a number of opportunities to lead teams’ front-end development. This included architecting and leading the development of the company’s administrative interface which evolved into a micro-frontend platform as more teams contributed.</p>
+
+                    <p>I am looking forward to connecting on this position and learning more about Nextdoor and this opportunity.</p>
+
 
                     <p>
                         Sincerely, <br/>
@@ -44,6 +33,15 @@
                     </p>
                 </article>
             </div>
+        </div>
+        <div class="mw-cover-sidebar pg1">
+            <header class="mw-cover-alt-header">
+                <h1>Matt<br/>Whitaker</h1>
+                <h2>SENIOR FRONT-END</h2>
+            </header>
+            <section class="mw-cover-contact">
+                <%- await include("/template/component/contact.ejs") %>
+            </section>
         </div>
     </div>
 </main>
