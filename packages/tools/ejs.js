@@ -1,6 +1,7 @@
-export const applyHelpers = (ctx, { dev, strings }) => Object.assign(ctx, {
+export const ejsHelpers = ({ dev = false, strings = {}, features = {} }) => ({
   lookup: (key) => strings[key] ? strings[key] : key,
-  hide: (real, fake) => dev ? real : fake
+  hide: (real, fake) => dev ? real : fake,
+  feature: (feature) => !!(features)[feature]
 });
 
 /**

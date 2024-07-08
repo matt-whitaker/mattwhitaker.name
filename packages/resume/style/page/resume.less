@@ -126,7 +126,10 @@
 
     article {
       display: flex;
-      min-height: 120px;
+
+      + article {
+        min-height: 120px;
+      }
 
       + article {
         section {

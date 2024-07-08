@@ -1,13 +1,11 @@
-<% if (worker) { %>
+<% if (feature("pwa") && worker) { %>
 <script type="text/javascript">
-  console.log("confirm script is executing");
   if ("serviceWorker" in navigator) {
-    console.log("confirm script is executing, and serviceWorker exists");
     navigator.serviceWorker.register("<%= worker %>")
-      .then(function(registration) {
-        console.log("ServiceWorker registration successful with scope: ", registration.scope);
-      }, function(error) {
-        console.log("ServiceWorker registration failed: ", error);
+      .then(({ scope }) => {
+        console.log(`ServiceWorker registration successful with scope: ${scope}`);
+      }, (error) => {
+        console.error(`ServiceWorker registration failed: \n${JSON.stringify(error, null, 4)}`);
       });
   }
 </script>

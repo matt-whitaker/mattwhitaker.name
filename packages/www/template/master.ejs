@@ -18,15 +18,15 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="<%= rendered.stylesheet %>" rel="stylesheet" />
+        <link href="<%= stylesheet %>" rel="stylesheet" />
         <link href="<%- site.google.fonts %>" rel="stylesheet" />
 
         <%- await include("/template/component/service-worker.ejs", { worker: page.worker }) %>
     </head>
     <body class="mw-body <%= page.class %>">
-        <% if (page.banner) { %>
         <%- await include("/template/component/banner.ejs", { img: page.banner, desc: page.bannerDesc }) %>
-        <% } %>
-        <%- await include("/template/component/scrollbody.ejs", { content: rendered.content }) %>
+        <div class="mw-scrollbody">
+            <%- await include(`/template/page/${page.filename}`) %>
+        </div>
     </body>
 </html>

@@ -1,42 +1,11 @@
 import fs from "fs-extra";
 import { join, basename, extname } from "path";
-import { applyHelpers, extractEjsAnnotations, renderEjs } from "./ejs.js";
 import { loadFiles, readFile, resolveOutputPath, resolvePath, tryReadFile, writeFile } from "./file.js";
-import { EXT_EJS, ENGINE_EJS, EXT_MD, ENGINE_MD } from "./constants.js";
+import { EXT_EJS, EXT_MD } from "./constants.js";
 import { parseArgs } from "./cli.js";
 import puppeteer from "puppeteer";
 import { mapStrings } from "./lang.js";
-
-/**
- *
- * @async
- * @param {(ENGINE_EJS,ENGINE_MD)} engine Which templating engine to use
- * @param {string} template The template to render
- * @param {object} context The context data to pass in
- * @param {object} options Optional options for the engine
- * @returns {string} a rendered template
- */
-const render = async (engine, template, context, options = {}) => {
-  if (engine === ENGINE_EJS) {
-    return renderEjs(template, context, { async: true, ...options });
-  }
-
-  return "";
-}
-
-/**
- *
- * @param {(ENGINE_EJS,ENGINE_MD)} engine Which templating engine to use
- * @param {string} data
- * @returns {{}}
- */
-const extractAnnotations = (engine, data) => {
-  if (engine === ENGINE_EJS) {
-    return extractEjsAnnotations(data);
-  }
-
-  return {};
-}
+import { extractAnnotations, render } from "./template.js";
 
 /**
  * Generates the HTML of the static site. Supports EJS and Markdown files
@@ -50,7 +19,7 @@ const extractAnnotations = (engine, data) => {
  * @returns {Promise<void[]>}
  */
 export const buildPages = async (argv, options) => {
-  const { all, config, dev, pages, output, stylesheet, template, lang } = parseArgs(argv, [
+  const args = parseArgs(argv, [
     {
       "name": "pages",
       "description": "root directory where page are stored",
@@ -73,54 +42,42 @@ export const buildPages = async (argv, options) => {
     }
   ]);
 
-  const [{ site }, rendered, master, strings] = await Promise.all([
-    readFile(resolvePath(config), JSON.parse),
+  const [{ site, features }, files, master, strings] = await Promise.all([
+    readFile(resolvePath(args.config), JSON.parse),
     // TODO: recursive: false changes the path resolution behavior significantly. Need to solve before this can be changed.
-    loadFiles(pages, true, options.ext),
-    readFile(resolvePath(template)),
-    tryReadFile(resolvePath(lang), mapStrings, {}),
+    loadFiles(args.pages, options.ext),
+    readFile(resolvePath(args.template)),
+    tryReadFile(resolvePath(args.lang), mapStrings, {}),
   ]);
 
   await Promise.all(
-    rendered.map(async ({ name, path, data }) => {
-      const page = extractAnnotations(extname(name).slice(1), data, strings);
+    files
+      .filter(({ name }) => args.all || !(options.exclude && options.exclude.includes(name)))
+      .map(async ({ name, data }) => {
 
-      if (!all && options.exclude && options.exclude.includes(name)) {
-        return;
-      }
+        const page = extractAnnotations(extname(name).slice(1), data, strings);
 
-      // still need a title at a minimum
-      page.title = page.title || basename(name, extname(name));
+        Object.assign(page, {
+          title: page.title || basename(name, extname(name)),
+          filename: name
+        });
 
-      const ctx = {
-        page,
-        site,
-      };
-
-      applyHelpers(ctx, { dev, strings });
-
-      // render the "inner" page contents, and put it back on the context for main template rendering
-      ctx.rendered = {
-        content: await render(extname(name).slice(1), data, ctx, options),
-        stylesheet: stylesheet,
-      };
-
-      // render into main template and write
-      writeFile(
-        resolveOutputPath(resolvePath(options.root, output), name),
-        await render(extname(template).slice(1), master, ctx, options));
-    }));
+        const ctx = { page, site, stylesheet: args.stylesheet };
+        const rendered = await render(extname(args.template).slice(1), master, ctx, { dev: args.dev, root: options.root, strings, features });
+        return writeFile(resolveOutputPath(resolvePath(options.root, args.output), name), rendered);
+      }));
 }
 
 /**
  * Produces a PDF of the chosen page; loads via puppet
+ * @async
  * @param argv {any[]} list of arguments (such as from a command line call)
  * @param options {object}
  * @returns {Promise<void>}
  */
 export const generatePdf = async (argv, options) => {
   try {
-    const { page, output } = parseArgs(argv, [
+    const args = parseArgs(argv, [
       {
         "name": "page",
         "description": "specific page for static generation",
@@ -141,9 +98,9 @@ export const generatePdf = async (argv, options) => {
       height: 11 * 96,
     });
 
-    await $page.goto(`http://localhost:8080/${page}`, { waitUntil: "networkidle0" });
+    await $page.goto(`http://localhost:8080/${args.page}`, { waitUntil: "networkidle0" });
     await $page.pdf({
-      path: `${output}/${page.split(".")[0]}.pdf`,
+      path: `${args.output}/${args.page.split(".")[0]}.pdf`,
       format: "Letter",
       printBackground: true
     });
@@ -155,15 +112,15 @@ export const generatePdf = async (argv, options) => {
 }
 
 /**
- *
+ * Copy files over (cross-os safe)
+ * @async
  * @param argv
  * @param options
  * @param options.root {string} project root (cwd)
  * @returns {Promise<void>}
  */
 export const copyFiles = async (argv, options) => {
-  const { root } = options;
-  const { source, output } = parseArgs(argv, [
+  const args = parseArgs(argv, [
     {
       "name": "source",
       "description": "specific page for static generation",
@@ -172,7 +129,7 @@ export const copyFiles = async (argv, options) => {
   ]);
 
   try {
-    await fs.copy(join(root, source), join(root, output));
+    await fs.copy(join(options.root, args.source), join(options.root, args.output));
   } catch (err) {
     console.error(`Error! ${err}`);
   }

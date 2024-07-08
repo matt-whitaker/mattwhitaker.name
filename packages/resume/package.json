@@ -5,7 +5,7 @@
   "scripts": {
     "clear": "rm -rf ./dist",
     "template": "bin/template.js --stylesheet style/resume.css",
-    "template:watch": "nodemon --exec \"npm run template -- --dev --all\" -e ejs,json --ignore dist/",
+    "template:watch": "nodemon --exec \"npm run template -- --dev --all\" -e txt,ejs,json --ignore dist/",
     "style": "lessc style/index.less dist/style/resume.css",
     "style:watch": "nodemon --exec \"npm run style\" -e css,less --ignore dist/",
     "generate:resume": "mkdir -p dist/pdf && bin/pdf.js --page resume.html",
