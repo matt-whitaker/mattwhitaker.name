@@ -1,7 +1,7 @@
 jobtitle LEAD FRONTEND ENGINEER
 short_jobtitle LEAD FRONTEND
 address Bellevue, WA
-summary Experienced frontend-leaning software engineer with 12 years of experience building robust, user-friendly web applications. Experienced in owning all aspects of development and product health, as well as team leadership.
+summary Experienced frontend-leaning software engineer with 12 years of experience building robust, user-friendly web applications. Proficient in owning all aspects of product development and maintenance, as well as team leadership.
 references References can be provided by request.
 reader_note Get my styled resume <a href="https://mattwhitaker.name/resume.html">https://mattwhitaker.name/resume.html</a>
 
@@ -36,7 +36,7 @@ smar_1 Architected and led the development of a modular administrative platform;
 smar_2 As the company generally grew, led the adoption of cross-company UI initiatives for the teams I supported, including micro-frontend pattern adoption and project consistency.
 smar_3 Designed and developed a handful of domain-oriented microservices and helped to generally improve coding and testing practices on all layers.
 smar_4 Rapidly took ownership of critical feature areas lacking subject-matter experts at the company to solve critical bugs and performance issues.
-smar_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, Java, React, Redux, RxJs, Node.js, SQL, Express, Storybook, AWS, Spring, Nginx, Kubernetes
+smar_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, Java, React, Redux, RxJs, Python, Node.js, SQL, Express, Storybook, AWS, Spring, Nginx, Kubernetes
 
 sap_jobtitle Software Design Engineer II
 sap_focus Full-stack

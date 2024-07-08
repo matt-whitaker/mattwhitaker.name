@@ -11,6 +11,7 @@
     "generate:resume": "mkdir -p dist/pdf && bin/pdf.js --page resume.html",
     "generate:resume-ats": "mkdir -p dist/pdf && bin/pdf.js --page resume-ats.html",
     "generate:cover": "mkdir -p dist/pdf && bin/pdf.js --page cover.html",
+    "generate:all": "npm run generate:resume && npm run generate:resume-ats",
     "static": "bin/static.js --source ../common/static --output dist",
     "build": "npm run clear && npm run style && npm run template && npm run static",
     "build:dev": "npm run clear && npm run static && npm run style && npm run template -- --dev --all",
