@@ -22,6 +22,10 @@ h_references REFERENCE
 h_education EDUCATION
 h_social SOCIAL
 
+break_title Career Break
+break_years Jan 2024 - Present
+break_summary Chose to leave my previous role and take a career break, focusing on hobbies, new interests, and skills improvement.
+
 smar_jobtitle Senior Software Engineer
 smar_focus Full-stack / Frontend
 smar_years Nov 2018 - Dec 2023
