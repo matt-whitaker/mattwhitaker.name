@@ -10,6 +10,15 @@
     <h2><%= lookup("h_experience") %></h2>
     <section>
         <header>
+            <h4><b><%= lookup("break_title") %></b></h4>
+            <p><%= lookup("break_years") %></p>
+        </header>
+        <main>
+            <p><%= lookup("break_summary") %></p>
+        </main>
+    </section>
+    <section>
+        <header>
             <h4><b><%= lookup("smar_jobtitle") %></b></h4>
             <em><%= lookup("smar_focus") %></em>
             <p><%= lookup("smar_name") %> <address><%= lookup("smar_address") %></address></p>
@@ -130,7 +139,9 @@
         <p><b>Github</b> <!--https://github.com/-->matt-whitaker</p>
         <p><b>LinkedIn</b> <!--https://www.linkedin.com/in/-->whitakermatt</p>
     </section>
-
+</main>
+<div class="mw-pagebreak"></div>
+<main class="mw-resume-ats">
     <h2><%= lookup("h_contact") %></h2>
     <section>
         <p><b><%= lookup("contact_phone") %></b> <%= hide("+1 (253) 886 0195", "+a (xxx) yyy zzzz") %></p>
