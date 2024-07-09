@@ -4,7 +4,7 @@
   "description": "Asset build for main website",
   "scripts": {
     "clear": "rm -rf ./dist",
-    "template": "bin/template.js --stylesheet style/main.css",
+    "template": "bin/template.js",
     "template:watch": "nodemon --exec \"npm run template\" -e ejs,json --ignore dist/",
     "style": "lessc style/index.less dist/style/main.css",
     "style:watch": "nodemon --exec \"npm run style\" -e css,less --ignore dist/",
