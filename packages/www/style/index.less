@@ -1,20 +1,38 @@
-// -- RESET --
-@import (inline,once) '../../common/style/normalize.css';
+// -- What remains in this file is stuff Tailwind was being a pain with
 
-// -- GLOBALS --
-@import "master.less";
+@import (reference) "../../common/style/colors";
+@import (reference) "../../common/style/sizing";
+@import (reference) "../../common/style/fonts";
 
-// -- PAGE --
+.mw-headshot {
+  display: block;
+  margin-right: 50px;
+  border-radius: 4px;
+  box-shadow: .10ex .10ex .35ex @black;
 
-@import "../../common/style/print.less";
+  @media (min-width: @phone) and (max-width: @tablet) {
+    display: none;
+  }
 
-// -- COMPONENTS --
+  @media (min-width: @tablet) {
+    width: 300px;
+  }
 
-@import "component/banner.less";
-@import "component/icon-marquee.less";
-@import "component/nav.less";
-@import "component/tag.less";
-@import "component/tag-array.less";
+  @media (max-width: @phone) {
+    width: calc(100vw - 100px);
+    height: calc(100vw - 100px);
+  }
+}
 
-// -- PAGES --
-@import "page/index.less";
+
+.mw-info {
+  h3 {
+    border-bottom: 1px solid @black;
+
+    > span {
+      border-bottom: 2px solid @black;
+    }
+  }
+}
+
+@import "component/nav";
