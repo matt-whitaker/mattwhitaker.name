@@ -51,10 +51,7 @@ export const buildPages = async (argv, options) => {
   ]);
 
   await Promise.all(
-    files
-      .filter(({ name }) => args.all || !(options.exclude && options.exclude.includes(name)))
-      .map(async ({ name, data }) => {
-
+    files.map(async ({ name, data }) => {
         const page = extractAnnotations(extname(name).slice(1), data, strings);
 
         Object.assign(page, {

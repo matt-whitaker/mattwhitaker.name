@@ -6,7 +6,6 @@ await (
   async () =>
     await buildPages(process.argv, {
       ext: [".ejs"],
-      root: process.cwd(),
-      exclude: ["cover.ejs"]
+      root: process.cwd()
     })
 )();

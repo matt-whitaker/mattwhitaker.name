@@ -36,7 +36,7 @@ smar_1 Architected and led the development of a modular administrative platform;
 smar_2 As the company generally grew, led the adoption of cross-company UI initiatives for the teams I supported, including micro-frontend pattern adoption and project consistency.
 smar_3 Designed and developed a handful of domain-oriented microservices and helped to generally improve coding and testing practices on all layers.
 smar_4 Rapidly took ownership of critical feature areas lacking subject-matter experts at the company to solve critical bugs and performance issues.
-smar_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, Java, React, Redux, RxJs, Python, Node.js, SQL, Express, Storybook, AWS, Spring, Nginx, Kubernetes
+smar_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, Java, React, Redux, RxJs, Python, Node.js, SQL, Express, Storybook, AWS, Spring, K8s
 
 sap_jobtitle Software Design Engineer II
 sap_focus Fullstack
@@ -47,7 +47,7 @@ sap_summary Responsibilities included working with stakeholders and engineering 
 sap_1 Designed and developed a third-party component that served content-rich in-product customer success messages, replacing an image-only solution.
 sap_2 Worked with stakeholders to design a recommendation system and supporting UIs to replace their reliance on Google Ads. The service was fine-tuned to handle hundreds of requests per second, delivering high-quality campaigns efficiently to customers.
 sap_3 Led team's adoption of company-wide micro frontend patterns, accessibility guidelines, and UI performance tuning.
-sap_skills <b>Skills:</b> HTML, CSS, JavaScript, React, Redux, Node.js, Express, Storybook, Python, SQL, AWS, NoSQL, Nginx, Kubernetes
+sap_skills <b>Skills:</b> HTML, CSS, JavaScript, React, Redux, Node.js, Express, Storybook, Python, SQL, AWS, NoSQL, Nginx, K8s
 
 appl_jobtitle Frontend Engineer
 appl_years Oct 2015 - Feb 2016
