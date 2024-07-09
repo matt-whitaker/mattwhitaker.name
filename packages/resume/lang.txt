@@ -1,5 +1,5 @@
-jobtitle LEAD FRONTEND ENGINEER
-short_jobtitle LEAD FRONTEND
+jobtitle SENIOR FULLSTACK ENGINEER
+short_jobtitle SENIOR FULLSTACK
 address Bellevue, WA
 summary Experienced frontend-leaning software engineer with 12 years of experience building robust, user-friendly web applications. Proficient in owning all aspects of product development and maintenance, as well as team leadership.
 references References can be provided by request.
@@ -27,7 +27,7 @@ break_years Jan 2024 - Present
 break_summary Chose to leave my previous role and take a career break, focusing on hobbies, new interests, and skills improvement.
 
 smar_jobtitle Senior Software Engineer
-smar_focus Full-stack / Frontend
+smar_focus Fullstack / Frontend
 smar_years Nov 2018 - Dec 2023
 smar_name Smartsheet
 smar_address Bellevue, WA
@@ -39,7 +39,7 @@ smar_4 Rapidly took ownership of critical feature areas lacking subject-matter e
 smar_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, Java, React, Redux, RxJs, Python, Node.js, SQL, Express, Storybook, AWS, Spring, Nginx, Kubernetes
 
 sap_jobtitle Software Design Engineer II
-sap_focus Full-stack
+sap_focus Fullstack
 sap_years Mar 2016 - Nov 2018
 sap_name SAP Concur
 sap_address Bellevue, WA

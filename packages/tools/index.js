@@ -87,6 +87,11 @@ export const generatePdf = async (argv, options) => {
         "name": "output",
         "description": "distribution directory",
         "defaultValue": "dist/pdf"
+      },
+      {
+        "name": "name",
+        "description": "optional output name",
+        "defaultValue": ""
       }
     ]);
 
@@ -100,7 +105,7 @@ export const generatePdf = async (argv, options) => {
 
     await $page.goto(`http://localhost:8080/${args.page}`, { waitUntil: "networkidle0" });
     await $page.pdf({
-      path: `${args.output}/${args.page.split(".")[0]}.pdf`,
+      path: `${args.output}/${args.name || args.page.split(".")[0]}.pdf`,
       format: "Letter",
       printBackground: true
     });
