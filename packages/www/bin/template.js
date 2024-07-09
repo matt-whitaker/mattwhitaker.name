@@ -9,8 +9,8 @@ await (
       ext: [".ejs"],
       stylesheets: [
         "style/normalize.css",
+        "style/legacy.css",
         "style/main.css",
-        "style/main-mig.css",
       ],
       template: "template/master.ejs",
       root: process.cwd()

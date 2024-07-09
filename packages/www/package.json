@@ -6,16 +6,12 @@
     "clear": "rm -rf ./dist",
     "template": "bin/template.js",
     "template:watch": "nodemon --exec \"npm run template\" -e ejs,json --ignore dist/",
-    "style": "lessc style/index.less dist/style/main.css",
-    "style:watch": "nodemon --exec \"npm run style\" -e css,less --ignore dist/",
-    "style-mig": "npx tailwindcss -i ./style/index-mig.css -o ./dist/style/main-mig.css",
-    "style-mig:watch": "npm run style-mig -- --watch",
+    "style": "npx tailwindcss -i ./style/main.css -o ./dist/style/main.css",
+    "style:watch": "npm run style -- --watch",
     "static": "bin/static.js --source static --output dist && bin/static.js --source ../common/static --output dist",
     "serve": "http-server ./dist -p 8080 -c-1 -r",
-    "build": "npm run clear && npm run style && npm run style-mig && npm run template && npm run static",
-    "start": "npm run clear && npm run static && concurrently \"npm run template:watch\" \"npm run style:watch\" \"npm run style-mig:watch\" \"npm run serve\"",
-    "lint": "stylelint style/**/*.css",
-    "lint:fix": "npm run lint -- --fix"
+    "build": "npm run clear && npm run style && npm run template && npm run static",
+    "start": "npm run clear && npm run static && concurrently \"npm run template:watch\" \"npm run style:watch\" \"npm run serve\""
   },
   "author": "Matt Whitaker (https://mattwhitaker.name)",
   "license": "ISC",
@@ -25,12 +21,8 @@
     "concurrently": "^8.2.2",
     "ejs": "^3.1.9",
     "http-server": "^14.1.1",
-    "less": "4.2.0",
     "markdown-it": "^13.0.2",
     "nodemon": "^3.0.3",
-    "stylelint": "15.11.0",
-    "stylelint-config-standard": "34.0.0",
-    "stylelint-config-standard-less": "2.0.0",
     "tailwindcss": "^3.4.4"
   }
 }

@@ -21,7 +21,7 @@ export default {
     },
     screens: {
       phone: "480px",
-      tablet: "560px",
+      tablet: "720px",
       desktop: "1100px"
     },
     colors: {
