@@ -1,9 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./template/**/*.ejs", "./lang.txt"],
-  corePlugins: {
-    preflight: false,
-  },
+  corePlugins: { preflight: false },
   theme: {
     spacing: {
       0: "0px",
