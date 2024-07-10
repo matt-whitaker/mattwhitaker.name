@@ -9,7 +9,6 @@ await (
       ext: [".ejs"],
       stylesheets: [
         "style/normalize.css",
-        "style/legacy.css",
         "style/main.css",
       ],
       template: "template/master.ejs",
