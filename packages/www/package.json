@@ -5,7 +5,7 @@
   "scripts": {
     "clear": "rm -rf ./dist",
     "template": "bin/template.js",
-    "template:watch": "nodemon --exec \"npm run template\" -e ejs,json --ignore dist/",
+    "template:watch": "nodemon --exec \"npm run template\" -e txt,ejs,json --ignore dist/",
     "style": "npx tailwindcss -i ./style/main.css -o ./dist/style/main.css",
     "style:watch": "npm run style -- --watch",
     "static": "bin/static.js --source static --output dist && bin/static.js --source ../common/static --output dist",
