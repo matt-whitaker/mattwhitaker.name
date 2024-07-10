@@ -1,0 +1,40 @@
+<main class="mw-cover">
+    <div class="mw-cover-page pg1">
+        <div class="mw-cover-content pg1">
+            <div class="mw-cover-addressee">
+                <h2><span>COVER LETTER</span></h2>
+                <article>
+                    <time><%= new Date().toDateString() %></time>
+                    <p>
+                        To, <br />
+                        Hiring Manager
+                    </p>
+                    <address>
+                        [Company Name] <br/>
+                        [City], [ST]
+                    </address>
+                </article>
+            </div>
+            <div class="mw-cover-letter">
+                <h2>[JOB TITLE]</h2>
+                <article>
+                    <p>To whom this may reach,</p>
+
+                    <p>
+                        Sincerely, <br/>
+                        Matt Whitaker
+                    </p>
+                </article>
+            </div>
+        </div>
+        <div class="mw-cover-sidebar pg1">
+            <header class="mw-cover-alt-header">
+                <h1>Matt<br/>Whitaker</h1>
+                <h2>LEAD FRONT-END</h2>
+            </header>
+            <section class="mw-cover-contact">
+                <%- await include("/template/component/contact.ejs") %>
+            </section>
+        </div>
+    </div>
+</main>

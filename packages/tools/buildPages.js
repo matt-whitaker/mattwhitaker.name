@@ -50,7 +50,8 @@ export const buildPages = async (argv, optionsFn) => {
 
       Object.assign(page, {
         title: page.title || basename(name, extname(name)),
-        filename: name
+        filename: name,
+        path: args.pages
       });
 
       const rendered = await render(

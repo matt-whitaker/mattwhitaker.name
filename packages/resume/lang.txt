@@ -1,5 +1,5 @@
-jobtitle SENIOR FULLSTACK ENGINEER
-short_jobtitle SENIOR FULLSTACK
+jobtitle SENIOR FRONTEND ENGINEER
+short_jobtitle SENIOR FRONTEND
 address Bellevue, WA
 summary Experienced frontend-leaning software engineer with 12 years of experience building robust, user-friendly web applications. Proficient in owning all aspects of product development and maintenance, as well as team leadership.
 references References can be provided by request.

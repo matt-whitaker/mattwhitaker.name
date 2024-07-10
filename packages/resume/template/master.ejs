@@ -11,6 +11,6 @@
         <link href="<%- site.google.fonts %>" rel="stylesheet" />
     </head>
     <body class="mw-body <%= page.class %>">
-        <%- await include(`/template/page/${page.filename}`) %>
+        <%- await include(`/${page.path}/${page.filename}`) %>
     </body>
 </html>
