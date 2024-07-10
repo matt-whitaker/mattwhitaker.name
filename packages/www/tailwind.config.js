@@ -6,6 +6,7 @@ export default {
   },
   theme: {
     spacing: {
+      0: "0px",
       xsmall2: "3px",
       xsmall: "6px",
       small: "12px",
