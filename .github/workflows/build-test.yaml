@@ -3,9 +3,9 @@ run-name: "Build and Test"
 
 on:
   push:
-    branches:
-      - !develop
-      - !mainline
+    branches-ignore:
+      - develop
+      - mainline
 
 env:
   NODE_VERSION: 18
