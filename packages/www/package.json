@@ -5,9 +5,11 @@
   "scripts": {
     "clear": "rm -rf ./dist",
     "template": "bin/template.js",
-    "template:watch": "nodemon --exec \"npm run template\" -e txt,ejs,json --ignore dist/",
-    "style": "npx tailwindcss -i ./style/main.css -o ./dist/style/main.css",
-    "style:watch": "npm run style -- --watch",
+    "template:dev": "bin/template.js --dev",
+    "template:watch": "nodemon --exec \"npm run template:dev\" -e txt,ejs,json --ignore dist/",
+    "style": "npx tailwindcss -m -i ./style/main.css -o ./dist/style/main.min.css",
+    "style:dev": "npx tailwindcss -i ./style/main.css -o ./dist/style/main.css",
+    "style:watch": "npm run style:dev -- --watch",
     "static": "bin/static.js --source static --output dist && bin/static.js --source ../common/static --output dist",
     "serve": "http-server ./dist -p 8080 -c-1 -r",
     "build": "npm run clear && npm run style && npm run template && npm run static",
@@ -22,6 +24,7 @@
     "ejs": "^3.1.9",
     "http-server": "^14.1.1",
     "markdown-it": "^13.0.2",
+    "minify": "^11.4.0",
     "nodemon": "^3.0.3",
     "tailwindcss": "^3.4.4"
   }

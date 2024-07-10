@@ -4,7 +4,7 @@ import { buildPages } from "@mattwhitaker.name/tools";
 
 await (
   async () =>
-    await buildPages(process.argv, {
+    await buildPages(process.argv, () => ({
       ext: [".ejs"],
       stylesheets: [
         "style/normalize.css",
@@ -12,5 +12,5 @@ await (
       ],
       template: "template/master.ejs",
       root: process.cwd()
-    })
+    }))
 )();
