@@ -1,0 +1,15 @@
+@tailwind base;
+
+@layer base {
+    @page {
+        margin: 0;
+        padding: 0;
+    }
+    html, body {
+        @apply font-sans text-normal text-black;
+    }
+}
+
+@tailwind components;
+
+@tailwind utilities;

@@ -26,16 +26,6 @@ export const buildPages = async (argv, options) => {
       "defaultValue": "template/page"
     },
     {
-      "name": "template",
-      "description": "site wide main template",
-      "defaultValue": "template/master.ejs"
-    },
-    {
-      "name": "stylesheet",
-      "description": "expected stylesheet file",
-      "defaultValue": "style.css"
-    },
-    {
       "name": "lang",
       "description": "lang file",
       "defaultValue": "lang.txt"
@@ -44,9 +34,8 @@ export const buildPages = async (argv, options) => {
 
   const [{ site, features }, files, master, strings] = await Promise.all([
     readFile(resolvePath(args.config), JSON.parse),
-    // TODO: recursive: false changes the path resolution behavior significantly. Need to solve before this can be changed.
     loadFiles(args.pages, options.ext),
-    readFile(resolvePath(args.template)),
+    readFile(resolvePath(options.template)),
     tryReadFile(resolvePath(args.lang), mapStrings, {}),
   ]);
 
@@ -59,8 +48,12 @@ export const buildPages = async (argv, options) => {
           filename: name
         });
 
-        const ctx = { page, site, stylesheet: args.stylesheet };
-        const rendered = await render(extname(args.template).slice(1), master, ctx, { dev: args.dev, root: options.root, strings, features });
+        const rendered = await render(
+          extname(options.template).slice(1),
+          master,
+          { page, site, stylesheets: options.stylesheets },
+          { dev: args.dev, root: options.root, strings, features });
+
         return writeFile(resolveOutputPath(resolvePath(options.root, args.output), name), rendered);
       }));
 }
