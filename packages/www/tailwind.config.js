@@ -25,8 +25,8 @@ export default {
       desktop: "1100px"
     },
     colors: {
-      "bgshade": "rgba(0,0,0, .03)",
-      "pgshade": "rgba(255, 255, 255, 1)",
+      bgshade: "rgba(0,0,0, .03)",
+      pgshade: "rgba(255, 255, 255, 1)",
       white: "#ffffff",
       gray50: "#808080",
       gray25: "#404040",
