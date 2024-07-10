@@ -4,6 +4,7 @@ address Bellevue, WA
 summary Experienced frontend-leaning software engineer with 12 years of experience building robust, user-friendly web applications. Proficient in owning all aspects of product development and maintenance, as well as team leadership.
 references References can be provided by request.
 reader_note Get my styled resume <a href="https://mattwhitaker.name/resume.html">https://mattwhitaker.name/resume.html</a>
+headshot My headshot
 
 contact_phone phone
 contact_email email

@@ -78,7 +78,7 @@
         </div>
         <div class="mw-resume-sidebar pg1">
             <section class="mw-resume-contact">
-                <img class="mw-resume-headshot" src="/image/headshot.jpg" />
+                <img class="mw-resume-headshot" src="/image/headshot.jpg" alt="<%= lookup("headshot") %>" />
                 <%- await include("/template/component/contact.ejs") %>
             </section>
             <section class="mw-resume-skills">
@@ -100,6 +100,7 @@
                         <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Redux</li>
                         <li><span>&#x25A0; &#x25A0; &#x25A0;</span>RxJS</li>
                         <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Storybook</li>
+                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Tailwind</li>
                         <li><span>&#x25A0; &#x25A0; &#x25A0;</span>Express</li>
                     </ul>
                 </figure>
@@ -118,7 +119,7 @@
                 <h2><span><%= lookup("h_methodology") %></span></h2>
                 <ul>
                     <li>Agile / Scrum</li>
-                    <li>TDD / BDD</li>
+                    <li>TDD & BDD</li>
                     <li>CI / CD</li>
                 </ul>
             </section>

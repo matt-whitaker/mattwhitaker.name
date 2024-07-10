@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import fs from "fs-extra";
 import { join, basename, extname } from "path";
 import { loadFiles, readFile, resolveOutputPath, resolvePath, tryReadFile, writeFile } from "./file.js";
@@ -13,12 +14,12 @@ import { extractAnnotations, render } from "./template.js";
  * @param argv {any[]} list of arguments (such as from a command line call)
  * @param options {object}
  * @param options.ext {(EXT_EJS,EXT_MD)[]} list of file extensions to use; loads all files if omitted or empty
- * @param options.exclude {string[]} list of filenames to exclude
  * @param options.root {string} project root (cwd)
- * @param options.helpers {object} helpers for ejs
  * @returns {Promise<void[]>}
  */
 export const buildPages = async (argv, options) => {
+  const cacheKey = crypto.createHash('md5').update(Date.now().toString()).digest('hex');
+
   const args = parseArgs(argv, [
     {
       "name": "pages",
@@ -52,7 +53,7 @@ export const buildPages = async (argv, options) => {
           extname(options.template).slice(1),
           master,
           { page, site, stylesheets: options.stylesheets },
-          { dev: args.dev, root: options.root, strings, features });
+          { dev: args.dev, root: options.root, strings, features, cacheKey });
 
         return writeFile(resolveOutputPath(resolvePath(options.root, args.output), name), rendered);
       }));
