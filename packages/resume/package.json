@@ -5,20 +5,20 @@
   "scripts": {
     "clear": "rm -rf ./dist",
     "template": "bin/template.js",
-    "template:watch": "nodemon --exec \"npm run template -- --dev --all\" -e txt,ejs,json --ignore dist/",
-    "style": "lessc style/index.less dist/style/resume.css",
-    "style:watch": "nodemon --exec \"npm run style\" -e css,less --ignore dist/",
+    "template:dev": "bin/template.js --dev --all",
+    "template:watch": "nodemon --exec \"npm run template:dev\" -e txt,ejs,json --ignore dist/",
+    "style": "lessc -x style/index.less dist/style/resume.css",
+    "style:dev": "lessc style/index.less dist/style/resume.css",
+    "style:watch": "nodemon --exec \"npm run style:dev\" -e css,less --ignore dist/",
     "generate:resume": "mkdir -p dist/pdf && bin/pdf.js --page resume.html --name MattWhitakerResume",
     "generate:resume-ats": "mkdir -p dist/pdf && bin/pdf.js --page resume-ats.html --name MattWhitakerResumeAts",
     "generate:cover": "mkdir -p dist/pdf && bin/pdf.js --page cover.html",
     "generate:all": "npm run generate:resume && npm run generate:resume-ats",
     "static": "bin/static.js --source ../common/static --output dist",
     "build": "npm run clear && npm run style && npm run template && npm run static",
-    "build:dev": "npm run clear && npm run static && npm run style && npm run template -- --dev --all",
+    "build:dev": "npm run clear && npm run static && npm run style:dev && npm run template:dev",
     "serve": "http-server ./dist -p 8080 -c-1 -r",
-    "start": "npm run clear && npm run static && concurrently \"npm run template:watch\" \"npm run style:watch\" \"npm run serve\"",
-    "lint": "stylelint style/**/*.less",
-    "lint:fix": "npm run lint -- --fix"
+    "start": "npm run clear && npm run static && concurrently \"npm run template:watch\" \"npm run style:watch\" \"npm run serve\""
   },
   "author": "Matt Whitaker (https://mattwhitaker.name)",
   "license": "ISC",
@@ -33,7 +33,6 @@
     "nodemon": "^3.0.3",
     "puppeteer": "^22.10.0",
     "stylelint": "15.11.0",
-    "stylelint-config-standard": "34.0.0",
-    "stylelint-config-standard-less": "2.0.0"
+    "stylelint-config-standard": "34.0.0"
   }
 }

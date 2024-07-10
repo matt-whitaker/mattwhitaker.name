@@ -13,6 +13,7 @@
     "static": "bin/static.js --source static --output dist && bin/static.js --source ../common/static --output dist",
     "serve": "http-server ./dist -p 8080 -c-1 -r",
     "build": "npm run clear && npm run style && npm run template && npm run static",
+    "build:dev": "npm run clear && npm run style:dev && npm run template:dev && npm run static",
     "start": "npm run clear && npm run static && concurrently \"npm run template:watch\" \"npm run style:watch\" \"npm run serve\""
   },
   "author": "Matt Whitaker (https://mattwhitaker.name)",
