@@ -1,6 +1,6 @@
 
 export const ejsHelpers = ({ dev = false, strings = {}, features = {}, cacheKey }) => ({
-  lookup: (key) => strings[key] ? strings[key] : key,
+  lookup: (key, fallback = key) => strings[key] ? strings[key] : fallback,
   hide: (real, fake) => dev ? real : fake,
   feature: (feature) => !!(features)[feature],
   cachebust: (filename) => `${filename}?_cb=${cacheKey}`

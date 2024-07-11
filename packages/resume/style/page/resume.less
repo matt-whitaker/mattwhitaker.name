@@ -196,6 +196,17 @@
     }
 
     figure {
+      &:before {
+        content: "- - -";
+        display: block;
+        text-align: center;
+        margin: @well-size-mini 0;
+        position: relative;
+        left: 5px;
+      }
+      &:first-of-type:before {
+        content: none;
+      }
       > span {
         display: block;
         text-align: center;

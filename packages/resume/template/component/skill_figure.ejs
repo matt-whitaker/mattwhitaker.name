@@ -1,0 +1,8 @@
+<figure>
+    <figcaption><%= lookup(titleKey) %></figcaption>
+    <ul>
+    <% JSON.parse(lookup(dataKey)).forEach(([r, s]) => { %>
+        <li><span><%- rating(r) %></span><%= s %></li>
+    <% }) %>
+    </ul>
+</figure>

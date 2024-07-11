@@ -1,5 +1,5 @@
-jobtitle SENIOR FRONTEND ENGINEER
-short_jobtitle SENIOR FRONTEND
+jobtitle SENIOR FULLSTACK ENGINEER
+short_jobtitle SENIOR FULLSTACK
 address Bellevue, WA
 summary Experienced frontend-leaning software engineer with 12 years of experience building robust, user-friendly web applications. Proficient in owning all aspects of product development and maintenance, as well as team leadership.
 references References can be provided by request.
@@ -23,9 +23,13 @@ h_references REFERENCE
 h_education EDUCATION
 h_social SOCIAL
 
+d_language [[5, "HTML / CSS"], [5, "JavaScript"], [5, "Typescript"], [4, "Node.js"], [3, "Java"]]
+d_framework [[5, "React"], [5, "Redux"], [5, "RxJS"], [4, "Storybook"], [4, "Tailwind"], [3, "Express"]]
+d_infrastructure [[3, "AWS"], [4, "Nginx"], [4, "Docker"], [2, "Kubernetes"]]
+
 break_title Career Break
 break_years Jan 2024 - Present
-break_summary Chose to leave my previous role and take a career break, focusing on hobbies, new interests, and skills improvement.
+break_summary Decided to leave my previous role and take a career break, focusing on new interests, old hobbies, and improving my skills.
 
 smar_jobtitle Senior Software Engineer
 smar_focus Fullstack / Frontend

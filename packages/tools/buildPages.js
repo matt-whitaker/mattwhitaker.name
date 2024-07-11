@@ -12,6 +12,7 @@ import { extractAnnotations, render } from "./utils/template.js";
  * @typedef {object} BuildPagesOptions
  * @property {(EXT_EJS,EXT_MD)[]} ext list of file extensions to use; loads all files if omitted or empty
  * @property {string} root project root (cwd)
+ * @property {object} helpers custom helper functions
  */
 
 /**
@@ -57,7 +58,7 @@ export const buildPages = async (argv, optionsFn) => {
       const rendered = await render(
         extname(options.template).slice(1),
         master,
-        { page, site, stylesheets: options.stylesheets },
+        { page, site, stylesheets: options.stylesheets, ...(options.helpers || {}) },
         { dev: args.dev, root: options.root, strings, features, cacheKey });
 
       return writeFile(resolveOutputPath(resolvePath(options.root, args.output), name), rendered);
