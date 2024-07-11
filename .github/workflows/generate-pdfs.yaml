@@ -30,6 +30,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
+      - run: npm ci
       - uses: actions/download-artifact@v4
         with:
           name: dist
@@ -49,6 +50,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
+      - run: npm ci
       - run: npm run generate:all -w packages/resume
       - uses: actions/upload-artifact@v4
         with:
