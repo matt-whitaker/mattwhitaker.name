@@ -1,7 +1,10 @@
 name: Generate PDFs
 run-name: Generate PDFs
 
-on: [push]
+on:
+  push:
+    branches:
+      - develop
 
 env:
   NODE_VERSION: 18
