@@ -23,7 +23,7 @@ h_references REFERENCE
 h_education EDUCATION
 h_social SOCIAL
 
-d_language [[5, "HTML / CSS"], [5, "JavaScript"], [5, "Typescript"], [4, "Node.js"], [3, "Java"]]
+d_language [[5, "HTML / CSS"], [5, "JavaScript"], [5, "Typescript"], [4, "Node.js"], [2, "Python"], [3, "Java"]]
 d_framework [[5, "React"], [5, "Redux"], [5, "RxJS"], [4, "Storybook"], [4, "Tailwind"], [3, "Express"]]
 d_infrastructure [[3, "AWS"], [4, "Nginx"], [4, "Docker"], [2, "Kubernetes"]]
 

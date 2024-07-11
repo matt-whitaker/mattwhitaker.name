@@ -1,0 +1,26 @@
+<article>
+    <header class="mw-resume-job-title">
+        <p>
+            <span><%- lookup(`${prefix}_jobtitle`) %></span><br/>
+            <% if (lookup(`${prefix}_focus`, "")) { %>
+            <em><%= lookup(`${prefix}_focus`) %></em><br/>
+            <% } %>
+            <span><%= lookup(`${prefix}_years`) %></span>
+        </p>
+        <p>
+            <span><%= lookup(`${prefix}_name`) %></span><br/>
+            <address><%= lookup(`${prefix}_address`) %></address>
+        </p>
+    </header>
+    <main class="mw-resume-job-desc">
+        <ul>
+            <li><%= lookup(`${prefix}_summary`) %></li>
+            <% for (let i = 1; i <= 4; i++) { %>
+            <% if (lookup(`${prefix}_${i}`, "")) { %>
+            <li><%= lookup(`${prefix}_${i}`) %></li>
+            <% } %>
+            <% } %>
+            <li><%- lookup(`${prefix}_skills`) %></li>
+        </ul>
+    </main>
+</article>
