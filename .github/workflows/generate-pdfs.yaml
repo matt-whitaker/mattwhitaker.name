@@ -35,25 +35,14 @@ jobs:
         with:
           name: dist
           path: packages/resume/dist
-      - run: nohup npm run serve -w packages/resume &
+      - run: npm run serve -w packages/resume &
       - id: wait-for-server
         run: |
           until curl -s http://localhost:8080; do
             sleep 2
           done
-
-  Generate:
-    needs: Server
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      - run: npm ci
       - run: npm run generate:all -w packages/resume
       - uses: actions/upload-artifact@v4
         with:
           name: dist
           path: packages/resume/dist
-
