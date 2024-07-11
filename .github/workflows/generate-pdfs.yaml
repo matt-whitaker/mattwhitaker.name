@@ -35,7 +35,7 @@ jobs:
         with:
           name: dist
           path: packages/resume/dist
-      - run: nohup npm run serve -w packages/resume
+      - run: nohup npm run serve -w packages/resume &
       - id: wait-for-server
         run: |
           until curl -s http://localhost:8080; do
