@@ -18,7 +18,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: dist
+          path: packages/resume/dist
 
   Server:
     runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: dist
-          path: dist
+          path: packages/resume/dist
       - run: nohup npm run serve -w packages/resume
       - id: wait-for-server
         run: |
@@ -53,5 +53,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: dist
+          path: packages/resume/dist
 
