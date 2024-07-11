@@ -52,7 +52,7 @@ sap_summary Responsibilities included working with stakeholders and engineering 
 sap_1 Designed and developed a third-party component that served content-rich in-product customer success messages, replacing an image-only solution.
 sap_2 Worked with stakeholders to design a recommendation system and supporting UIs to replace their reliance on Google Ads. The service was fine-tuned to handle hundreds of requests per second, delivering high-quality campaigns efficiently to customers.
 sap_3 Led team's adoption of company-wide micro frontend patterns, accessibility guidelines, and UI performance tuning.
-sap_skills <b>Skills:</b> HTML, CSS, JavaScript, React, Redux, Node.js, Express, Storybook, Python, SQL, AWS, NoSQL, Nginx, K8s
+sap_skills <b>Skills:</b> HTML, CSS, JavaScript, React, Redux, Node.js, Express, Storybook, Python, Flask, SQL, AWS, NoSQL, Nginx, K8s
 
 appl_jobtitle Frontend Engineer
 appl_years Oct 2015 - Feb 2016
@@ -64,6 +64,7 @@ appl_2 Enhanced charts with light/dark theming capabilities to match the latest 
 appl_skills <b>Skills:</b> HTML, CSS, SASS, Angular, D3.js
 
 slal_jobtitle Software Engineer
+slal_focus Frontend
 slal_years Jul 2013 - Oct 2015
 slal_name Slalom Consulting
 slal_address Seattle, WA
@@ -86,13 +87,25 @@ uw_skills <b>Skills:</b> HTML, CSS, JavaScript, jQuery, SQL, PHP, Apache
 
 vous_jobtitle Ruby on Rails Developer
 vous_focus Internship
-vous_years Jan 2011 - Dec 2011
+vous_years Aug 2011 - Feb 2012
 vous_name Vous Vitamin
 vous_address Seattle, WA
 vous_summary Internship with the startup Vous Vitamin (then Vous Health), where I was a web developer helping to build a Ruby on Rails website.
-vous_1 Built UIs to spec based on high fidelity designs.
-vous_2 Developed data APIs to drive UI capabilities.
-vous_skills <b>Skills:</b> HTML, CSS, jQuery, Ruby, Ruby on Rails, Apache
+vous_1 Worked with the sponsor and UX designer to iterate on initial designs and mockups to set expectations
+vous_2 Responsible for translating UX mockups into development plans and implementing screens.
+vous_3 Helped develop data APIs to drive UI capabilities.
+vous_skills <b>Skills:</b> HTML, CSS, Bootstrap, jQuery, Ruby on Rails
+
+hts_jobtitle Co-owner / Architect
+hts_focus Startup
+hts_years Jan 2011 - Jun 2011
+hts_name Hit the Scene
+hts_address Seattle, WA
+hts_summary A group of friends set out to build a novel music event aggregator and community hub. As an owner, responsibilities additionally included competitor analysis and business planning.
+hts_1 Worked with our designer to develop and grow the product vision, and was responsible for implementing user experiences.
+hts_2 Responsible for defining business concerns and developing APIs to support the UI.
+hts_3 Responsible for the database schema and scaling strategy.
+hts_skills <b>Skills:</b> HTML, CSS, Ember, Ruby on Rails.
 
 edu_degree Bachelor of Science
 edu_focus Informatics: IA
