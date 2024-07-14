@@ -5,13 +5,13 @@ export default {
   theme: {
     spacing: {
       0: "0px",
-      xsmall2: "3px",
-      xsmall: "6px",
-      small: "12px",
-      medium: "18px",
-      large: "24px",
+      xxsmall: "5px",
+      xsmall: "10px",
+      small: "15px",
+      medium: "20px",
+      large: "25px",
       xlarge: "30px",
-      xxlarge: "36px",
+      xxlarge: "35px",
     },
     fontSize: {
       normal: "16px",

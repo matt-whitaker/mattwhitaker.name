@@ -8,15 +8,15 @@
     <img class="mr-[50px] rounded-[4px] shadow-[.1ex_.1ex_.35ex] shadow-black w-[calc(100vw-60px)] h-[calc(100vw-60px)] desktop:w-[300px] desktop:h-[300px] block tablet:hidden desktop:block" src="/image/headshot.jpg" title="Picture of myself" alt="Picture of myself" />
     <div class="flex flex-col flex-grow-2 overflow-x-hidden">
         <header>
-            <h1 class="m-[0_0_0_0] tablet:mt-xsmall2 mt-[5px] text-xlarge text-gray25 font-light">Matt Whitaker</h1>
-            <h2 class="p-[6px] mt-xsmall2 mr-0 mb-[0px] ml-0 tracking-[.15em] text-gray25 text-normalp font-light bg-lightblueash uppercase"><%= lookup("subtitle") %></h2>
+            <h1 class="m-[0_0_0_0] tablet:mt-xsmall mt-xxsmall text-xlarge text-gray25 font-light">Matt Whitaker</h1>
+            <h2 class="p-[6px] mt-xxsmall mr-0 mb-[0px] ml-0 tracking-[.15em] text-gray25 text-normalp font-light bg-lightblueash uppercase"><%= lookup("subtitle") %></h2>
         </header>
         <main>
-            <h3 class="border-0 border-b-[1px] border-black border-solid m-0 mt-[10px] mb-[20px] tablet:mt-[20px] tablet:mb-[30px] font-normal text-normalp leading-[1em]">
+            <h3 class="border-0 border-b-[1px] border-black border-solid m-0 mt-xxsmall tablet:mt-[20px] font-normal text-normalp leading-[1em]">
                 <span class="border-0 border-b-[2px] border-black border-solid pb-[1px]"><%= lookup("summary_title") %></span>
             </h3>
-            <p class="m-[0_0_0_0] mt-[10px]"><%= lookup("summary") %></p>
-            <p class="my-[10px]"><%- lookup("hiring") %></p>
+            <p class="m-[0_0_0_0] mt-xsmall tablet:mt-small"><%= lookup("summary") %></p>
+            <p class="mt-xsmall"><%- lookup("hiring") %></p>
         </main>
     </div>
 </main>
