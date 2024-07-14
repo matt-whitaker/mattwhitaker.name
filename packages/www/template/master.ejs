@@ -27,7 +27,7 @@
     </head>
     <body class="w-full h-full p-0 m-0 box-border bg-fixed bg-bgshade print:bg-transparent<%= page.class %>" style="background-image: url('/image/cubes.png')">
         <%- await include("/template/component/banner.ejs", { img: page.banner, desc: page.bannerDesc }) %>
-        <div class="relative flex flex-col h-full my-0 mx-auto max-w-screen-desktop box-border">
+        <div class="relative flex flex-col h-full my-0 mx-auto max-w-screen-wide box-border">
             <%- await include(`/template/page/${page.filename}`) %>
         </div>
     </body>

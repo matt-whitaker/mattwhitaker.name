@@ -19,9 +19,10 @@ export default {
       xlarge: "2.2em"
     },
     screens: {
-      phone: "480px",
-      tablet: "720px",
-      desktop: "1100px"
+      phone: "320px",
+      tablet: "480px",
+      desktop: "720px",
+      wide: "1100px"
     },
     colors: {
       bgshade: "rgba(0,0,0, .03)",
