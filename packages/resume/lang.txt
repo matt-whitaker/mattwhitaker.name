@@ -36,22 +36,22 @@ smar_focus Fullstack / Frontend
 smar_years Nov 2018 - Dec 2023
 smar_name Smartsheet
 smar_address Bellevue, WA
-smar_summary Led frontend development for a couple of small teams, while also contributing extensively across the stack. Responsible for taking projects from conception to delivery.
-smar_1 Architected and led the development of a modular administrative platform; oversaw a small team of remote engineers and then transitioned gradually to in-house resources, serving as a technical project and team lead for the frontend. Responsible for the successful quality and delivery of the product and worked closely with product and UX to ensure customer needs were met.
-smar_2 As the company generally grew, led the adoption of cross-company UI initiatives for the teams I supported, including micro-frontend pattern adoption and project consistency.
-smar_3 Designed and developed a handful of domain-oriented microservices and helped to generally improve coding and testing practices on all layers.
-smar_4 Rapidly took ownership of critical feature areas lacking subject-matter experts at the company to solve critical bugs and performance issues.
-smar_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, Java, React, Redux, RxJs, Python, Node.js, SQL, Express, Storybook, AWS, Spring, K8s
+smar_summary Frontend leaning fullstack role on a core admin team, responsible for leading front-end development in addition to fullstack responsibilities.
+smar_1 Led the architecture, planning, and development of a greenfield administrative platform; leading a small team of remote engineers, later moving to in-house resources. Ultimately responsible for the successful quality and delivery of the product and worked closely with product owners and UX to ensure customer needs were met.
+smar_2 Responsible for the quality and effectiveness of a component library supporting the administrative platform. Worked closely with UX to define and predict the various common experiences across the application, breaking down the requirements into actionable component development stories.
+smar_3 As teams’ frontend subject-matter expert, was responsible for the evangelism of cross-company UI efforts focused on breaking up the main monolithic application.
+smar_4 Additionally responsible for owning a number of legacy feature areas lacking existing subject matter experts, rapidly onboarding to a variety of solutions requiring much needed enhancements and performance improvements.
+smar_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Node.js, Express, Java, SQL, Storybook, AWS, Spring, K8s
 
 sap_jobtitle Software Design Engineer II
 sap_focus Fullstack
 sap_years Mar 2016 - Nov 2018
 sap_name SAP Concur
 sap_address Bellevue, WA
-sap_summary Responsibilities included working with stakeholders and engineering leadership to design and develop a variety of communication-oriented solutions.
-sap_1 Designed and developed a third-party component that served content-rich in-product customer success messages, replacing an image-only solution.
-sap_2 Worked with stakeholders to design a recommendation system and supporting UIs to replace their reliance on Google Ads. The service was fine-tuned to handle hundreds of requests per second, delivering high-quality campaigns efficiently to customers.
-sap_3 Led team's adoption of company-wide micro frontend patterns, accessibility guidelines, and UI performance tuning.
+sap_summary Fullstack engineering role on a core services team building out a variety of communication-oriented solutions.
+sap_1 Developed a third-party component that served content-rich in-product customer success messages, replacing an image-only solution.
+sap_2 Built an in-house "recommendation" system to move from Google Ads to an in-house solution. Service was built to handle hundreds of requests per second.
+sap_3 Responsible for driving cross-company modern UI efforts including accessibility enhancements and performance tuning (redraw) of owned UI features.
 sap_skills <b>Skills:</b> HTML, CSS, JavaScript, React, Redux, Node.js, Express, Storybook, Python, Flask, SQL, AWS, NoSQL, Nginx, K8s
 
 appl_jobtitle Frontend Engineer
