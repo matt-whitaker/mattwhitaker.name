@@ -41,7 +41,7 @@ smar_1 Led the architecture, planning, and development of a greenfield administr
 smar_2 Responsible for the quality and effectiveness of a component library supporting the administrative platform. Worked closely with UX to define and predict the various common experiences across the application, breaking down the requirements into actionable component development stories.
 smar_3 As teams’ frontend subject-matter expert, was responsible for the evangelism of cross-company UI efforts focused on breaking up the main monolithic application.
 smar_4 Additionally responsible for owning a number of legacy feature areas lacking existing subject matter experts, rapidly onboarding to a variety of solutions requiring much needed enhancements and performance improvements.
-smar_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Node.js, Express, Java, SQL, Storybook, AWS, Spring, K8s
+smar_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Webpack, Node.js, Figma, Java, Storybook, AWS, Spring, K8s
 
 sap_jobtitle Software Design Engineer II
 sap_focus Fullstack
@@ -52,7 +52,7 @@ sap_summary Fullstack engineering role on a core services team building out a va
 sap_1 Developed a third-party component that served content-rich in-product customer success messages, replacing an image-only solution.
 sap_2 Built an in-house "recommendation" system to move from Google Ads to an in-house solution. Service was built to handle hundreds of requests per second.
 sap_3 Responsible for driving cross-company modern UI efforts including accessibility enhancements and performance tuning (redraw) of owned UI features.
-sap_skills <b>Skills:</b> HTML, CSS, JavaScript, React, Redux, Node.js, Express, Storybook, Python, Flask, SQL, AWS, NoSQL, Nginx, K8s
+sap_skills <b>Skills:</b> HTML, CSS, JavaScript, React, Redux, Node.js, Express, Storybook, Webpack, Python, Flask, SQL, AWS, NoSQL, Nginx, K8s
 
 appl_jobtitle Frontend Engineer
 appl_years Oct 2015 - Feb 2016
