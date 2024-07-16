@@ -17,7 +17,8 @@
   "workspaces": [
     "packages/resume",
     "packages/tools",
-    "packages/www"
+    "packages/www",
+    "packages/prototyping"
   ],
   "devDependencies": {
     "http-server": "^14.1.1"
