@@ -11,9 +11,6 @@ await (
         "style/resume.css",
       ],
       template: "template/master.ejs",
-      root: process.cwd(),
-      helpers: {
-        rating: (rating) => [...Array(rating).keys()].map(() => "&#x25A0;").join(" ")
-      }
+      root: process.cwd()
     }))
 )();

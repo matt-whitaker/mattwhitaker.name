@@ -1,8 +1,8 @@
 <figure>
     <figcaption><%= lookup(titleKey) %></figcaption>
     <ul>
-    <% JSON.parse(lookup(dataKey)).forEach(([r, s]) => { %>
-        <li><span><%- rating(r) %></span><%= s %></li>
+    <% JSON.parse(lookup(dataKey)).forEach(([years, string]) => { %>
+        <li class="mw-years-<%= years %>"><span><%- template(lookup("years"), { years }) %></span><span><%= string %></span></li>
     <% }) %>
     </ul>
 </figure>

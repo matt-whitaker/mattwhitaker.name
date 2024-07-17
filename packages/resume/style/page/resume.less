@@ -126,7 +126,7 @@
 
     article {
       display: flex;
-      min-height: 70px;
+      min-height: 60px;
 
       + article {
         section {
@@ -184,13 +184,45 @@
     flex-direction: column;
     text-align: right;
 
-    li, figcaption {
-      span {
-        margin-left: @well-size-lg;
-        float: left;
+    li {
+      @numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+      @max: 152;
 
+      each(@numbers, {
+        &.mw-years-@{value}:before {
+
+          width: unit(@max * (@value / 12), px);
+        }
+      });
+
+      &:before {
+        display: block;
+        height: 100%;
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        background-color: fade(lighten(@blueash, 64%), 10%);
+        border-bottom: 1px solid lighten(@blueash, 64%);
+      }
+    }
+
+    li, figcaption {
+      position: relative;
+      display: flex;
+      text-align: right;
+
+      margin-left: @well-size-lg;
+
+      span {
+        z-index: 1;
+        margin-right: auto;
         b {
           color: @gold;
+        }
+
+        + span {
+          margin-right: 0;
         }
       }
     }
