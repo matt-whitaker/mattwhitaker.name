@@ -23,16 +23,18 @@ h_references REFERENCE
 h_education EDUCATION
 h_social SOCIAL
 
-d_language [[5, "HTML / CSS"], [5, "JavaScript"], [5, "Typescript"], [4, "Node.js"], [2, "Python"], [3, "Java"]]
-d_framework [[5, "React"], [5, "Redux"], [5, "RxJS"], [4, "Storybook"], [4, "Tailwind"], [3, "Express"]]
-d_infrastructure [[3, "AWS"], [4, "Nginx"], [4, "Docker"], [2, "Kubernetes"]]
+d_language [[12, "HTML / CSS"], [12, "JavaScript"], [6, "Typescript"], [8, "Node.js"]]
+d_framework [[8, "React"], [8, "Redux"], [5, "RxJS"], [8, "Storybook"], [8, "Express"], [10, "Webpack"]]
+d_infrastructure [[8, "AWS"], [8, "Nginx"], [8, "Docker"], [8, "Kubernetes"]]
+
+years ${years} years
 
 break_title Career Break
 break_years Jan 2024 - Present
 break_summary Decided to leave my previous role and take a career break, focusing on new interests, old hobbies, and improving my skills.
 
 smar_jobtitle Senior Software Engineer
-smar_focus Fullstack / Frontend
+smar_focus Frontend / Full-stack
 smar_years Nov 2018 - Dec 2023
 smar_name Smartsheet
 smar_address Bellevue, WA
@@ -44,7 +46,7 @@ smar_4 Additionally responsible for owning a number of legacy feature areas lack
 smar_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Webpack, Node.js, Figma, Java, Storybook, AWS, Spring, K8s
 
 sap_jobtitle Software Design Engineer II
-sap_focus Fullstack
+sap_focus Full-stack
 sap_years Mar 2016 - Nov 2018
 sap_name SAP Concur
 sap_address Bellevue, WA
@@ -74,15 +76,14 @@ slal_2 Contributed to Spectrum UI, a novel web-to-MPEG streaming platform framew
 slal_3 Built a faceted search solution, including Google Maps integrations and a discovery portal for American Homes 4 Rent, and additionally contributed to product ideation to assist the customer's design vision.
 slal_skills <b>Skills:</b> HTML, CSS, SASS, LESS, JavaScript, CoffeeScript, jQuery, Angular, C#, .NET, Bootstrap
 
-uw_jobtitle Web Developer &<br/>Teacher's Assistant
+uw_jobtitle Web Developer
 uw_focus Part-time
-uw_years Jun 2012 - Mar 2013
+uw_years Jun 2012 - Oct 2012
 uw_name University of Washington
 uw_address Seattle, WA
 uw_summary Held a couple of roles at the University of Washington.
 uw_1 Worked for UWTV, developing a small LAMP stack web application for broadcast operators to communicate across shifts.
 uw_2 Worked for the Dept of Student Aid, helping to digitize a number of form-based paper workflows.
-uw_3 Designed and ran lab sessions for an introductory Databases class as a Teacher's Assistant.
 uw_skills <b>Skills:</b> HTML, CSS, JavaScript, jQuery, SQL, PHP, Apache
 
 vous_jobtitle Ruby on Rails Developer
@@ -108,7 +109,7 @@ hts_3 Responsible for the database schema and scaling strategy.
 hts_skills <b>Skills:</b> HTML, CSS, Ember, Ruby on Rails.
 
 edu_degree Bachelor of Science
-edu_focus Informatics: IA
+edu_focus Informatics
 edu_school University of Washington
 edu_address Seattle, WA
 
