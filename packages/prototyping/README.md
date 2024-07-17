@@ -1,3 +1,3 @@
-# Protoyping
+# prototyping
 
-package for tinkering; widgets, behaviors, etc.behaviors. Uses service workers to simulate a backend and allow project to remain lightweight.
+Storybook of components I'm tinkering with or building for fun.
