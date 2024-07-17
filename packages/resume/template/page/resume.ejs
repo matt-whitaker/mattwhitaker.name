@@ -1,4 +1,4 @@
-<%# title Matt Whitaker - Resume - Lead Front-end Engineer %>
+<%# title Matt Whitaker - Resume - Senior Frontend Engineer %>
 <main class="mw-resume">
     <div class="mw-resume-page pg1">
         <div class="mw-resume-content pg1">
@@ -12,115 +12,22 @@
                 <p><%= lookup("summary") %></p>
             </section>
             <div class="mw-resume-exp">
-                <h2><span><%= lookup("h_experience") %></span></h2>
-                <article>
-                    <header class="mw-resume-job-title">
-                        <p>
-                            <span><%= lookup("break_title") %></span><br />
-                            <span><%= lookup("break_years") %></span>
-                        </p>
-                        <p>
-
-                        </p>
-                    </header>
-                    <main class="mw-resume-job-desc">
-                        <ul>
-                            <li><%= lookup("break_summary") %></li>
-                        </ul>
-                    </main>
-                </article>
-                <article>
-                    <header class="mw-resume-job-title">
-                        <p>
-                            <span><%= lookup("smar_jobtitle") %></span><br/>
-                            <em><%= lookup("smar_focus") %></em><br/>
-                            <span><%= lookup("smar_years") %></span>
-                        </p>
-                        <p>
-                            <span><%= lookup("smar_name") %></span><br/>
-                            <address><%= lookup("smar_address") %></address>
-                        </p>
-                    </header>
-                    <main class="mw-resume-job-desc">
-                        <ul>
-                            <li><%= lookup("smar_summary") %></li>
-                            <li><%= lookup("smar_1") %></li>
-                            <li><%= lookup("smar_2") %></li>
-                            <li><%= lookup("smar_3") %></li>
-                            <li><%= lookup("smar_4") %></li>
-                            <li><%- lookup("smar_skills") %></li>
-                        </ul>
-                    </main>
-                </article>
-                <article>
-                    <header class="mw-resume-job-title">
-                        <p>
-                            <span><%= lookup("sap_jobtitle") %></span><br/>
-                            <em><%= lookup("sap_focus") %></em><br/>
-                            <span><%= lookup("sap_years") %></span>
-                        </p>
-                        <p>
-                            <span><%= lookup("sap_name") %></span><br/>
-                            <address><%= lookup("sap_address") %></address>
-                        </p>
-                    </header>
-                    <main class="mw-resume-job-desc">
-                        <ul>
-                            <li><%= lookup("sap_summary") %></li>
-                            <li><%= lookup("sap_1") %></li>
-                            <li><%= lookup("sap_2") %></li>
-                            <li><%= lookup("sap_3") %></li>
-                            <li><%- lookup("sap_skills") %></li>
-                        </ul>
-                    </main>
-                </article>
+                <%- await include("/template/component/experience.ejs") %>
             </div>
         </div>
         <div class="mw-resume-sidebar pg1">
             <section class="mw-resume-contact">
-                <img class="mw-resume-headshot" src="/image/headshot.jpg" />
+                <img class="mw-resume-headshot" src="/image/headshot.jpg" alt="<%= lookup("headshot") %>" />
                 <%- await include("/template/component/contact.ejs") %>
             </section>
             <section class="mw-resume-skills">
                 <h2><span><%= lookup("h_skills") %></span></h2>
-                <figure>
-                    <figcaption><%= lookup("h_language") %></figcaption>
-                    <ul>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>HTML / CSS</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>JavaScript</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Typescript</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Node.js</li>
-                    </ul>
-                </figure>
-                <figure>
-                    <span>- - -</span>
-                    <figcaption><%= lookup("h_framework") %></figcaption>
-                    <ul>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>React</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Redux</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0;</span>RxJS</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Storybook</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0;</span>Express</li>
-                    </ul>
-                </figure>
-                <figure>
-                    <span>- - -</span>
-                    <figcaption><%= lookup("h_infrastructure") %></figcaption>
-                    <ul>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0;</span>AWS</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Nginx</li>
-                        <li><span>&#x25A0; &#x25A0; &#x25A0; &#x25A0;</span>Docker</li>
-                        <li><span>&#x25A0; &#x25A0;</span>Kubernetes</li>
-                    </ul>
-                </figure>
+                <%- await include("/template/component/skill_figure.ejs", { titleKey: "h_language", dataKey: "d_language" }) %>
+                <%- await include("/template/component/skill_figure.ejs", { titleKey: "h_framework", dataKey: "d_framework" }) %>
+                <%- await include("/template/component/skill_figure.ejs", { titleKey: "h_infrastructure", dataKey: "d_infrastructure" }) %>
             </section>
             <section class="mw-resume-methods">
-                <h2><span><%= lookup("h_methodology") %></span></h2>
-                <ul>
-                    <li>Agile / Scrum</li>
-                    <li>TDD / BDD</li>
-                    <li>CI / CD</li>
-                </ul>
+                <%- await include("/template/component/methodology.ejs") %>
             </section>
         </div>
     </div>
@@ -128,98 +35,7 @@
     <div class="mw-resume-page pg2">
         <div class="mw-resume-content pg2">
             <div class="mw-resume-exp">
-                <h2><span><%= lookup("h_experience") %> <%- lookup("h_continued") %></span></h2>
-                <article>
-                    <header class="mw-resume-job-title">
-                        <p>
-                            <span><%= lookup("appl_jobtitle") %></span><br/>
-                            <span><%= lookup("appl_years") %></span>
-                        </p>
-                        <p>
-                            <span><%= lookup("appl_name") %></span><br/>
-                        <address><%= lookup("appl_address") %></address>
-                        </p>
-                    </header>
-                    <main class="mw-resume-job-desc">
-                        <ul>
-                            <li><%= lookup("appl_summary") %></li>
-                            <li><%= lookup("appl_1") %></li>
-                            <li><%= lookup("appl_2") %></li>
-                            <li><%- lookup("appl_skills") %></li>
-                        </ul>
-                    </main>
-                </article>
-                <article>
-                    <header class="mw-resume-job-title">
-                        <p>
-                            <span><%= lookup("slal_jobtitle") %></span><br/>
-                            <span><%= lookup("slal_years") %></span>
-                        </p>
-                        <p>
-                            <span><%= lookup("slal_name") %></span><br/>
-                        <address><%= lookup("slal_address") %></address>
-                        </p>
-                    </header>
-                    <main class="mw-resume-job-desc">
-                        <p></p>
-                        <ul>
-                            <li><%= lookup("slal_summary") %></li>
-                            <li><%= lookup("slal_1") %></li>
-                            <li><%= lookup("slal_2") %></li>
-                            <li><%= lookup("slal_3") %></li>
-                            <li><%- lookup("slal_skills") %></li>
-                        </ul>
-                    </main>
-                </article>
-                <article>
-                    <header class="mw-resume-job-title">
-                        <p>
-                            <span><%- lookup("uw_jobtitle") %></span><br/>
-                            <em><%= lookup("uw_focus") %></em><br/>
-                            <span><%= lookup("uw_years") %></span>
-                        </p>
-                        <p>
-                            <span><%= lookup("uw_name") %></span><br/>
-                        <address><%= lookup("uw_address") %></address>
-                        </p>
-                    </header>
-                    <main class="mw-resume-job-desc">
-                        <ul>
-                            <li><%= lookup("uw_summary") %></li>
-                            <li><%= lookup("uw_1") %></li>
-                            <li><%= lookup("uw_2") %></li>
-                            <li><%= lookup("uw_3") %></li>
-                            <li><%- lookup("uw_skills") %></li>
-                        </ul>
-                    </main>
-                </article>
-                <article>
-                    <header class="mw-resume-job-title">
-                        <p>
-                            <span><%- lookup("vous_jobtitle") %></span><br/>
-                            <em><%= lookup("vous_focus") %></em><br/>
-                            <span><%= lookup("vous_years") %></span>
-                        </p>
-                        <p>
-                            <span><%= lookup("vous_name") %></span><br/>
-                        <address><%= lookup("vous_address") %></address>
-                        </p>
-                    </header>
-                    <main class="mw-resume-job-desc">
-                        <ul>
-                            <li><%= lookup("vous_summary") %></li>
-                            <li><%= lookup("vous_1") %></li>
-                            <li><%= lookup("vous_2") %></li>
-                            <li><%- lookup("vous_skills") %></li>
-                        </ul>
-                    </main>
-                </article>
-            </div>
-            <div class="mw-resume-ref">
-                <h2><span><%= lookup("h_references") %></span></h2>
-                <article>
-                    <%= lookup("references") %>
-                </article>
+                <%- await include("/template/component/experience_cont.ejs") %>
             </div>
         </div>
         <div class="mw-resume-sidebar pg2">
@@ -228,22 +44,10 @@
                 <h2><%= lookup("short_jobtitle") %></h2>
             </header>
             <section class="mw-resume-edu">
-                <h2>
-                    <span><%= lookup("h_education") %></span>
-                </h2>
-                <p>
-                    <span><%= lookup("edu_degree") %></span> <br/>
-                    <span><%= lookup("edu_focus") %></span>
-                </p>
-                <p>
-                    <b><%= lookup("edu_school") %></b>
-                    <address><%= lookup("edu_address") %></address>
-                </p>
+                <%- await include("/template/component/education.ejs") %>
             </section>
             <section class="mw-resume-social">
-                <h2><span><%= lookup("h_social") %></span></h2>
-                <p><b>Github</b><br/> <!--https://github.com/-->matt-whitaker</p>
-                <p><b>LinkedIn</b><br/> <!--https://www.linkedin.com/in/-->whitakermatt</p>
+                <%- await include("/template/component/social.ejs") %>
             </section>
         </div>
     </div>

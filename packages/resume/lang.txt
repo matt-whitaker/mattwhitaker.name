@@ -1,9 +1,10 @@
-jobtitle SENIOR FULLSTACK ENGINEER
-short_jobtitle SENIOR FULLSTACK
+jobtitle SENIOR FRONTEND ENGINEER
+short_jobtitle SENIOR FRONTEND
 address Bellevue, WA
 summary Experienced frontend-leaning software engineer with 12 years of experience building robust, user-friendly web applications. Proficient in owning all aspects of product development and maintenance, as well as team leadership.
 references References can be provided by request.
 reader_note Get my styled resume <a href="https://mattwhitaker.name/resume.html">https://mattwhitaker.name/resume.html</a>
+headshot My headshot
 
 contact_phone phone
 contact_email email
@@ -22,32 +23,38 @@ h_references REFERENCE
 h_education EDUCATION
 h_social SOCIAL
 
+d_language [[12, "HTML / CSS"], [12, "JavaScript"], [6, "Typescript"], [8, "Node.js"]]
+d_framework [[8, "React"], [8, "Redux"], [5, "RxJS"], [8, "Storybook"], [8, "Express"], [10, "Webpack"]]
+d_infrastructure [[8, "AWS"], [8, "Nginx"], [8, "Docker"], [8, "Kubernetes"]]
+
+years ${years} years
+
 break_title Career Break
 break_years Jan 2024 - Present
-break_summary Chose to leave my previous role and take a career break, focusing on hobbies, new interests, and skills improvement.
+break_summary Decided to leave my previous role and take a career break, focusing on new interests, old hobbies, and improving my skills.
 
 smar_jobtitle Senior Software Engineer
-smar_focus Fullstack / Frontend
+smar_focus Frontend / Full-stack
 smar_years Nov 2018 - Dec 2023
 smar_name Smartsheet
 smar_address Bellevue, WA
-smar_summary Led frontend development for a couple of small teams, while also contributing extensively across the stack. Responsible for taking projects from conception to delivery.
-smar_1 Architected and led the development of a modular administrative platform; oversaw a small team of remote engineers and then transitioned gradually to in-house resources, serving as a technical project and team lead for the frontend. Responsible for the successful quality and delivery of the product and worked closely with product and UX to ensure customer needs were met.
-smar_2 As the company generally grew, led the adoption of cross-company UI initiatives for the teams I supported, including micro-frontend pattern adoption and project consistency.
-smar_3 Designed and developed a handful of domain-oriented microservices and helped to generally improve coding and testing practices on all layers.
-smar_4 Rapidly took ownership of critical feature areas lacking subject-matter experts at the company to solve critical bugs and performance issues.
-smar_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, Java, React, Redux, RxJs, Python, Node.js, SQL, Express, Storybook, AWS, Spring, K8s
+smar_summary Frontend leaning fullstack role on a core admin team, responsible for leading front-end development in addition to fullstack responsibilities.
+smar_1 Led the architecture, planning, and development of a greenfield administrative platform; leading a small team of remote engineers, later moving to in-house resources. Ultimately responsible for the successful quality and delivery of the product and worked closely with product owners and UX to ensure customer needs were met.
+smar_2 Responsible for the quality and effectiveness of a component library supporting the administrative platform. Worked closely with UX to define and predict the various common experiences across the application, breaking down the requirements into actionable component development stories.
+smar_3 As teams’ frontend subject-matter expert, was responsible for the evangelism of cross-company UI efforts focused on breaking up the main monolithic application.
+smar_4 Additionally responsible for owning a number of legacy feature areas lacking existing subject-matter experts, rapidly onboarding to a variety of solutions requiring much needed enhancements and performance improvements.
+smar_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Webpack, Node.js, Figma, Java, Storybook, AWS, Spring, K8s
 
 sap_jobtitle Software Design Engineer II
-sap_focus Fullstack
+sap_focus Full-stack
 sap_years Mar 2016 - Nov 2018
 sap_name SAP Concur
 sap_address Bellevue, WA
-sap_summary Responsibilities included working with stakeholders and engineering leadership to design and develop a variety of communication-oriented solutions.
-sap_1 Designed and developed a third-party component that served content-rich in-product customer success messages, replacing an image-only solution.
-sap_2 Worked with stakeholders to design a recommendation system and supporting UIs to replace their reliance on Google Ads. The service was fine-tuned to handle hundreds of requests per second, delivering high-quality campaigns efficiently to customers.
-sap_3 Led team's adoption of company-wide micro frontend patterns, accessibility guidelines, and UI performance tuning.
-sap_skills <b>Skills:</b> HTML, CSS, JavaScript, React, Redux, Node.js, Express, Storybook, Python, SQL, AWS, NoSQL, Nginx, K8s
+sap_summary Fullstack engineering role on a core services team building out a variety of communication-oriented solutions.
+sap_1 Developed a third-party component that served content-rich in-product customer success messages, replacing an image-only solution.
+sap_2 Built an in-house "recommendation" system to move from Google Ads to an in-house solution. Service was built to handle hundreds of requests per second.
+sap_3 Responsible for driving cross-company modern UI efforts including accessibility enhancements and performance tuning (redraw) of owned UI features.
+sap_skills <b>Skills:</b> HTML, CSS, JavaScript, React, Redux, Node.js, Express, Storybook, Webpack, Python, Flask, SQL, AWS, NoSQL, Nginx, K8s
 
 appl_jobtitle Frontend Engineer
 appl_years Oct 2015 - Feb 2016
@@ -59,6 +66,7 @@ appl_2 Enhanced charts with light/dark theming capabilities to match the latest 
 appl_skills <b>Skills:</b> HTML, CSS, SASS, Angular, D3.js
 
 slal_jobtitle Software Engineer
+slal_focus Frontend
 slal_years Jul 2013 - Oct 2015
 slal_name Slalom Consulting
 slal_address Seattle, WA
@@ -68,29 +76,40 @@ slal_2 Contributed to Spectrum UI, a novel web-to-MPEG streaming platform framew
 slal_3 Built a faceted search solution, including Google Maps integrations and a discovery portal for American Homes 4 Rent, and additionally contributed to product ideation to assist the customer's design vision.
 slal_skills <b>Skills:</b> HTML, CSS, SASS, LESS, JavaScript, CoffeeScript, jQuery, Angular, C#, .NET, Bootstrap
 
-uw_jobtitle Web Developer &<br/>Teacher's Assistant
+uw_jobtitle Web Developer
 uw_focus Part-time
-uw_years Jun 2012 - Mar 2013
+uw_years Jun 2012 - Oct 2012
 uw_name University of Washington
 uw_address Seattle, WA
 uw_summary Held a couple of roles at the University of Washington.
 uw_1 Worked for UWTV, developing a small LAMP stack web application for broadcast operators to communicate across shifts.
 uw_2 Worked for the Dept of Student Aid, helping to digitize a number of form-based paper workflows.
-uw_3 Designed and ran lab sessions for an introductory Databases class as a Teacher's Assistant.
 uw_skills <b>Skills:</b> HTML, CSS, JavaScript, jQuery, SQL, PHP, Apache
 
 vous_jobtitle Ruby on Rails Developer
 vous_focus Internship
-vous_years Jan 2011 - Dec 2011
+vous_years Aug 2011 - Feb 2012
 vous_name Vous Vitamin
 vous_address Seattle, WA
 vous_summary Internship with the startup Vous Vitamin (then Vous Health), where I was a web developer helping to build a Ruby on Rails website.
-vous_1 Built UIs to spec based on high fidelity designs.
-vous_2 Developed data APIs to drive UI capabilities.
-vous_skills <b>Skills:</b> HTML, CSS, jQuery, Ruby, Ruby on Rails, Apache
+vous_1 Worked with the sponsor and UX designer to iterate on initial designs and mockups to set expectations
+vous_2 Responsible for translating UX mockups into development plans and implementing screens.
+vous_3 Helped develop data APIs to drive UI capabilities.
+vous_skills <b>Skills:</b> HTML, CSS, Bootstrap, jQuery, Ruby on Rails
+
+hts_jobtitle Co-owner / Architect
+hts_focus Startup
+hts_years Jan 2011 - Jun 2011
+hts_name Hit the Scene
+hts_address Seattle, WA
+hts_summary A group of friends set out to build a novel music event aggregator and community hub. As an owner, responsibilities additionally included competitor analysis and business planning.
+hts_1 Worked with our designer to develop and grow the product vision, and was responsible for implementing user experiences.
+hts_2 Responsible for defining business concerns and developing APIs to support the UI.
+hts_3 Responsible for the database schema and scaling strategy.
+hts_skills <b>Skills:</b> HTML, CSS, Ember, Ruby on Rails.
 
 edu_degree Bachelor of Science
-edu_focus Informatics: IA
+edu_focus Informatics
 edu_school University of Washington
 edu_address Seattle, WA
 

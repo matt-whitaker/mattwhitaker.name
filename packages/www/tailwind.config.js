@@ -1,18 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./template/**/*.ejs", "./lang.txt"],
-  corePlugins: {
-    preflight: false,
-  },
+  corePlugins: { preflight: false },
   theme: {
     spacing: {
-      xsmall2: "3px",
-      xsmall: "6px",
-      small: "12px",
-      medium: "18px",
-      large: "24px",
+      0: "0px",
+      xxsmall: "5px",
+      xsmall: "10px",
+      small: "15px",
+      medium: "20px",
+      large: "25px",
       xlarge: "30px",
-      xxlarge: "36px",
+      xxlarge: "35px",
     },
     fontSize: {
       normal: "16px",
@@ -20,13 +19,14 @@ export default {
       xlarge: "2.2em"
     },
     screens: {
-      phone: "480px",
-      tablet: "720px",
-      desktop: "1100px"
+      phone: "320px",
+      tablet: "480px",
+      desktop: "720px",
+      wide: "1100px"
     },
     colors: {
-      "bgshade": "rgba(0,0,0, .03)",
-      "pgshade": "rgba(255, 255, 255, 1)",
+      bgshade: "rgba(0,0,0, .03)",
+      pgshade: "rgba(255, 255, 255, 1)",
       white: "#ffffff",
       gray50: "#808080",
       gray25: "#404040",

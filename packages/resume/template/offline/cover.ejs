@@ -1,0 +1,35 @@
+<main class="mw-cover">
+    <div class="mw-cover-page pg1">
+        <div class="mw-cover-content pg1">
+            <div class="mw-cover-addressee">
+                <h2><span><%= lookup("h_cover") %></span></h2>
+                <article>
+                    <time><%= lookup("date", "") || new Date().toDateString() %></time>
+                    <p><%- lookup("to") %></p>
+                    <address><%- lookup("address") %></address>
+                </article>
+            </div>
+            <div class="mw-cover-letter">
+                <h2><%= lookup("jobtitle") %></h2>
+                <article>
+                    <p><%= lookup("intro") %></p>
+                    <% for (let i = 0; i < 5; i++) { %>
+                    <% if (lookup(`body_${i}`, "")) { %>
+                    <p><%- lookup(`body_${i}`) %></p>
+                    <% } %>
+                    <% } %>
+                    <p><%- lookup("signature") %></p>
+                </article>
+            </div>
+        </div>
+        <div class="mw-cover-sidebar pg1">
+            <header class="mw-cover-alt-header">
+                <h1>Matt<br/>Whitaker</h1>
+                <h2><%= lookup("short_jobtitle") %></h2>
+            </header>
+            <section class="mw-cover-contact">
+                <%- await include("/template/component/contact.ejs") %>
+            </section>
+        </div>
+    </div>
+</main>

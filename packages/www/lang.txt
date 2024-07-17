@@ -1,6 +1,6 @@
 subtitle Frontend / Fullstack
 
 summary_title a little about me
-summary Over the last 12 years I have had many opportunities to build a unique craft of heavy frontend, but overall fullstack software engineering. I enjoy leading frontend teams to scale and deliver excellent user experiences and am fluent in "speaking" the fullstack language.
+summary Over the last 12 years I have had a wide array of experiences to develop a unique craft of fairly heavy frontend, but all around fullstack engineering. My expertise revolves around user-focused thinking and advocacy, leading small teams to deliver complex and useful user experiences. However, my breadth of experience makes me capable throughout the stack.
 
 hiring <b>Hiring?</b> You can view my <a class="text-gold font-normal no-underline whitespace-nowrap hover:underline" href="resume.html">web resume</a>.

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title><%= page.title %></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,21 +13,21 @@
         <meta property="og:url" content="https://mattwhitaker.name">
         <meta property="og:type" content="website">
 
-        <link rel="manifest" href="/manifest.json">
+        <link rel="manifest" href="<%= cachebust("/manifest.json") %>">
         <link rel="canonical" href="https://mattwhitaker.name">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <% stylesheets.forEach((stylesheet) => {%>
-            <link href="<%= stylesheet %>" rel="stylesheet" />
+            <link href="<%= cachebust(stylesheet) %>" rel="stylesheet" />
         <% }) %>
         <link href="<%- site.google.fonts %>" rel="stylesheet" />
 
         <%- await include("/template/component/service-worker.ejs", { worker: page.worker }) %>
     </head>
-    <body class="w-full h-full p-0 m-0 box-border bg-[url('/image/cubes.png')] bg-fixed bg-bgshade print:bg-transparent<%= page.class %>">
+    <body class="w-full h-full p-0 m-0 box-border bg-fixed bg-bgshade print:bg-transparent<%= page.class %>" style="background-image: url('/image/cubes.png')">
         <%- await include("/template/component/banner.ejs", { img: page.banner, desc: page.bannerDesc }) %>
-        <div class="flex flex-col relative h-full my-0 mx-auto max-w-[1100px] box-border print:max-w-[8.5in]">
+        <div class="relative flex flex-col h-full my-0 mx-auto max-w-screen-wide box-border">
             <%- await include(`/template/page/${page.filename}`) %>
         </div>
     </body>

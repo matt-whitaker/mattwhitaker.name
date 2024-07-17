@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title><%= page.title %></title>
         <meta name="robots" content="noindex" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <% stylesheets.forEach((stylesheet) => {%>
-            <link href="<%= stylesheet %>" rel="stylesheet" />
+            <link href="<%= cachebust(stylesheet) %>" rel="stylesheet" />
         <% }) %>
         <link href="<%- site.google.fonts %>" rel="stylesheet" />
     </head>
     <body class="mw-body <%= page.class %>">
-        <%- await include(`/template/page/${page.filename}`) %>
+        <%- await include(`/${page.path}/${page.filename}`) %>
     </body>
 </html>

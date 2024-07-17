@@ -4,6 +4,6 @@ import { generatePdf } from "@mattwhitaker.name/tools";
 
 await (
   async () => {
-    await generatePdf(process.argv, {});
+    await generatePdf(process.argv, () => ({}));
   }
 )();

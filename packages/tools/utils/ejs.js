@@ -1,7 +1,11 @@
-export const ejsHelpers = ({ dev = false, strings = {}, features = {} }) => ({
-  lookup: (key) => strings[key] ? strings[key] : key,
+import { DELIMITER_REGEX } from "./constants.js";
+
+export const ejsHelpers = ({ dev = false, strings = {}, features = {}, cacheKey }) => ({
+  lookup: (key, fallback = key) => strings[key] ? strings[key] : fallback,
+  template: (string, data) => string.replace(DELIMITER_REGEX, (match, key) => data[key] || match),
   hide: (real, fake) => dev ? real : fake,
-  feature: (feature) => !!(features)[feature]
+  feature: (feature) => !!(features)[feature],
+  cachebust: (filename) => `${filename}?_cb=${cacheKey}`
 });
 
 /**
