@@ -4,16 +4,12 @@
   "description": "Asset build for resume",
   "scripts": {
     "clear": "rm -rf ./dist",
-    "template": "bin/template.js",
-    "template:dev": "bin/template.js --dev",
-    "template:offline": "bin/template.js --dev --pages template/offline --lang offline.txt",
+    "template": "bin/html.js",
+    "template:dev": "bin/html.js --dev",
+    "template:offline": "bin/html.js --dev --pages template/offline --lang offline.txt",
     "template:watch": "nodemon --exec \"npm run template:dev\" -e txt,ejs,json --ignore dist/",
-    "less": "lessc -x style/index.less dist/style/resume.css",
-    "less:dev": "lessc style/index.less dist/style/resume.css",
-    "tailwind": "npx tailwindcss -m -i ./style/tailwind.css -o ./dist/style/resume-ats.min.css",
-    "tailwind:dev": "npx tailwindcss -i ./style/tailwind.css -o ./dist/style/resume-ats.css",
-    "style": "npm run less && npm run tailwind",
-    "style:dev": "npm run less:dev && npm run tailwind:dev",
+    "style": "lessc -x style/index.less dist/style/resume.css",
+    "style:dev": "lessc style/index.less dist/style/resume.css",
     "style:watch": "nodemon --exec \"npm run style:dev\" -e css,less --ignore dist/",
     "generate:resume": "mkdir -p dist/pdf && bin/pdf.js --page resume.html --name MattWhitakerResume",
     "generate:cover": "mkdir -p dist/pdf && bin/pdf.js --page cover.html --name MattWhitakerCoverLetter",
@@ -38,7 +34,6 @@
     "nodemon": "^3.0.3",
     "puppeteer": "^22.10.0",
     "stylelint": "15.11.0",
-    "stylelint-config-standard": "34.0.0",
-    "tailwindcss": "^3.4.6"
+    "stylelint-config-standard": "34.0.0"
   }
 }
