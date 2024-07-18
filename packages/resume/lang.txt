@@ -28,6 +28,7 @@ d_framework [[8, "React"], [8, "Redux"], [5, "RxJS"], [8, "Storybook"], [8, "Exp
 d_infrastructure [[8, "AWS"], [8, "Nginx"], [8, "Docker"], [8, "Kubernetes"]]
 
 years ${years} years
+skills <b>Skills:</b> ${skills}
 
 break_title Career Break
 break_years Jan 2024 - Present
@@ -43,7 +44,7 @@ smar_1 Led the architecture, planning, and development of Smartsheet's greenfiel
 smar_2 Responsible for the quality and effectiveness of a component library supporting the administrative platform. Worked closely with UX to define and predict the various common experiences across the application, breaking down the requirements into actionable component development stories.
 smar_3 As teams’ frontend subject-matter expert, was responsible for the evangelism of cross-company UI efforts focused on breaking up the main monolithic application.
 smar_4 Additionally responsible for owning a number of legacy feature areas lacking existing subject-matter experts, rapidly onboarding to a variety of solutions requiring much needed enhancements and performance improvements.
-smar_skills <b>Skills:</b> HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Webpack, Node.js, Figma, Java, Storybook, AWS, Spring, K8s
+smar_skills HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Webpack, Node.js, Figma, Java, Storybook, AWS, Spring, K8s
 
 sap_jobtitle Software Design Engineer II
 sap_focus Full-stack
@@ -54,7 +55,7 @@ sap_summary Fullstack engineering role on a core services team building out a va
 sap_1 Developed a third-party component that served content-rich in-product customer success messages, replacing an image-only solution.
 sap_2 Built an in-house "recommendation" system to move from Google Ads to an in-house solution. Service was built to handle hundreds of requests per second.
 sap_3 Responsible for driving cross-company modern UI efforts including accessibility enhancements and performance tuning (redraw) of owned UI features.
-sap_skills <b>Skills:</b> HTML, CSS, JavaScript, React, Redux, Node.js, Express, Storybook, Webpack, Python, Flask, SQL, AWS, NoSQL, Nginx, K8s
+sap_skills HTML, CSS, JavaScript, React, Redux, Node.js, Express, Storybook, Webpack, Python, Flask, SQL, AWS, NoSQL, Nginx, K8s
 
 appl_jobtitle Frontend Engineer
 appl_years Oct 2015 - Feb 2016
@@ -63,7 +64,7 @@ appl_address Bellevue, WA
 appl_summary Frontend exclusive role focused on maintenance of an Angular/D3.js analytics dashboard.
 appl_1 Developed a dynamic tooltip widget that could be used in any chart or visual context.
 appl_2 Enhanced charts with light/dark theming capabilities to match the latest UX design system.
-appl_skills <b>Skills:</b> HTML, CSS, SASS, Angular, D3.js
+appl_skills HTML, CSS, SASS, Angular, D3.js
 
 slal_jobtitle Software Engineer
 slal_focus Frontend
@@ -74,7 +75,7 @@ slal_summary Responsible for the development of customer products, driving front
 slal_1 Contributed to several feature areas of a large scale Angular application, Maestro by Madison Performance Group. Focused in frontend development and mentoring peers in Angular.
 slal_2 Contributed to Spectrum UI, a novel web-to-MPEG streaming platform framework written in JavaScript and assisting in raising the bar for test coverage.
 slal_3 Built a faceted search solution, including Google Maps integrations and a discovery portal for American Homes 4 Rent, and additionally contributed to product ideation to assist the customer's design vision.
-slal_skills <b>Skills:</b> HTML, CSS, SASS, LESS, JavaScript, CoffeeScript, jQuery, Angular, C#, .NET, Bootstrap
+slal_skills HTML, CSS, SASS, LESS, JavaScript, CoffeeScript, jQuery, Angular, C#, .NET, Bootstrap
 
 uw_jobtitle Web Developer
 uw_focus Part-time
@@ -84,7 +85,7 @@ uw_address Seattle, WA
 uw_summary Held a couple of roles at the University of Washington.
 uw_1 Worked for UWTV, developing a small LAMP stack web application for broadcast operators to communicate across shifts.
 uw_2 Worked for the Dept of Student Aid, helping to digitize a number of form-based paper workflows.
-uw_skills <b>Skills:</b> HTML, CSS, JavaScript, jQuery, SQL, PHP, Apache
+uw_skills HTML, CSS, JavaScript, jQuery, SQL, PHP, Apache
 
 vous_jobtitle Ruby on Rails Developer
 vous_focus Internship
@@ -95,7 +96,7 @@ vous_summary Internship with the startup Vous Vitamin (then Vous Health), where 
 vous_1 Worked with the sponsor and UX designer to iterate on initial designs and mockups to set expectations
 vous_2 Responsible for translating UX mockups into development plans and implementing screens.
 vous_3 Helped develop data APIs to drive UI capabilities.
-vous_skills <b>Skills:</b> HTML, CSS, Bootstrap, jQuery, Ruby on Rails
+vous_skills HTML, CSS, Bootstrap, jQuery, Ruby on Rails
 
 hts_jobtitle Co-owner / Architect
 hts_focus Startup
@@ -106,7 +107,7 @@ hts_summary A group of friends set out to build a novel music event aggregator a
 hts_1 Worked with our designer to develop and grow the product vision, and was responsible for implementing user experiences.
 hts_2 Responsible for defining business concerns and developing APIs to support the UI.
 hts_3 Responsible for the database schema and scaling strategy.
-hts_skills <b>Skills:</b> HTML, CSS, Ember, Ruby on Rails.
+hts_skills HTML, CSS, Ember, Ruby on Rails.
 
 edu_degree Bachelor of Science
 edu_focus Informatics

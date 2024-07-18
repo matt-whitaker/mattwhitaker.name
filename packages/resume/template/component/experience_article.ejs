@@ -20,7 +20,7 @@
             <li><%= lookup(`${prefix}_${i}`) %></li>
             <% } %>
             <% } %>
-            <li><%- lookup(`${prefix}_skills`) %></li>
+            <li><%- template(lookup("skills"), { skills: lookup(`${prefix}_skills`) }) %></li>
         </ul>
     </main>
 </article>

@@ -15,11 +15,6 @@ const defaultArgs = [
     "name": "dev",
     "description": "",
     "defaultValue": false,
-  },
-  {
-    "name": "all",
-    "description": "overrides excludes",
-    "defaultValue": false
   }
 ];
 
