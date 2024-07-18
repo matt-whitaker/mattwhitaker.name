@@ -9,6 +9,7 @@ await (
       stylesheets: [
         "style/normalize.css",
         "style/resume.css",
+        "style/resume-mig.css",
       ],
       template: "template/master.ejs",
       root: process.cwd()
