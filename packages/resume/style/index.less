@@ -1,5 +1,46 @@
+@import (reference) "include/colors.less";
+@import (reference) "include/fonts.less";
+
 // -- GLOBALS --
-@import "master.less";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+
+  @media screen {
+    overflow-x: hidden;
+  }
+
+  .urbanist(@size: @base-font-size);
+  color: @black;
+}
+
+a {
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    color: @silver;
+    text-decoration: underline;
+  }
+}
+
+h1, h2 {
+  .urbanist(@weight: 300);
+  color: @gray25;
+}
+
+@media screen {
+  .mw-body {
+    background-image: url("/image/cubes.png");
+    background-attachment: fixed;
+    background-color: @background-shade;
+  }
+}
+
 
 // -- PAGE --
 
@@ -7,5 +48,4 @@
 
 // -- PAGES --
 @import "page/resume.less";
-@import "page/resume-ats.less";
 @import "offline/cover.less";
