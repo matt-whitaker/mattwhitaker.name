@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
     "@storybook/addon-essentials": "^8.2.4",
@@ -20,10 +21,11 @@
     "tailwindcss": "^3.4.6"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 8080",
-    "storybook:build": "storybook build",
-    "start": "npm run storybook"
+    "storybook:build": "storybook build -o ./dist/prototyping",
+    "start": "npm run static && npm run storybook",
+    "build": "npm run static && npm run storybook:build",
+    "static": "bin/static.js --source static --output dist"
   },
   "author": "",
   "license": "ISC"

@@ -9,7 +9,7 @@ await (
       ext: [".ejs"],
       stylesheets: args.dev ? [
         "style/normalize.css",
-        "style/main.css",
+        "style/tailwind.css",
       ] : [
         "style/normalize.css",
         "style/main.min.css",
