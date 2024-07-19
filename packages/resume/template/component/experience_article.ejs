@@ -14,10 +14,10 @@
     </header>
     <main class="mw-resume-job-desc">
         <ul>
-            <li><%= lookup(`${prefix}_summary`) %></li>
+            <li><%- lookup(`${prefix}_summary`) %></li>
             <% for (let i = 1; i <= 4; i++) { %>
             <% if (lookup(`${prefix}_${i}`, "")) { %>
-            <li><%= lookup(`${prefix}_${i}`) %></li>
+            <li><%- lookup(`${prefix}_${i}`) %></li>
             <% } %>
             <% } %>
             <li><%- template(lookup("skills"), { skills: lookup(`${prefix}_skills`) }) %></li>
