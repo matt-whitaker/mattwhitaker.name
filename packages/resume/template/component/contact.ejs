@@ -1,21 +1,24 @@
-<h2><span><%= lookup("h_contact") %></span></h2>
-<ul>
-    <li>
-        <span title="<%= hide("", lookup("contact_phone_note")) %>">
-            <b><%= lookup("contact_phone") %></b> <br />
-            <%= hide("+1 (253) 886 0195", "+a (xxx) yyy zzzz") %>
-        </span>
-    </li>
-    <li>
-        <span>
-            <b><%= lookup("contact_email") %></b> <br />
-            hire@mattwhitaker.name
-        </span>
-    </li>
-    <li>
-        <span>
-            <b><%= lookup("contact_website") %></b> <br />
-            mattwhitaker.name
-        </span>
-    </li>
-</ul>
+<aside class="pr-xsmall">
+    <%- await include("/template/component/heading.ejs", { text: lookup("h_contact"), column: "sidebar"  }) %>
+    <ul class="text-right">
+        <li class="text-sm leading-[1.3em]">
+            <span title="<%= hide("", lookup("contact_phone_note")) %>">
+                <b><%= lookup("contact_phone") %></b> <br />
+                <%= hide("+1 (253) 886 0195", "+a (xxx) yyy zzzz") %>
+            </span>
+        </li>
+        <li class="text-sm leading-[1.3em]">
+            <span>
+                <b><%= lookup("contact_email") %></b> <br />
+                hire@mattwhitaker.name
+            </span>
+        </li>
+        <li class="text-sm leading-[1.3em]">
+            <span>
+                <b><%= lookup("contact_website") %></b> <br />
+                mattwhitaker.name
+            </span>
+        </li>
+    </ul>
+</aside>
+

@@ -1,11 +1,11 @@
-<h2>
-    <span><%= lookup("h_education") %></span>
-</h2>
-<p>
-    <span><%= lookup("edu_degree") %></span> <br/>
-    <span><%= lookup("edu_focus") %></span>
-</p>
-<p>
-    <b><%= lookup("edu_school") %></b>
-<address><%= lookup("edu_address") %></address>
-</p>
+<aside class="pr-xsmall text-right leading-4">
+    <%- await include("/template/component/heading.ejs", { text: lookup("h_education"), column: "sidebar"  }) %>
+    <p class="text-sm">
+        <span><%= lookup("edu_degree") %></span> <br/>
+        <span><%= lookup("edu_focus") %></span>
+    </p>
+    <p class="text-sm mt-xxsmall">
+        <b><%= lookup("edu_school") %></b>
+        <address class="text-sm"><%= lookup("edu_address") %></address>
+    </p>
+</aside>

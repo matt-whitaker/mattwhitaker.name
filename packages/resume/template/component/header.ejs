@@ -1,0 +1,13 @@
+<header class="flex flex-col float-right">
+    <div class="flex">
+        <img class="m-large w-[137px] h-[137px]" src="/image/headshot.jpg" alt="<%= lookup("headshot") %>" />
+        <div class="ml-large flex-grow-[1] flex flex-col items-stretch">
+            <h1 class="mt-large text-xxl indent-[-1px] tracking-[.08em] leading-[.78em] font-light">Matt<br/>Whitaker</h1>
+            <h2 class="mt-[8px] p-[6px] bg-lightblueash tracking-[.15em] text-[1.1em] leading-[1em] font-light"><%= lookup("jobtitle") %></h2>
+            <address class="mt-[3px] not-italic"><%= lookup("address") %></address>
+        </div>
+    </div>
+    <div class="border-box w-letter-width p-large bg-black bg-opacity-30">
+        <p class="pl-sidebar text-[.9em] leading-[1.15em]"><%= lookup("summary") %></p>
+    </div>
+</header>

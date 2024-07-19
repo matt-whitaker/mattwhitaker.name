@@ -7,8 +7,6 @@ await (
     await buildPages(process.argv, () => ({
       ext: [".ejs"],
       stylesheets: [
-        "style/normalize.css",
-        "style/resume.css",
         "style/resume-mig.css",
       ],
       template: "template/master.ejs",
