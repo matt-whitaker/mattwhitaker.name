@@ -1,0 +1,6 @@
+<section class="pl-large pb-xlarge">
+    <%- await include("/template/component/heading.ejs", { text: lookup("h_cover") , column: "content" }) %>
+    <time class="text-sm mt-medium"><%= lookup("date", "") || new Date().toDateString() %></time>
+    <p class="text-sm mt-medium"><%- lookup("to") %></p>
+    <address class="text-sm mt-medium"><%- lookup("address") %></address>
+</section>
