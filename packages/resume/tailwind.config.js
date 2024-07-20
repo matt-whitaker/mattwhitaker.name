@@ -26,7 +26,7 @@ export default {
       silver: "#7c8288",
       blueash: "#414654",
       lightblueash: "#ebedf0",
-      lightblueashfaded: "#ebedf033",
+      lightblueashfaded: "#ebedf01c",
       black: "#2f333d",
       blackfaded: "#2f333d33",
       gold: "#B59410"

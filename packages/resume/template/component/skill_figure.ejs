@@ -1,85 +1,11 @@
-<figure>
-    <figcaption class="ml-large relative flex text-right"><%= lookup(titleKey) %></figcaption>
-    <ul>
+<figure class="resume-skill-figure text-sm flex flex-col">
+    <figcaption class="ml-large relative flex text-right block self-end"><%= lookup(titleKey) %></figcaption>
+    <ul class="mt-xxsmall">
     <% JSON.parse(lookup(dataKey)).forEach(([years, string], i) => { %>
-        <li style="width: <%= 152 * (years / 12) %>px" class="">
-            <span><%- template(lookup("years"), { years }) %></span>
-            <span><%= string %></span>
+        <li class="mb-[3px] ml-large relative flex text-right leading-[1.3em] skill-<%= years %>">
+            <span class="z-[1] mr-auto"><%- template(lookup("years"), { years }) %></span>
+            <span class="z-[1] mr-0 text-right"><%= string %></span>
         </li>
     <% }) %>
     </ul>
 </figure>
-
-<!--
-.mw-resume-skills {
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-
-    li {
-      @numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
-      @max: 152;
-
-      each(@numbers, {
-        &.mw-years-@{value}:before {
-
-          width: unit(@max * (@value / 12), px);
-        }
-      });
-
-      &:before {
-        display: block;
-        height: 100%;
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        background-color: fade(lighten(@blueash, 64%), 10%);
-        border-bottom: 1px solid lighten(@blueash, 64%);
-      }
-    }
-
-    li, figcaption {
-      position: relative;
-      display: flex;
-      text-align: right;
-
-      margin-left: @well-size-lg;
-
-      span {
-        z-index: 1;
-        margin-right: auto;
-        b {
-          color: @gold;
-        }
-
-        + span {
-          margin-right: 0;
-        }
-      }
-    }
-
-    figure {
-      &:before {
-        content: "- - -";
-        display: block;
-        text-align: center;
-        margin: @well-size-mini 0;
-        position: relative;
-        left: 5px;
-      }
-      &:first-of-type:before {
-        content: none;
-      }
-      > span {
-        display: block;
-        text-align: center;
-        margin: @well-size-mini 0 @well-size-mini -@well-size-sm;
-      }
-    }
-
-    ul {
-      margin-top: 2 * @well-size-mini;
-    }
-  }
--->
