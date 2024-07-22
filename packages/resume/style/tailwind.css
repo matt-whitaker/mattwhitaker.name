@@ -32,10 +32,9 @@
     }
     .resume-skill-figure:before {
         @apply block text-center text-md my-[3px] mx-0 relative left-xxsmall h-[14px];
-        content: "- - -";
     }
-    .resume-skill-figure:first-of-type:before {
-        @apply content-none;
+    .resume-skill-figure.separator:before {
+        content: "- - -";
     }
 }
 @tailwind utilities;

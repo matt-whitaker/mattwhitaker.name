@@ -43,7 +43,7 @@ smar_summary Diverse full-stack, but heavily frontend-leaning, engineering role 
 smar_1 Led the architecture, planning, and development of Smartsheet's Admin Center frontend; leading a small team of remote engineers, later moving to in-house resources. Ultimately responsible for the successful quality and delivery of the product and worked closely with product owners and UX to ensure customer needs were met.
 smar_2 Responsible for the quality and effectiveness of a component library focused on enabling other teams to rapidly extend Admin Center functionality. Worked closely with UX to plan a consistent set of re-usable components and set delivery expectations.
 smar_3 Drove adoption and evangelism of cross-company UI efforts focused on breaking up the core "monolith".
-smar_4 Additionally responsible for owning a number of legacy feature areas lacking existing subject-matter experts, rapidly onboarding to a variety of feature areas requiring enhancements and performance improvements.
+smar_4 Additionally responsible for owning a number of legacy feature areas lacking existing subject-matter experts, rapidly onboarding to provide enhancements and performance improvements.
 smar_skills HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Webpack, Node.js, Figma, Java, Storybook, AWS, Spring, K8s
 
 sap_jobtitle Software Design Engineer II

@@ -1,76 +1,17 @@
-<aside class="mt-large pr-xsmall flex flex-col text-right">
-    <%- await include("/template/component/heading.ejs", { text: lookup("h_skills"), column: "sidebar"  }) %>
-    <%- await include("/template/component/skill_figure.ejs", { titleKey: "h_language", dataKey: "d_language" }) %>
-    <%- await include("/template/component/skill_figure.ejs", { titleKey: "h_framework", dataKey: "d_framework" }) %>
-    <%- await include("/template/component/skill_figure.ejs", { titleKey: "h_infrastructure", dataKey: "d_infrastructure" }) %>
+<aside class="pt-large <%= column === "sidebar" ? "pr-xsmall" : "pl-large" %> text-right flex-grow">
+<% if (!alt) { %>
+    <%- await include("/template/component/heading.ejs", { text: lookup("h_skills"), column  }) %>
+    <div class="pl-large flex flex-col">
+        <%- await include("/template/component/skill_figure.ejs", { titleKey: "h_language", dataKey: "d_language", separator: false }) %>
+        <%- await include("/template/component/skill_figure.ejs", { titleKey: "h_framework", dataKey: "d_framework", separator: true }) %>
+        <%- await include("/template/component/skill_figure.ejs", { titleKey: "h_infrastructure", dataKey: "d_infrastructure", separator: true }) %>
+    </div>
+<% } else { %>
+    <%- await include("/template/component/heading.ejs", { text: lookup("h_skills"), column }) %>
+    <div class="flex flex-grow">
+        <%- await include("/template/component/skill_figure.ejs", { titleKey: "h_language", dataKey: "d_language", separator: false }) %>
+        <%- await include("/template/component/skill_figure.ejs", { titleKey: "h_framework", dataKey: "d_framework", separator: false }) %>
+        <%- await include("/template/component/skill_figure.ejs", { titleKey: "h_infrastructure", dataKey: "d_infrastructure", separator: false }) %>
+    </div>
+<% } %>
 </aside>
-
-<!--
-.mw-resume-skills {
-    li {
-      @numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
-      @max: 152;
-
-      each(@numbers, {
-        &.mw-years-@{value}:before {
-
-          width: unit(@max * (@value / 12), px);
-        }
-      });
-
-      &:before {
-        display: block;
-        height: 100%;
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        background-color: fade(lighten(@blueash, 64%), 10%);
-        border-bottom: 1px solid lighten(@blueash, 64%);
-      }
-    }
-
-    li, figcaption {
-      position: relative;
-      display: flex;
-      text-align: right;
-
-      margin-left: @well-size-lg;
-
-      span {
-        z-index: 1;
-        margin-right: auto;
-        b {
-          color: @gold;
-        }
-
-        + span {
-          margin-right: 0;
-        }
-      }
-    }
-
-    figure {
-      &:before {
-        content: "- - -";
-        display: block;
-        text-align: center;
-        margin: @well-size-mini 0;
-        position: relative;
-        left: 5px;
-      }
-      &:first-of-type:before {
-        content: none;
-      }
-      > span {
-        display: block;
-        text-align: center;
-        margin: @well-size-mini 0 @well-size-mini -@well-size-sm;
-      }
-    }
-
-    ul {
-      margin-top: 2 * @well-size-mini;
-    }
-  }
--->

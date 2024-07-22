@@ -1,8 +1,8 @@
-<figure class="resume-skill-figure text-sm flex flex-col">
-    <figcaption class="ml-large relative flex text-right block self-end"><%= lookup(titleKey) %></figcaption>
+<figure class="resume-skill-figure text-sm flex flex-col <%= separator ? "separator": "" %>">
+    <figcaption class="relative flex text-right block self-end"><%= lookup(titleKey) %></figcaption>
     <ul class="mt-xxsmall">
     <% JSON.parse(lookup(dataKey)).forEach(([years, string], i) => { %>
-        <li class="mb-[3px] ml-large relative flex text-right leading-[1.3em] skill-<%= years %>">
+        <li class="mb-[3px] relative flex text-right leading-[1.3em] skill-<%= years %>">
             <span class="z-[1] mr-auto"><%- template(lookup("years"), { years }) %></span>
             <span class="z-[1] mr-0 text-right"><%= string %></span>
         </li>

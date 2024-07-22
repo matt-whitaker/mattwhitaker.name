@@ -2,25 +2,25 @@
 
 <main>
     <section class="m-[0_auto] w-letter-width h-letter-height flex">
-        <div class="w-sidebar pt-[315px] bg-blueash text-white">
-            <%- await include("/template/component/contact.ejs") %>
-            <%- await include("/template/component/skills.ejs") %>
-            <%- await include("/template/component/methodology.ejs") %>
+        <div class="w-sidebar pt-[286px] bg-blueash text-white">
+            <%- await include("/template/component/contact.ejs", { alt: false, column: "sidebar" }) %>
+            <%- await include("/template/component/skills.ejs", { alt: false, column: "sidebar" }) %>
+            <%- await include("/template/component/methodology.ejs", { alt: false, column: "sidebar" }) %>
         </div>
         <div class="w-content bg-white">
             <%- await include("/template/component/header.ejs") %>
-            <%- await include("/template/component/experience.ejs") %>
+            <%- await include("/template/component/experience.ejs", { alt: false }) %>
         </div>
     </section>
     <%- await include("/template/component/pagebreak.ejs") %>
     <section class="m-[0_auto] w-letter-width h-letter-height flex">
         <div class="w-sidebar pt-large bg-blueash text-white">
             <%- await include("/template/component/retitle.ejs") %>
-            <%- await include("/template/component/education.ejs") %>
-            <%- await include("/template/component/social.ejs") %>
+            <%- await include("/template/component/education.ejs", { alt: false, column: "sidebar" }) %>
+            <%- await include("/template/component/social.ejs", { alt: false, column: "sidebar" }) %>
         </div>
         <div class="pt-large w-content bg-white">
-            <%- await include("/template/component/experience_cont.ejs") %>
+            <%- await include("/template/component/experience_cont.ejs", { alt: false }) %>
         </div>
     </section>
 </main>

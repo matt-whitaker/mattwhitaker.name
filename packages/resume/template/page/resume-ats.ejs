@@ -1,5 +1,22 @@
 <main>
-    <section class="m-[0_auto] w-letter-width h-letter-height flex">
-
+    <section class="m-[0_auto] w-letter-width h-letter-height bg-white">
+        <%- await include("/template/component/title.ejs", { alt: true }) %>
+        <%- await include("/template/component/subtitle.ejs", { alt: false }) %>
+        <%- await include("/template/component/address.ejs") %>
+        <%- await include("/template/component/summary.ejs", { alt: true }) %>
+        <%- await include("/template/component/experience.ejs", { alt: true }) %>
+        <div class="flex w-full">
+            <%- await include("/template/component/skills.ejs", { alt: true, column: "content" }) %>
+            <%- await include("/template/component/methodology.ejs", { alt: true, column: "content" }) %>
+        </div>
+    </section>
+    <%- await include("/template/component/pagebreak.ejs") %>
+    <section class="m-[0_auto] w-letter-width h-letter-height bg-white">
+        <div class="flex">
+            <%# await include("/template/component/education.ejs", { alt: true, column: "content" }) %>
+            <%# await include("/template/component/contact.ejs", { alt: true, column: "content" }) %>
+            <%# await include("/template/component/social.ejs", { alt: true, column: "content" }) %>
+        </div>
+        <%- await include("/template/component/experience_cont.ejs", { alt: true }) %>
     </section>
 </main>

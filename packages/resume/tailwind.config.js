@@ -4,6 +4,7 @@ export default {
   theme: {
     spacing: {
       0: "0px",
+      xxxsmall: "3px",
       xxsmall: "5px",
       xsmall: "10px",
       small: "15px",
@@ -39,9 +40,12 @@ export default {
 
       sm: ".78em",
       md: "1em",
-      lg: "1.5em",
-      xl: "2em",
-      xxl: "3em"
+      lg: "1.2em",
+      xl: "1.8em",
+      xxl: "2.4em",
+
+      retitle: "2em",
+      title: "3em"
     },
     listStyleType: {
       none: 'none',
