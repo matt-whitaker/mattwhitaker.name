@@ -1,11 +1,12 @@
-<article class="min-h-[60px] pr-large">
-    <p class="pb-xxsmall mb-xxsmall">
-        <b class="text-lg"><%- lookup(`${prefix}_jobtitle`) %></b><br/>
+<article class="min-h-[60px] pr-large pt-xsmall">
+    <div>
+        <b class="text-lg"><%- lookup(`${prefix}_jobtitle`) %></b>
+        <br />
         <span><%= lookup(`${prefix}_name`) %></span>
-        <span><%= lookup(`${prefix}_years`) %></span>
-        <span class="italic"><%= lookup(`${prefix}_address`) %></span>
-    </p>
-    <ul>
+        <span class="ml-xsmall"><%= lookup(`${prefix}_years`) %></span>
+        <address class="inline not-italic ml-xsmall"><%= lookup(`${prefix}_address`) %></address>
+    </div>
+    <ul class="pt-xxsmall">
         <li class="mb-xxsmall text-[.78em] leading-[1.3em]"><%- lookup(`${prefix}_summary`) %></li>
         <% for (let i = 1; i <= 4; i++) { %>
             <% if (lookup(`${prefix}_${i}`, "")) { %>

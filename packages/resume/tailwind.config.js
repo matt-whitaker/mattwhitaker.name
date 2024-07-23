@@ -52,6 +52,11 @@ export default {
       disc: 'disc',
       decimal: 'decimal',
       square: 'square',
+    },
+    extend: {
+      leading: {
+
+      }
     }
   },
   plugins: [],

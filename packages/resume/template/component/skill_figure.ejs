@@ -1,4 +1,4 @@
-<figure class="resume-skill-figure text-sm flex flex-col <%= separator ? "separator": "" %>">
+<figure class="resume-skill-figure text-sm flex flex-col <%= separator ? "separator": "" %> <%= typeof classname === "undefined" ? "" : classname %>">
     <figcaption class="relative flex text-right block self-end"><%= lookup(titleKey) %></figcaption>
     <ul class="mt-xxsmall">
     <% JSON.parse(lookup(dataKey)).forEach(([years, string], i) => { %>

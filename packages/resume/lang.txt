@@ -1,5 +1,5 @@
-jobtitle SENIOR FRONTEND ENGINEER
-short_jobtitle SR. FRONTEND ENG.
+jobtitle FRONTEND / FULL-STACK ENGINEER
+short_jobtitle FRONTEND ENG
 address Bellevue, WA
 summary Experienced frontend-leaning software engineer with 12 years of experience building robust, user-friendly web applications. Proficient in owning all aspects of product development and maintenance, as well as team leadership.
 references References can be provided by request.
@@ -22,10 +22,12 @@ h_continued (<abbr title="Continued...">CONT.</abbr>)
 h_references REFERENCE
 h_education EDUCATION
 h_social SOCIAL
+h_summary SUMMARY
 
 d_language [[12, "HTML / CSS"], [12, "Javascript"], [6, "Typescript"], [8, "Node.js"]]
 d_framework [[8, "React"], [8, "Redux"], [5, "RxJS"], [8, "Storybook"], [8, "Express"], [10, "Webpack"]]
 d_infrastructure [[6, "AWS"], [8, "Nginx"], [8, "Docker"], [8, "Kubernetes"]]
+d_methodology [[10, "Agile / Scrum"], [8, "TDD"], [3, "BDD"], [8, "CI / CD"]]
 
 years ${years} years
 skills <b>Skills:</b> ${skills}
@@ -39,7 +41,7 @@ smar_focus Full-stack / Frontend
 smar_years Nov 2018 - Dec 2023
 smar_name Smartsheet
 smar_address Bellevue, WA
-smar_summary Diverse full-stack, but heavily frontend-leaning, engineering role which included leading front-end development and growing the practice for a couple small teams.
+smar_summary Diverse full-stack, but heavily frontend-leaning, engineering role which included leading frontend development and growing the practice for a couple small teams.
 smar_1 Led the architecture, planning, and development of Smartsheet's Admin Center frontend; leading a small team of remote engineers, later moving to in-house resources. Ultimately responsible for the successful quality and delivery of the product and worked closely with product owners and UX to ensure customer needs were met.
 smar_2 Responsible for the quality and effectiveness of a component library focused on enabling other teams to rapidly extend Admin Center functionality. Worked closely with UX to plan a consistent set of re-usable components and set delivery expectations.
 smar_3 Drove adoption and evangelism of cross-company UI efforts focused on breaking up the core "monolith".
