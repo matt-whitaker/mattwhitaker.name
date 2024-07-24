@@ -27,6 +27,9 @@
     .resume-skill-figure li:before {
         @apply block h-full content-[''] absolute left-[0] right-[0] bg-lightblueashfaded border-solid border-lightblueash border-b-[1px];
     }
+    .resume-skill-figure.alt li:before {
+        @apply bg-blueashfaded border-blueash;
+    }
     .resume-skill-figure li:last-of-type {
         @apply mb-0;
     }

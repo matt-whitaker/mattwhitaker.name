@@ -26,6 +26,7 @@ export default {
       gray25: "#404040",
       silver: "#7c8288",
       blueash: "#414654",
+      blueashfaded: "#4146541c",
       lightblueash: "#ebedf0",
       lightblueashfaded: "#ebedf01c",
       black: "#2f333d",

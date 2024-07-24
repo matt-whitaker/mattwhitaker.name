@@ -10,10 +10,10 @@
 <% } else { %>
     <%- await include("/template/component/heading.ejs", { text: lookup("h_skills"), column }) %>
     <div class="flex flex-grow items-stretch">
-        <%- await include("/template/component/skill_figure.ejs", { classname: "basis-sidebar mr-medium", titleKey: "h_language", dataKey: "d_language", separator: false }) %>
-        <%- await include("/template/component/skill_figure.ejs", { classname: "basis-sidebar mr-medium", titleKey: "h_framework", dataKey: "d_framework", separator: false }) %>
-        <%- await include("/template/component/skill_figure.ejs", { classname: "basis-sidebar mr-medium", titleKey: "h_infrastructure", dataKey: "d_infrastructure", separator: false }) %>
-        <%- await include("/template/component/skill_figure.ejs", { classname: "basis-sidebar", titleKey: "h_methodology", dataKey: "d_methodology", separator: false }) %>
+        <%- await include("/template/component/skill_figure.ejs", { classname: "alt basis-sidebar mr-medium", titleKey: "h_language", dataKey: "d_language", separator: false }) %>
+        <%- await include("/template/component/skill_figure.ejs", { classname: "alt basis-sidebar mr-medium", titleKey: "h_framework", dataKey: "d_framework", separator: false }) %>
+        <%- await include("/template/component/skill_figure.ejs", { classname: "alt basis-sidebar mr-medium", titleKey: "h_infrastructure", dataKey: "d_infrastructure", separator: false }) %>
+        <%- await include("/template/component/skill_figure.ejs", { classname: "alt basis-sidebar", titleKey: "h_methodology", dataKey: "d_methodology", separator: false }) %>
     </div>
 <% } %>
 </aside>
