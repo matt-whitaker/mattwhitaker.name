@@ -15,6 +15,7 @@
     "style:dev": "npm run tailwind:dev",
     "style:watch": "npm run tailwind:watch",
     "generate:resume": "mkdir -p dist/pdf && bin/pdf.js --page resume.html --name MattWhitakerResume",
+    "generate:resume-ats": "mkdir -p dist/pdf && bin/pdf.js --page resume-ats.html --name MattWhitakerATSResume",
     "generate:cover": "mkdir -p dist/pdf && bin/pdf.js --page cover.html --name MattWhitakerCoverLetter",
     "generate:all": "npm run generate:resume",
     "static": "bin/static.js --source ../common/static --output dist",
