@@ -1,8 +1,11 @@
-<figure>
-    <figcaption><%= lookup(titleKey) %></figcaption>
-    <ul>
-    <% JSON.parse(lookup(dataKey)).forEach(([years, string]) => { %>
-        <li class="mw-years-<%= years %>"><span><%- template(lookup("years"), { years }) %></span><span><%= string %></span></li>
+<figure class="resume-skill-figure text-sm flex flex-col <%= separator ? "separator": "" %> <%= typeof classname === "undefined" ? "" : classname %>">
+    <figcaption class="relative flex text-right block self-end"><%= lookup(titleKey) %></figcaption>
+    <ul class="mt-xxsmall">
+    <% JSON.parse(lookup(dataKey)).forEach(([years, string], i) => { %>
+        <li class="mb-[3px] relative flex text-right leading-[1.3em] skill-<%= years %>">
+            <span class="z-[1] mr-auto"><%- template(lookup("years"), { years }) %></span>
+            <span class="z-[1] mr-0 text-right"><%= string %></span>
+        </li>
     <% }) %>
     </ul>
 </figure>

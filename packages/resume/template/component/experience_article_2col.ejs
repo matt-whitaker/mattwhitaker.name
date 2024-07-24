@@ -1,0 +1,26 @@
+<article class="flex flex-row min-h-[60px] pr-large">
+    <div class="basis-[30%] pt-small border-solid border-black border-r-[1px] text-[.78em] leading-[1.15em]">
+        <p class="pb-xxsmall mb-xxsmall border-block border-solid border-b-[1px]">
+            <b><%- lookup(`${prefix}_jobtitle`) %></b><br/>
+            <% if (lookup(`${prefix}_focus`, "")) { %>
+                <em><%= lookup(`${prefix}_focus`) %></em><br/>
+            <% } %>
+            <span><%= lookup(`${prefix}_years`) %></span>
+        </p>
+        <div>
+            <span><%= lookup(`${prefix}_name`) %></span><br/>
+            <address><%= lookup(`${prefix}_address`) %></address>
+        </div>
+    </div>
+    <div class="pt-small ml-xsmall basis-[70%]">
+        <ul>
+            <li class="mb-xxsmall text-[.78em] leading-[1.3em]"><%- lookup(`${prefix}_summary`) %></li>
+            <% for (let i = 1; i <= 4; i++) { %>
+                <% if (lookup(`${prefix}_${i}`, "")) { %>
+                    <li class="mb-[3px]] ml-medium text-[.78em] leading-[1.3em] list-square"><%- lookup(`${prefix}_${i}`) %></li>
+                <% } %>
+            <% } %>
+            <li class="mt-xxsmall mb-xxsmall text-[.78em] leading-[1.3em]"><%- template(lookup("skills"), { skills: lookup(`${prefix}_skills`) }) %></li>
+        </ul>
+    </div>
+</article>

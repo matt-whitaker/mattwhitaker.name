@@ -1,0 +1,11 @@
+<header class="relative right-sidebar mr-sidebar flex flex-col w-letter-width">
+    <div class="flex">
+        <img class="m-large w-[137px] h-[137px]" src="/image/headshot.jpg" alt="<%= lookup("headshot") %>" />
+        <div class="flex-grow-[1] flex flex-col items-stretch">
+            <%- await include("/template/component/title.ejs", { alt: false }) %>
+            <%- await include("/template/component/subtitle.ejs", { alt: false }) %>
+            <%- await include("/template/component/address.ejs") %>
+        </div>
+    </div>
+    <%- await include("/template/component/summary.ejs", { alt: false }) %>
+</header>
