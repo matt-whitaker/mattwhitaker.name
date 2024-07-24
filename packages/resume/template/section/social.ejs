@@ -1,0 +1,8 @@
+<% const data = [] %>
+<% data.push(["Github", "<!--https://github.com/-->matt-whitaker"]) %>
+<% data.push(["LinkedIn", "<!--https://www.linkedin.com/in/-->whitakermatt"]) %>
+
+<aside class="pt-large text-right leading-4">
+    <%- await include("/template/component/heading.ejs", { text: lookup("h_social"), column }) %>
+    <%- await include("/template/component/datalist.ejs", { data }) %>
+</aside>

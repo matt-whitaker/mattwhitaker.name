@@ -1,0 +1,12 @@
+<section class="pl-large pt-large clear-both">
+    <%- await include("/template/component/heading.ejs", { text: lookup("h_experience"), column: "content" }) %>
+    <% if (!alt) { %>
+        <%- await include("/template/component/break_article_2col.ejs") %>
+        <%- await include("/template/component/experience_article_2col.ejs", { prefix: "smar" }) %>
+        <%- await include("/template/component/experience_article_2col.ejs", { prefix: "sap" }) %>
+    <% } else { %>
+        <%- await include("/template/component/break_article_1col.ejs") %>
+        <%- await include("/template/component/experience_article_1col.ejs", { prefix: "smar" }) %>
+        <%- await include("/template/component/experience_article_1col.ejs", { prefix: "sap" }) %>
+    <% } %>
+</section>

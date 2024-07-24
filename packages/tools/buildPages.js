@@ -1,10 +1,8 @@
 import crypto from "crypto";
-import fs from "fs-extra";
-import { join, basename, extname } from "path";
+import { basename, extname } from "path";
 import { loadFiles, readFile, resolveOutputPath, resolvePath, tryReadFile, writeFile } from "./utils/file.js";
 import { EXT_EJS, EXT_MD } from "./utils/constants.js";
 import { parseArgs } from "./utils/cli.js";
-import puppeteer from "puppeteer";
 import { mapStrings } from "./utils/lang.js";
 import { extractAnnotations, render } from "./utils/template.js";
 

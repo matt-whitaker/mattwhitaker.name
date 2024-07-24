@@ -1,0 +1,4 @@
+<div class="<%= !alt ? "p-large bg-black" : "pl-large pt-small" %> border-box bg-opacity-30">
+    <%- alt ? await include("/template/component/heading.ejs", { text: lookup("h_summary"), column: "content" }) : "" %>
+    <p class="<%= !alt ? "pl-sidebar" : "" %> text-[.9em] leading-[1.15em]"><%= lookup("summary") %></p>
+</div>

@@ -1,0 +1,11 @@
+<article>
+    <%- await include("/template/component/subtitle.ejs", { alt: false }) %>
+    <div class="pl-large">
+    <% for (let i = 0; i < 5; i++) { %>
+    <% if (lookup(`body_${i}`, "")) { %>
+        <p class="text-sm first-of-type:mt-large mt-xsmall"><%- lookup(`body_${i}`) %></p>
+    <% } %>
+    <% } %>
+        <p class="text-sm mt-large"><%- lookup("signature") %></p>
+    </div>
+</article>

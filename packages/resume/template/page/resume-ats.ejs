@@ -1,170 +1,22 @@
-<main class="mw-resume-ats">
-    <header>
-        <h1>Matt Whitaker</h1>
-        <h2><%= lookup("jobtitle") %></h2>
-        <address><%= lookup("address") %></address>
-    </header>
-    <p><%= lookup("summary") %></p>
-
-    <h2><%= lookup("h_experience") %></h2>
-    <section>
-        <header>
-            <h4><b><%= lookup("break_title") %></b></h4>
-            <p><%= lookup("break_years") %></p>
-        </header>
-        <main>
-            <p><%= lookup("break_summary") %></p>
-        </main>
+<main>
+    <section class="m-[0_auto] pr-large w-letter-width h-letter-height bg-white">
+        <%- await include("/template/component/title.ejs", { alt: true }) %>
+        <%- await include("/template/component/subtitle.ejs", { alt: false }) %>
+        <%- await include("/template/component/contact-line.ejs") %>
+        <%- await include("/template/component/summary.ejs", { alt: true }) %>
+        <%- await include("/template/section/experience.ejs", { alt: true }) %>
+        <div class="flex w-full pl-large">
+            <%- await include("/template/section/skills.ejs", { alt: true, column: "content" }) %>
+            <%# await include("/template/section/methodology.ejs", { alt: true, column: "content" }) %>
+        </div>
     </section>
-    <section>
-        <header>
-            <h4><b><%= lookup("smar_jobtitle") %></b></h4>
-            <em><%= lookup("smar_focus") %></em>
-            <p><%= lookup("smar_name") %> <address><%= lookup("smar_address") %></address></p>
-            <p><%= lookup("smar_years") %></p>
-        </header>
-        <main>
-            <p><%= lookup("smar_summary") %></p>
-            <ul>
-                <li><%= lookup("smar_1") %></li>
-                <li><%= lookup("smar_2") %></li>
-                <li><%= lookup("smar_3") %></li>
-                <li><%= lookup("smar_4") %></li>
-            </ul>
-            <p><%- lookup("smar_skills") %></p>
-        </main>
+    <%- await include("/template/component/pagebreak.ejs") %>
+    <section class="m-[0_auto] pr-large w-letter-width h-letter-height bg-white">
+        <div class="flex">
+            <%# await include("/template/component/education.ejs", { alt: true, column: "content" }) %>
+            <%# await include("/template/component/contact.ejs", { alt: true, column: "content" }) %>
+            <%# await include("/template/component/social.ejs", { alt: true, column: "content" }) %>
+        </div>
+        <%- await include("/template/section/experience_cont.ejs", { alt: true }) %>
     </section>
-    <section>
-        <header>
-            <h4><b><%= lookup("sap_jobtitle") %></b></h4>
-            <em><%= lookup("sap_focus") %></em>
-            <p><%= lookup("sap_name") %> <address><%= lookup("sap_address") %></address></p>
-            <p><%= lookup("sap_years") %></p>
-        </header>
-        <main>
-            <p><%= lookup("sap_summary") %></p>
-            <ul>
-                <li><%= lookup("sap_1") %></li>
-                <li><%= lookup("sap_2") %></li>
-                <li><%= lookup("sap_3") %></li>
-            </ul>
-            <p><%- lookup("sap_skills") %></p>
-        </main>
-    </section>
-    <section>
-        <header>
-            <h4><b><%= lookup("appl_jobtitle") %></b></h4>
-            <p><%= lookup("appl_name") %> <address><%= lookup("appl_address") %></address></p>
-            <p><%= lookup("appl_years") %></p>
-        </header>
-        <main>
-            <p><%= lookup("appl_summary") %></p>
-            <ul>
-                <li><%= lookup("appl_1") %></li>
-                <li><%= lookup("appl_2") %></li>
-            </ul>
-            <p><%- lookup("appl_skills") %></p>
-        </main>
-    </section>
-</main>
-<div class="mw-pagebreak"></div>
-<main class="mw-resume-ats">
-    <section>
-        <header>
-            <h4><b><%= lookup("slal_jobtitle") %></b></h4>
-            <p><%= lookup("slal_name") %> <address><%= lookup("slal_address") %></address></p>
-            <p><%= lookup("slal_years") %></p>
-        </header>
-        <main>
-            <p><%= lookup("slal_summary") %></p>
-            <ul>
-                <li><%= lookup("slal_1") %></li>
-                <li><%= lookup("slal_2") %></li>
-                <li><%= lookup("slal_3") %></li>
-            </ul>
-            <p><%- lookup("slal_skills") %></p>
-        </main>
-    </section>
-    <section>
-        <header>
-            <h4><b><%- lookup("uw_jobtitle") %></b></h4>
-            <em><%= lookup("uw_focus") %></em>
-            <p><%= lookup("uw_name") %> <address><%= lookup("uw_address") %></address></p>
-            <p><%= lookup("uw_years") %></p>
-        </header>
-        <main>
-            <p><%= lookup("uw_summary") %></p>
-            <ul>
-                <li><%= lookup("uw_1") %></li>
-                <li><%= lookup("uw_2") %></li>
-                <li><%= lookup("uw_3") %></li>
-            </ul>
-            <p><%- lookup("uw_skills") %></p>
-        </main>
-    </section>
-    <section>
-        <header>
-            <h4><b><%- lookup("vous_jobtitle") %></b></h4>
-            <em><%= lookup("vous_focus") %></em>
-            <p><%= lookup("vous_name") %> <address><%= lookup("vous_address") %></address></p>
-            <p><%= lookup("vous_years") %></p>
-        </header>
-        <main>
-            <p><%= lookup("vous_summary") %></p>
-            <ul>
-                <li><%= lookup("vous_1") %></li>
-                <li><%= lookup("vous_2") %></li>
-            </ul>
-            <p><%- lookup("vous_skills") %></p>
-        </main>
-    </section>
-
-    <section>
-        <header>
-            <h4><b><%- lookup("hts_jobtitle") %></b></h4>
-            <em><%= lookup("hts_focus") %></em>
-            <p><%= lookup("hts_name") %> <address><%= lookup("hts_address") %></address></p>
-            <p><%= lookup("hts_years") %></p>
-        </header>
-        <main>
-            <p><%= lookup("hts_summary") %></p>
-            <ul>
-                <li><%= lookup("hts_1") %></li>
-                <li><%= lookup("hts_2") %></li>
-                <li><%= lookup("hts_3") %></li>
-            </ul>
-            <p><%- lookup("hts_skills") %></p>
-        </main>
-    </section>
-
-    <h2><%= lookup("h_education") %></h2>
-    <section>
-        <p><%= lookup("edu_degree") %></p>
-        <p><%= lookup("edu_focus") %></p>
-        <p><%= lookup("edu_school") %></p>
-        <p><%= lookup("edu_address") %></p>
-    </section>
-
-    <h2><%= lookup("h_skills") %></h2>
-    <p>HTML / CSS, JavaScript, TypeScript, Node.js, Express, React, Redux, RxJs, Jest, Cypress, Tailwind, Storybook, AWS, Nginx, Docker, Kubernetes</p>
-
-    <h2><%= lookup("h_methodology") %></h2>
-    <p>Agile / Scrum, TDD / BDD, CI / CD</p>
-
-    <h2><%= lookup("h_social") %></h2>
-    <section>
-        <p><b>Github</b> <!--https://github.com/-->matt-whitaker</p>
-        <p><b>LinkedIn</b> <!--https://www.linkedin.com/in/-->whitakermatt</p>
-    </section>
-</main>
-<div class="mw-pagebreak"></div>
-<main class="mw-resume-ats">
-    <h2><%= lookup("h_contact") %></h2>
-    <section>
-        <p><b><%= lookup("contact_phone") %></b> <%= hide("+1 (253) 886 0195", "+a (xxx) yyy zzzz") %></p>
-        <p><b><%= lookup("contact_email") %></b> hire@mattwhitaker.name</p>
-        <p><b><%= lookup("contact_website") %></b> mattwhitaker.name</p>
-    </section>
-    <br />
-    <aside><%- lookup("reader_note") %></aside>
 </main>

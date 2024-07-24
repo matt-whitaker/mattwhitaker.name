@@ -1,0 +1,9 @@
+<% const data = [] %>
+<% data.push([lookup("contact_phone"), hide("+1 (253) 886 0195", "+a (xxx) yyy zzzz")]) %>
+<% data.push([lookup("contact_email"), "hire@mattwhitaker.name"]) %>
+<% data.push([lookup("contact_website"), "mattwhitaker.name"]) %>
+<section class="pt-large">
+    <%- await include("/template/component/heading.ejs", { text: lookup("h_contact"), column  }) %>
+    <%- await include("/template/component/datalist.ejs", { data }) %>
+</section>
+
