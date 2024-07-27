@@ -7,37 +7,6 @@
     html, body {
         @apply font-sans text-normal text-black;
     }
-
 }
 @tailwind components;
-@layer components {
-    .resume-skill-figure li.skill-1:before { width: 12.5px; }
-    .resume-skill-figure li.skill-2:before { width: 25px; }
-    .resume-skill-figure li.skill-3:before { width: 38px; }
-    .resume-skill-figure li.skill-4:before { width: 51px; }
-    .resume-skill-figure li.skill-5:before { width: 63px; }
-    .resume-skill-figure li.skill-6:before { width: 76px; }
-    .resume-skill-figure li.skill-7:before { width: 89px; }
-    .resume-skill-figure li.skill-8:before { width: 101px; }
-    .resume-skill-figure li.skill-9:before { width: 114px; }
-    .resume-skill-figure li.skill-10:before { width: 127px; }
-    .resume-skill-figure li.skill-11:before { width: 139px; }
-    .resume-skill-figure li.skill-12:before { width: 152px; }
-
-    .resume-skill-figure li:before {
-        @apply block h-full content-[''] absolute left-[0] right-[0] bg-lightblueashfaded border-solid border-lightblueash border-b-[1px];
-    }
-    .resume-skill-figure.alt li:before {
-        @apply bg-blueashfaded border-blueash;
-    }
-    .resume-skill-figure li:last-of-type {
-        @apply mb-0;
-    }
-    .resume-skill-figure:before {
-        @apply block text-center text-md my-[3px] mx-0 relative left-xxsmall h-[14px];
-    }
-    .resume-skill-figure.separator:before {
-        content: "- - -";
-    }
-}
 @tailwind utilities;

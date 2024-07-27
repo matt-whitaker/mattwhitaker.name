@@ -4,6 +4,7 @@ export default {
   theme: {
     spacing: {
       0: "0px",
+
       xxxsmall: "3px",
       xxsmall: "5px",
       xsmall: "10px",
@@ -19,22 +20,22 @@ export default {
       content: "630px",
     },
     colors: {
-      bgshade: "rgba(0,0,0, .03)",
-      pgshade: "rgba(255, 255, 255, 1)",
+      bgshade: "#0000000a",
       white: "#ffffff",
-      gray50: "#808080",
-      gray25: "#404040",
-      silver: "#7c8288",
-      blueash: "#414654",
-      blueashfaded: "#4146541c",
-      lightblueash: "#ebedf0",
-      lightblueashfaded: "#ebedf01c",
+      blueash: {
+        300: "#ebedf0",
+        500: "#414654"
+      },
       black: "#2f333d",
-      blackfaded: "#2f333d33",
+      gray: {
+        25: "#404040",
+        50: "#808080"
+      },
+      silver: "#7c8288",
       gold: "#B59410"
     },
     fontFamily: {
-      sans: ['Urbanist', 'sans-serif']
+      sans: ["Urbanist", "sans-serif"]
     },
     fontSize: {
       normal: "16px",
@@ -48,15 +49,12 @@ export default {
       retitle: "2em",
       title: "3em"
     },
-    listStyleType: {
-      none: 'none',
-      disc: 'disc',
-      decimal: 'decimal',
-      square: 'square',
-    },
     extend: {
-      leading: {
-
+      listStyleType: {
+        square: 'square',
+      },
+      lineHeight: {
+        common: "1.3em"
       }
     }
   },

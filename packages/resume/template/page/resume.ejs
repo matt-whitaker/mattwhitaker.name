@@ -1,11 +1,10 @@
-<%# title Matt Whitaker - Resume - Senior Frontend Engineer %>
+<%# title Matt Whitaker - Resume %>
 
 <main>
     <section class="m-[0_auto] w-letter-width h-letter-height flex">
-        <div class="w-sidebar pt-[286px] pr-xsmall bg-blueash text-white">
+        <div class="w-sidebar pt-[286px] pr-xsmall bg-blueash-500 text-white">
             <%- await include("/template/section/contact.ejs", { alt: false, column: "sidebar" }) %>
             <%- await include("/template/section/skills.ejs", { alt: false, column: "sidebar" }) %>
-            <%# await include("/template/section/methodology.ejs", { alt: false, column: "sidebar" }) %>
         </div>
         <div class="w-content bg-white">
             <%- await include("/template/component/header.ejs") %>
@@ -14,7 +13,7 @@
     </section>
     <%- await include("/template/component/pagebreak.ejs") %>
     <section class="m-[0_auto] w-letter-width h-letter-height flex">
-        <div class="w-sidebar pt-large pr-xsmall bg-blueash text-white">
+        <div class="w-sidebar pt-large pr-xsmall bg-blueash-500 text-white">
             <%- await include("/template/section/retitle.ejs") %>
             <%- await include("/template/section/education.ejs", { alt: false, column: "sidebar" }) %>
             <%- await include("/template/section/social.ejs", { alt: false, column: "sidebar" }) %>
