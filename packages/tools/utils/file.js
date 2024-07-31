@@ -1,7 +1,7 @@
 import { extname, resolve } from "path";
 import { readdir, readFile as _readFile, writeFile as _writeFile } from "fs/promises";
 
-import { EXT_EJS, EXT_MD, EXT_HTML, EXT_TXT } from "./constants.js";
+import { EXT_EJS, EXT_MD } from "./constants.js";
 
 /**
  * typedef {Object} File
@@ -66,12 +66,3 @@ export const listDirectory = async (dir, recursive = true, exts = []) =>
 export const loadFiles = async (dir, extensions = []) => Promise.all(
   (await listDirectory(dir, true, extensions))
     .map(async ({ path, name }) => ({ data: await readFile(resolvePath(path, name)), path, name })));
-/**
- * Resolves a template path for output, including renaming the extension .html
- * @param {string} output
- * @param {string} name
- * @param {(EXT_HTML,EXT_TXT)} ext
- * @returns {string} a fully resolved and renamed filename/path
- */
-export const resolveOutputPath = (output, name, ext = EXT_HTML) =>
-  resolvePath(output, name.replace(extname(name), ext));

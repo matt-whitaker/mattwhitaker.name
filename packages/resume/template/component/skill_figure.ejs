@@ -1,8 +1,11 @@
-<figure class="resume-skill-figure text-sm flex flex-col <%= separator ? "separator": "" %> <%= typeof classname === "undefined" ? "" : classname %>">
-    <figcaption class="relative flex text-right block self-end"><%= lookup(titleKey) %></figcaption>
+<% const yearsToWidthClasses = ["before:w-0", "before:w-[12.5px]", "before:w-[25px]", "before:w-[38px]", "before:w-[51px]", "before:w-[63px]", "before:w-[76px]", "before:w-[89px]", "before:w-[101px]", "before:w-[114px]", "before:w-[127px]", "before:w-[139px]", "before:w-[152px]"]; %>
+<% const separatorClasses = "before:block before:text-center before:text-md before:my-[3px] before:mx-0 before:relative before:left-xxsmall before:h-[14px] before:content-['- - -']"; %>
+<% const highlightClasses = "before:block before:h-full before:content-[''] before:absolute before:left-[0] before:right-[0] before:bg-blueash-300 before:bg-opacity-[12%] before:border-solid before:border-blueash-300 before:border-b-[1px]"; %>
+<figure class="resume-skill-figure text-sm flex flex-col <%= separator ? separatorClasses: "" %>">
+    <figcaption class="relative flex text-right self-end"><%= lookup(titleKey) %></figcaption>
     <ul class="mt-xxsmall">
     <% JSON.parse(lookup(dataKey)).forEach(([years, string], i) => { %>
-        <li class="mb-[3px] relative flex text-right leading-[1.3em] skill-<%= years %>">
+        <li class="mb-[3px] relative flex text-right leading-common <%= yearsToWidthClasses[years] %> <%= highlightClasses %> last-of-type:mb-0">
             <span class="z-[1] mr-auto"><%- template(lookup("years"), { years }) %></span>
             <span class="z-[1] mr-0 text-right"><%= string %></span>
         </li>

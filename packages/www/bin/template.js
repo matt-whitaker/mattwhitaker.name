@@ -5,7 +5,6 @@ import { buildPages } from "@mattwhitaker.name/tools";
 await (
   async () =>
     await buildPages(process.argv, (args) => ({
-      name: "main",
       ext: [".ejs"],
       stylesheets: args.dev ? [
         "style/normalize.css",

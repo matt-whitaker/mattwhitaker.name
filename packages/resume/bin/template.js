@@ -4,12 +4,10 @@ import { buildPages } from "@mattwhitaker.name/tools";
 
 await (
   async () =>
-    await buildPages(process.argv, (args) => ({
+    await buildPages(process.argv, () => ({
       ext: [".ejs"],
-      stylesheets: args.dev ? [
-        "style/resume.css",
-      ] : [
-        "style/resume.min.css",
+      stylesheets: [
+        "/style/resume.css"
       ],
       template: "template/master.ejs",
       root: process.cwd()
