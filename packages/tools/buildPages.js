@@ -1,7 +1,7 @@
 import crypto from "crypto";
 import { mkdir } from "fs/promises";
 import { basename, extname } from "path";
-import { loadFiles, readFile, resolveOutputPath, resolvePath, tryReadFile, writeFile } from "./utils/file.js";
+import { loadFiles, readFile, resolvePath, tryReadFile, writeFile } from "./utils/file.js";
 import { EXT_EJS, EXT_HTML, EXT_MD } from "./utils/constants.js";
 import { parseArgs } from "./utils/cli.js";
 import { mapStrings } from "./utils/lang.js";
@@ -64,13 +64,16 @@ export const buildPages = async (argv, optionsFn) => {
 
       if (options.prettyUrls) {
         const output = `${resolvePath(options.root, args.output)}/${basename(name, extname(name))}`;
-        const outpath = resolvePath(output, `index${EXT_HTML}`);
+        const full = resolvePath(output, `index${EXT_HTML}`);
 
         await mkdir(output, { recursive: true });
 
-        return writeFile(outpath, rendered);
+        return writeFile(full, rendered);
       }
 
-      return writeFile(resolveOutputPath(resolvePath(options.root, args.output), name), rendered);
+      const output = resolvePath(options.root, args.output);
+      const full =  resolvePath(output, name.replace(extname(name), EXT_HTML))
+
+      return writeFile(full, rendered);
     }));
 }
