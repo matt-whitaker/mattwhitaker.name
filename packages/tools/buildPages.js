@@ -2,7 +2,7 @@ import crypto from "crypto";
 import { mkdir } from "fs/promises";
 import { basename, extname } from "path";
 import { loadFiles, readFile, resolvePath, tryReadFile, writeFile } from "./utils/file.js";
-import { EXT_EJS, EXT_MD, INDEX_HTML } from "./utils/constants.js";
+import { EXT_EJS, EXT_MD, INDEX_EJS, INDEX_HTML } from "./utils/constants.js";
 import { parseArgs } from "./utils/cli.js";
 import { mapStrings } from "./utils/lang.js";
 import { extractAnnotations, render } from "./utils/template.js";
@@ -62,7 +62,8 @@ export const buildPages = async (argv, optionsFn) => {
         { page, site, stylesheets: options.stylesheets, ...(options.helpers || {}) },
         { dev: args.dev, root: options.root, strings, features, cacheKey });
 
-      if (name === INDEX_HTML) {
+
+      if (name === INDEX_EJS) {
         return writeFile(`${outputRoot}/${INDEX_HTML}`, rendered);
       }
 
