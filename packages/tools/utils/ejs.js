@@ -1,3 +1,4 @@
+import { basename, extname } from "path";
 import { DELIMITER_REGEX } from "./constants.js";
 
 export const ejsHelpers = ({ dev = false, strings = {}, features = {}, cacheKey }) => ({
@@ -5,7 +6,8 @@ export const ejsHelpers = ({ dev = false, strings = {}, features = {}, cacheKey 
   template: (string, data) => string.replace(DELIMITER_REGEX, (match, key) => data[key] || match),
   hide: (real, fake) => dev ? real : fake,
   feature: (feature) => !!(features)[feature],
-  cachebust: (filename) => `${filename}?_cb=${cacheKey}`
+  cachebust: (filename) => `${filename}?_cb=${cacheKey}`,
+  minified: (filename) => `${basename(filename, extname(filename))}${dev ? "" : ".min"}${extname(filename)}`
 });
 
 /**

@@ -2,7 +2,7 @@ import crypto from "crypto";
 import { mkdir } from "fs/promises";
 import { basename, extname } from "path";
 import { loadFiles, readFile, resolvePath, tryReadFile, writeFile } from "./utils/file.js";
-import { EXT_EJS, EXT_HTML, EXT_MD } from "./utils/constants.js";
+import { EXT_EJS, EXT_MD, INDEX_HTML } from "./utils/constants.js";
 import { parseArgs } from "./utils/cli.js";
 import { mapStrings } from "./utils/lang.js";
 import { extractAnnotations, render } from "./utils/template.js";
@@ -12,7 +12,6 @@ import { extractAnnotations, render } from "./utils/template.js";
  * @property {(EXT_EJS,EXT_MD)[]} ext list of file extensions to use; loads all files if omitted or empty
  * @property {string} root project root (cwd)
  * @property {object} helpers custom helper function
- * @property {boolean} prettyUrls use friendlier url format
  */
 
 /**
@@ -27,7 +26,7 @@ export const buildPages = async (argv, optionsFn) => {
   const args = parseArgs(argv, [
     {
       "name": "pages",
-      "description": "root directory where page are stored",
+      "description": "root directory where pages are stored",
       "defaultValue": "template/page"
     },
     {
@@ -49,6 +48,7 @@ export const buildPages = async (argv, optionsFn) => {
   await Promise.all(
     files.map(async ({ name, data }) => {
       const page = extractAnnotations(extname(name).slice(1), data, strings);
+      const outputRoot = resolvePath(options.root, args.output);
 
       Object.assign(page, {
         title: page.title || basename(name, extname(name)),
@@ -62,18 +62,12 @@ export const buildPages = async (argv, optionsFn) => {
         { page, site, stylesheets: options.stylesheets, ...(options.helpers || {}) },
         { dev: args.dev, root: options.root, strings, features, cacheKey });
 
-      if (options.prettyUrls) {
-        const output = `${resolvePath(options.root, args.output)}/${basename(name, extname(name))}`;
-        const full = resolvePath(output, `index${EXT_HTML}`);
-
-        await mkdir(output, { recursive: true });
-
-        return writeFile(full, rendered);
+      if (name === INDEX_HTML) {
+        return writeFile(`${outputRoot}/${INDEX_HTML}`, rendered);
       }
 
-      const output = resolvePath(options.root, args.output);
-      const full =  resolvePath(output, name.replace(extname(name), EXT_HTML))
-
-      return writeFile(full, rendered);
+      const prettyName = basename(name, extname(name));
+      await mkdir(`${outputRoot}/${prettyName}`, { recursive: true });
+      return writeFile(`${outputRoot}/${prettyName}/${INDEX_HTML}`, rendered);
     }));
 }

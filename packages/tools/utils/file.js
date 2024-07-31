@@ -1,7 +1,7 @@
 import { extname, resolve } from "path";
 import { readdir, readFile as _readFile, writeFile as _writeFile } from "fs/promises";
 
-import { EXT_EJS, EXT_MD, EXT_HTML, EXT_TXT } from "./constants.js";
+import { EXT_EJS, EXT_MD } from "./constants.js";
 
 /**
  * typedef {Object} File

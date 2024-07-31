@@ -6,7 +6,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <% stylesheets.forEach((stylesheet) => {%>
-            <link href="<%= cachebust(stylesheet) %>" rel="stylesheet" />
+        <link href="<%= cachebust(minified(stylesheet)) %>" rel="stylesheet" />
         <% }) %>
         <link href="<%- site.google.fonts %>" rel="stylesheet" />
     </head>
