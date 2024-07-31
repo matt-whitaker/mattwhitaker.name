@@ -11,7 +11,7 @@ import { extractAnnotations, render } from "./utils/template.js";
  * @typedef {object} BuildPagesOptions
  * @property {(EXT_EJS,EXT_MD)[]} ext list of file extensions to use; loads all files if omitted or empty
  * @property {string} root project root (cwd)
- * @property {object} helpers custom helper functions
+ * @property {object} helpers custom helper function
  * @property {boolean} prettyUrls use friendlier url format
  */
 
