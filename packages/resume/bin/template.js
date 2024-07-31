@@ -7,11 +7,12 @@ await (
     await buildPages(process.argv, (args) => ({
       ext: [".ejs"],
       stylesheets: args.dev ? [
-        "style/resume.css",
+        "/style/resume.css",
       ] : [
-        "style/resume.min.css",
+        "/style/resume.min.css",
       ],
       template: "template/master.ejs",
-      root: process.cwd()
+      root: process.cwd(),
+      prettyUrls: true
     }))
 )();

@@ -1,7 +1,8 @@
 import crypto from "crypto";
+import { mkdir } from "fs/promises";
 import { basename, extname } from "path";
 import { loadFiles, readFile, resolveOutputPath, resolvePath, tryReadFile, writeFile } from "./utils/file.js";
-import { EXT_EJS, EXT_MD } from "./utils/constants.js";
+import { EXT_EJS, EXT_HTML, EXT_MD } from "./utils/constants.js";
 import { parseArgs } from "./utils/cli.js";
 import { mapStrings } from "./utils/lang.js";
 import { extractAnnotations, render } from "./utils/template.js";
@@ -11,6 +12,7 @@ import { extractAnnotations, render } from "./utils/template.js";
  * @property {(EXT_EJS,EXT_MD)[]} ext list of file extensions to use; loads all files if omitted or empty
  * @property {string} root project root (cwd)
  * @property {object} helpers custom helper functions
+ * @property {boolean} prettyUrls use friendlier url format
  */
 
 /**
@@ -34,6 +36,7 @@ export const buildPages = async (argv, optionsFn) => {
       "defaultValue": "lang.txt"
     }
   ]);
+
   const options = optionsFn(args);
 
   const [{ site, features }, files, master, strings] = await Promise.all([
@@ -58,6 +61,15 @@ export const buildPages = async (argv, optionsFn) => {
         master,
         { page, site, stylesheets: options.stylesheets, ...(options.helpers || {}) },
         { dev: args.dev, root: options.root, strings, features, cacheKey });
+
+      if (options.prettyUrls) {
+        const output = `${resolvePath(options.root, args.output)}/${basename(name, extname(name))}`;
+        const outpath = resolvePath(output, `index${EXT_HTML}`);
+
+        await mkdir(output, { recursive: true });
+
+        return writeFile(outpath, rendered);
+      }
 
       return writeFile(resolveOutputPath(resolvePath(options.root, args.output), name), rendered);
     }));
