@@ -23,6 +23,7 @@ import { extractAnnotations, render } from "./utils/template.js";
  */
 export const buildPages = async (argv, optionsFn) => {
   const cacheKey = crypto.createHash('md5').update(Date.now().toString()).digest('hex');
+
   const args = parseArgs(argv, [
     {
       "name": "pages",
@@ -38,7 +39,7 @@ export const buildPages = async (argv, optionsFn) => {
 
   const options = optionsFn(args);
 
-  const [{ site, features }, files, master, strings] = await Promise.all([
+  const [{ site, features }, files, template, strings] = await Promise.all([
     readFile(resolvePath(args.config), JSON.parse),
     loadFiles(args.pages, options.ext),
     readFile(resolvePath(options.template)),
@@ -58,7 +59,7 @@ export const buildPages = async (argv, optionsFn) => {
 
       const rendered = await render(
         extname(options.template).slice(1),
-        master,
+        template,
         { page, site, stylesheets: options.stylesheets, ...(options.helpers || {}) },
         { dev: args.dev, root: options.root, strings, features, cacheKey });
 
