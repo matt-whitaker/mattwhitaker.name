@@ -10,6 +10,7 @@
     "@storybook/addon-interactions": "^8.2.4",
     "@storybook/addon-links": "^8.2.4",
     "@storybook/addon-onboarding": "^8.2.4",
+    "@storybook/addons": "^7.6.17",
     "@storybook/blocks": "^8.2.4",
     "@storybook/react": "^8.2.4",
     "@storybook/react-vite": "^8.2.4",
@@ -25,7 +26,8 @@
     "storybook:build": "storybook build -o ./dist/prototyping",
     "start": "npm run static && npm run storybook",
     "build": "npm run static && npm run storybook:build",
-    "static": "bin/static.js --source static --output dist"
+    "static": "bin/static.js --source static --output dist",
+    "serve": "http-server ./dist -p 8080 -c-1 -r"
   },
   "author": "",
   "license": "ISC"
