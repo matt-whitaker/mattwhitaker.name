@@ -1,3 +1,4 @@
+import moment from "moment";
 import { DELIMITER_REGEX } from "./constants.js";
 
 export const ejsHelpers = ({ dev = false, strings = {}, features = {}, cacheKey }) => ({
@@ -6,7 +7,8 @@ export const ejsHelpers = ({ dev = false, strings = {}, features = {}, cacheKey 
   hide: (real, fake) => dev ? real : fake,
   feature: (feature) => !!(features)[feature],
   cachebust: (filename) => `${filename}?_cb=${cacheKey}`,
-  minified: (filename) => `${filename.split(".")[0]}${dev ? "." : ".min."}${filename.split(".")[1]}`
+  minified: (filename) => `${filename.split(".")[0]}${dev ? "." : ".min."}${filename.split(".")[1]}`,
+  date: (date) => moment(date).format('dddd, MMMM Do, YYYY')
 });
 
 /**

@@ -1,7 +1,7 @@
-jobtitle FRONTEND / FULL-STACK ENGINEER
-short_jobtitle FRONTEND ENG
+jobtitle FRONT-END / FULL-STACK ENGINEER
+short_jobtitle FRONT-END ENG
 address Bellevue, WA
-summary Experienced frontend-leaning software engineer with 12 years of experience building robust, user-friendly web applications. Proficient in owning all aspects of product development and maintenance, as well as team leadership.
+summary Experienced front-end-leaning software engineer with 12 years of experience building robust, user-friendly web applications. Proficient in taking products from early ideation through delivery, owning and leading every step in between.
 references References can be provided by request.
 reader_note Get my styled resume <a href="https://mattwhitaker.name/resume.html">https://mattwhitaker.name/resume.html</a>
 headshot My headshot
@@ -23,6 +23,7 @@ h_references REFERENCE
 h_education EDUCATION
 h_social SOCIAL
 h_summary SUMMARY
+h_cover COVER LETTER
 
 d_language [[12, "HTML / CSS"], [12, "Javascript"], [6, "Typescript"], [8, "Node.js"]]
 d_framework [[8, "React"], [8, "Redux"], [5, "RxJS"], [8, "Storybook"], [8, "Express"], [10, "Webpack"]]
@@ -34,47 +35,47 @@ skills <b>Skills:</b> ${skills}
 
 break_title Career Break
 break_years Jan 2024 - Present
-break_summary After 12 years of hard work and growth as an engineer, I decided to take a career break. I've taken this time to focus on new interests and improving my technical skills.
+break_summary After 12 years of hard work and growth as an engineer, I decided to take a career break. I've taken this time to focus on myself, new hobbies and interests, and improving my technical skills.
 
 smar_jobtitle Senior Software Engineer
-smar_focus Full-stack / Frontend
+smar_focus Full-stack / Front-end
 smar_years Nov 2018 - Dec 2023
 smar_name Smartsheet
 smar_address Bellevue, WA
-smar_summary Diverse full-stack, but heavily frontend-leaning, engineering role which included leading frontend development and growing the practice for a couple small teams.
-smar_1 Led the architecture, planning, and development of Smartsheet's Admin Center frontend; leading a small team of remote engineers, later moving to in-house resources. Ultimately responsible for the successful quality and delivery of the product and worked closely with product owners and UX to ensure customer needs were met.
+smar_summary Diverse full-stack, but heavily front-end-leaning, engineering role which included leading front-end development and growing the practice for a couple small teams.
+smar_1 Led the architecture, planning, and development of Smartsheet's Admin Center front end; leading a small team of remote engineers, later moving to in-house resources. Ultimately responsible for the successful quality and delivery of the product and worked closely with product owners and UX to ensure customer needs were met.
 smar_2 Responsible for the quality and effectiveness of a component library focused on enabling other teams to rapidly extend Admin Center functionality. Worked closely with UX to plan a consistent set of re-usable components and set delivery expectations.
 smar_3 Drove adoption and evangelism of cross-company UI efforts focused on breaking up the core "monolith".
 smar_4 Additionally responsible for owning a number of legacy feature areas lacking existing subject-matter experts, rapidly onboarding to provide enhancements and performance improvements.
-smar_skills HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Webpack, Node.js, Figma, Java, Storybook, AWS, Spring, K8s
+smar_skills HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, SPA, Webpack, Node.js, Express, Figma, Java, Storybook, AWS, Spring, K8s
 
 sap_jobtitle Software Design Engineer II
-sap_focus Full-stack
+sap_focus Full-stack / Front-end
 sap_years Mar 2016 - Nov 2018
 sap_name SAP Concur
 sap_address Bellevue, WA
 sap_summary Full-stack engineering role building out a variety of communication-related capabilities.
 sap_1 Developed a versatile third-party component that served content-rich in-product customer success messages, replacing an image-only solution.
-sap_2 Built an in-house "recommendation" system to move from Google Ads to an in-house solution. Service was built to handle hundreds of requests per second.
-sap_3 Responsible for driving cross-company modern UI efforts including accessibility enhancements and performance tuning (redraw) of owned UI features.
-sap_skills HTML, CSS, JavaScript, React, Redux, Node.js, Express, Storybook, Webpack, Python, Flask, SQL, AWS, NoSQL, Nginx, K8s
+sap_2 Built an in-house "recommendation" system serving hundreds of impressions per second. Also designed and implemented an Admin interface deployed in a micro-front-end architecture.
+sap_3 Responsible for driving cross-company modern UI efforts including accessibility enhancements and performance tuning.
+sap_skills HTML, CSS, JavaScript, React, Redux, Node.js, Express, Storybook, SPA, Webpack, Python, Flask, SQL, AWS, NoSQL, Nginx, K8s
 
-appl_jobtitle Frontend Engineer
+appl_jobtitle Front-end Engineer
 appl_years Oct 2015 - Feb 2016
 appl_name Applause
 appl_address Bellevue, WA
-appl_summary Frontend exclusive role focused on maintenance of an Angular/D3.js analytics dashboard.
+appl_summary Ownership and maintenance of an Angular/D3.js analytics dashboard.
 appl_1 Developed a dynamic tooltip widget that could be used in any chart or visual context.
 appl_2 Enhanced charts with light/dark theming capabilities to match the latest UX design system.
 appl_skills HTML, CSS, SASS, Angular, D3.js
 
 slal_jobtitle Software Engineer
-slal_focus Frontend
+slal_focus Front-end
 slal_years Jul 2013 - Oct 2015
 slal_name Slalom Consulting
 slal_address Seattle, WA
-slal_summary Responsible for the development of customer products, driving frontend efforts and delivering pixel-perfect UIs.
-slal_1 Contributed to several feature areas of a large scale Angular application, Maestro by Madison Performance Group. Focused in frontend development and mentoring peers in Angular.
+slal_summary Responsible for the development of customer products, driving front-end efforts and delivering pixel-perfect UIs.
+slal_1 Contributed to several feature areas of a large scale Angular application, Maestro by Madison Performance Group. Focused in front-end development and mentoring peers in Angular.
 slal_2 Contributed to Spectrum UI, a novel web-to-MPEG streaming platform framework written in JavaScript and assisting in raising the bar for test coverage.
 slal_3 Built a faceted search solution, including Google Maps integrations and a discovery portal for American Homes 4 Rent, and additionally contributed to product ideation to assist the customer's design vision.
 slal_skills HTML, CSS, SASS, LESS, JavaScript, CoffeeScript, jQuery, Angular, C#, .NET, Bootstrap
@@ -116,3 +117,10 @@ edu_focus Informatics
 edu_school University of Washington
 edu_address Seattle, WA
 
+cover_to To, <br />Hiring Manager
+
+cover_signature Sincerely, <br/>Matt Whitaker
+
+cover_body_1 TODO I'm coming off a career break, where I've spent time on myself, new hobbies and interests, and working on my technical skillset. I'm hungry for a new opportunity, particularly in the frnotend space as that is where a vast majority of my engineering and leadership experience are.
+cover_body_2 TODO Looking for a new home, aligning with my front-end skillset and passion.
+cover_body_3 TODO I have these skills, built over 12 years
