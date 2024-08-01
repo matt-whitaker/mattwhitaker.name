@@ -22,11 +22,11 @@
     "tailwindcss": "^3.4.6"
   },
   "scripts": {
+    "clear": "rm -rf ./dist",
     "storybook": "storybook dev -p 8080",
     "storybook:build": "storybook build -o ./dist/prototyping",
-    "start": "npm run static && npm run storybook",
-    "build": "npm run static && npm run storybook:build",
-    "static": "bin/static.js --source static --output dist",
+    "start": "npm run clear && npm run storybook",
+    "build": "npm run clear && npm run storybook:build",
     "serve": "http-server ./dist -p 8080 -c-1 -r"
   },
   "author": "",

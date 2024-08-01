@@ -11,7 +11,8 @@
     "pack:clear": "rm -rf ./dist",
     "pack:resume": "rsync -avr --ignore-existing packages/resume/dist .",
     "pack:www": "rsync -avr --ignore-existing packages/www/dist .",
-    "pack": "npm run pack:clear && npm run pack:resume && npm run pack:www",
+    "pack:prototyping": "rsync -avr --ignore-existing packages/prototyping/dist .",
+    "pack": "npm run pack:clear && npm run pack:resume && npm run pack:www && npm run pack:prototyping",
     "serve": "http-server ./dist -p 8080 -c-1 -r",
     "start": "npm run build:dev && npm run pack && npm run serve"
   },

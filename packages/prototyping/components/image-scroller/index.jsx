@@ -22,7 +22,6 @@ const images = [
 export const ImageScroller = ({ test }) => {
   return (
     <ScrollContainer>
-      <p>{test}</p>
       {images.map((image, i) => <img src={image} key={i} alt={i} />)}
     </ScrollContainer>
   );
