@@ -3,7 +3,7 @@ import { within, userEvent, expect } from '@storybook/test';
 import { ImageScroller } from "../components/image-scroller";
 
 export default {
-  title: 'Prototyping/ImageScroller',
+  title: 'ImageScroller',
   component: ImageScroller,
   parameters: {
     layout: 'fullscreen'
