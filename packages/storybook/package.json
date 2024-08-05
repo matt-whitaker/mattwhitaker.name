@@ -1,5 +1,5 @@
 {
-  "name": "prototyping",
+  "name": "@mattwhitaker.name/storybook",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -24,7 +24,7 @@
   "scripts": {
     "clear": "rm -rf ./dist",
     "storybook": "storybook dev -p 8080",
-    "storybook:build": "storybook build -o ./dist/prototyping",
+    "storybook:build": "storybook build -o ./dist/storybook",
     "start": "npm run clear && npm run storybook",
     "build": "npm run clear && npm run storybook:build",
     "serve": "http-server ./dist -p 8080 -c-1 -r"

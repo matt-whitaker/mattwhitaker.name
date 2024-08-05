@@ -2,7 +2,6 @@
   "name": "mattwhitaker.name",
   "version": "0.0.1",
   "description": "Home of my personal websites",
-  "main": "index.js",
   "scripts": {
     "clear": "npm run clear -ws --if-present",
     "test": "npm run test -ws --if-present",
@@ -11,8 +10,8 @@
     "pack:clear": "rm -rf ./dist",
     "pack:resume": "rsync -avr --ignore-existing packages/resume/dist .",
     "pack:www": "rsync -avr --ignore-existing packages/www/dist .",
-    "pack:prototyping": "rsync -avr --ignore-existing packages/prototyping/dist .",
-    "pack": "npm run pack:clear && npm run pack:resume && npm run pack:www && npm run pack:prototyping",
+    "pack:storybook": "rsync -avr --ignore-existing packages/storybook/dist .",
+    "pack": "npm run pack:clear && npm run pack:resume && npm run pack:www && npm run pack:storybook",
     "serve": "http-server ./dist -p 8080 -c-1 -r",
     "start": "npm run build:dev && npm run pack && npm run serve"
   },
@@ -22,7 +21,7 @@
     "packages/resume",
     "packages/tools",
     "packages/www",
-    "packages/prototyping"
+    "packages/storybook"
   ],
   "devDependencies": {
     "http-server": "^14.1.1"

@@ -16,7 +16,7 @@ export const Basic = {
   },
   play: async () => {
     if ("serviceWorker" in navigator) {
-      await navigator.serviceWorker.register("/prototyping-worker.js?manifest=image-scroller.json", { scope: "/" });
+      await navigator.serviceWorker.register("/storybook-worker.js?manifest=image-scroller.json", { scope: "/" });
     }
   }
 };
