@@ -1,5 +1,5 @@
 <% const data = [] %>
-<% data.push([lookup("contact_phone"), hide("+1 (253) 886 0195", "available by request")]) %>
+<% if (feature("phone")) data.push([lookup("contact_phone"), hide("+1 (253) 886 0195", "available by request")]) %>
 <% data.push([lookup("contact_email"), "hire@mattwhitaker.name"]) %>
 <% data.push([lookup("contact_website"), "mattwhitaker.name"]) %>
 <section class="pt-large">
