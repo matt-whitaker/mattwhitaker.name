@@ -9,9 +9,10 @@
     "build": "npm run build -ws --if-present",
     "build:dev": "npm run build:dev -ws --if-present",
     "pack:clear": "rm -rf ./dist",
+    "pack:blog": "rsync -avr --ignore-existing packages/blog/dist .",
     "pack:resume": "rsync -avr --ignore-existing packages/resume/dist .",
     "pack:www": "rsync -avr --ignore-existing packages/www/dist .",
-    "pack": "npm run pack:clear && npm run pack:resume && npm run pack:www",
+    "pack": "npm run pack:clear && npm run pack:blog && npm run pack:resume && npm run pack:www",
     "serve": "http-server ./dist -p 8080 -c-1 -r",
     "start": "npm run build:dev && npm run pack && npm run serve"
   },
@@ -20,7 +21,9 @@
   "workspaces": [
     "packages/resume",
     "packages/tools",
-    "packages/www"
+    "packages/www",
+    "packages/blog",
+    "packages/common"
   ],
   "devDependencies": {
     "http-server": "^14.1.1"

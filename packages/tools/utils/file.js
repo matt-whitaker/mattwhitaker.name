@@ -35,7 +35,7 @@ export const tryReadFile = async (fullpath, parser, fallback = null) =>
  * @param {string} data
  * @returns {Promise<void>} a promise mostly useful for error handling
  */
-export const writeFile = async (fullpath, data) => {
+export const writeFile = async (fullpath, data, options) => {
   return _writeFile(fullpath, data);
 }
 /**

@@ -12,6 +12,6 @@
         <link href="<%- site.google.fonts %>" rel="stylesheet" />
     </head>
     <body class="bg-fixed bg-bgshade text-normal overflow-x-hidden print:overflow-x-auto <%= page.class %>" style="background-image: url('/image/cubes.png');">
-        <%- await include(`/${page.path}/${page.filename}`) %>
+        <%- await include(`/template/page/${page.relativePath}/${page.filename}`) %>
     </body>
 </html>

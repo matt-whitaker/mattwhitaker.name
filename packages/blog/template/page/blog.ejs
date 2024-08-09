@@ -1,0 +1,9 @@
+<main class="sm:mx-auto w-full sm:max-w-xl sm:pl-[18px] sm:text-left text-center">
+    <h3 class="text-2xl my-[60px] opacity-0 animate-opacity_in" style="animation-delay: 100ms">Thoughts</h3>
+<!--    <p class="text-gold text-sm leading-5">3 stories</p>-->
+    <section class="text-left sm:mx-auto mx-[18px] opacity-0 animate-opacity_in" style="animation-delay: 170ms">
+        <% for (blog of blogs) { %>
+        <%- await include("/template/component/preview.ejs", blog) %>
+        <% } %>
+    </section>
+</main>
