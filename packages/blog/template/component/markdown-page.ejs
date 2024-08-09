@@ -1,12 +1,15 @@
 <%
 const markdownClasses = [
     "[&>*]:my-sm",
-    "[&>h1]:my-lg [&>h1]:text-xl [&>h1]:font-semibold",
-    "[&>h2]:my-md [&>h2]:text-lg [&>h2]:font-normal",
-    "[&>p]:leading-5"
+    "[&>h1]:mt-lg mb-md [&>h1]:text-xl [&>h1]:font-semibold",
+    "[&>h2]:mt-md mb-sm [&>h2]:text-md [&>h2]:font-normal [&>h2]:uppercase",
+    "[&>h3]:mt-sm mb-xs [&>h3]:text-md [&>h3]:font-semibold",
+    "[&>p]:leading-5",
+    "[&>ul>li]:leading-5 [&>ul>li]:mt-sm",
+    "[&>hr]:my-lg"
 ].join(" ");
 %>
-<main class="sm:mx-auto w-full sm:max-w-2xl sm:pl-[18px] sm:text-left text-center">
-    <h1 class="text-3xl my-[60px] opacity-0 animate-opacity_in" style="animation-delay: 100ms"><%= page.title %></h1>
+<main class="px-md sm:mx-auto w-full sm:max-w-xl sm:pl-[18px] text-left">
+    <h1 class="sm:text-2xl text-xl my-[60px] opacity-0 animate-opacity_in" style="animation-delay: 100ms"><%= page.title %></h1>
     <div class="<%= markdownClasses %> opacity-0 animate-opacity_in" style="animation-delay: 170ms"><%- md(markdown) %></div>
 </main>
