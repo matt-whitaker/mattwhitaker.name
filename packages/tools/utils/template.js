@@ -1,6 +1,8 @@
 import pretty from "pretty";
-import { ENGINE_EJS, ENGINE_MD } from "./constants.js";
 import { ejsHelpers, extractEjsAnnotations, renderEjs } from "./ejs.js";
+import { basename, extname, join, relative } from "path";
+import { resolvePath } from "./file.js";
+import { INDEX, INDEX_HTML } from "./constants.js";
 
 /**
  * Render a template
@@ -16,15 +18,4 @@ import { ejsHelpers, extractEjsAnnotations, renderEjs } from "./ejs.js";
 export const render = async (template, context, options = {}) => {
   const rendered = await renderEjs(template, { ...context, ...ejsHelpers(options) }, { async: true, root: options.root });
   return rendered ? pretty(rendered, { ocd: true }) : rendered;
-}
-
-/**
- *
- * @param {string} data file data
- * @param {function} builder optional data builder method
- * @returns {{}}
- */
-export const getPageData = (data, builder) => {
-  const annotations = extractEjsAnnotations(data);
-  return builder ? { ...annotations, ...builder(annotations) } : annotations;
 }

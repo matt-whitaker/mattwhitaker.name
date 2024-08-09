@@ -1,0 +1,12 @@
+<%
+const markdownClasses = [
+    "[&>*]:my-sm",
+    "[&>h1]:my-lg [&>h1]:text-xl [&>h1]:font-semibold",
+    "[&>h2]:my-md [&>h2]:text-lg [&>h2]:font-normal",
+    "[&>p]:leading-5"
+].join(" ");
+%>
+<main class="sm:mx-auto w-full sm:max-w-2xl sm:pl-[18px] sm:text-left text-center">
+    <h1 class="text-3xl my-[60px] opacity-0 animate-opacity_in" style="animation-delay: 100ms"><%= page.title %></h1>
+    <div class="<%= markdownClasses %> opacity-0 animate-opacity_in" style="animation-delay: 170ms"><%- md(markdown) %></div>
+</main>

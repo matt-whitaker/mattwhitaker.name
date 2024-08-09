@@ -1,10 +1,11 @@
 import crypto from "crypto";
 import { basename, extname, relative, join } from "path";
 import { loadFiles, readFile, resolvePath, tryReadFile, writeFile } from "./utils/file.js";
-import { EXT_EJS, EXT_MD, INDEX, INDEX_EJS, INDEX_HTML } from "./utils/constants.js";
+import { EXT_EJS, EXT_MD, INDEX, INDEX_HTML } from "./utils/constants.js";
 import { parseArgs } from "./utils/cli.js";
 import { mapStrings } from "./utils/lang.js";
-import { getPageData, render } from "./utils/template.js";
+import { render } from "./utils/template.js";
+import { extractEjsAnnotations } from "./utils/ejs.js";
 
 /**
  * @typedef {object} BuildPagesOptions
@@ -38,10 +39,11 @@ export const buildPages = async (argv, optionsFn) => {
   ]);
 
   const options = optionsFn(args);
+  const outputRoot = resolvePath(options.root, args.output);
 
   const [
     { site, features },
-    pages,
+    files,
     template,
     strings
   ] = await Promise.all([
@@ -52,27 +54,31 @@ export const buildPages = async (argv, optionsFn) => {
   ]);
 
   await Promise.all(
-    pages.map(async ({ name, data, path }) => {
-      const prettyName = basename(name, extname(name));
-      const outputRoot = resolvePath(options.root, args.output);
-      const relativePath = relative(join(options.root, args.pages), path);
+    files.map((file) => {
+      const slug = basename(file.name, extname(file.name));
+      const resource = relative(join(options.root, args.pages), file.path);
+      const url = `/${join(resource, slug).replace(INDEX, "")}`;
+      const template = `/${relative(options.root, join(file.path, file.name))}`;
+      const output = slug === INDEX
+        ? join(outputRoot, INDEX_HTML)
+        : join(outputRoot, resource, slug, INDEX_HTML);
+      const extracted = extractEjsAnnotations(file.data);
 
-      const page = getPageData(data, ({ title }) => ({
-        title: title || basename(name, extname(name)),
-        filename: name,
-        relativePath,
-        url: `/${join(relativePath, prettyName).replace(INDEX, "")}`
-      }));
-
+      return {
+        ...extracted,
+        slug,
+        resource,
+        url,
+        template,
+        output,
+      }
+    })
+    .map(async (page,_ , pages) => {
       const rendered = await render(
         template,
         { pages, page, site, stylesheets: options.stylesheets, ...(options.helpers || {}), ...(options.context || {}) },
         { dev: args.dev, root: options.root, strings, features, cacheKey });
 
-      const fullpath = prettyName === INDEX
-        ? join(outputRoot, INDEX_HTML)
-        : join(outputRoot, relativePath, prettyName, INDEX_HTML);
-
-      return writeFile(fullpath, rendered);
+      return writeFile(page.output, rendered);
     }));
 }
