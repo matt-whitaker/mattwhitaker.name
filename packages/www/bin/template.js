@@ -6,12 +6,8 @@ await (
   async () =>
     await buildPages(process.argv, (args) => ({
       ext: [".ejs"],
-      stylesheets: args.dev ? [
-        "style/normalize.css",
-        "style/main.css",
-      ] : [
-        "style/normalize.css",
-        "style/main.min.css",
+      stylesheets: [
+        "style/main.css"
       ],
       template: "template/master.ejs",
       root: process.cwd()
