@@ -1,11 +1,10 @@
 import crypto from "crypto";
-import { mkdir } from "fs/promises";
-import { basename, extname, relative } from "path";
+import { basename, extname, relative, join } from "path";
 import { loadFiles, readFile, resolvePath, tryReadFile, writeFile } from "./utils/file.js";
-import { EXT_EJS, EXT_MD, INDEX_EJS, INDEX_HTML } from "./utils/constants.js";
+import { EXT_EJS, EXT_MD, INDEX, INDEX_EJS, INDEX_HTML } from "./utils/constants.js";
 import { parseArgs } from "./utils/cli.js";
 import { mapStrings } from "./utils/lang.js";
-import { extractAnnotations, render } from "./utils/template.js";
+import { getPageData, render } from "./utils/template.js";
 
 /**
  * @typedef {object} BuildPagesOptions
@@ -42,7 +41,7 @@ export const buildPages = async (argv, optionsFn) => {
 
   const [
     { site, features },
-    files,
+    pages,
     template,
     strings
   ] = await Promise.all([
@@ -53,30 +52,27 @@ export const buildPages = async (argv, optionsFn) => {
   ]);
 
   await Promise.all(
-    files.map(async ({ name, data, path }) => {
-      const page = extractAnnotations(extname(name).slice(1), data, strings);
-
+    pages.map(async ({ name, data, path }) => {
+      const prettyName = basename(name, extname(name));
       const outputRoot = resolvePath(options.root, args.output);
-      const relativePath = relative(`${options.root}/${args.pages}`, path);
+      const relativePath = relative(join(options.root, args.pages), path);
 
-      Object.assign(page, {
-        title: page.title || basename(name, extname(name)),
+      const page = getPageData(data, ({ title }) => ({
+        title: title || basename(name, extname(name)),
         filename: name,
-        relativePath
-      });
+        relativePath,
+        url: `/${join(relativePath, prettyName).replace(INDEX, "")}`
+      }));
 
       const rendered = await render(
-        extname(options.template).slice(1),
         template,
-        { page, site, stylesheets: options.stylesheets, ...(options.helpers || {}), ...(options.context || {}) },
+        { pages, page, site, stylesheets: options.stylesheets, ...(options.helpers || {}), ...(options.context || {}) },
         { dev: args.dev, root: options.root, strings, features, cacheKey });
 
-      if (name === INDEX_EJS) {
-        return writeFile(`${outputRoot}/${INDEX_HTML}`, rendered);
-      }
-      const output = relativePath === "/" ? outputRoot : `${outputRoot}/${relativePath}`
-      const prettyName = basename(name, extname(name));
-      await mkdir(`${output}/${prettyName}`, { recursive: true });
-      return writeFile(`${output}/${prettyName}/${INDEX_HTML}`, rendered);
+      const fullpath = prettyName === INDEX
+        ? join(outputRoot, INDEX_HTML)
+        : join(outputRoot, relativePath, prettyName, INDEX_HTML);
+
+      return writeFile(fullpath, rendered);
     }));
 }

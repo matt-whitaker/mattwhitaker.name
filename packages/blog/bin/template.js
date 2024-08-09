@@ -11,9 +11,10 @@ await (
       ],
       template: "template/master.ejs",
       root: process.cwd(),
-      hooks: {
-        buildContext() {
-
+      helpers: {
+        sortedBlogs(pages) {
+          const blogs = pages.filter(({ path }) => path.includes("blog"));
+          return blogs;
         }
       },
       context: {

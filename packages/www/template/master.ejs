@@ -25,7 +25,7 @@
 
         <%- await include("/template/component/service-worker.ejs", { worker: page.worker }) %>
     </head>
-    <body class="relative w-full h-full p-0 m-0 box-border bg-fixed bg-bgshade print:bg-transparent <%= page.class %>" style="background-image: url('/image/cubes.png')">
+    <body class="relative w-full h-full p-0 m-0 box-border bg-fixed bg-goldstone print:bg-transparent <%= page.class %>" style="background-image: url('/image/cubes.png')">
         <%- await include("/template/component/banner.ejs", { img: page.banner, desc: page.bannerDesc }) %>
         <div class="relative flex flex-col h-full my-0 mx-auto max-w-[1092px] box-border">
             <%- await include(`/template/page/${page.filename}`) %>

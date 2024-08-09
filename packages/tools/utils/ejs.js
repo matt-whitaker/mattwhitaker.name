@@ -8,7 +8,8 @@ export const ejsHelpers = ({ dev = false, strings = {}, features = {}, cacheKey 
   feature: (feature) => !!(features)[feature],
   cachebust: (filename) => `${filename}?_cb=${cacheKey}`,
   minified: (filename) => `${filename.split(".")[0]}${dev ? "." : ".min."}${filename.split(".")[1]}`,
-  date: (date) => moment(date).format('dddd, MMMM Do, YYYY')
+  date: (date) => moment(date).format('dddd, MMMM Do, YYYY'),
+  markdown: () => {}
 });
 
 /**

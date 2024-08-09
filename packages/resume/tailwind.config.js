@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./template/**/*.ejs", "./lang.txt"],
+  presets: [
+    require("@mattwhitaker.name/common/common-tailwind.js")
+  ],
   theme: {
     spacing: {
       0: "0px",
@@ -19,21 +22,6 @@ export default {
       sidebar: "186px",
       content: "630px",
     },
-    colors: {
-      bgshade: "#0000000a",
-      white: "#ffffff",
-      blueash: {
-        300: "#ebedf0",
-        500: "#414654"
-      },
-      black: "#2f333d",
-      gray: {
-        25: "#404040",
-        50: "#808080"
-      },
-      silver: "#7c8288",
-      gold: "#B59410"
-    },
     fontFamily: {
       sans: ["Urbanist", "sans-serif"]
     },
@@ -50,6 +38,21 @@ export default {
       title: "3em"
     },
     extend: {
+      colors: {
+        bgshade: "#0000000a",
+        white: "#ffffff",
+        blueash: {
+          300: "#ebedf0",
+          500: "#414654"
+        },
+        black: "#2f333d",
+        gray: {
+          25: "#404040",
+          50: "#808080"
+        },
+        silver: "#7c8288",
+        gold: "#B59410"
+      },
       listStyleType: {
         square: 'square',
       },
