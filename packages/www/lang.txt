@@ -2,7 +2,7 @@ subtitle Frontend / Fullstack
 
 summary_title about me
 summary_1 Born and raised, I've lived in the Pacific Northwest my whole life. You can find me settled in the beautiful Snoqualmie Valley taking advantage of the vast network of local trails. I am also a hobbyist homebrewer; feel free to ask me about it!
-summary_2 Professionally, I'm an experienced front-end engineer with the additional breadth of full-stack skills, with 12 years in the business. I enjoy building thoughtful user experiences, and I take particular enjoyment from mentoring peers in a variety of front-end best practices.
+summary_2 Professionally, I'm an experienced front-end engineer with the additional breadth of full-stack skills, with 12 years in the business. I enjoy building thoughtful user experiences, tending to the technical garden, and mentoring peers.
 blog Read the latest entry in my blog: <a href="/blog" class="text-gold hover:underline">Disjointed Thinking</a>
 
 hiring <b>Hiring?</b> You can view my <a class="text-gold font-normal no-underline whitespace-nowrap hover:underline" href="/resume">web resume</a>.

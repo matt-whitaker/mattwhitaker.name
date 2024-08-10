@@ -9,12 +9,15 @@ module.exports = {
       blueash: "#414654",
       goldstone: "#7A7669",
       black: "#2f333d",
+      green: "#47B300",
+      safety: "#66FF00"
     },
     spacing: {
       "0": "0px",
-      "3xs": "",
-      "2xs": "",
-      "xs": "4px",
+      "1": "1px",
+      "2": "2px",
+      "3": "3px",
+      "4": "4px",
       "sm": "9px",
       "md": "18px",
       "lg": "27px",

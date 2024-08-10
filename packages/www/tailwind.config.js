@@ -1,41 +1,26 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./template/**/*.ejs", "./lang.txt"],
+  presets: [
+    require("@mattwhitaker.name/common/common-tailwind.js")
+  ],
   theme: {
-    spacing: {
-      0: "0px",
-      xxsmall: "5px",
-      xsmall: "10px",
-      small: "15px",
-      medium: "20px",
-      large: "25px",
-      xlarge: "30px",
-      xxlarge: "35px",
-    },
-    screens: {
-      phone: "320px",
-      tablet: "480px",
-      desktop: "720px",
-      wide: "1100px"
-    },
-    colors: {
-      bgshade: "rgba(0,0,0, .03)",
-      pgshade: "rgba(255, 255, 255, 1)",
-      white: "#ffffff",
-      gray50: "#808080",
-      gray25: "#404040",
-      silver: "#7c8288",
-      blueash: "#414654",
-      lightblueash: "#ebedf0",
-      black: "#2f333d",
-      gold: "#B59410",
-      goldstone: "#7A7669",
-      "goldstone-faded": "#7A76694f"
-    },
-    fontFamily: {
-      sans: ['Urbanist', 'sans-serif']
-    },
     extend: {
+      screens: {
+        phone: "320px",
+        tablet: "480px",
+        desktop: "720px",
+        wide: "1100px"
+      },
+      spacing: {
+        xxsmall: "5px",
+        xsmall: "10px",
+        small: "15px",
+        medium: "20px",
+        large: "25px",
+        xlarge: "30px",
+        xxlarge: "35px",
+      },
       fontSize: {
         normal: "16px",
         normalp: "1.1em",
@@ -45,10 +30,16 @@ export default {
         opacity_in: {
           "0%": { opacity: "15%"},
           "100%": { opacity: "100%"}
+        },
+        pulse: {
+          "0%": { color: "theme(colors.green)", opacity: "100%" },
+          "30%": { color: "theme(colors.green)", opacity: "100%" },
+          "100%": { color: "theme(colors.safety)", opacity: "0%" }
         }
       },
       animation: {
         opacity_in: "opacity_in 700ms forwards",
+        pulse: "pulse 1s linear alternate infinite"
       },
     }
   },
