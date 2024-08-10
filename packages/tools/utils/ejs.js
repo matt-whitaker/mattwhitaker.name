@@ -1,6 +1,5 @@
 import moment from "moment";
 import { DELIMITER_REGEX } from "./constants.js";
-import { resolve } from "path";
 
 export const ejsHelpers = ({ dev = false, strings = {}, features = {}, cacheKey }) => ({
   lookup: (key, fallback = key) => strings[key] ? strings[key] : fallback,
