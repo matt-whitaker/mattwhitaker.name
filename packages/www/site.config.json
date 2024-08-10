@@ -6,8 +6,5 @@
     "fa": {
       "script": "https://kit.fontawesome.com/48be7dbb92.js"
     }
-  },
-  "features": {
-    "pwa": false
   }
 }
