@@ -1,7 +1,7 @@
 me Matt Whitaker
 summary_title about me
 summary_1 Born and raised, I've lived in the Pacific Northwest my whole life. You can find me settled in the beautiful Snoqualmie Valley taking advantage of the vast network of local trails. I am also a hobbyist homebrewer; feel free to ask me about it!
-summary_2 Professionally, I'm an experienced front-end engineer with the additional breadth of full-stack skills, with 12 years in the business. I enjoy building thoughtful user experiences, tending to the technical garden, and mentoring peers.
+summary_2 Professionally, I'm an experienced front-end-leaning full-stack engineer with over a decade of experience building cloud-based services, architecting front-ends, and building user experiences.
 
 linkedin LinkedIn
 github Github
