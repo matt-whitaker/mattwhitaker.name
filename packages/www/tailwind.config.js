@@ -41,6 +41,15 @@ export default {
         normalp: "1.1em",
         xlarge: "2.2em"
       },
+      keyframes: {
+        opacity_in: {
+          "0%": { opacity: "15%"},
+          "100%": { opacity: "100%"}
+        }
+      },
+      animation: {
+        opacity_in: "opacity_in 700ms forwards",
+      },
     }
   },
   plugins: [],
