@@ -1,7 +1,7 @@
 import pretty from "pretty";
 import { ejsHelpers, extractEjsAnnotations, renderEjs } from "./ejs.js";
 import { basename, extname, join, relative } from "path";
-import { resolvePath } from "./file.js";
+import { resolvePath, writeFile } from "./file.js";
 import { INDEX, INDEX_HTML } from "./constants.js";
 
 /**
@@ -18,4 +18,29 @@ import { INDEX, INDEX_HTML } from "./constants.js";
 export const render = async (template, context, options = {}) => {
   const rendered = await renderEjs(template, { ...context, ...ejsHelpers(options) }, { async: true, root: options.root });
   return rendered ? pretty(rendered, { ocd: true }) : rendered;
+}
+
+export const generatePages = (files, args, options) => {
+  return files.map((file) => {
+    const raw = file.data
+    const slug = basename(file.name, extname(file.name));
+    const resource = relative(join(options.root, args.pages), file.path);
+    const url = `/${join(resource, slug).replace(INDEX, "")}`;
+    const template = `/${relative(options.root, join(file.path, file.name))}`;
+    const outputRoot = resolvePath(options.root, args.output);
+    const output = slug === INDEX
+      ? join(outputRoot, INDEX_HTML)
+      : join(outputRoot, resource, slug, INDEX_HTML);
+    const extracted = extractEjsAnnotations(raw);
+
+    return {
+      ...extracted,
+      slug,
+      resource,
+      url,
+      template,
+      output,
+      raw
+    };
+  });
 }

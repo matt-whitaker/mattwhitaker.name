@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
 import markdownit from "markdown-it";
-import { buildPages } from "@mattwhitaker.name/tools";
+import { generateSite } from "@mattwhitaker.name/tools";
 
 await (
   async () =>
-    await buildPages(process.argv, (args) => ({
+    await generateSite(process.argv, (args) => ({
+      feed: true,
       ext: [".ejs"],
       stylesheets: [
         "/style/blog.css"

@@ -1,11 +1,10 @@
 import crypto from "crypto";
-import { basename, extname, relative, join } from "path";
 import { loadFiles, readFile, resolvePath, tryReadFile, writeFile } from "./utils/file.js";
-import { EXT_EJS, EXT_MD, INDEX, INDEX_HTML } from "./utils/constants.js";
+import { EXT_EJS, EXT_MD } from "./utils/constants.js";
 import { parseArgs } from "./utils/cli.js";
 import { mapStrings } from "./utils/lang.js";
-import { render } from "./utils/template.js";
-import { extractEjsAnnotations } from "./utils/ejs.js";
+import { generatePages, render } from "./utils/template.js";
+import { generateFeed } from "./utils/rss.js";
 
 /**
  * @typedef {object} BuildPagesOptions
@@ -16,13 +15,13 @@ import { extractEjsAnnotations } from "./utils/ejs.js";
  */
 
 /**
- * Generates the HTML of the static site. Supports EJS and Markdown files
+ * Generates the HTML of the static site. Supports EJS
  * @async
  * @param argv {any[]} list of arguments (such as from a command line call)
  * @param optionsFn {function(object):BuildPagesOptions}
  * @returns {Promise<void>}
  */
-export const buildPages = async (argv, optionsFn) => {
+export const generateSite = async (argv, optionsFn) => {
   const cacheKey = crypto.createHash('md5').update(Date.now().toString()).digest('hex');
 
   const args = parseArgs(argv, [
@@ -39,7 +38,6 @@ export const buildPages = async (argv, optionsFn) => {
   ]);
 
   const options = optionsFn(args);
-  const outputRoot = resolvePath(options.root, args.output);
 
   const [
     { site, features },
@@ -53,32 +51,25 @@ export const buildPages = async (argv, optionsFn) => {
     tryReadFile(resolvePath(args.lang), mapStrings, {}),
   ]);
 
-  await Promise.all(
-    files.map((file) => {
-      const slug = basename(file.name, extname(file.name));
-      const resource = relative(join(options.root, args.pages), file.path);
-      const url = `/${join(resource, slug).replace(INDEX, "")}`;
-      const template = `/${relative(options.root, join(file.path, file.name))}`;
-      const output = slug === INDEX
-        ? join(outputRoot, INDEX_HTML)
-        : join(outputRoot, resource, slug, INDEX_HTML);
-      const extracted = extractEjsAnnotations(file.data);
-
-      return {
-        ...extracted,
-        slug,
-        resource,
-        url,
-        template,
-        output,
-      }
-    })
+  const pages = await Promise.all(
+    generatePages(files, args, options)
     .map(async (page,_ , pages) => {
       const rendered = await render(
         template,
         { pages, page, site, stylesheets: options.stylesheets, ...(options.helpers || {}), ...(options.context || {}) },
         { dev: args.dev, root: options.root, strings, features, cacheKey });
 
-      return writeFile(page.output, rendered);
+      await writeFile(page.output, rendered);
+
+      return { ...page, rendered };
     }));
+
+  if (options.feed) {
+    const { rss, atom } = await generateFeed(site, pages, args, options);
+    await Promise.all([
+      writeFile(rss.output, rss.content),
+      writeFile(atom.output, atom.content)
+    ]);
+
+  }
 }

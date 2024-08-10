@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import { buildPages } from "@mattwhitaker.name/tools";
+import { generateSite } from "@mattwhitaker.name/tools";
 
 await (
   async () =>
-    await buildPages(process.argv, (args) => ({
+    await generateSite(process.argv, (args) => ({
       ext: [".ejs"],
       stylesheets: [
         "style/main.css"
