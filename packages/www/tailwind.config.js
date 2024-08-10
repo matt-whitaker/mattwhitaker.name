@@ -6,12 +6,6 @@ export default {
   ],
   theme: {
     extend: {
-      screens: {
-        phone: "320px",
-        tablet: "480px",
-        desktop: "720px",
-        wide: "1100px"
-      },
       spacing: {
         xxsmall: "5px",
         xsmall: "10px",

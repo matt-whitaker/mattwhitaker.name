@@ -7,15 +7,15 @@
 <main class="h-[100vh] flex-col text-[.9em] sm:h-[373px] sm:flex-row sm:text-lg sm:mt-[calc(100vh-400px)] flex box-border w-full p-lg sm:p-2xl bg-white sm:rounded-b-lg">
     <img class="mr-lg sm:mr-2xl rounded-[4px] shadow-[.1ex_.1ex_.35ex] shadow-black w-[calc(100vw-60px)] h-[calc(100vw-60px)] sm:w-[300px] sm:h-[300px] block sm:hidden lg:block animate-opacity_in" src="/image/headshot.jpg" title="Picture of myself" alt="Picture of myself" />
     <div class="flex flex-col flex-grow-2 overflow-x-hidden animate-opacity_in">
-        <h1 class="mt-lg sm:mt-md mb-4 leading-7 text-4xl font-light">Matt Whitaker</h1>
+        <h1 class="mt-lg sm:mt-md mb-4 leading-7 text-4xl font-light"><%= lookup("me") %></h1>
         <ul class="text-right whitespace-nowrap leading-8 flex flex-wrap sm:flex-nowrap">
-            <li class=""><a class="hover:underline [&>svg]:mr-4 text-gold" href="https://www.linkedin.com/in/whitakermatt"><i class="fa-brands fa-linkedin"></i>LinkedIn</a></li>
-            <li class="ml-md sm:ml-md"><a class="hover:underline [&>svg]:mr-4 text-gold" href="https://github.com/matt-whitaker"><i class="fa-brands fa-github"></i>Github</a></li>
-            <li class="ml-md sm:ml-md"><a class="hover:underline [&>svg]:mr-4 text-gold" href="/blog"><i class="fa-solid fa-user-pen"></i>Blog</a></li>
+            <li class=""><a class="hover:underline [&>svg]:mr-4 text-gold" href="https://www.linkedin.com/in/whitakermatt"><i class="fa-brands fa-linkedin"></i><%= lookup("linkedin") %></a></li>
+            <li class="ml-md sm:ml-md"><a class="hover:underline [&>svg]:mr-4 text-gold" href="https://github.com/matt-whitaker"><i class="fa-brands fa-github"></i><%= lookup("github") %></a></li>
+            <li class="ml-md sm:ml-md"><a class="hover:underline [&>svg]:mr-4 text-gold" href="/blog"><i class="fa-solid fa-user-pen"></i><%= lookup("blog") %></a></li>
 
             <li class="ml-md sm:ml-auto mr-0 flex items-center sm:w-auto">
-                <span class="text-sm mr-sm animate-pulse opacity-90 text-green hidden sm:inline-block">open to work!</span>
-                <a class="hover:underline [&>svg]:mr-4 text-gold" href="/resume" target="_blank"><i class="fa-solid fa-file-lines"></i>Resume</a>
+                <span class="text-sm mr-sm animate-pulse opacity-90 text-green hidden sm:inline-block lowercase"><%= lookup("open_to_work") %></span>
+                <a class="hover:underline [&>svg]:mr-4 text-gold" href="/resume" target="_blank"><i class="fa-solid fa-file-lines"></i><%= lookup("Resume") %></a>
             </li>
         </ul>
         <p class="leading-5 sm:mt-md mt-sm"><%- lookup("summary_1") %></p>

@@ -27,7 +27,9 @@ module.exports = {
       "5xl": "63px",
       "6xl": "72px",
       "7xl": "81px",
-      "8xl": "90px"
+      "8xl": "90px",
+
+      "desktop": "1092px"
     }
   }
 }
