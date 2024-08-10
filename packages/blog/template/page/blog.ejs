@@ -6,9 +6,9 @@
             return ma.isSame(mb) ? 0 : (ma.isAfter(mb) ? -1 : 1);
         });
 %>
-<main class="sm:mx-auto w-full sm:max-w-xl sm:pl-[18px] sm:text-left text-center">
+<main class="sm:mx-auto w-full sm:max-w-xl sm:px-0 px-md sm:pl-0 sm:text-left text-center">
     <h1 class="text-3xl my-[60px] opacity-0 animate-opacity_in" style="animation-delay: 100ms">Thoughts</h1>
-    <section class="text-left sm:mx-auto mx-[18px] opacity-0 animate-opacity_in" style="animation-delay: 170ms">
+    <section class="text-left sm:mx-auto opacity-0 animate-opacity_in" style="animation-delay: 170ms">
         <% for (blog of blogs) { %>
         <%- await include("/template/component/preview.ejs", blog) %>
         <% } %>

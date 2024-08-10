@@ -1,6 +1,6 @@
 <section class="pl-large pb-xlarge">
     <%- await include("/template/component/heading.ejs", { text: lookup("h_cover") , column: "content" }) %>
-    <time class="text-sm mt-medium"><%= lookup("cover_date", date(new Date())) %></time>
+    <time class="text-sm mt-medium"><%= lookup("cover_date", moment(new Date()).format('dddd, MMMM Do, YYYY')) %></time>
     <p class="text-sm mt-medium"><%- lookup("cover_to") %></p>
 <!--    <address class="text-sm mt-medium"><%- lookup("cover_address") %></address>-->
 </section>
