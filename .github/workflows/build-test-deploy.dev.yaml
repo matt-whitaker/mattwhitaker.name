@@ -20,7 +20,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - run: npm ci
       - run: npm run build
-      - run: npm run pack
+      - run: npm run pack:dev
       - uses: actions/upload-artifact@v4
         with:
           name: dist
