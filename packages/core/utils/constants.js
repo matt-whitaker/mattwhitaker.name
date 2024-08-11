@@ -3,3 +3,4 @@ export const [EXT_MD, ENGINE_MD] = [".md", "md"];
 export const [EXT_HTML, EXT_TXT] = [".html", ".txt"];
 export const DELIMITER_REGEX = /\$\{([a-zA-Z_][a-zA-Z0-9_]*)\}/g;
 export const [INDEX, INDEX_HTML, INDEX_EJS] = ["index", "index.html", "index.ejs"];
+export const PRETTY_BAN = ["404.html", "500.html"];

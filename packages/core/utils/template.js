@@ -2,7 +2,7 @@ import pretty from "pretty";
 import { ejsHelpers, extractEjsAnnotations, renderEjs } from "./ejs.js";
 import { basename, extname, join, relative } from "path";
 import { resolvePath, writeFile } from "./file.js";
-import { INDEX, INDEX_HTML } from "./constants.js";
+import { EXT_HTML, INDEX, INDEX_HTML, PRETTY_BAN } from "./constants.js";
 
 /**
  * Render a template
@@ -25,9 +25,13 @@ export const generatePages = (files, args, options) => {
     const url = `/${join(resource, slug).replace(INDEX, "")}`;
     const template = `/${relative(options.root, join(file.path, file.name))}`;
     const outputRoot = resolvePath(options.root, args.output);
-    const output = slug === INDEX
-      ? join(outputRoot, INDEX_HTML)
-      : join(outputRoot, resource, slug, INDEX_HTML);
+    const output = (() => {
+      if (PRETTY_BAN.includes(`${slug}${EXT_HTML}`)) {
+        return join(outputRoot, resource, `${slug}${EXT_HTML}`);
+      }
+      else if (slug === INDEX) return join(outputRoot, resource, INDEX_HTML);
+      else return join(outputRoot, resource, slug, INDEX_HTML);
+    })();
     const extracted = extractEjsAnnotations(raw);
 
     return {
