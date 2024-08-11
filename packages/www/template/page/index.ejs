@@ -4,7 +4,7 @@
 <%# keywords Matt Whitaker, Lead Frontend Engineer, Senior Fullstack Engineer, Senior Frontend Engineer, HTML, CSS, React, Redux, RxJS, Node.js, Express.js, Jest, Less, Enzyme, Java, Spring, AWS, Docker, Kubernetes %>
 <%# banner /image/b-roll.jpg %>
 <%# bannerDesc Mt. Si %>
-<main class="h-[100vh] flex-col text-[.9em] sm:h-[373px] sm:flex-row sm:text-lg sm:mt-[calc(100vh-400px)] flex box-border w-full p-lg sm:p-2xl bg-white sm:rounded-b-lg">
+<main class="min-h-[100vh] flex-col text-[.9em] sm:h-[373px] sm:flex-row sm:text-lg sm:mt-[calc(100vh-400px)] flex box-border w-full p-lg sm:p-2xl bg-white sm:rounded-b-lg">
     <img class="mr-lg sm:mr-2xl rounded-[4px] shadow-[.1ex_.1ex_.35ex] shadow-black w-[calc(100vw-60px)] h-[calc(100vw-60px)] sm:w-[300px] sm:h-[300px] block sm:hidden lg:block animate-opacity_in" src="/image/headshot.jpg" title="Picture of myself" alt="Picture of myself" />
     <div class="flex flex-col flex-grow-2 overflow-x-hidden animate-opacity_in">
         <h1 class="mt-lg sm:mt-md mb-4 leading-7 text-4xl font-light"><%= lookup("me") %></h1>
@@ -19,6 +19,6 @@
             </li>
         </ul>
         <p class="leading-5 sm:mt-md mt-sm"><%- lookup("summary_1") %></p>
-        <p class="leading-5 mt-md"><%- lookup("summary_2") %></p>
+        <p class="leading-5 sm:mt-md mt-sm"><%- lookup("summary_2") %></p>
     </div>
 </main>
