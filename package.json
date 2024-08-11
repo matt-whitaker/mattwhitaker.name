@@ -12,7 +12,7 @@
     "pack:blog": "rsync -avr --ignore-existing packages/blog/dist .",
     "pack:resume": "rsync -avr --ignore-existing packages/resume/dist .",
     "pack:www": "rsync -avr --ignore-existing packages/www/dist .",
-    "pack": "npm run pack:clear blog && npm run pack:resume && npm run pack:www",
+    "pack": "npm run pack:clear && npm run pack:blog && npm run pack:resume && npm run pack:www",
     "pack:dev": "npm run pack:clear && npm run pack:blog && npm run pack:resume && npm run pack:www",
     "serve": "http-server ./dist -p 8080 -c-1 -r",
     "start": "npm run build:dev && npm run pack:dev && npm run serve"
