@@ -3,7 +3,7 @@
     <a class="hover:cursor-pointer group block" href="<%= url %>">
         <h4 class="group-hover:underline leading-5 font-semibold text-lg sm:text-xl"><%= title %></h4>
     </a>
-    <p class="mt-[18px] leading-5"><%= snippet %></p>
+    <p class="mt-[18px] leading-5"><%= snippet %> <a class="hover:underline text-gold" href="<%= url %>">read more</a></p>
     <% if (typeof publish !== "undefined") { %>
     <span class="text-gold text-sm italic"><%= publish %></span>
     <% } %>
