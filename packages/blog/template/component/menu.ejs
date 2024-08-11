@@ -1,4 +1,4 @@
-<label for="hamburger" class="peer/lb absolute top-md right-md lg:right-[calc(((100vw-1092px)/2)+theme(spacing.md))] z-50">
+<label for="hamburger" class="peer/lb absolute top-md right-md lg:right-[calc(((100vw-1092px)/2)+theme(spacing.md))] z-50 cursor-pointer">
     <input id="hamburger" type="checkbox" class="peer/cb hidden h-0 w-0" />
     <div class="peer-checked/cb:rotate-[-45deg] peer-checked/cb:translate-y-[8px] peer-checked/cb:translate-x-[5px] w-[22px] peer-checked/cb:w-[27px] bg-gold peer-checked/cb:bg-white sm:peer-checked/cb:bg-gold relative h-2 rounded-sm transition-[all_0.3s_ease-in-out] origin-center"></div>
     <div class="peer-checked/cb:rotate-[45deg] peer-checked/cb:opacity-0 w-[22px] peer-checked/cb:w-[27px] bg-gold peer-checked/cb:bg-white sm:peer-checked/cb:bg-gold relative h-2 mt-5 rounded-sm transition-[all_0.3s_ease-in-out]"></div>
@@ -8,10 +8,10 @@
 <div class="scale-y-0 peer-has-[:checked]/lb:scale-y-100 absolute w-full sm:w-auto sm:h-auto h-[100vh] bg-gold -top-md sm:top-4xl right-0 sm:right-md lg:right-[calc(((100vw-1092px)/2)+theme(spacing.md))] sm:rounded-lg overflow-hidden transition-[transform_0.3s_ease-in-out] origin-top z-40">
     <div class="relative overflow-x-hidden overflow-y-auto h-full">
         <nav class="p-lg text-right text-white sm:w-[200px] w-full flex flex-col mt-4xl sm:mt-0">
-            <p class="inline-block"><a href="/">Home</a></p>
-            <p class="inline-block mt-md"><a href="/blog">Blog</a></p>
+            <p class="inline-block"><a class="hover:underline" href="/">Home</a></p>
+            <p class="inline-block mt-md"><a class="hover:underline" href="/blog">Blog</a></p>
             <hr class="p-0 my-md"/>
-            <p class="inline-block"><a href="/blog/rss.xml">RSS</a> / <a href="/blog/atom.xml">Atom</a></p>
+            <p class="inline-block"><a class="hover:underline" href="/blog/rss.xml">RSS</a> / <a class="hover:underline" href="/blog/atom.xml">Atom</a></p>
         </nav>
     </div>
 </div>

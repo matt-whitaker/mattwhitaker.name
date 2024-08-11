@@ -1,6 +1,7 @@
 <%
     const blogs = pages
         .filter(page => page.url !== "/blog" && page.url.includes("/blog"))
+        .filter(page => !!page.publish)
         .sort((a, b) => {
             const ma = moment(a.publish, "MMMM D, YYYY"), mb = moment(b.publish, "MMMM D, YYYY");
             return ma.isSame(mb) ? 0 : (ma.isAfter(mb) ? -1 : 1);
