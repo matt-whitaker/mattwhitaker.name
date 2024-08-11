@@ -19,12 +19,15 @@ await (
           highlight(str, lang) {
             if (lang && hljs.getLanguage(lang)) {
               try {
-                return hljs.highlight(str, { language: lang }).value;
+                const hl = hljs.highlight(str, { language: lang });
+                console.log(hl);
+                return hl.value;
               } catch (__) {}
             }
 
             return '';
-          }
+          },
+          breaks: true
         }).render(data)
       }
     }))

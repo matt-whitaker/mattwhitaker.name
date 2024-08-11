@@ -7,7 +7,7 @@ export const generateFeed = (site, pages, args, options) => {
   const outputRoot = resolvePath(options.root, args.output);
   const feed = new Feed(site.feed);
 
-  pages.forEach(({ title, url, snippet, rendered, publish }) => {
+  pages.filter(({ publish }) => !!publish).forEach(({ title, url, snippet, rendered, publish }) => {
     if (url !== "/blog" && url.includes("/blog")) {
       feed.addItem({
         title,

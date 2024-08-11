@@ -7,6 +7,11 @@ export default {
   ],
   theme: {
     extend: {
+      borderStyle: {
+        inset: "insert",
+        outset: "outset",
+        groove: "groove"
+      },
       keyframes: {
         subtitle_in: {
           "0%": { marginLeft: "0", opacity: "15%" },

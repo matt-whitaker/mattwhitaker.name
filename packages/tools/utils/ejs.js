@@ -9,6 +9,7 @@ export const ejsHelpers = ({ dev = false, strings = {}, features = {}, cacheKey 
   cachebust: (filename) => `${filename}?_cb=${cacheKey}`,
   minified: (filename) => `${filename.split(".")[0]}${dev ? "." : ".min."}${filename.split(".")[1]}`,
   moment,
+  dev: () => dev
 });
 
 /**

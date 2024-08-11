@@ -4,10 +4,11 @@ const markdownClasses = [
     "[&>h1]:mt-lg mb-md [&>h1]:text-xl [&>h1]:font-semibold",
     "[&>h2]:mt-md mb-sm [&>h2]:text-md [&>h2]:font-normal [&>h2]:uppercase",
     "[&>h3]:mt-sm mb-xs [&>h3]:text-md [&>h3]:font-semibold",
-    "[&>p]:leading-5",
+    "[&>p]:leading-5 [&>p]:mb-md",
     "[&>ul>li]:leading-5 [&>ul>li]:mt-sm [&>ul>li]:list-[square] [&>ul>li]:ml-md",
     "[&>hr]:my-lg",
-    "[&>pre]:overflow-x-auto [&>pre]:text-sm"
+    "[&>pre]:p-sm [&>pre]:overflow-x-auto [&>pre]:text-sm [&>pre]:bg-[#efefef] [&>pre]:rounded-lg"
+    // "[&>pre>code]:before:content-[attr"
 ].join(" ");
 %>
 <main class="sm:mx-auto w-full sm:max-w-xl px-md sm:px-0 text-left relative">
