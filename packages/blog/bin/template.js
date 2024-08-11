@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 import hljs from "highlight.js";
-import markdownit from "markdown-it";
+import { Marked } from "marked";
+import { markedHighlight } from "marked-highlight";
 import { generateSite } from "@mattwhitaker.name/tools";
 
 await (
@@ -15,20 +16,19 @@ await (
       template: "template/master.ejs",
       root: process.cwd(),
       helpers: {
-        md: (data) => markdownit({
-          highlight(str, lang) {
-            if (lang && hljs.getLanguage(lang)) {
-              try {
-                const hl = hljs.highlight(str, { language: lang });
-                console.log(hl);
-                return hl.value;
-              } catch (__) {}
-            }
+        md: ((marked) => (md) => marked.parse(md))(
+          new Marked(markedHighlight({
+            highlight(str, lang) {
+              if (lang && hljs.getLanguage(lang)) {
+                try {
+                  return hljs.highlight(str, { language: lang }).value;
+                } catch (_) {}
+              }
 
-            return '';
-          },
-          breaks: true
-        }).render(data)
+              return false;
+            }
+          }))
+        )
       }
     }))
 )();
