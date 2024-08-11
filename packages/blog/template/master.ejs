@@ -21,9 +21,9 @@
     <% }) %>
     <link href="<%- site.google.fonts %>" rel="stylesheet" />
 </head>
-<body class="text-black w-screen h-[calc(100vh - 50px)] m-[0_auto] box-border bg-goldstone bg-fixed print:bg-transparent <%= page.class %>" style="background-image: url('/image/cubes.png')">
-    <div class="mt-[18px] md:my-[48px] pb-[36px] md:rounded-lg relative max-w-desktop flex flex-col my-0 mx-auto box-border bg-white">
-        <%- await include("/template/component/menu.ejs") %>
+<body class="relative text-black w-screen h-[calc(100vh-theme(spacing-lg)] m-[0_auto] box-border bg-goldstone bg-fixed print:bg-transparent <%= page.class %>" style="background-image: url('/image/cubes.png')">
+    <%- await include("/template/component/menu.ejs") %>
+    <div class="peer-has-[:checked]/lb:overflow-y-hidden peer-has-[:checked]/lb:max-h-[calc(100vh-theme(spacing.md))] mt-md md:my-3xl pb-2xl md:rounded-lg relative max-w-desktop flex flex-col my-0 mx-auto box-border bg-white">
         <%- await include("/template/component/header.ejs") %>
         <%- await include(page.template) %>
     </div>
