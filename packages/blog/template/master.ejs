@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= page.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<%- page.description %>">
+    <meta name="keywords" content="<%= page.keywords %>">
+    <meta name="author" content="<%= page.author %>">
+
+    <meta property="og:title" content="<%= page.title %>">
+    <meta property="og:description" content="<%- page.description %>">
+    <meta property="og:url" content="https://mattwhitaker.name/blog">
+    <meta property="og:type" content="website">
+
+    <link rel="canonical" href="https://mattwhitaker.name/blog">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <% stylesheets.forEach((stylesheet) => {%>
+    <link href="<%= cachebust(minified(stylesheet)) %>" rel="stylesheet" />
+    <% }) %>
+    <link href="<%- site.google.fonts %>" rel="stylesheet" />
+</head>
+<body class="relative text-black w-screen h-[calc(100vh-theme(spacing-lg)] m-[0_auto] box-border bg-goldstone bg-fixed print:bg-transparent <%= page.class %>" style="background-image: url('/image/cubes.png')">
+    <%- await include("/template/component/menu.ejs") %>
+    <div class="peer-has-[:checked]/lb:overflow-y-hidden peer-has-[:checked]/lb:max-h-[calc(100vh-theme(spacing.md))] mt-md md:my-3xl pb-2xl md:rounded-lg relative max-w-desktop flex flex-col my-0 mx-auto box-border bg-white">
+        <%- await include("/template/component/header.ejs") %>
+        <%- await include(page.template) %>
+    </div>
+</body>
+</html>

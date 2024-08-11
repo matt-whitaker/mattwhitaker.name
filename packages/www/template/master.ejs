@@ -16,19 +16,20 @@
         <link rel="manifest" href="<%= cachebust("/manifest.json") %>">
         <link rel="canonical" href="https://mattwhitaker.name">
 
+        <link rel="preload" as="image" href="<%= page.banner %>">
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <% stylesheets.forEach((stylesheet) => {%>
-        <link href="<%= cachebust(stylesheet) %>" rel="stylesheet" />
+        <link href="<%= cachebust(minified(stylesheet)) %>" rel="stylesheet" />
         <% }) %>
         <link href="<%- site.google.fonts %>" rel="stylesheet" />
-
-        <%- await include("/template/component/service-worker.ejs", { worker: page.worker }) %>
+        <script type="text/javascript" src="<%= site.fa.script %>"></script>
     </head>
-    <body class="w-full h-full p-0 m-0 box-border bg-fixed bg-bgshade print:bg-transparent <%= page.class %>" style="background-image: url('/image/cubes.png')">
-        <%- await include("/template/component/banner.ejs", { img: page.banner, desc: page.bannerDesc }) %>
-        <div class="relative flex flex-col h-full my-0 mx-auto max-w-screen-wide box-border">
-            <%- await include(`/template/page/${page.filename}`) %>
+    <body class="relative w-full h-full p-0 m-0 box-border bg-fixed bg-goldstone print:bg-transparent <%= page.class %>" style="background-image: url('/image/cubes.png')">
+        <div class="lg:left-[50%] lg:ml-[-546px] sm:block hidden ml-0 fixed h-[628px] w-full max-w-[1092px] bg-[center_0] bg-cover bg-no-repeat" title="<%= page.bannerDesc %>" style="background-image: url('<%- page.banner %>');"></div>
+        <div class="relative flex flex-col h-full my-0 mx-auto max-w-desktop box-border">
+            <%- await include(page.template) %>
         </div>
     </body>
 </html>

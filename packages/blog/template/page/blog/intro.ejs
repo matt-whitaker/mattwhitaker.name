@@ -1,0 +1,16 @@
+<%# title Introduction: Welcome to my new blog %>
+<%# tag General %>
+<%# publish August, 11, 2024 %>
+<%# snippet I'm still wrapping up some housekeeping and feature support, but soon I will start writing about random things. %>
+<%
+const md = `
+# Welcome to My Blog
+
+Welcome to "Disjointed Thinking," my new blog. This is my first post!
+
+### Disjointed Thinking?
+
+What is a blog, if not a collection of semi-related or unrelated ideas? I'll use this space to discuss various topics, primarily focusing on coding and software. Additionally, I might share insights about my homebrewing hobby and occasional musings on other intriguing subjects. Expect to see a lot of case study type posts around prototyping I toss together, or just general coding practices in action.
+`
+%>
+<%- await include("/template/component/blog-page.ejs", { markdown: md }) %>

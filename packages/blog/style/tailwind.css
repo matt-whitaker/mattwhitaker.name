@@ -1,0 +1,11 @@
+@import "highlight.js/styles/default.css";
+
+@tailwind base;
+@layer base {
+    html, body {
+        @apply font-sans text-[16px] text-black;
+    }
+}
+@tailwind components;
+@tailwind utilities;
+

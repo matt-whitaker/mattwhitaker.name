@@ -1,5 +1,6 @@
-import { extname, resolve } from "path";
-import { readdir, readFile as _readFile, writeFile as _writeFile } from "fs/promises";
+import { extname, resolve, dirname } from "path";
+import { existsSync } from "fs";
+import { mkdir, readdir, readFile as _readFile, writeFile as _writeFile } from "fs/promises";
 
 import { EXT_EJS, EXT_MD } from "./constants.js";
 
@@ -29,13 +30,19 @@ export const readFile = async (fullpath, parser) =>
 export const tryReadFile = async (fullpath, parser, fallback = null) =>
   parser ? _readFile(fullpath, "utf8").then(parser).catch(() => null) : _readFile(fullpath, "utf8").catch(() => fallback)
 /**
- * Writes data to a file
+ * Writes data to a file, also recursively ensuring the destination directory exists
  * @async
  * @param {string} fullpath
  * @param {string} data
  * @returns {Promise<void>} a promise mostly useful for error handling
  */
 export const writeFile = async (fullpath, data) => {
+  const dir = dirname(fullpath);
+
+  if (!existsSync(dir)) {
+    await mkdir(dir, { recursive: true });
+  }
+
   return _writeFile(fullpath, data);
 }
 /**

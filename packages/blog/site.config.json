@@ -1,0 +1,24 @@
+{
+  "site": {
+    "google": {
+      "fonts": "https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+    },
+    "feed": {
+      "title": "Disjointed Thinking",
+      "description": "Ramblings that make up my personal blog.",
+      "id": "http://mattwhitaker.name/blog",
+      "link": "http://mattwhitaker.name/blog",
+      "language": "en",
+      "feedLinks": {
+        "atom": "https://mattwhitaker.name/atom",
+        "rss": "https://mattwhitaker.name/rss"
+      },
+      "author": {
+        "name": "Matt Whitaker",
+        "link": "https://mattwhitaker.name"
+      }
+    }
+  },
+  "features": {
+  }
+}

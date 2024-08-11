@@ -1,0 +1,17 @@
+<%
+    const blogs = pages
+        .filter(page => page.url !== "/blog" && page.url.includes("/blog"))
+        .filter(page => dev() || !!page.publish)
+        .sort((a, b) => {
+            const ma = moment(a.publish, "MMMM D, YYYY"), mb = moment(b.publish, "MMMM D, YYYY");
+            return ma.isSame(mb) ? 0 : (ma.isAfter(mb) ? -1 : 1);
+        });
+%>
+<main class="sm:mx-auto w-full sm:max-w-xl sm:px-0 px-md sm:pl-0 sm:text-left text-center">
+    <h1 class="text-3xl my-[60px] opacity-0 animate-opacity_in" style="animation-delay: 100ms">Thoughts</h1>
+    <section class="text-left sm:mx-auto opacity-0 animate-opacity_in" style="animation-delay: 170ms">
+        <% for (blog of blogs) { %>
+        <%- await include("/template/component/preview.ejs", blog) %>
+        <% } %>
+    </section>
+</main>
