@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { generateSite } from "@mattwhitaker.name/tools";
+import { generateSite } from "@mattwhitaker.name/core";
 
 await (
   async () =>

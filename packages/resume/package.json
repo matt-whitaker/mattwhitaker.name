@@ -16,7 +16,7 @@
     "generate:resume": "mkdir -p dist/pdf && bin/pdf.js --page resume --name MattWhitakerResume",
     "generate:cover": "mkdir -p dist/pdf && bin/pdf.js --page cover --name MattWhitakerCoverLetter",
     "generate:all": "npm run generate:resume && npm run generate:cover",
-    "static": "bin/static.js --source ../common/static --output dist",
+    "static": "bin/static.js --source ../assets --output dist",
     "build": "npm run clear && npm run style && npm run template && npm run static",
     "build:dev": "npm run clear && npm run static && npm run style:dev && npm run template:dev",
     "serve": "http-server ./dist -p 8080 -c-1 -r",

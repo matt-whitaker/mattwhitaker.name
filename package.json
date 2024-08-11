@@ -21,7 +21,7 @@
   "license": "ISC",
   "workspaces": [
     "packages/resume",
-    "packages/tools",
+    "packages/core",
     "packages/www",
     "packages/blog",
     "packages/common"

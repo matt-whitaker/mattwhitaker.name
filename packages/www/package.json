@@ -10,7 +10,7 @@
     "style": "npx tailwindcss -m -i ./style/tailwind.css -o ./dist/style/main.min.css",
     "style:dev": "npx tailwindcss -i ./style/tailwind.css -o ./dist/style/main.css",
     "style:watch": "npm run style:dev -- --watch",
-    "static": "bin/static.js --source static --output dist && bin/static.js --source ../common/static --output dist",
+    "static": "bin/static.js --source static --output dist && bin/static.js --source ../assets --output dist",
     "serve": "http-server ./dist -p 8080 -c-1 -r",
     "build": "npm run clear && npm run style && npm run template && npm run static",
     "build:dev": "npm run clear && npm run style:dev && npm run template:dev && npm run static",

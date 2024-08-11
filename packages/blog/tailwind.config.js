@@ -3,7 +3,7 @@
 export default {
   content: ["./template/**/*.ejs"],
   presets: [
-    require("@mattwhitaker.name/common/common-tailwind.js")
+    require("@mattwhitaker.name/core/common-tailwind.js")
   ],
   theme: {
     extend: {

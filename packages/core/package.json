@@ -1,5 +1,5 @@
 {
-  "name": "@mattwhitaker.name/tools",
+  "name": "@mattwhitaker.name/core",
   "version": "0.0.1",
   "description": "Re-usable tools for crafting my static websites",
   "main": "index.js",

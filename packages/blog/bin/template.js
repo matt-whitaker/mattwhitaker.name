@@ -3,7 +3,7 @@
 import hljs from "highlight.js";
 import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
-import { generateSite } from "@mattwhitaker.name/tools";
+import { generateSite } from "@mattwhitaker.name/core";
 
 await (
   async () =>
