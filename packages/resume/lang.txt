@@ -35,7 +35,7 @@ skills <b>Skills:</b> ${skills}
 
 break_title Career Break
 break_years Jan 2024 - Present
-break_summary After 12 years of hard work and growth as an engineer, I chose to leave my past role and take a career break. I've taken this time to focus on myself, new interests, and improving my technical skills.
+break_summary After 12 years of hard work and growth as an engineer, I chose to leave my past role and take a career break. In my off-time, I have focused on continuing the development of my skills, as well as taking on new hobbies and interests.
 
 smar_jobtitle Senior Software Engineer
 smar_focus Full-stack / Front-end
