@@ -23,7 +23,7 @@ jobs:
       - run: npm run pack
       - uses: actions/upload-artifact@v4
         with:
-          name: dist
+          name: dev
           path: dist
           
   Test:
@@ -38,6 +38,7 @@ jobs:
     with:
       environment: "dev"
       aws_default_region: "us-west-2"
+      artifact_name: "dev"
       artifact_path: "dist"
     secrets:
       aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
