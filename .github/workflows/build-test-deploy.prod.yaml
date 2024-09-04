@@ -32,22 +32,15 @@ jobs:
       - run: echo "No tests yet..."
 
   Deploy:
-    runs-on: ubuntu-latest
     needs: ["Build", "Test"]
-    environment: "prod"
-    permissions:
-      id-token: write
-      contents: read
-    steps:
-      - uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-region: ${{ vars.AWS_DEFAULT_REGION }}
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
-      - uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
-      - run: aws s3 sync --delete --acl public-read dist s3://${{ secrets.WWW_AWS_S3_BUCKET }}
-      - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.WWW_AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*" >/dev/null
+    uses: matt-whitaker/aws-static-site/.github/workflows/deploy-static-site.yaml@mainline
+    with:
+      environment: "prod"
+      aws_default_region: "us-west-2"
+      artifact_path: "dist"
+    secrets:
+      aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      aws_role_to_assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+      aws_s3_bucket: ${{ secrets.WWW_AWS_S3_BUCKET }}
+      aws_cloudfront_distribution_id: ${{ secrets.WWW_AWS_CLOUDFRONT_DISTRIBUTION_ID }}
