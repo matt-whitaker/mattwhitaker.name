@@ -25,10 +25,10 @@ h_social SOCIAL
 h_summary SUMMARY
 h_cover COVER LETTER
 
-d_language [[12, "HTML / CSS"], [12, "Javascript"], [6, "Typescript"], [8, "Node.js"]]
-d_framework [[8, "React"], [8, "Redux"], [5, "RxJS"], [8, "Storybook"], [8, "Express"], [10, "Webpack"], [1, "Tailwind"]]
+d_language [[12, "HTML / CSS"], [12, "Javascript"], [7, "Typescript"], [8, "Node.js"], [7, "Python"], [8, "SQL"]]
+d_framework [[8, "React"], [8, "Redux"], [5, "RxJS"], [8, "Storybook"], [8, "Express"], [3, "Spring Boot"]]
 d_infrastructure [[6, "AWS"], [8, "Nginx"], [8, "Docker"], [8, "Kubernetes"]]
-d_methodology [[10, "Agile / Scrum"], [8, "TDD"], [3, "BDD"], [8, "CI / CD"]]
+d_methodology [[10, "Agile / Scrum"], [8, "TDD"], [10, "CI / CD"]]
 
 years ${years} years
 skills <b>Skills:</b> ${skills}

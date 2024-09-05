@@ -13,14 +13,14 @@
         <meta property="og:url" content="https://mattwhitaker.name">
         <meta property="og:type" content="website">
 
-        <link rel="manifest" href="<%= cachebust("/manifest.json") %>">
+        <!--<link rel="manifest" href="<%= cachebust("/manifest.json") %>">-->
         <link rel="canonical" href="https://mattwhitaker.name">
 
         <link rel="preload" as="image" href="<%= page.banner %>">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <% stylesheets.forEach((stylesheet) => {%>
+        <% stylesheets.forEach((stylesheet) => { %>
         <link href="<%= cachebust(minified(stylesheet)) %>" rel="stylesheet" />
         <% }) %>
         <link href="<%- site.google.fonts %>" rel="stylesheet" />
