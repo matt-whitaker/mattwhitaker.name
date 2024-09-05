@@ -35,19 +35,20 @@ skills <b>Skills:</b> ${skills}
 
 break_title Career Break
 break_years Jan 2024 - Present
-break_summary After 12 years of hard work and growth as an engineer, I chose to leave my past role and take a career break. In my off-time, I have focused on continuing the development of my skills, as well as taking on new hobbies and interests.
+break_summary I decided to leave my previous position to take a sabbatical. In my off-time, I have focused on continuing the development of my skills, as well as taking on new hobbies and interests.
 
 smar_jobtitle Senior Software Engineer
 smar_focus Full-stack / Front-end
 smar_years Nov 2018 - Dec 2023
 smar_name Smartsheet
 smar_address Bellevue, WA
-smar_summary Diverse full-stack, but heavily front-end-leaning, engineering role which included leading front-end development and growing the practice for a couple small teams.
-smar_1 Led the architecture, planning, and development of Smartsheet's Admin Center front end; leading a small team of remote engineers, later moving to in-house resources. Ultimately responsible for the successful quality and delivery of the product and worked closely with product owners and UX to ensure customer needs were met.
-smar_2 Responsible for the quality and effectiveness of a component library focused on enabling other teams to rapidly extend Admin Center functionality. Worked closely with UX to plan a consistent set of re-usable components and set delivery expectations.
-smar_3 Drove adoption and evangelism of cross-company UI efforts focused on breaking up the core "monolith".
-smar_4 Additionally responsible for owning a number of legacy feature areas lacking existing subject-matter experts, rapidly onboarding to provide enhancements and performance improvements.
-smar_skills HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, SPA, Webpack, Node.js, Express, Figma, Java, Storybook, AWS, Spring, K8s
+smar_summary Diverse full-stack, but heavily front-end-leaning, engineering role spanning multiple teams and nearly a dozen domain areas.
+smar_1 Architected Smartsheet's Admin Center product, built as a micro-frontend to allow teams across the organization contribute while retaining ownership of their feature areas.
+smar_2 Led two small teams of front-end engineers to rapidly develop dozens of front-end features for the Admin Center application. Responsible for mentorship, quality control, and project planning to keep a consistent pace of delivery.
+smar_3 Designed and developed dozens of CRUD-like APIs across several domain areas, fostering the growth of microservice development and an API-first design methodology. Additionally supported the team through code reviews and mentorship to raise the bar for API development practices.
+smar_4 Rapidly onboarded to a number of legacy feature areas in order to fill gaps in subject-matter-expertise and solve a number of critical performance bugs in the Smartsheet core product.
+
+smar_skills HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Webpack, Node.js, Express, Figma, Java, Storybook, AWS, Spring Boot, K8s
 
 sap_jobtitle Software Design Engineer II
 sap_focus Full-stack / Front-end
