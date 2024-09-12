@@ -43,9 +43,9 @@ smar_years Nov 2018 - Dec 2023
 smar_name Smartsheet
 smar_address Bellevue, WA
 smar_summary Diverse full-stack, but heavily front-end-leaning, engineering role spanning multiple teams and nearly a dozen domain areas.
-smar_1 Architected Smartsheet's Admin Center product, built as a micro-frontend to allow teams across the organization contribute while retaining ownership of their feature areas.
-smar_2 Led two small teams of front-end engineers to rapidly develop dozens of front-end features for the Admin Center application. Responsible for mentorship, quality control, and project planning to keep a consistent pace of delivery.
-smar_3 Designed and developed dozens of CRUD-like APIs across several domain areas, fostering the growth of microservice development and an API-first design methodology. Additionally supported the team through code reviews and mentorship to raise the bar for API development practices.
+smar_1 Architected Smartsheet's Admin Center product, built as a micro-frontend to allow teams across the organization contribute while retaining ownership of their feature areas. Led a team of remote front-end engineers to rapidly develop the first phase MVP consisting of several complex user interfaces ensuring good user experience and application performance.
+smar_2 Led in-house front-end engineers to rapidly develop a number of additional front-end interfaces added to Admin Center application post-MVP. Responsible for mentorship, quality control, and project planning to keep a consistent pace of delivery.
+smar_3 Designed and developed over a dozen publicly-facing APIs across several domain areas, fostering the growth of microservice development and an API-first design methodology. Additionally supported the team through code reviews and mentorship to raise the bar for API development practices.
 smar_4 Rapidly onboarded to a number of legacy feature areas in order to fill gaps in subject-matter-expertise and solve a number of critical performance bugs in the Smartsheet core product.
 
 smar_skills HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Webpack, Node.js, Express, Figma, Java, Storybook, AWS, Spring Boot, K8s
