@@ -43,7 +43,7 @@ smar_years Nov 2018 - Dec 2023
 smar_name Smartsheet
 smar_address Bellevue, WA
 smar_summary Diverse full-stack, but heavily front-end-leaning, engineering role spanning multiple teams and nearly a dozen domain areas.
-smar_1 Architected Smartsheet's Admin Center product, built as a micro-frontend to allow teams across the organization contribute while retaining ownership of their feature areas. Led a team of remote front-end engineers to rapidly develop the first phase MVP consisting of several complex user interfaces ensuring good user experience and application performance.
+smar_1 Architected Smartsheet's Admin Center product, built as a micro-frontend to allow teams across the organization contribute while retaining ownership of their feature areas. Led a team of remote front-end engineers to rapidly develop the first phase MVP consisting of several dense and complex user interfaces.
 smar_2 Led in-house front-end engineers to rapidly develop a number of additional front-end interfaces added to Admin Center application post-MVP. Responsible for mentorship, quality control, and project planning to keep a consistent pace of delivery.
 smar_3 Designed and developed over a dozen publicly-facing APIs across several domain areas, fostering the growth of microservice development and an API-first design methodology. Additionally supported the team through code reviews and mentorship to raise the bar for API development practices.
 smar_4 Rapidly onboarded to a number of legacy feature areas in order to fill gaps in subject-matter-expertise and solve a number of critical performance bugs in the Smartsheet core product.
@@ -58,7 +58,7 @@ sap_address Bellevue, WA
 sap_summary Full-stack engineering role building out a variety of communication-related capabilities.
 sap_1 Developed a versatile third-party component that served content-rich in-product customer success messages, replacing an image-only solution.
 sap_2 Built an in-house "recommendation" system serving hundreds of impressions per second. Also designed and implemented an Admin interface deployed in a micro-front-end architecture.
-sap_3 Responsible for driving cross-company modern UI efforts including accessibility enhancements and performance tuning.
+sap_3 Helped design and build a number of dedicated micro-services supporting cross company technical capabilities such as SMS, Email, and other forms of communications.
 sap_skills HTML, CSS, JavaScript, React, Redux, Node.js, Express, Storybook, SPA, Webpack, Python, Flask, SQL, AWS, NoSQL, Nginx, K8s
 
 appl_jobtitle Front-end Engineer
