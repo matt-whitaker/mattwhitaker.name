@@ -51,7 +51,7 @@ smar_4 Rapidly onboarded to a number of legacy feature areas in order to fill ga
 smar_skills HTML, CSS, JavaScript, TypeScript, React, Redux, RxJs, Webpack, Node.js, Express, Figma, Java, Storybook, AWS, Spring Boot, K8s
 
 sap_jobtitle Software Design Engineer II
-sap_focus Full-stack / Front-end
+sap_focus Full-stack
 sap_years Mar 2016 - Nov 2018
 sap_name SAP Concur
 sap_address Bellevue, WA
