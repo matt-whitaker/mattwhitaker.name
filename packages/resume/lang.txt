@@ -1,7 +1,7 @@
 jobtitle FRONT-END / FULL-STACK ENGINEER
 short_jobtitle FRONT-END ENG
 address Bellevue, WA
-summary Experienced front-end-leaning software engineer with 12 years of experience building robust, user-friendly web applications. Proficient in taking products from early ideation through delivery, owning and leading every step in between.
+summary Experienced front-end-leaning software engineer with over a decade of experience building robust, user-friendly web applications and supporting services. Proficient in taking products from early ideation through delivery, owning and leading every step in between.
 references References can be provided by request.
 reader_note Get my styled resume <a href="https://mattwhitaker.name/resume.html">https://mattwhitaker.name/resume.html</a>
 headshot My headshot
@@ -35,14 +35,14 @@ skills <b>Skills:</b> ${skills}
 
 break_title Career Break
 break_years Jan 2024 - Present
-break_summary I decided to leave my previous position to take a sabbatical. In my off-time, I have focused on continuing the development of my skills, as well as taking on new hobbies and interests.
+break_summary I decided to leave my previous position to take a sabbatical. In my off-time I have focused on continuing the development of my skills, as well as taking on new hobbies and interests.
 
 smar_jobtitle Senior Software Engineer
 smar_focus Full-stack / Front-end
 smar_years Nov 2018 - Dec 2023
 smar_name Smartsheet
 smar_address Bellevue, WA
-smar_summary Diverse full-stack, but heavily front-end-leaning, engineering role spanning multiple teams and nearly a dozen domain areas.
+smar_summary Diverse full-stack, but heavily front-end-leaning, engineering role spanning multiple teams and several domain areas.
 smar_1 Architected Smartsheet's Admin Center product, built as a micro-frontend to allow teams across the organization contribute while retaining ownership of their feature areas. Led a team of remote front-end engineers to rapidly develop the first phase MVP consisting of several dense and complex user interfaces.
 smar_2 Led in-house front-end engineers to rapidly develop a number of additional front-end interfaces added to Admin Center application post-MVP. Responsible for mentorship, quality control, and project planning to keep a consistent pace of delivery.
 smar_3 Designed and developed over a dozen publicly-facing APIs across several domain areas, fostering the growth of microservice development and an API-first design methodology. Additionally supported the team through code reviews and mentorship to raise the bar for API development practices.
