@@ -34,7 +34,7 @@ jobs:
 
   Deploy:
     needs: ["Build", "Test"]
-    uses: matt-whitaker/aws-static-site/.github/workflows/deploy-static-site.yaml@mainline
+    uses: matt-whitaker/aws-static-site/.github/workflows/deploy-static-site.yaml@1.0.0
     with:
       environment: "dev"
       aws_default_region: "us-west-2"
