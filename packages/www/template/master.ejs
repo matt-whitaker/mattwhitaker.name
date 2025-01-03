@@ -29,7 +29,7 @@
         <script type="text/javascript" src="<%= site.fa.script %>"></script>
     </head>
     <body class="relative w-full h-full p-0 m-0 box-border bg-fixed bg-goldstone print:bg-transparent <%= page.class %>" style="background-image: url('/image/cubes.png')">
-        <div class="lg:left-[50%] lg:ml-[-546px] sm:block hidden ml-0 fixed h-[628px] w-full max-w-[1092px] bg-[center_0] bg-cover bg-no-repeat" title="<%= page.bannerDesc %>" style="background-image: url('<%- page.banner %>');"></div>
+        <div class="lg:left-[50%] lg:ml-[-546px] block ml-0 fixed h-[628px] w-full max-w-[1092px] bg-[center_0] bg-cover bg-no-repeat" title="<%= page.bannerDesc %>" style="background-image: url('<%- page.banner %>');"></div>
         <div class="relative flex flex-col h-full my-0 mx-auto max-w-desktop box-border">
             <%- await include(page.template) %>
         </div>
