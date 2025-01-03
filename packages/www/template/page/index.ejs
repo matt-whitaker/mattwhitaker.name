@@ -6,7 +6,7 @@
 <%# bannerDesc Mt. Si %>
 <article class="box-border w-full p-lg sm:p-2xl min-h-0 sm:h-[373px] mt-[calc(100vh-400px)] text-[.9em] sm:text-lg bg-white sm:rounded-b-lg">
     <img class="float-left mr-lg sm:mr-2xl rounded-[4px] shadow-[.1ex_.1ex_.35ex] shadow-black w-[90px] h-[90px] sm:w-[300px] sm:h-[300px] block animate-opacity_in" src="/image/headshot.jpg" title="Picture of myself" alt="Picture of myself" />
-    <header class="">
+    <header>
         <h1 class="mt-lg sm:mt-md mb-4 leading-7 sm:text-4xl text-3xl font-light whitespace-nowrap"><%= lookup("me") %></h1>
         <ul class="text-right whitespace-nowrap leading-8 flex flex-wrap sm:flex-nowrap">
             <li class=""><a class="hover:underline [&>svg]:mr-4 text-gold" href="https://www.linkedin.com/in/whitakermatt">
@@ -28,7 +28,7 @@
             <% } %>
         </ul>
     </header>
-    <main class="flex flex-col flex-grow overflow-x-hidden animate-opacity_in">
+    <main class="flex flex-col flex-grow animate-opacity_in">
         <p class="leading-5 sm:mt-md mt-sm"><%- lookup("summary_1") %></p>
         <p class="leading-5 sm:mt-md mt-sm"><%- lookup("summary_2") %></p>
     </main>
