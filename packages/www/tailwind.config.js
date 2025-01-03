@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'mobile-landscape': { raw: '(max-width: 768px) and (orientation: landscape)' },
+        landscape: { raw: '(orientation: landscape)' },
+        portrait: { raw: '(orientation: portrait)' },
+      },
       spacing: {
         xxsmall: "5px",
         xsmall: "10px",
@@ -38,7 +43,7 @@ export default {
       backgroundSize: {
         bannerSizing: "auto calc(100% - theme(spacing.lg))"
       }
-    }
+    },
   },
   plugins: [],
 }
