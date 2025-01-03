@@ -35,6 +35,9 @@ export default {
         opacity_in: "opacity_in 700ms forwards",
         pulse: "pulse 1s linear alternate infinite"
       },
+      backgroundSize: {
+        bannerSizing: "auto calc(100% - theme(spacing.lg))"
+      }
     }
   },
   plugins: [],
