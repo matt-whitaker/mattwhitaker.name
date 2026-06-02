@@ -4,7 +4,7 @@ run-name: Generate PDFs
 on:
   push:
     branches:
-      - develop
+      - _never_
 
 env:
   NODE_VERSION: 18

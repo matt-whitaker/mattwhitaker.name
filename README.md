@@ -1,6 +1,5 @@
 Packages for building out my personal website
 
-- [resume](packages/resume) - Generates resume files
 - [www](packages/www) - Generates core website files
 - [blog](packages/blog) - Generates blog subsite files
 - [core](packages/core) - common re-usable tools
