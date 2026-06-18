@@ -21,8 +21,7 @@
   "workspaces": [
     "packages/core",
     "packages/www",
-    "packages/blog",
-    "packages/common"
+    "packages/blog"
   ],
   "devDependencies": {
     "http-server": "^14.1.1"
