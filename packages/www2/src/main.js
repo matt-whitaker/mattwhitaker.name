@@ -15,6 +15,6 @@ initNav();
 initHero();
 initCareer();
 initEmwhit();
-initCaseStudies();
+// initCaseStudies();
 initProjects();
 initContactCopy();

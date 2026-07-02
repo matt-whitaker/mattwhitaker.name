@@ -9,19 +9,5 @@ export const caseStudies = [
     tags: ['case study'],
     href: '#',
     thumbnail: 'https://www.placekittens.com/600/404',
-  },
-  {
-    title: 'Case Study Two',
-    blurb: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.',
-    tags: ['case study'],
-    href: '#',
-    thumbnail: 'https://www.placekittens.com/600/405',
-  },
-  {
-    title: 'Case Study Three',
-    blurb: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.',
-    tags: ['case study'],
-    href: '#',
-    thumbnail: 'https://www.placekittens.com/600/406',
-  },
+  }
 ];
