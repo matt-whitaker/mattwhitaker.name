@@ -6,6 +6,7 @@ import { initHero } from './motion/hero.js';
 import { initCareer } from './motion/career.js';
 import { initEmwhit } from './motion/emwhit.js';
 import { initProjects } from './motion/projects.js';
+import { initContactCopy } from './motion/contact.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,3 +15,4 @@ initHero();
 initCareer();
 initEmwhit();
 initProjects();
+initContactCopy();

@@ -6,10 +6,12 @@
       Lorem ipsum dolor sit amet — the fastest way to reach me is below. I read everything myself.
     </p>
     <a
-      href="#"
+      href="mailto:<%= site.email %>"
+      data-copy-email
+      data-email="<%= site.email %>"
       class="mt-8 inline-block rounded-full bg-accent px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-accent-soft"
     >
-      Say hello
+      <span data-copy-email-label aria-live="polite"><%= site.email %></span>
     </a>
   </div>
 
@@ -25,7 +27,7 @@
 
 <footer class="border-t border-ink/10 px-6 py-8">
   <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-2 text-sm text-ink/50 sm:flex-row">
-    <p>&copy; <%= new Date().getFullYear() %> Matt [Lastname].</p>
+    <p>&copy; <%= new Date().getFullYear() %> Matt Whitaker.</p>
     <p>Built with Vite, Tailwind CSS, and GSAP.</p>
   </div>
 </footer>
