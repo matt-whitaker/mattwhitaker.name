@@ -65,6 +65,12 @@ html {
   h4 {
     font-family: var(--font-display);
   }
+
+  /* list-none (above) handles the marker in modern browsers; older
+     WebKit renders it as a separate pseudo-element that needs this. */
+  [data-nav-menu] summary::-webkit-details-marker {
+    display: none;
+  }
 }
 
 @layer components {
