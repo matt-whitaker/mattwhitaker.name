@@ -1,7 +1,7 @@
 <section id="projects" data-projects class="px-6 py-24">
   <div class="mx-auto max-w-5xl">
     <p class="text-sm font-semibold uppercase tracking-widest text-accent">Projects</p>
-    <h2 class="mt-2 font-display text-3xl font-bold text-ink sm:text-4xl">A few things I've built.</h2>
+    <h2 class="mt-2 font-display text-4xl font-bold text-ink">A few things I've built.</h2>
 
     <!--
       Data-driven grid — adding a project is an edit to src/data/projects.js,
@@ -9,7 +9,7 @@
       card is a single click target by design (swap the wrapping <a>
       behavior later without touching layout).
     -->
-    <div data-project-grid class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <div data-project-grid class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       <% projects.forEach(function (project) { %>
         <a
           href="<%= project.href %>"

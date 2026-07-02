@@ -20,7 +20,7 @@ const EASE = 'none'; // scrubbed 1:1 with scroll — keep linear so trackpad/whe
 // The "open folder" viewport: a fraction of the window height, capped
 // so it doesn't get unwieldy on very tall viewports.
 const STACK_HEIGHT_VH_RATIO = 0.62;
-const STACK_HEIGHT_MAX_PX = 640;
+const STACK_HEIGHT_MAX_PX = 720;
 
 export function initCareer() {
   const section = document.querySelector('[data-career]');
