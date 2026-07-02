@@ -21,6 +21,7 @@
   "workspaces": [
     "packages/core",
     "packages/www",
+    "packages/www2",
     "packages/blog"
   ],
   "devDependencies": {
