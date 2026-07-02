@@ -1,4 +1,8 @@
-<section id="music" data-emwhit class="relative overflow-hidden bg-ink px-6 py-24 text-paper">
+<section
+  id="music"
+  data-emwhit
+  class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-ink px-6 py-24 text-paper"
+>
   <!--
     Equalizer bar: static varied heights baked in below so it reads
     fine with JS off or reduced-motion. src/motion/emwhit.js layers a
@@ -6,7 +10,7 @@
   -->
   <div
     data-emwhit-bars
-    class="mx-auto mb-16 flex h-16 max-w-5xl items-end justify-between gap-1"
+    class="mx-auto mb-16 flex h-16 w-full max-w-5xl items-end justify-between gap-1"
     aria-hidden="true"
   >
     <% for (let i = 0; i < 28; i++) { %>
@@ -15,7 +19,7 @@
     <% } %>
   </div>
 
-  <div class="mx-auto flex max-w-5xl flex-col gap-10 md:flex-row md:items-center">
+  <div class="mx-auto flex w-full max-w-5xl flex-col gap-10 md:flex-row md:items-center">
     <div class="overflow-hidden rounded-2xl border border-paper/10 shadow-xl md:w-80 md:shrink-0">
       <img
         src="https://www.placekittens.com/500/500"
