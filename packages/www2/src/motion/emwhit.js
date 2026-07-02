@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Same breakpoint as the career folder — pinning is a desktop-scroll
 // pattern, and this is where things stop feeling cramped/touch-scrolly.
 const STICK_QUERY = '(min-width: 880px) and (prefers-reduced-motion: no-preference)';
-const STICK_VH = 0.5; // how long the section holds in place, in viewport-height units of scroll
+const STICK_VH = 0.8; // how long the section holds in place, in viewport-height units of scroll -- matched to the career folder's hang duration (LAYER_VH's hangUnits, ~0.9) so the two beats feel similar
 
 export function initEmwhit() {
   const section = document.querySelector('[data-emwhit]');
