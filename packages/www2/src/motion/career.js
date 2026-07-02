@@ -85,6 +85,11 @@ export function initCareer() {
         pin: true,
         scrub: true,
         invalidateOnRefresh: true,
+        // Without this, a fast scroll/trackpad fling can carry past the
+        // exact pin point before ScrollTrigger reacts, showing a one-frame
+        // jump right as it engages. This makes it anticipate the pin
+        // slightly early based on scroll speed/direction instead.
+        anticipatePin: 1,
       },
     });
 
