@@ -17,6 +17,11 @@ const TRANSITION_SHARE = 0.4; // fraction of LAYER_VH spent sliding in; the rest
 
 const EASE = 'none'; // scrubbed 1:1 with scroll — keep linear so trackpad/wheel deltas track exactly
 
+// The "open folder" viewport: a fraction of the window height, capped
+// so it doesn't get unwieldy on very tall viewports.
+const STACK_HEIGHT_VH_RATIO = 0.62;
+const STACK_HEIGHT_MAX_PX = 640;
+
 export function initCareer() {
   const section = document.querySelector('[data-career]');
   const stack = document.querySelector('[data-career-stack]');
@@ -45,7 +50,9 @@ export function initCareer() {
 
   mm.add(DESKTOP_QUERY, () => {
     const tabHeight = tabs[0].getBoundingClientRect().height;
-    const stackHeight = Math.round(Math.min(window.innerHeight * 0.62, 640));
+    const stackHeight = Math.round(
+      Math.min(window.innerHeight * STACK_HEIGHT_VH_RATIO, STACK_HEIGHT_MAX_PX),
+    );
     const transitionUnits = TRANSITION_SHARE * LAYER_VH;
     const hangUnits = LAYER_VH - transitionUnits;
     // Frontend's segment is hang-only; layers 1-3 get a full LAYER_VH
