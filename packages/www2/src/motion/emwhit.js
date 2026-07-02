@@ -25,9 +25,20 @@ export function initEmwhit() {
       scrub: true,
       onUpdate: (self) => {
         const p = self.progress;
+        const n = bars.length - 1;
+        // Same three-term shape as the baked-in static heights (see
+        // emwhit.ejs) — a slow wave for the broad clumps, a medium one
+        // for shape within them, a fast/low-amplitude one for jitter —
+        // but phase-shifted by scroll progress instead of by bar index.
+        // The clumps drift and breathe as you scroll, rather than each
+        // bar oscillating independently of its neighbors.
         bars.forEach((bar, i) => {
-          const wobble = Math.sin(p * Math.PI * 3 + i * 0.9);
-          const scaleY = 0.5 + 0.5 * Math.abs(wobble);
+          const t = i / n;
+          const envelope =
+            Math.sin(t * Math.PI * 2.2 + 0.4 + p * Math.PI * 2) * 0.55 +
+            Math.sin(t * Math.PI * 6 + 1.5 + p * Math.PI * 4) * 0.3 +
+            Math.sin(i * 2.7 + p * Math.PI * 8) * 0.15;
+          const scaleY = 0.35 + 0.65 * Math.abs(envelope);
           gsap.set(bar, { scaleY });
         });
       },
