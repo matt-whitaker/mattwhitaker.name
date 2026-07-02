@@ -25,19 +25,19 @@
           </button>
         </h3>
         <div class="career-layer__body">
-          <p class="text-sm font-semibold uppercase tracking-wide text-paper/60">Where I go deep</p>
-          <p class="mt-3 max-w-2xl text-paper/80">
-            Ten years in React — reactive patterns with RxJS, framework-neutral domain state, design
-            systems, micro-frontends. Raw JS/HTML/CSS as first principles underneath all of it.
-            Performance, accessibility, and i18n aren't an afterthought; they're load-bearing.
-          </p>
-          <ul class="mt-6 flex flex-wrap gap-2">
-            <li class="chip chip--accent">React</li>
-            <li class="chip chip--accent">RxJS</li>
-            <li class="chip chip--accent">TypeScript</li>
-            <li class="chip chip--accent">Performance</li>
-            <li class="chip chip--accent">a11y / i18n</li>
-          </ul>
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-5">
+            <div class="md:col-span-3">
+              <p class="text-sm font-semibold uppercase tracking-wide text-paper/60">Where I go deep</p>
+              <p class="mt-3 max-w-2xl text-paper/80">
+                Ten years in React — reactive patterns with RxJS, framework-neutral domain state, design
+                systems, micro-frontends. Raw JS/HTML/CSS as first principles underneath all of it.
+                Performance, accessibility, and i18n aren't an afterthought; they're load-bearing.
+              </p>
+            </div>
+            <div class="md:col-span-2">
+              <%- include('./skill-bars.ejs', { skills: careerSkills.frontend, accent: true }) %>
+            </div>
+          </div>
         </div>
       </article>
 
@@ -53,16 +53,17 @@
           </button>
         </h3>
         <div class="career-layer__body">
-          <p class="max-w-2xl text-ink/80">
-            Services in C#/.NET, Java Spring Boot, Node, and Python Flask — enough range to pick the
-            right tool for the team already in place.
-          </p>
-          <ul class="mt-6 flex flex-wrap gap-2">
-            <li class="chip">.NET</li>
-            <li class="chip">Spring Boot</li>
-            <li class="chip">Node</li>
-            <li class="chip">Flask</li>
-          </ul>
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-5">
+            <div class="md:col-span-3">
+              <p class="max-w-2xl text-ink/80">
+                Services in C#/.NET, Java Spring Boot, Node, and Python Flask — enough range to pick the
+                right tool for the team already in place.
+              </p>
+            </div>
+            <div class="md:col-span-2">
+              <%- include('./skill-bars.ejs', { skills: careerSkills.backend, accent: false }) %>
+            </div>
+          </div>
         </div>
       </article>
 
@@ -77,15 +78,17 @@
           </button>
         </h3>
         <div class="career-layer__body">
-          <p class="max-w-2xl text-ink/80">
-            SQL and NoSQL — Postgres, MySQL, and SQL Server on one side; Mongo, DynamoDB, and Cassandra
-            on the other.
-          </p>
-          <ul class="mt-6 flex flex-wrap gap-2">
-            <li class="chip">Postgres</li>
-            <li class="chip">DynamoDB</li>
-            <li class="chip">Cassandra</li>
-          </ul>
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-5">
+            <div class="md:col-span-3">
+              <p class="max-w-2xl text-ink/80">
+                SQL and NoSQL — Postgres, MySQL, and SQL Server on one side; Mongo, DynamoDB, and
+                Cassandra on the other.
+              </p>
+            </div>
+            <div class="md:col-span-2">
+              <%- include('./skill-bars.ejs', { skills: careerSkills.data, accent: false }) %>
+            </div>
+          </div>
         </div>
       </article>
 
@@ -100,15 +103,17 @@
           </button>
         </h3>
         <div class="career-layer__body">
-          <p class="max-w-2xl text-ink/80">
-            Most useful at the edge layer — orchestration, the API contract, the seams where systems
-            meet. Comfortable designing systems well beyond where I'm hands-on.
-          </p>
-          <ul class="mt-6 flex flex-wrap gap-2">
-            <li class="chip">K8s</li>
-            <li class="chip">Edge layer</li>
-            <li class="chip">System design</li>
-          </ul>
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-5">
+            <div class="md:col-span-3">
+              <p class="max-w-2xl text-ink/80">
+                Most useful at the edge layer — orchestration, the API contract, the seams where systems
+                meet. Comfortable designing systems well beyond where I'm hands-on.
+              </p>
+            </div>
+            <div class="md:col-span-2">
+              <%- include('./skill-bars.ejs', { skills: careerSkills.infra, accent: false }) %>
+            </div>
+          </div>
         </div>
       </article>
     </div>

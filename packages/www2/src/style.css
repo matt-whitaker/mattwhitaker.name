@@ -120,6 +120,44 @@ html {
     @apply bg-paper/20 text-paper;
   }
 
+  /* Skill bars — the career layer's skill display. Bar length encodes
+     years of experience; fill opacity encodes self-assessed strength,
+     paired with an explicit text label elsewhere (.skill-bar__detail)
+     since opacity alone isn't an accessible way to convey a tier.
+     --accent variants are for use inside the accent-colored Frontend
+     panel, mirroring .chip/.chip--accent. */
+  .skill-bars {
+    @apply flex flex-col gap-4;
+  }
+
+  .skill-bar__meta {
+    @apply mb-1 flex items-baseline justify-between gap-3 text-sm;
+  }
+
+  .skill-bar__name {
+    @apply font-medium;
+  }
+
+  .skill-bar__detail {
+    @apply text-xs opacity-60;
+  }
+
+  .skill-bar__track {
+    @apply h-1.5 w-full overflow-hidden rounded-full bg-ink/10;
+  }
+
+  .skill-bar__track--accent {
+    @apply bg-paper/20;
+  }
+
+  .skill-bar__fill {
+    @apply h-full rounded-full bg-accent;
+  }
+
+  .skill-bar__fill--accent {
+    @apply bg-paper;
+  }
+
   /* Emwhit equalizer bar — static heights come from inline style (baked
      in EJS); JS layers a scaleY transform on top, growing from the
      bottom, so the resting heights below still make sense as a floor. */
