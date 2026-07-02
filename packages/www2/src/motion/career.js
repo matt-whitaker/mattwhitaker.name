@@ -49,9 +49,15 @@ export function initCareer() {
   }
 
   mm.add(DESKTOP_QUERY, () => {
+    // The fixed nav sits above everything (z-50) — without reserving
+    // its height here, the pin starts flush with the viewport top and
+    // Frontend's tab renders directly underneath/behind it.
+    const navEl = document.querySelector('[data-nav]');
+    const navHeight = navEl?.getBoundingClientRect().height ?? 0;
+
     const tabHeight = tabs[0].getBoundingClientRect().height;
     const stackHeight = Math.round(
-      Math.min(window.innerHeight * STACK_HEIGHT_VH_RATIO, STACK_HEIGHT_MAX_PX),
+      Math.min((window.innerHeight - navHeight) * STACK_HEIGHT_VH_RATIO, STACK_HEIGHT_MAX_PX),
     );
     const transitionUnits = TRANSITION_SHARE * LAYER_VH;
     const hangUnits = LAYER_VH - transitionUnits;
@@ -74,7 +80,7 @@ export function initCareer() {
       defaults: { ease: EASE },
       scrollTrigger: {
         trigger: section,
-        start: 'top top',
+        start: () => 'top ' + (navEl?.getBoundingClientRect().height ?? 0) + 'px',
         end: () => '+=' + totalUnits * window.innerHeight,
         pin: true,
         scrub: true,
