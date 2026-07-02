@@ -29,12 +29,18 @@ const STACK_HEIGHT_VH_RATIO = 0.72;
 const STACK_HEIGHT_MAX_PX = 880;
 
 // Skill bars grow in (scaleX 0 -> 1) once their layer has fully
-// settled — one tween, no lead-in. (A two-phase version that started
-// partway through the slide looked like a stutter: two eased tweens
-// back to back create a velocity mismatch at the handoff, decelerating
-// into a near-stop and then restarting, even with zero time gap
-// between them.) Lives in the layer's hang budget, same scroll-unit
-// space as everything else above.
+// settled. This is a plain auto-playing tween (real seconds), not
+// scrubbed to scroll position — it's triggered via tl.call() at the
+// same positions the slide-in tweens already use, then plays out on
+// its own regardless of further scrolling. A scrubbed version could
+// get caught mid-tween by the tab-click handler's instant scroll jump
+// (no frames animated through, so it could freeze at an arbitrary
+// partial width); this can't, since once triggered it's independent
+// of scroll position entirely. (A two-phase lead-in/finish version was
+// also tried and looked like a stutter: two eased tweens back to back
+// create a velocity mismatch at the handoff, decelerating into a
+// near-stop and then restarting, even with zero time gap between them
+// — one clean tween per layer avoids that too.)
 const SKILL_GROW_DURATION = 0.32;
 const SKILL_GROW_STAGGER = 0.04;
 
@@ -97,6 +103,22 @@ export function initCareer() {
       gsap.set(fills, { scaleX: 0, transformOrigin: 'left center' });
     });
 
+    // Plays a layer's skill-bar reveal, once — called from tl.call()
+    // below at the same positions the slide-in tweens already use.
+    // Guarded so re-crossing that position (e.g. scrolling back and
+    // forth near the boundary) doesn't restart it.
+    const revealedLayers = new Set();
+    const playSkillReveal = (index) => () => {
+      if (revealedLayers.has(index)) return;
+      revealedLayers.add(index);
+      gsap.to(skillFillsByLayer[index], {
+        scaleX: 1,
+        duration: SKILL_GROW_DURATION,
+        stagger: SKILL_GROW_STAGGER,
+        ease: 'power2.out',
+      });
+    };
+
     const tl = gsap.timeline({
       defaults: { ease: EASE },
       scrollTrigger: {
@@ -116,11 +138,7 @@ export function initCareer() {
 
     // Frontend is already open the instant the pin engages, so its
     // bars grow right from the start of the pin.
-    tl.to(
-      skillFillsByLayer[0],
-      { scaleX: 1, duration: SKILL_GROW_DURATION, stagger: SKILL_GROW_STAGGER, ease: 'power2.out' },
-      0,
-    );
+    tl.call(playSkillReveal(0), null, 0);
 
     // Each layer i>=1 slides in right as its segment begins, then the
     // timeline has nothing scheduled for the rest of that segment —
@@ -135,15 +153,10 @@ export function initCareer() {
       );
     });
     // Skill bars grow in right as their layer settles, once its
-    // slide-in tween above finishes — spending part of that layer's
-    // (now-larger) hang budget rather than adding extra scroll distance.
+    // slide-in tween above finishes.
     layers.slice(1).forEach((layer, i) => {
       const index = i + 1;
-      tl.to(
-        skillFillsByLayer[index],
-        { scaleX: 1, duration: SKILL_GROW_DURATION, stagger: SKILL_GROW_STAGGER, ease: 'power2.out' },
-        segmentStart[index] + transitionUnits,
-      );
+      tl.call(playSkillReveal(index), null, segmentStart[index] + transitionUnits);
     });
     // Pads the timeline out to the final layer's own hang so the
     // scrub range matches totalUnits exactly (Infra gets a hang too,
