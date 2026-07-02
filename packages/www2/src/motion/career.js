@@ -1,5 +1,4 @@
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // --- Tuning knobs -----------------------------------------------------
 // Breakpoint below which the pin/scrub mechanic never registers — pick
@@ -7,12 +6,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // stock 768/1024 value. Keep in sync with any layout assumptions below.
 const DESKTOP_QUERY = '(min-width: 880px) and (prefers-reduced-motion: no-preference)';
 
-// Relative scroll-distance share per layer, in "one viewport height"
-// units. Index 0 (Frontend) doubles as its *dwell* time — the scroll
-// spent fully open before Backend starts sliding over it — which is
-// how it ends up with the most scroll-distance and richest open state.
-// Indexes 1-3 are each layer's slide-in *transition* distance.
-const WEIGHTS = [2, 1, 1, 1];
+// Every layer gets an equal-length *hang* — the static pause before
+// the next layer starts sliding in. Layers 1-3 also spend a bit of
+// scroll on the slide-in itself, on top of their hang. Frontend has
+// no transition (it's already open when the pin starts), so its
+// segment is hang-only and ends up shorter than the others' — that's
+// what keeps the pause itself feeling the same length everywhere.
+const LAYER_VH = 1; // scroll spent per layer's slide-in + hang, for layers 1-3
+const TRANSITION_SHARE = 0.4; // fraction of LAYER_VH spent sliding in; the rest (hang) is what's held equal
 
 const EASE = 'none'; // scrubbed 1:1 with scroll — keep linear so trackpad/wheel deltas track exactly
 
@@ -45,7 +46,13 @@ export function initCareer() {
   mm.add(DESKTOP_QUERY, () => {
     const tabHeight = tabs[0].getBoundingClientRect().height;
     const stackHeight = Math.round(Math.min(window.innerHeight * 0.62, 640));
-    const totalWeight = WEIGHTS.reduce((sum, w) => sum + w, 0);
+    const transitionUnits = TRANSITION_SHARE * LAYER_VH;
+    const hangUnits = LAYER_VH - transitionUnits;
+    // Frontend's segment is hang-only; layers 1-3 get a full LAYER_VH
+    // (transition + the same hangUnits) each.
+    const totalUnits = hangUnits + (layers.length - 1) * LAYER_VH;
+    // Absolute start time of each layer's segment.
+    const segmentStart = layers.map((_, i) => (i === 0 ? 0 : hangUnits + (i - 1) * LAYER_VH));
 
     gsap.set(stack, { height: stackHeight });
 
@@ -61,24 +68,33 @@ export function initCareer() {
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        end: () => '+=' + totalWeight * window.innerHeight,
+        end: () => '+=' + totalUnits * window.innerHeight,
         pin: true,
         scrub: true,
         invalidateOnRefresh: true,
       },
     });
 
-    // Frontend's "dwell" is just scroll distance with nothing to
-    // animate, so the first real tween starts at WEIGHTS[0].
-    tl.to(layers[1], { yPercent: 0, y: tabHeight, duration: WEIGHTS[1] }, WEIGHTS[0])
-      .to(layers[2], { yPercent: 0, y: tabHeight * 2, duration: WEIGHTS[2] })
-      .to(layers[3], { yPercent: 0, y: tabHeight * 3, duration: WEIGHTS[3] });
+    // Each layer i>=1 slides in right as its segment begins, then the
+    // timeline has nothing scheduled for the rest of that segment —
+    // that gap is the hang before the next layer's segment starts,
+    // and it's the same length (hangUnits) as every other layer's.
+    layers.slice(1).forEach((layer, i) => {
+      const index = i + 1;
+      tl.to(
+        layer,
+        { yPercent: 0, y: tabHeight * index, duration: transitionUnits },
+        segmentStart[index],
+      );
+    });
+    // Pads the timeline out to the final layer's own hang so the
+    // scrub range matches totalUnits exactly (Infra gets a hang too,
+    // which also keeps the pin's release from feeling lurchy).
+    tl.set({}, {}, totalUnits);
 
-    const cumulativeEnd = [];
-    let acc = 0;
-    WEIGHTS.forEach((w) => {
-      acc += w;
-      cumulativeEnd.push(acc / totalWeight);
+    const cumulativeEnd = layers.map((_, i) => {
+      const settledAt = i === 0 ? 0 : segmentStart[i] + transitionUnits;
+      return settledAt / totalUnits;
     });
 
     const onTabClick = (index) => () => {
