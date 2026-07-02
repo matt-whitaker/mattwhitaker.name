@@ -40,21 +40,6 @@ html {
 }
 
 /*
-  Nav is the deliberate exception: it's chrome, not content ("a utility,
-  not a hero element" per the brief), so it opts out of the lever above
-  by pinning the specific rem tokens it uses back to fixed px values —
-  its padding/gap/text stay constant regardless of viewport. Its
-  max-w-5xl container is untouched, so it still tracks the same width
-  as the page's content sections for alignment.
-
-  If nav starts using another --text-* size, pin it here too.
-*/
-[data-nav] {
-  --spacing: 4px;
-  --text-sm: 14px;
-}
-
-/*
   Opacity convention for prose/body text and hairline borders. Tailwind's
   color/NN modifier can't be locked to a fixed scale via @theme, so the
   scale is documented here instead — stick to these instead of picking
