@@ -1,0 +1,41 @@
+<section id="projects" data-projects class="px-6 py-24">
+  <div class="mx-auto max-w-5xl">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent">Projects</p>
+    <h2 class="mt-2 font-display text-3xl font-bold text-ink sm:text-4xl">A few things I've built.</h2>
+
+    <!--
+      Data-driven grid — adding a project is an edit to src/data/projects.js,
+      never a change to this markup. Card is one uniform shape, whole
+      card is a single click target by design (swap the wrapping <a>
+      behavior later without touching layout).
+    -->
+    <div data-project-grid class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <% projects.forEach(function (project) { %>
+        <a
+          href="<%= project.href %>"
+          data-project-card
+          class="group flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-paper shadow-sm transition-shadow hover:shadow-lg"
+        >
+          <div class="aspect-[3/2] overflow-hidden">
+            <img
+              src="<%= project.thumbnail %>"
+              alt=""
+              width="600"
+              height="400"
+              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="font-display text-lg font-semibold text-ink"><%= project.title %></h3>
+            <p class="mt-2 flex-1 text-sm text-ink/70"><%= project.blurb %></p>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              <% project.tags.forEach(function (tag) { %>
+                <li class="career-chip"><%= tag %></li>
+              <% }); %>
+            </ul>
+          </div>
+        </a>
+      <% }); %>
+    </div>
+  </div>
+</section>

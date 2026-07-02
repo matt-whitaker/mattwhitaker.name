@@ -1,5 +1,147 @@
 @import "tailwindcss";
 
 @theme {
+  /* Single site accent — deep blue placeholder, swap the hue later. */
+  --color-accent: #1e3a8a;
+  --color-accent-soft: #3b5bb5;
+  --color-ink: #0b0f19;
+  --color-paper: #f8f9fb;
 
+  /* One display family, one body family — system stacks for now, */
+  /* swap the font-family value directly when real fonts land.    */
+  --font-display: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-body: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-paper);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+}
+
+#site-nav.is-scrolled {
+  background-color: color-mix(in oklab, var(--color-paper) 85%, transparent);
+  border-color: color-mix(in oklab, var(--color-ink) 10%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #site-nav {
+    transition: none;
+  }
+}
+
+/* Career — the tabbed-folder stack.
+   Layout (flex column / gap) is the mobile baseline: full, uniform
+   blocks in normal flow. src/motion/career.js promotes each
+   [data-layer] to position:absolute above the desktop breakpoint and
+   reverts it on teardown, so no desktop-only rules live here. */
+
+.career-layer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.career-layer__tab {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  height: 3.5rem;
+  flex: none;
+  padding: 0 1.5rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.career-layer__tab:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+.career-layer__tab-index {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.5;
+}
+
+.career-layer__tab-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.career-layer__tab-eyebrow {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+}
+
+.career-layer__tab-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.career-layer__body {
+  flex: 1 1 auto;
+  padding: 0 1.5rem 2rem;
+  overflow-y: auto;
+}
+
+.career-layer--frontend {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+.career-layer--neutral {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border-top: 1px solid color-mix(in oklab, var(--color-ink) 10%, transparent);
+}
+
+.chip {
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: color-mix(in oklab, var(--color-ink) 6%, transparent);
+  color: var(--color-ink);
+}
+
+.chip--accent {
+  background: color-mix(in oklab, var(--color-paper) 18%, transparent);
+  color: var(--color-paper);
+}
+
+/* Emwhit equalizer bar — static heights come from inline style (baked
+   in EJS); JS layers a scaleY transform on top, growing from the
+   bottom, so the resting heights below still make sense as a floor. */
+.emwhit-bar {
+  flex: 1 1 0;
+  min-width: 2px;
+  max-width: 10px;
+  border-radius: 2px 2px 0 0;
+  background: var(--color-accent-soft);
+  transform-origin: bottom center;
+  will-change: transform;
 }

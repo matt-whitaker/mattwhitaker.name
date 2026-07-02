@@ -1,0 +1,129 @@
+<section id="career" data-career class="relative px-6 py-24">
+  <div class="mx-auto max-w-5xl">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent">Career</p>
+    <h2 class="mt-2 font-display text-3xl font-bold text-ink sm:text-4xl">Depth, then breadth.</h2>
+
+    <!--
+      The "folder": four layers stacked in DOM order. On desktop (see
+      src/motion/career.js) this pins and each layer slides up to lock
+      under the previous layer's tab. Below the desktop breakpoint, or
+      with reduced-motion, GSAP never touches this markup — it's just a
+      flex column of full-content blocks, in the same order.
+    -->
+    <div
+      data-career-stack
+      class="mt-10 flex flex-col gap-6 overflow-hidden rounded-2xl border border-ink/10 bg-paper"
+    >
+      <!-- 01 — Frontend: the fat, accented layer -->
+      <article data-layer class="career-layer career-layer--frontend">
+        <h3>
+          <button type="button" data-layer-tab class="career-layer__tab">
+            <span class="career-layer__tab-index">01</span>
+            <span class="career-layer__tab-text">
+              <span class="career-layer__tab-name">Frontend</span>
+            </span>
+          </button>
+        </h3>
+        <div class="career-layer__body">
+          <p class="text-sm font-semibold uppercase tracking-wide text-paper/70">Where I go deep</p>
+          <p class="mt-3 max-w-2xl text-paper/90">
+            Ten years in React — reactive patterns with RxJS, framework-neutral domain state, design
+            systems, micro-frontends. Raw JS/HTML/CSS as first principles underneath all of it.
+            Performance, accessibility, and i18n aren't an afterthought; they're load-bearing.
+          </p>
+          <ul class="mt-6 flex flex-wrap gap-2">
+            <li class="chip chip--accent">React</li>
+            <li class="chip chip--accent">RxJS</li>
+            <li class="chip chip--accent">TypeScript</li>
+            <li class="chip chip--accent">Performance</li>
+            <li class="chip chip--accent">a11y / i18n</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 02 — Backend -->
+      <article data-layer class="career-layer career-layer--neutral">
+        <h3>
+          <button type="button" data-layer-tab class="career-layer__tab">
+            <span class="career-layer__tab-index">02</span>
+            <span class="career-layer__tab-text">
+              <span class="career-layer__tab-eyebrow">and the reach beneath it</span>
+              <span class="career-layer__tab-name">Backend</span>
+            </span>
+          </button>
+        </h3>
+        <div class="career-layer__body">
+          <p class="max-w-2xl text-ink/75">
+            Services in C#/.NET, Java Spring Boot, Node, and Python Flask — enough range to pick the
+            right tool for the team already in place.
+          </p>
+          <ul class="mt-6 flex flex-wrap gap-2">
+            <li class="chip">.NET</li>
+            <li class="chip">Spring Boot</li>
+            <li class="chip">Node</li>
+            <li class="chip">Flask</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 03 — Data -->
+      <article data-layer class="career-layer career-layer--neutral">
+        <h3>
+          <button type="button" data-layer-tab class="career-layer__tab">
+            <span class="career-layer__tab-index">03</span>
+            <span class="career-layer__tab-text">
+              <span class="career-layer__tab-name">Data</span>
+            </span>
+          </button>
+        </h3>
+        <div class="career-layer__body">
+          <p class="max-w-2xl text-ink/75">
+            SQL and NoSQL — Postgres, MySQL, and SQL Server on one side; Mongo, DynamoDB, and Cassandra
+            on the other.
+          </p>
+          <ul class="mt-6 flex flex-wrap gap-2">
+            <li class="chip">Postgres</li>
+            <li class="chip">DynamoDB</li>
+            <li class="chip">Cassandra</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 04 — Infra -->
+      <article data-layer class="career-layer career-layer--neutral">
+        <h3>
+          <button type="button" data-layer-tab class="career-layer__tab">
+            <span class="career-layer__tab-index">04</span>
+            <span class="career-layer__tab-text">
+              <span class="career-layer__tab-name">Infra</span>
+            </span>
+          </button>
+        </h3>
+        <div class="career-layer__body">
+          <p class="max-w-2xl text-ink/75">
+            Most useful at the edge layer — orchestration, the API contract, the seams where systems
+            meet. Comfortable designing systems well beyond where I'm hands-on.
+          </p>
+          <ul class="mt-6 flex flex-wrap gap-2">
+            <li class="chip">K8s</li>
+            <li class="chip">Edge layer</li>
+            <li class="chip">System design</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div data-career-availability class="mx-auto mt-16 max-w-2xl text-center">
+    <p class="text-lg text-ink/80">
+      Open to senior frontend contract work — fully remote, or onsite/hybrid on the Seattle Eastside.
+      W2, defined scope preferred.
+    </p>
+    <a
+      href="#contact"
+      class="mt-6 inline-block rounded-full bg-accent px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-accent-soft"
+    >
+      Let's talk
+    </a>
+  </div>
+</section>

@@ -1,0 +1,60 @@
+<section id="music" data-emwhit class="relative overflow-hidden bg-ink px-6 py-24 text-paper">
+  <!--
+    Equalizer bar: static varied heights baked in below so it reads
+    fine with JS off or reduced-motion. src/motion/emwhit.js layers a
+    scroll-scrubbed scaleY on top (transform only) when motion is safe.
+  -->
+  <div
+    data-emwhit-bars
+    class="mx-auto mb-16 flex h-16 max-w-5xl items-end justify-between gap-1"
+    aria-hidden="true"
+  >
+    <% for (let i = 0; i < 28; i++) { %>
+      <% const h = ((i * 53) % 70) + 20; %>
+      <span data-emwhit-bar class="emwhit-bar" style="height: <%= h %>%"></span>
+    <% } %>
+  </div>
+
+  <div class="mx-auto grid max-w-5xl gap-10 md:grid-cols-[minmax(0,320px)_1fr] md:items-center">
+    <div class="overflow-hidden rounded-2xl border border-paper/10 shadow-xl">
+      <img
+        src="https://www.placekittens.com/500/500"
+        alt="The Emwhit Project album art"
+        width="500"
+        height="500"
+        class="h-full w-full object-cover"
+      />
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-widest text-accent-soft">The Emwhit Project</p>
+      <h2 class="mt-2 font-display text-3xl font-bold sm:text-4xl">An independent solo rock project.</h2>
+      <p class="mt-4 max-w-xl text-paper/75">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. I write, record, and mix everything
+        myself — the same instinct for craft that shows up in the frontend work, pointed at guitars and
+        drums instead of components. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="#"
+          class="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent-soft hover:text-accent-soft"
+        >
+          Spotify
+        </a>
+        <a
+          href="#"
+          class="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent-soft hover:text-accent-soft"
+        >
+          Bandcamp
+        </a>
+        <a
+          href="#"
+          class="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent-soft hover:text-accent-soft"
+        >
+          YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

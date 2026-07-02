@@ -5,10 +5,20 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vite-project</title>
+    <title>Matt [Lastname] — Senior Frontend Engineer</title>
   </head>
-  <body>
-    <div id="app"></div>
+  <body class="bg-paper text-ink">
+    <%- include('./src/partials/nav.ejs') %>
+
+    <main>
+      <%- include('./src/partials/hero.ejs') %>
+      <%- include('./src/partials/career.ejs') %>
+      <%- include('./src/partials/emwhit.ejs') %>
+      <%- include('./src/partials/projects.ejs', { projects: projects }) %>
+    </main>
+
+    <%- include('./src/partials/social-footer.ejs') %>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
