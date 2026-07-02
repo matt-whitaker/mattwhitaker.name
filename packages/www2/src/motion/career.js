@@ -25,8 +25,8 @@ const EASE = 'none'; // scrubbed 1:1 with scroll — keep linear so trackpad/whe
 
 // The "open folder" viewport: a fraction of the window height, capped
 // so it doesn't get unwieldy on very tall viewports.
-const STACK_HEIGHT_VH_RATIO = 0.62;
-const STACK_HEIGHT_MAX_PX = 720;
+const STACK_HEIGHT_VH_RATIO = 0.72;
+const STACK_HEIGHT_MAX_PX = 880;
 
 // Skill bars grow in (scaleX 0 -> 1) once their layer has fully
 // settled — one tween, no lead-in. (A two-phase version that started
