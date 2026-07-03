@@ -1,12 +1,3 @@
-// Skill bars for the Career section. Bar length encodes years of
-// experience, relative to the deepest skill across every layer (so a
-// bar in Data is directly comparable to one in Frontend, not just
-// within its own layer). Strength is a separate, self-assessed axis —
-// shown as both fill opacity and an explicit tier label, since opacity
-// alone isn't an accessible way to convey information.
-//
-// All numbers here are placeholders — edit freely, everything derives
-// from this one file.
 
 export const strengthLabels = {
   exposure: 'Exposure',

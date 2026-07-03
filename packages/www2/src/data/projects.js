@@ -1,4 +1,4 @@
-// Project card data. Adding a project is a data edit — the card markup never changes.
+
 export const projects = [
   {
     title: 'Brewdocs',
