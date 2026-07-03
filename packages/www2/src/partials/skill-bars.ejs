@@ -1,0 +1,25 @@
+<!--
+  Shared by each career layer's right-hand panel. `skills` is one of
+  careerSkills.{frontend,backend,data,infra}; `accent` switches to the
+  paper-on-accent variant for use inside the Frontend panel.
+  strengthLabels/strengthOpacity/maxSkillYears come from the top-level
+  EJS data (src/data/career-skills.js) via the inherited scope.
+-->
+<ul class="skill-bars">
+  <% skills.forEach(function (skill) { %>
+    <li>
+      <div class="skill-bar__meta">
+        <span class="skill-bar__name"><%= skill.name %></span>
+        <span class="skill-bar__detail">
+          <%= skill.years %> yr<%= skill.years === 1 ? '' : 's' %> · <%= strengthLabels[skill.strength] %>
+        </span>
+      </div>
+      <div class="skill-bar__track<%= accent ? ' skill-bar__track--accent' : '' %>" aria-hidden="true">
+        <div
+          class="skill-bar__fill<%= accent ? ' skill-bar__fill--accent' : '' %>"
+          style="width: <%= Math.round((skill.years / maxSkillYears) * 100) %>%; opacity: <%= strengthOpacity[skill.strength] %>%"
+        ></div>
+      </div>
+    </li>
+  <% }); %>
+</ul>

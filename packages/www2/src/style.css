@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #7A7669;
+  --color-accent-soft: color-mix(in oklab, var(--color-accent), white 22%);
+  --color-alternative: #B59410;
+  --color-ink: #0b0f19;
+  --color-paper: color-mix(in oklab, white, var(--color-accent) 4%);
+
+  --font-display: Urbanist, ui-sans-serif, sans-serif;
+  --font-body: Urbanist, ui-sans-serif, sans-serif;
+
+  /* Extends Tailwind's default type scale (which stops at text-xs =
+     0.75rem) for the eyebrow/index micro-labels in the career folder. */
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1rem;
+
+  --aspect-card: 3 / 2;
+}
+
+/*
+  The global responsive lever. Tailwind's entire scale — --spacing,
+  every --text-*, --container-* — is defined in rem, which is always
+  relative to this element's font-size. Scaling it fluidly here means
+  spacing, type, and container widths across the whole site grow
+  together continuously with viewport width, instead of needing a
+  lg:/xl: step added to every element by hand.
+
+  Bounds: 1rem (today's baseline, browser default — respects the
+  user's own font-size/zoom preference) at <=400px viewport, up to
+  1.25rem (125%) at >=1536px (the 2xl breakpoint). Tune the two rem
+  values below to make the whole site scale more or less aggressively.
+*/
+html {
+  font-size: clamp(1rem, 0.912rem + 0.352vw, 1.25rem);
+}
+
+/*
+  Opacity convention for prose/body text and hairline borders. Tailwind's
+  color/NN modifier can't be locked to a fixed scale via @theme, so the
+  scale is documented here instead — stick to these instead of picking
+  a new number:
+
+  Text (on either --color-ink or --color-paper):
+    /80 — body copy, meant to be read comfortably
+    /60 — secondary/de-emphasized text (links, in-panel eyebrows)
+    /50 — footer/legal chrome only
+
+  Borders:
+    /10 — structural dividers
+    /20 — interactive elements (buttons) on dark backgrounds
+
+  (Micro-labels like the career tab index numbers are decorative, not
+  prose, and are exempt — see .career-layer__tab-index below.)
+*/
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
+
+  /* list-none (above) handles the marker in modern browsers; older
+     WebKit renders it as a separate pseudo-element that needs this. */
+  [data-nav-menu] summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  /* Career — the tabbed-folder stack.
+     Layout (flex column / gap) is the mobile baseline: full, uniform
+     blocks in normal flow. src/motion/career.js promotes each
+     [data-layer] to position:absolute above the desktop breakpoint and
+     reverts it on teardown, so no desktop-only rules live here. */
+
+  .career-layer {
+    @apply flex flex-col;
+  }
+
+  .career-layer--frontend {
+    @apply bg-accent text-paper;
+  }
+
+  .career-layer--neutral {
+    @apply bg-paper text-ink border-t border-ink/10;
+  }
+
+  .career-layer__tab {
+    @apply flex h-14 w-full shrink-0 items-center gap-3 px-6 text-left cursor-pointer;
+    @apply focus-visible:outline-2 focus-visible:outline-accent focus-visible:-outline-offset-2;
+  }
+
+  .career-layer__tab-index {
+    @apply font-display text-xs tabular-nums opacity-50;
+  }
+
+  .career-layer__tab-text {
+    @apply flex flex-col leading-tight;
+  }
+
+  .career-layer__tab-eyebrow {
+    @apply text-2xs uppercase tracking-widest opacity-60;
+  }
+
+  .career-layer__tab-name {
+    @apply font-display font-semibold;
+  }
+
+  .career-layer__body {
+    @apply flex-1 px-6 pb-8 overflow-y-auto;
+  }
+
+  /* Chip — used for career tech tags and project tags alike. */
+  .chip {
+    @apply rounded-full px-3 py-1 text-xs font-medium bg-ink/6 text-ink;
+  }
+
+  .chip--accent {
+    @apply bg-paper/20 text-paper;
+  }
+
+  /* Skill bars — the career layer's skill display. Bar length encodes
+     years of experience; fill opacity encodes self-assessed strength,
+     paired with an explicit text label elsewhere (.skill-bar__detail)
+     since opacity alone isn't an accessible way to convey a tier.
+     --accent variants are for use inside the accent-colored Frontend
+     panel, mirroring .chip/.chip--accent. */
+  .skill-bars {
+    @apply flex flex-col gap-4;
+  }
+
+  .skill-bar__meta {
+    @apply mb-1 flex items-baseline justify-between gap-3 text-sm;
+  }
+
+  .skill-bar__name {
+    @apply font-medium;
+  }
+
+  .skill-bar__detail {
+    @apply text-xs opacity-60;
+  }
+
+  .skill-bar__track {
+    @apply h-1.5 w-full overflow-hidden rounded-full bg-ink/10;
+  }
+
+  .skill-bar__track--accent {
+    @apply bg-paper/20;
+  }
+
+  .skill-bar__fill {
+    @apply h-full rounded-full bg-accent;
+  }
+
+  .skill-bar__fill--accent {
+    @apply bg-paper;
+  }
+
+  /* Emwhit equalizer bar — static heights come from inline style (baked
+     in EJS); JS layers a scaleY transform on top, growing from the
+     bottom, so the resting heights below still make sense as a floor. */
+  .emwhit-bar {
+    @apply flex-1 min-w-0.5 max-w-2.5 rounded-t-xs bg-accent-soft origin-bottom will-change-transform;
+  }
+}

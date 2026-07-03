@@ -1,0 +1,85 @@
+<section
+  id="music"
+  data-emwhit
+  class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-ink px-6 py-24 text-paper"
+>
+  <!--
+    Equalizer bar: static varied heights baked in below so it reads
+    fine with JS off or reduced-motion. src/motion/emwhit.js layers a
+    scroll-scrubbed scaleY on top (transform only) when motion is safe.
+  -->
+  <div
+    data-emwhit-bars
+    class="mx-auto mb-16 flex h-28 w-full max-w-5xl items-end justify-between gap-1"
+    aria-hidden="true"
+  >
+    <%
+      // Three stacked sine waves instead of a modulo-based pseudo-random
+      // sequence: a slow one for the broad "clumps" a spectrum tends to
+      // have (a couple of dominant bands, not uniform noise), a medium
+      // one for shape within those clumps, and a fast/low-amplitude one
+      // for fine jitter so it doesn't look perfectly smooth. Weights sum
+      // to 1 so the envelope stays within roughly ±1 before scaling.
+      const barCount = 28;
+    %>
+    <% for (let i = 0; i < barCount; i++) { %>
+      <%
+        const t = i / (barCount - 1);
+        const envelope =
+          Math.sin(t * Math.PI * 2.2 + 0.4) * 0.55 +
+          Math.sin(t * Math.PI * 6 + 1.5) * 0.3 +
+          Math.sin(i * 2.7) * 0.15;
+        const h = Math.round(50 + envelope * 46);
+      %>
+      <span data-emwhit-bar class="emwhit-bar" style="height: <%= h %>%"></span>
+    <% } %>
+  </div>
+
+  <div class="mx-auto flex w-full max-w-5xl flex-col gap-10 md:flex-row md:items-center">
+    <div class="overflow-hidden rounded-2xl border border-paper/10 shadow-xl md:w-80 md:shrink-0">
+      <img
+        src="/images/emwhit-screenshot.png"
+        alt="The Emwhit Project"
+        class="h-full w-full object-cover"
+      />
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-widest text-accent-soft">The Emwhit Project</p>
+      <h2 class="mt-2 font-display text-4xl font-bold">An independent music project.</h2>
+      <p class="mt-4 max-w-xl text-paper/80">
+        Solo, self-taught, entirely DIY. I write, track, and mix every song myself, no band, no outside
+        production. Just me, my voice, and my computer. Less about genre than about telling stories.
+        Same instinct for craft that shows up in my frontend work, just pointed at software guitars and drums instead of components.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a
+          target="_blank"
+          href="https://emwhitproject.com"
+          class="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent-soft hover:text-accent-soft"
+        >
+          Website
+        </a>
+        <!--<a
+          href="#"
+          class="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent-soft hover:text-accent-soft"
+        >
+          Spotify
+        </a>-->
+        <!--<a
+          href="#"
+          class="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent-soft hover:text-accent-soft"
+        >
+          Bandcamp
+        </a>-->
+        <!--<a
+          href="#"
+          class="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent-soft hover:text-accent-soft"
+        >
+          YouTube
+        </a>-->
+      </div>
+    </div>
+  </div>
+</section>

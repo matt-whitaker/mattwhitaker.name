@@ -1,0 +1,138 @@
+<section id="career" data-career class="relative px-6 pt-8 pb-20">
+  <div class="mx-auto max-w-5xl">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent">Career</p>
+    <h2 class="mt-2 font-display text-4xl font-bold text-ink">Depth, <small>then breadth</small>.</h2>
+
+    <!--
+      The "folder": four layers stacked in DOM order. On desktop (see
+      src/motion/career.js) this pins and each layer slides up to lock
+      under the previous layer's tab. Below the desktop breakpoint, or
+      with reduced-motion, GSAP never touches this markup — it's just a
+      flex column of full-content blocks, in the same order.
+    -->
+    <div
+      data-career-stack
+      class="relative mt-10 flex flex-col gap-6 overflow-hidden rounded-2xl border border-ink/10 bg-paper"
+    >
+      <!-- 01 — Frontend: the fat, accented layer -->
+      <article data-layer class="career-layer career-layer--frontend">
+        <h3>
+          <button type="button" data-layer-tab class="career-layer__tab">
+            <span class="career-layer__tab-index">01</span>
+            <span class="career-layer__tab-text">
+              <span class="career-layer__tab-eyebrow">Expertise</span>
+              <span class="career-layer__tab-name">Frontend</span>
+            </span>
+          </button>
+        </h3>
+        <div class="career-layer__body">
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-5">
+            <div class="md:col-span-3">
+              <p class="mt-3 max-w-2xl text-paper/80">
+                The hallmark of my career: virtually every role I've had touched the frontend, most often as the de facto SME or lead. From UX facilitator—bridging design and implementation—to evangelist for best practices, I've played a pivotal role in driving frontend architecture and development, up-leveling my peers, and even leading small teams building greenfield application spaces.
+              </p>
+              <p class="mt-3 max-w-2xl text-paper/80">
+                I love sharing that depth of expertise and supporting everyone from juniors to seniors while still pursuing the strongest individual contributions I can.
+              </p>
+              <p class="mt-3 max-w-2xl text-paper/80">
+                Today I draw on a vast range of frontend experience, spanning splash pages, charting and analytics platforms, comprehensive component libraries, and complex administrative interfaces—with work covering accessibility, internationalization, and web performance.
+              </p>
+            </div>
+            <div class="md:col-span-2">
+              <%- include('./skill-bars.ejs', { skills: careerSkills.frontend, accent: true }) %>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 — Backend -->
+      <article data-layer class="career-layer career-layer--neutral">
+        <h3>
+          <button type="button" data-layer-tab class="career-layer__tab">
+            <span class="career-layer__tab-index">02</span>
+            <span class="career-layer__tab-text">
+              <span class="career-layer__tab-name">Backend</span>
+            </span>
+          </button>
+        </h3>
+        <div class="career-layer__body">
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-5">
+            <div class="md:col-span-3">
+              <p class="max-w-2xl text-ink/80">
+                Every frontend needs a backend, so for the vast majority of my career I've technically been fullstack. I've had my hands in every layer: early work with CMS platforms, MVC applications in .NET or Spring, client-supporting orchestration services (including serverless solutions), and distributed microservice systems. Working across that variety of stacks has given me more than general knowledge of backend best practices; it's given me a wide lexicon I can apply across different projects and teams as standards evolve. I can adapt rapidly to any web-focused backend system, whether it's built on object-oriented, functional, or event-driven paradigms.
+              </p>
+            </div>
+            <div class="md:col-span-2">
+              <%- include('./skill-bars.ejs', { skills: careerSkills.backend, accent: false }) %>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 — Data -->
+      <article data-layer class="career-layer career-layer--neutral">
+        <h3>
+          <button type="button" data-layer-tab class="career-layer__tab">
+            <span class="career-layer__tab-index">03</span>
+            <span class="career-layer__tab-text">
+              <span class="career-layer__tab-name">Data</span>
+            </span>
+          </button>
+        </h3>
+        <div class="career-layer__body">
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-5">
+            <div class="md:col-span-3">
+              <p class="mt-3 max-w-2xl text-ink/80">
+                My data instincts predate my career: I focused on data systems in college, so thinking about how data is stored, represented, and queried has been part of my engineering DNA from the start. That foundation has served me well in my fullstack roles, where I've been responsible for data design and database-focused thinking, from modeling domains and designing schemas to shaping how data flows from storage to the client.
+              </p>
+              <p class="mt-3 max-w-2xl text-ink/80">
+                Most of my experience lives in the relational space, where I'm comfortable reasoning about normalization, query design, and the tradeoffs that come with schema evolution. But I've also worked with NoSQL solutions when the problem called for them, choosing alternative storage approaches based on the shape and access patterns of the data rather than defaulting to habit.
+              </p>
+            </div>
+            <div class="md:col-span-2">
+              <%- include('./skill-bars.ejs', { skills: careerSkills.data, accent: false }) %>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 — Infra -->
+      <article data-layer class="career-layer career-layer--neutral">
+        <h3>
+          <button type="button" data-layer-tab class="career-layer__tab">
+            <span class="career-layer__tab-index">04</span>
+            <span class="career-layer__tab-text">
+              <span class="career-layer__tab-name">Infra</span>
+            </span>
+          </button>
+        </h3>
+        <div class="career-layer__body">
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-5">
+            <div class="md:col-span-3">
+              <p class="mt-3 max-w-2xl text-ink/80">
+                At the core of every web system is its infrastructure. While it's not my career focus, and I have less hands-on experience than dedicated backend or site-reliability engineers, I've had many opportunities to think like an infrastructure professional. My expertise centers on the "edge," where the frontend meets orchestration, with serverless as my primary mental model. Beyond that, I'm familiar with modern infrastructure platforms like Kubernetes, and I can reason about systems architecture even in areas where my hands-on experience is lighter.
+              </p>
+            </div>
+            <div class="md:col-span-2">
+              <%- include('./skill-bars.ejs', { skills: careerSkills.infra, accent: false }) %>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div data-career-availability class="mx-auto mt-16 max-w-2xl text-center">
+    <p class="text-lg text-ink/80">
+      Open to Senior Frontend roles &mdash; fully remote, or onsite/hybrid.
+      <br />Seattle Eastside / Bellevue / Redmond.
+      <br />W2 Contract or Full-time.
+    </p>
+    <a
+      href="#contact"
+      class="mt-6 inline-block rounded-full bg-accent px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-accent-soft"
+    >
+      Let's talk
+    </a>
+  </div>
+</section>

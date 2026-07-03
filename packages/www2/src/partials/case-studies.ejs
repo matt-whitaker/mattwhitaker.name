@@ -1,0 +1,23 @@
+<section id="case-studies" data-case-studies class="px-6 py-24">
+  <div class="mx-auto max-w-5xl">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent">Case Studies</p>
+    <h2 class="mt-2 font-display text-4xl font-bold text-ink">Work I can talk about.</h2>
+    <p class="mt-4 max-w-2xl text-ink/80">
+      Some of what I've built and the problems I've solved have more nuanced accessibility, many not having a public link
+      to point to. Over my career I've built many internal solutions amongst other work and will attempt to detail them here.
+    </p>
+
+    <!--
+      Data-driven grid — same card component as Projects (content-card.ejs),
+      a separate data source (src/data/case-studies.js) since these
+      don't link out anywhere. lg:grid-cols-3, not xl:4 — match the
+      column count to however many entries exist so the grid doesn't
+      end on an awkward gap.
+    -->
+    <div data-case-study-grid class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <% caseStudies.forEach(function (study) { %>
+        <%- include('./content-card.ejs', { item: study, attr: 'data-case-study-card' }) %>
+      <% }); %>
+    </div>
+  </div>
+</section>

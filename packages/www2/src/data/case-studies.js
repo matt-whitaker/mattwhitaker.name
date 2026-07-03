@@ -1,0 +1,10 @@
+
+export const caseStudies = [
+  {
+    title: 'Pay-i.com',
+    blurb: 'A heavily animated, parallaxing landing page for Pay-i',
+    tags: ['Parallax', 'GSAP'],
+    href: 'https://web.archive.org/web/20250522002340/https://pay-i.com/',
+    thumbnail: '/images/pay-i-wayback-screenshot.png'
+  }
+];
