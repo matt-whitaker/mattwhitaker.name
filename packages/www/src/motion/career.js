@@ -196,7 +196,6 @@ export function initCareer() {
       // text sits at the top of the layer, so triggering on the layer
       // itself lines the fade up with when that text appears.
       const textEls = [
-        layer.querySelector('.career-layer__tab'),
         ...layer.querySelectorAll('.career-layer__body p'),
       ].filter(Boolean);
       if (textEls.length) {
@@ -208,7 +207,7 @@ export function initCareer() {
           stagger: 0.1,
           // Play forward once and stay put — no fade-back on scroll-up,
           // matching every other reveal on the page.
-          scrollTrigger: { trigger: layer, start: 'top 85%', once: true },
+          scrollTrigger: { trigger: layer, start: 'top 80%', once: true },
         });
       }
 
