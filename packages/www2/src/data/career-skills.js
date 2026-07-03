@@ -41,9 +41,8 @@ export const careerSkills = {
     { name: 'Python / Flask', years: 3, strength: 'comfortable' }
   ],
   data: [
-    { name: 'MySQL', years: 5, strength: 'strong' },
-    { name: 'DynamoDB', years: 3, strength: 'exposure' },
-    { name: 'MongoDB', years: 2, strength: 'exposure' },
+    { name: 'SQL / MySQL', years: 9, strength: 'strong' },
+    { name: 'No SQL / MongoDB / DynamoDB', years: 2, strength: 'exposure' }
   ],
   infra: [
     { name: 'System Design', years: 8, strength: 'strong' },
