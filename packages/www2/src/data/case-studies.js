@@ -4,10 +4,10 @@
 // entries yet — replace these lorem placeholders with the real ones.
 export const caseStudies = [
   {
-    title: 'Case Study One',
-    blurb: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
-    tags: ['case study'],
-    href: '#',
-    thumbnail: 'https://www.placekittens.com/600/404',
+    title: 'Pay-i.com',
+    blurb: 'A heavily animated, parallaxing landing page for Pay-i',
+    tags: ['Parallax', 'GSAP'],
+    href: 'https://web.archive.org/web/20250522002340/https://pay-i.com/',
+    thumbnail: '/images/pay-i-wayback-screenshot.png'
   }
 ];

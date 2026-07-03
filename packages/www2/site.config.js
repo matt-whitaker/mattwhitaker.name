@@ -1,3 +1,6 @@
 export default {
   email: 'hire@mattwhitaker.name',
+  fonts: {
+    urbanist: 'https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap'
+  }
 };

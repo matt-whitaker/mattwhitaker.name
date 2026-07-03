@@ -9,8 +9,8 @@
 
   /* One display family, one body family — system stacks for now, */
   /* swap the font-family value directly when real fonts land.    */
-  --font-display: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
-  --font-body: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-display: Urbanist, ui-sans-serif, sans-serif;
+  --font-body: Urbanist, ui-sans-serif, sans-serif;
 
   /* Extends Tailwind's default type scale (which stops at text-xs =
      0.75rem) for the eyebrow/index micro-labels in the career folder. */
