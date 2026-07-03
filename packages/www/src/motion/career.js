@@ -185,10 +185,35 @@ export function initCareer() {
   });
 
   // Below the pin breakpoint, layers are plain stacked blocks in normal
-  // flow — so unlike the pinned version above, each one's skill bars
-  // can just grow in as it naturally scrolls into view.
+  // flow — so unlike the pinned version above, each one's content can
+  // just reveal as it naturally scrolls into view. matchMedia reverts
+  // all sets/tweens below when crossing back above the breakpoint, so
+  // nothing is left invisible on desktop.
   mm.add(MOBILE_QUERY, () => {
     layers.forEach((layer) => {
+      // The layer's heading + copy fades up as the layer enters,
+      // matching the card reveal used by Projects/Case Studies. The
+      // text sits at the top of the layer, so triggering on the layer
+      // itself lines the fade up with when that text appears.
+      const textEls = [
+        layer.querySelector('.career-layer__tab'),
+        ...layer.querySelectorAll('.career-layer__body p'),
+      ].filter(Boolean);
+      if (textEls.length) {
+        gsap.from(textEls, {
+          opacity: 0,
+          y: 24,
+          duration: 0.5,
+          ease: 'power2.out',
+          stagger: 0.1,
+          // Play forward once and stay put — no fade-back on scroll-up,
+          // matching every other reveal on the page.
+          scrollTrigger: { trigger: layer, start: 'top 85%', once: true },
+        });
+      }
+
+      // Skill bars grow in on their own trigger — the bars stack below
+      // the copy, so they get their own (lower) trigger point.
       const list = layer.querySelector('.skill-bars');
       const fills = layer.querySelectorAll('.skill-bar__fill');
       if (!list || !fills.length) return;
