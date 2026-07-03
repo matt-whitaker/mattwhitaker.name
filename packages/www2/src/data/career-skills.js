@@ -26,16 +26,16 @@ export const careerSkills = {
   frontend: [
     { name: 'HTML / CSS / JavaScript', years: 12, strength: 'expert' },
     { name: 'TypeScript', years: 6, strength: 'strong' },
-    { name: 'React', years: 10, strength: 'expert' },
-    { name: 'Redux / RTK', years: 10, strength: 'expert' },
+    { name: 'React / Redux / RTK', years: 10, strength: 'expert' },
     { name: 'RxJS', years: 6, strength: 'strong' },
+    { name: 'Next.js', years: 2, strength: 'comfortable' },
     { name: 'Figma / Component Systems', years: 7, strength: 'strong' },
     { name: 'Tailwind', years: 3, strength: 'strong' },
     { name: 'Web Performance', years: 3, strength: 'strong' },
     { name: 'a11y / i18n', years: 9, strength: 'strong' },
   ],
   backend: [
-    { name: 'Node.js', years: 8, strength: 'strong' },
+    { name: 'Node.js / Express', years: 8, strength: 'strong' },
     { name: 'C# / .NET', years: 4, strength: 'comfortable' },
     { name: 'Java / Spring Boot', years: 5, strength: 'strong' },
     { name: 'Python / Flask', years: 3, strength: 'comfortable' }
