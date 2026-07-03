@@ -1,14 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  /* Single site accent — deep blue placeholder, swap the hue later. */
-  --color-accent: #1e3a8a;
-  --color-accent-soft: #3b5bb5;
+  --color-accent: #7A7669;
+  --color-accent-soft: color-mix(in oklab, var(--color-accent), white 22%);
+  --color-alternative: #B59410;
   --color-ink: #0b0f19;
-  --color-paper: #f8f9fb;
+  --color-paper: color-mix(in oklab, white, var(--color-accent) 4%);
 
-  /* One display family, one body family — system stacks for now, */
-  /* swap the font-family value directly when real fonts land.    */
   --font-display: Urbanist, ui-sans-serif, sans-serif;
   --font-body: Urbanist, ui-sans-serif, sans-serif;
 
@@ -17,8 +15,6 @@
   --text-2xs: 0.6875rem;
   --text-2xs--line-height: 1rem;
 
-  /* Named aspect ratio for project thumbnails, instead of an
-     inline aspect-[3/2] arbitrary value. */
   --aspect-card: 3 / 2;
 }
 
