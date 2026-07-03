@@ -189,15 +189,16 @@ export function initCareer() {
   // can just grow in as it naturally scrolls into view.
   mm.add(MOBILE_QUERY, () => {
     layers.forEach((layer) => {
+      const list = layer.querySelector('.skill-bars');
       const fills = layer.querySelectorAll('.skill-bar__fill');
-      if (!fills.length) return;
+      if (!list || !fills.length) return;
       gsap.set(fills, { scaleX: 0, transformOrigin: 'left center' });
       gsap.to(fills, {
         scaleX: 1,
         duration: 0.6,
         stagger: 0.08,
         ease: 'power2.out',
-        scrollTrigger: { trigger: layer, start: 'top 80%' },
+        scrollTrigger: { trigger: list, start: 'top 85%' },
       });
     });
   });
