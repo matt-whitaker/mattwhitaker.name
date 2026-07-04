@@ -1,5 +1,5 @@
 export default {
-  email: 'hire@mattwhitaker.name',
+  email: 'contact@mattwhitaker.name',
   linkedin: 'https://www.linkedin.com/in/whitakermatt',
   github: 'https://github.com/matt-whitaker',
   fonts: {
