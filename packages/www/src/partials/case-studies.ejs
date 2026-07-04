@@ -7,13 +7,6 @@
       to point to. Over my career I've built many internal solutions amongst other work and will attempt to detail them here.
     </p>
 
-    <!--
-      Data-driven grid — same card component as Projects (content-card.ejs),
-      a separate data source (src/data/case-studies.js) since these
-      don't link out anywhere. lg:grid-cols-3, not xl:4 — match the
-      column count to however many entries exist so the grid doesn't
-      end on an awkward gap.
-    -->
     <div data-case-study-grid class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       <% caseStudies.forEach(function (study) { %>
         <%- include('./content-card.ejs', { item: study, attr: 'data-case-study-card' }) %>

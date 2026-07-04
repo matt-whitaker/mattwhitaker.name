@@ -14,11 +14,6 @@
     class="mx-auto flex max-w-5xl items-center justify-between py-4"
     aria-label="Primary"
   >
-    <!--
-      Logo only shows at md+ — on mobile it's redundant with the name
-      already in the hero heading, and just gets in the way of a fixed
-      bar that's supposed to be unobtrusive. Fine for it to scroll away.
-    -->
     <a href="#intro" class="hidden font-display text-sm font-normal tracking-wide text-ink md:inline-block">
       Matt Whitaker
     </a>
@@ -29,12 +24,6 @@
       <% }); %>
     </ul>
 
-    <!--
-      Mobile menu — a native <details>/<summary> disclosure rather than
-      a JS-only toggle, so it opens/closes correctly even with JS off.
-      src/motion/nav.js only adds one enhancement: closing it again
-      after a link is tapped.
-    -->
     <details data-nav-menu class="ml-auto md:hidden">
       <summary
         aria-label="Menu"
