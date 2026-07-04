@@ -1,5 +1,5 @@
 <ul class="skill-bars">
-  <% skills.forEach(function (skill) { %>
+  <% for (skill of skills) { %>
     <li>
       <div class="skill-bar__meta">
         <span class="skill-bar__name"><%= skill.name %></span>
@@ -14,5 +14,5 @@
         ></div>
       </div>
     </li>
-  <% }); %>
+  <% } %>
 </ul>

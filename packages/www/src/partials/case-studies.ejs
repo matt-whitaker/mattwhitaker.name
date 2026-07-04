@@ -8,9 +8,9 @@
     </p>
 
     <div data-case-study-grid class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      <% caseStudies.forEach(function (study) { %>
+      <% for (study of caseStudies) { %>
         <%- include('./content-card.ejs', { item: study, attr: 'data-case-study-card' }) %>
-      <% }); %>
+      <% } %>
     </div>
   </div>
 </section>

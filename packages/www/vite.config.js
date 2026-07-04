@@ -4,7 +4,6 @@ import tailwindcss from '@tailwindcss/vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
 
 import { projects } from './src/data/projects.js';
-import { caseStudies } from './src/data/case-studies.js';
 import { careerSkills, maxSkillYears, strengthLabels, strengthOpacity } from './src/data/career-skills.js';
 import site from './site.config.js';
 
@@ -15,7 +14,7 @@ export default defineConfig({
     tailwindcss(),
     createHtmlPlugin({
       inject: {
-        data: { projects, caseStudies, site, careerSkills, maxSkillYears, strengthLabels, strengthOpacity },
+        data: { projects, site, careerSkills, maxSkillYears, strengthLabels, strengthOpacity },
         // ejs needs `filename` to resolve the partials' relative includes.
         ejsOptions: { filename: rootDir + 'index.html' },
       },

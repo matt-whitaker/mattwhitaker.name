@@ -17,9 +17,9 @@
     <h3 class="font-display text-lg font-semibold text-ink"><%= item.title %></h3>
     <p class="mt-2 flex-1 text-sm text-ink/80"><%= item.blurb %></p>
     <ul class="mt-4 flex flex-wrap gap-2">
-      <% item.tags.forEach(function (tag) { %>
+      <% for (tag of item.tags) { %>
         <li class="chip"><%= tag %></li>
-      <% }); %>
+      <% } %>
     </ul>
   </div>
 </a>
