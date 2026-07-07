@@ -62,6 +62,16 @@ html {
     font-family: var(--font-display);
   }
 
+  /* Pre-hide state for the hero's load-in (src/motion/hero.js). Applied
+     via the .js-motion class, added by a blocking script in <head>
+     before body content paints — see index.html — so the elements are
+     never visible-then-hidden-then-faded-in (a flash). Must stay in
+     sync with the gsap.to() values in hero.js. */
+  .js-motion [data-hero-item] {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
   /* list-none (above) handles the marker in modern browsers; older
      WebKit renders it as a separate pseudo-element that needs this. */
   [data-nav-menu] summary::-webkit-details-marker {

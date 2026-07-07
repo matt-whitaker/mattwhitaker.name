@@ -1,4 +1,6 @@
 export default {
+  url: 'https://mattwhitaker.name',
+  description: 'Matt Whitaker is a senior frontend engineer with over a decade of experience building React and TypeScript interfaces and the full-stack systems behind them. Also makes music as The Emwhit Project.',
   email: 'contact@mattwhitaker.name',
   linkedin: 'https://www.linkedin.com/in/whitakermatt',
   github: 'https://github.com/matt-whitaker',

@@ -3,6 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+        document.documentElement.classList.add('js-motion');
+      }
+    </script>
+    <title>Matt Whitaker — Senior Frontend Engineer</title>
+    <meta name="description" content="<%= site.description %>" />
+    <meta name="author" content="Matt Whitaker" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="<%= site.url %>/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Matt Whitaker" />
+    <meta property="og:title" content="Matt Whitaker — Senior Frontend Engineer" />
+    <meta property="og:description" content="<%= site.description %>" />
+    <meta property="og:url" content="<%= site.url %>/" />
+    <meta property="og:image" content="<%= site.url %>/images/headshot.jpg" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Matt Whitaker — Senior Frontend Engineer" />
+    <meta name="twitter:description" content="<%= site.description %>" />
+    <meta name="twitter:image" content="<%= site.url %>/images/headshot.jpg" />
+
     <link rel="preload" href="/images/headshot.jpg" as="image">
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
@@ -14,8 +38,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="<%- site.fonts.urbanist %>" rel="stylesheet" />
     <script src="<%- site.fontawesome %>" crossorigin="anonymous"></script>
-    <title>Matt Whitaker — Senior Frontend Engineer</title>
     <link rel="stylesheet" href="/src/style.css" />
+
+    <%
+      const knowsAbout = Object.values(careerSkills).flat().map((skill) => skill.name);
+      const personSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Matt Whitaker',
+        url: site.url,
+        image: site.url + '/images/headshot.jpg',
+        jobTitle: 'Senior Frontend Engineer',
+        description: site.description,
+        sameAs: [site.linkedin, site.github, site.emwhit],
+        knowsAbout,
+      };
+    %>
+    <script type="application/ld+json"><%- JSON.stringify(personSchema) %></script>
   </head>
   <body class="bg-paper font-body text-ink">
     <%- include('./src/partials/nav.ejs') %>
