@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // pattern, and this is where things stop feeling cramped/touch-scrolly.
 const STICK_QUERY = '(min-width: 880px) and (prefers-reduced-motion: no-preference)';
 const STICK_VH = 0.8; // how long the section holds in place, in viewport-height units of scroll -- matched to the career folder's hang duration (LAYER_VH's hangUnits, ~0.9) so the two beats feel similar
+const BAR_SPEED = 0.7; // equalizer phase advances at 70% of scroll progress, so it lags 30% behind actual scroll speed
 
 export function initEmwhit() {
   const section = document.querySelector('[data-emwhit]');
@@ -24,7 +25,7 @@ export function initEmwhit() {
       end: 'bottom top',
       scrub: true,
       onUpdate: (self) => {
-        const p = self.progress;
+        const p = self.progress * BAR_SPEED;
         const n = bars.length - 1;
         // Same three-term shape as the baked-in static heights (see
         // emwhit.ejs) — a slow wave for the broad clumps, a medium one
