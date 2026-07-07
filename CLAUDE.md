@@ -7,9 +7,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is the `mattwhitaker.name` npm-workspaces monorepo:
 
 - `packages/www` — the main personal website: a single-page, scroll-driven site built with EJS partials, Tailwind v4, and GSAP/ScrollTrigger. This is what the rest of this document describes.
-- `packages/blog` — the blog subsite.
-- `packages/core` — shared reusable tools.
-- `packages/assets` — shared static assets (not an npm workspace).
 
 **Everything below is scoped to `packages/www`** — all relative paths (`src/...`, `vite.config.js`, etc.) are relative to that package's directory, not the repo root. If a task is actually about the blog or core packages instead, this document doesn't cover them.
 
