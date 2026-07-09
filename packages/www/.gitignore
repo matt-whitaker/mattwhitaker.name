@@ -1,3 +1,6 @@
+# Claude
+.claude
+
 # Logs
 logs
 *.log
@@ -7,6 +10,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Output
 node_modules
 dist
 dist-ssr
