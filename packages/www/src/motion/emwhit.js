@@ -12,7 +12,52 @@ export function initEmwhit() {
   const bars = gsap.utils.toArray('[data-emwhit-bar]');
   if (!section || !bars.length) return;
 
+  const navEl = document.querySelector('[data-nav]');
+  const navHeight = () => navEl?.getBoundingClientRect().height ?? 0;
+
   const mm = gsap.matchMedia();
+
+  // Inverts the nav's logo/links (desktop) and hamburger (mobile) to
+  // paper-white while the fixed nav visually overlaps this section's
+  // dark background. Uses IntersectionObserver rather than a
+  // ScrollTrigger start/end range: those are precomputed scroll-pixel
+  // values, and this section's own pin (below) holds it fixed on
+  // screen for a span of scroll — the precomputed range and the pin's
+  // actual visual behavior kept drifting out of sync (inverting while
+  // still over white, un-inverting right as the pin released).
+  // IntersectionObserver instead reads live, current rendered geometry
+  // every time, so it can't go stale relative to the pin. rootMargin
+  // shrinks the observed root down to just the nav's own height as a
+  // strip at the top of the viewport, so "intersecting" means exactly
+  // "this section is currently under the nav" — recreated on resize
+  // since rootMargin can't be updated on an existing observer.
+  const invertTargets = document.querySelectorAll('[data-nav-invert]');
+  if (invertTargets.length) {
+    let observer;
+    let resizeTimer;
+
+    const setInverted = (inverted) => {
+      invertTargets.forEach((el) => {
+        el.classList.toggle('text-paper', inverted);
+        el.classList.toggle('text-ink', !inverted);
+      });
+    };
+
+    const createObserver = () => {
+      observer?.disconnect();
+      observer = new IntersectionObserver(
+        ([entry]) => setInverted(entry.isIntersecting),
+        { rootMargin: `0px 0px -${window.innerHeight - navHeight()}px 0px` },
+      );
+      observer.observe(section);
+    };
+
+    createObserver();
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(createObserver, 150);
+    });
+  }
 
   mm.add('(prefers-reduced-motion: no-preference)', () => {
     ScrollTrigger.create({
@@ -38,14 +83,16 @@ export function initEmwhit() {
   });
 
   mm.add(STICK_QUERY, () => {
-    const navEl = document.querySelector('[data-nav]');
-    const navHeight = () => navEl?.getBoundingClientRect().height ?? 0;
-
     gsap.set(section, { height: section.getBoundingClientRect().height });
 
+    // Pins flush at the very top of the viewport (not offset by
+    // navHeight) — the section is full-height and goes edge to edge,
+    // including behind the nav, which now handles the handoff itself
+    // by inverting to paper-white instead of the section needing to
+    // stay clear of it.
     ScrollTrigger.create({
       trigger: section,
-      start: () => 'top ' + navHeight() + 'px',
+      start: 'top top',
       end: () => '+=' + STICK_VH * window.innerHeight,
       pin: true,
       anticipatePin: 1,

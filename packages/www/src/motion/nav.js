@@ -20,6 +20,12 @@ export function initNav() {
     });
   }
 
+  // The logo/links/hamburger invert to paper-white while the nav overlaps
+  // emwhit's dark background — see initEmwhit() (emwhit.js), which owns
+  // that trigger since it's created after career.js's pin exists, so its
+  // position math runs against final (already-pinned) layout instead of
+  // stale pre-pin numbers.
+
   // The mobile menu is a native <details> — it already opens/closes
   // without any JS. This just closes it back up after a link inside
   // is tapped, since <details> has no built-in "close on select".

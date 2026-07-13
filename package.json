@@ -13,7 +13,8 @@
     "pack": "npm run pack:clear && npm run pack:www",
     "pack:dev": "npm run pack:clear && npm run pack:www",
     "serve": "http-server ./dist -p 8080 -c-1 -r",
-    "start": "npm run build:dev && npm run pack:dev && npm run serve"
+    "start": "npm run build:dev && npm run pack:dev && npm run serve",
+    "dev:www": "npm run dev -w packages/www"
   },
   "author": "Matt Whitaker",
   "license": "ISC",
