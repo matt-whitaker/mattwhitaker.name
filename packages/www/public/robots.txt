@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /bfaero/
-Sitemap: https://mattwhitaker.name/sitemap.xml
+Sitemap: https://mattwhitaker.name/sitemap-index.xml

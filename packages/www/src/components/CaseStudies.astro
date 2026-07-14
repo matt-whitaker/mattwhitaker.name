@@ -1,3 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import ContentCard from './ContentCard.astro';
+
+const caseStudies = await getCollection('case-studies');
+---
+
 <section id="case-studies" data-case-studies class="px-6 py-24">
   <div class="mx-auto max-w-5xl">
     <p class="text-sm font-semibold uppercase tracking-widest text-accent">Case Studies</p>
@@ -8,9 +15,9 @@
     </p>
 
     <div data-case-study-grid class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      <% for (study of caseStudies) { %>
-        <%- include('./content-card.ejs', { item: study, attr: 'data-case-study-card' }) %>
-      <% } %>
+      {caseStudies.map((study) => (
+        <ContentCard item={study.data} attr="data-case-study-card" />
+      ))}
     </div>
   </div>
 </section>

@@ -18,12 +18,11 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
       - run: npm ci
-      - run: npm run build
-      - run: npm run pack
+      - run: npm run build:www
       - uses: actions/upload-artifact@v4
         with:
-          name: prod
-          path: dist
+          name: www-prod
+          path: packages/www/dist
 
   Test:
     runs-on: ubuntu-latest
@@ -37,8 +36,8 @@ jobs:
     with:
       environment: "prod"
       aws_default_region: "us-west-2"
-      artifact_name: "prod"
-      artifact_path: "dist"
+      artifact_name: "www-prod"
+      artifact_path: "packages/www/dist"
     secrets:
       aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
       aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

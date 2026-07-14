@@ -1,3 +1,9 @@
+---
+import site from '../../site.config.js';
+
+const year = new Date().getFullYear();
+---
+
 <section id="contact" data-social class="border-t border-ink/10 px-6 py-24">
   <div class="mx-auto max-w-2xl text-center">
     <p class="text-sm font-semibold uppercase tracking-widest text-accent">Contact</p>
@@ -6,12 +12,12 @@
       The fastest way to reach me is below. I read everything myself.
     </p>
     <a
-      href="mailto:<%= site.email %>"
+      href={'mailto:' + site.email}
       data-copy-email
-      data-email="<%= site.email %>"
+      data-email={site.email}
       class="mt-8 inline-block rounded-full bg-accent px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-accent-soft"
     >
-      <span data-copy-email-label aria-live="polite"><%= site.email %></span>
+      <span data-copy-email-label aria-live="polite">{site.email}</span>
     </a>
   </div>
 
@@ -19,7 +25,7 @@
     <li>
       <a
         target="_blank"
-        href="<%= site.linkedin %>"
+        href={site.linkedin}
         class="text-accent-soft transition-colors hover:text-accent"
       >
         <i class="fa-brands fa-linkedin"></i>
@@ -28,7 +34,7 @@
     <li>
       <a
         target="_blank"
-        href="<%= site.github %>"
+        href={site.github}
         class="text-accent-soft transition-colors hover:text-accent"
       >
         <i class="fa-brands fa-square-github"></i>
@@ -39,7 +45,7 @@
 
 <footer class="border-t border-ink/10 px-6 py-8">
   <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-2 text-sm text-ink/50 sm:flex-row">
-    <p>&copy; <%= new Date().getFullYear() %> Matt Whitaker.</p>
-    <p>Built with Vite, Tailwind CSS, and GSAP.</p>
+    <p>&copy; {year} Matt Whitaker.</p>
+    <p>Built with Astro, Tailwind CSS, and GSAP.</p>
   </div>
 </footer>

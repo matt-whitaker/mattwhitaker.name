@@ -1,12 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import ContentCard from './ContentCard.astro';
+
+const projects = await getCollection('projects');
+---
+
 <section id="projects" data-projects class="px-6 py-24">
   <div class="mx-auto max-w-5xl">
     <p class="text-sm font-semibold uppercase tracking-widest text-accent">Projects</p>
     <h2 class="mt-2 font-display text-4xl font-bold text-ink">Stuff I've built on my own</h2>
 
     <div data-project-grid class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      <% for (project of projects) { %>
-        <%- include('./content-card.ejs', { item: project, attr: 'data-project-card' }) %>
-      <% } %>
+      {projects.map((project) => (
+        <ContentCard item={project.data} attr="data-project-card" href={'/projects/' + project.id} />
+      ))}
     </div>
   </div>
 </section>

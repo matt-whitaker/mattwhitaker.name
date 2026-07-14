@@ -18,6 +18,12 @@ export function initNav() {
         nav.classList.add(...add);
       },
     });
+  } else if (nav) {
+    // No hero on this page (project detail pages) — there's nothing to
+    // scroll out of, so the nav just gets its scrolled treatment
+    // permanently instead of sitting transparent over content.
+    nav.classList.remove(...TOP_CLASSES);
+    nav.classList.add(...SCROLLED_CLASSES);
   }
 
   // The logo/links/hamburger invert to paper-white while the nav overlaps
