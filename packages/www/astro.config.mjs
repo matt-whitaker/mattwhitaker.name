@@ -10,6 +10,9 @@ export default defineConfig({
     // subsites deployed alongside www that this build can't see.
     sitemap({
       customPages: [],
+      filter: page => {
+        return !['/projects/brandfluence'].some(exclude => page.includes(exclude))
+      }
     }),
   ],
   // Tailwind v4 is CSS-first (src/style.css is the config) and hooks in
