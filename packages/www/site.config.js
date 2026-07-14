@@ -9,12 +9,15 @@ export default {
   fonts: {
     urbanist: 'https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap'
   },
+  // Root-relative (/#x, not #x) so they work from project detail
+  // pages too; on the homepage they behave identically to plain
+  // hash links.
   navLinks: [
-    { href: '#intro', label: 'Intro' },
-    { href: '#career', label: 'Career' },
-    { href: '#music', label: 'Music' },
-    //{ href: '#case-studies', label: 'Case Studies' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#contact', label: 'Contact' }
+    { href: '/#intro', label: 'Intro' },
+    { href: '/#career', label: 'Career' },
+    { href: '/#music', label: 'Music' },
+    //{ href: '/#case-studies', label: 'Case Studies' },
+    { href: '/#projects', label: 'Projects' },
+    { href: '/#contact', label: 'Contact' }
   ]
 };

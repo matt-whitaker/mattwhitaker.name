@@ -1,6 +1,8 @@
 ---
+import { getCollection } from 'astro:content';
 import ContentCard from './ContentCard.astro';
-import { caseStudies } from '../data/case-studies.js';
+
+const caseStudies = await getCollection('case-studies');
 ---
 
 <section id="case-studies" data-case-studies class="px-6 py-24">
@@ -14,7 +16,7 @@ import { caseStudies } from '../data/case-studies.js';
 
     <div data-case-study-grid class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {caseStudies.map((study) => (
-        <ContentCard item={study} attr="data-case-study-card" />
+        <ContentCard item={study.data} attr="data-case-study-card" />
       ))}
     </div>
   </div>

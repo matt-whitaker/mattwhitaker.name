@@ -3,7 +3,15 @@ import '../style.css';
 import site from '../../site.config.js';
 import { careerSkills } from '../data/career-skills.js';
 
-const title = 'Matt Whitaker — Senior Frontend Engineer';
+// Subpages (project detail pages) override these; the defaults keep
+// the homepage exactly as before.
+const {
+  title = 'Matt Whitaker — Senior Frontend Engineer',
+  description = site.description,
+  image = '/images/headshot.jpg',
+} = Astro.props;
+const canonical = site.url + Astro.url.pathname;
+const isHome = Astro.url.pathname === '/';
 
 const knowsAbout = Object.values(careerSkills)
   .flat()
@@ -40,25 +48,26 @@ const personSchema = {
       }
     </script>
     <title>{title}</title>
-    <meta name="description" content={site.description} />
+    <meta name="description" content={description} />
     <meta name="author" content="Matt Whitaker" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={site.url + '/'} />
+    <link rel="canonical" href={canonical} />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Matt Whitaker" />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={site.description} />
-    <meta property="og:url" content={site.url + '/'} />
-    <meta property="og:image" content={site.url + '/images/headshot.jpg'} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={site.url + image} />
     <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={site.description} />
-    <meta name="twitter:image" content={site.url + '/images/headshot.jpg'} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={site.url + image} />
 
-    <link rel="preload" href="/images/headshot.jpg" as="image" />
+    {/* The headshot is only above the fold on the homepage's hero. */}
+    {isHome && <link rel="preload" href="/images/headshot.jpg" as="image" />}
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/favicon/favicon.ico" />

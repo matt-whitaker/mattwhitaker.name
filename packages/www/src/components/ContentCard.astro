@@ -2,13 +2,16 @@
 // One card component shared by the Projects and Case Studies grids.
 // `attr` is the raw data-attribute stamped on the card (e.g.
 // "data-project-card") so each grid's motion targets only its own cards.
-const { item, attr } = Astro.props;
+// `href` overrides the item's own link (Projects points cards at their
+// detail pages); external links open in a new tab, internal ones don't.
+const { item, attr, href = item.href } = Astro.props;
 const cardAttr = { [attr]: '' };
+const isExternal = href.startsWith('http');
 ---
 
 <a
-  href={item.href}
-  target="_blank"
+  href={href}
+  target={isExternal ? '_blank' : undefined}
   {...cardAttr}
   class="group flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-paper shadow-sm transition-shadow hover:shadow-lg"
 >

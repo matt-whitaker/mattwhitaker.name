@@ -1,6 +1,8 @@
 ---
+import { getCollection } from 'astro:content';
 import ContentCard from './ContentCard.astro';
-import { projects } from '../data/projects.js';
+
+const projects = await getCollection('projects');
 ---
 
 <section id="projects" data-projects class="px-6 py-24">
@@ -10,7 +12,7 @@ import { projects } from '../data/projects.js';
 
     <div data-project-grid class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {projects.map((project) => (
-        <ContentCard item={project} attr="data-project-card" />
+        <ContentCard item={project.data} attr="data-project-card" href={'/projects/' + project.id} />
       ))}
     </div>
   </div>

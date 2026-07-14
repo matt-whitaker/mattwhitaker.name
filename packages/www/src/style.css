@@ -176,4 +176,51 @@ html {
   .emwhit-bar {
     @apply flex-1 min-w-0.5 max-w-2.5 rounded-t-xs bg-accent-soft origin-bottom will-change-transform;
   }
+
+  /* Rendered markdown body on project detail pages — the output HTML
+     carries no classes, so element selectors it is. Follows the /80
+     body-copy opacity convention documented at the top of this file. */
+  .project-body {
+    @apply text-ink/80;
+  }
+
+  .project-body h2 {
+    @apply mt-8 font-display text-2xl font-bold text-ink;
+  }
+
+  .project-body h3 {
+    @apply mt-6 font-display text-xl font-semibold text-ink;
+  }
+
+  .project-body p {
+    @apply mt-4;
+  }
+
+  .project-body ul {
+    @apply mt-4 list-disc pl-6;
+  }
+
+  .project-body ol {
+    @apply mt-4 list-decimal pl-6;
+  }
+
+  .project-body li {
+    @apply mt-1;
+  }
+
+  .project-body a {
+    @apply font-semibold text-accent underline underline-offset-2 transition-colors hover:text-accent-soft;
+  }
+
+  .project-body strong {
+    @apply font-semibold text-ink;
+  }
+
+  .project-body code {
+    @apply rounded bg-ink/5 px-1.5 py-0.5 text-sm;
+  }
+
+  .project-body blockquote {
+    @apply mt-4 border-l-2 border-accent/40 pl-4 text-ink/60;
+  }
 }
