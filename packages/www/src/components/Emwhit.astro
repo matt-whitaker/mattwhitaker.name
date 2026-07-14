@@ -1,3 +1,23 @@
+---
+import site from '../../site.config.js';
+
+// Three stacked sine waves instead of a modulo-based pseudo-random
+// sequence: a slow one for the broad "clumps" a spectrum tends to
+// have (a couple of dominant bands, not uniform noise), a medium
+// one for shape within those clumps, and a fast/low-amplitude one
+// for fine jitter so it doesn't look perfectly smooth. Weights sum
+// to 1 so the envelope stays within roughly ±1 before scaling.
+const barCount = 28;
+const barHeights = Array.from({ length: barCount }, (_, i) => {
+  const t = i / (barCount - 1);
+  const envelope =
+    Math.sin(t * Math.PI * 2.2 + 0.4) * 0.55 +
+    Math.sin(t * Math.PI * 6 + 1.5) * 0.3 +
+    Math.sin(i * 2.7) * 0.15;
+  return Math.round(50 + envelope * 46);
+});
+---
+
 <section
   id="music"
   data-emwhit
@@ -8,26 +28,9 @@
     class="mx-auto mb-16 flex h-28 w-full max-w-5xl items-end justify-between gap-1"
     aria-hidden="true"
   >
-    <%
-      // Three stacked sine waves instead of a modulo-based pseudo-random
-      // sequence: a slow one for the broad "clumps" a spectrum tends to
-      // have (a couple of dominant bands, not uniform noise), a medium
-      // one for shape within those clumps, and a fast/low-amplitude one
-      // for fine jitter so it doesn't look perfectly smooth. Weights sum
-      // to 1 so the envelope stays within roughly ±1 before scaling.
-      const barCount = 28;
-    %>
-    <% for (let i = 0; i < barCount; i++) { %>
-      <%
-        const t = i / (barCount - 1);
-        const envelope =
-          Math.sin(t * Math.PI * 2.2 + 0.4) * 0.55 +
-          Math.sin(t * Math.PI * 6 + 1.5) * 0.3 +
-          Math.sin(i * 2.7) * 0.15;
-        const h = Math.round(50 + envelope * 46);
-      %>
-      <span data-emwhit-bar class="emwhit-bar" style="height: <%= h %>%"></span>
-    <% } %>
+    {barHeights.map((h) => (
+      <span data-emwhit-bar class="emwhit-bar" style={`height: ${h}%`}></span>
+    ))}
   </div>
 
   <div class="mx-auto flex w-full max-w-5xl flex-col gap-10 md:flex-row md:items-center">
@@ -51,29 +54,29 @@
       <div class="mt-8 flex flex-wrap gap-4">
         <a
           target="_blank"
-          href="<%= site.emwhit %>"
+          href={site.emwhit}
           class="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent-soft hover:text-accent-soft"
         >
           Website
         </a>
-        <!--<a
+        {/*<a
           href="#"
           class="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent-soft hover:text-accent-soft"
         >
           Spotify
-        </a>-->
-        <!--<a
+        </a>*/}
+        {/*<a
           href="#"
           class="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent-soft hover:text-accent-soft"
         >
           Bandcamp
-        </a>-->
-        <!--<a
+        </a>*/}
+        {/*<a
           href="#"
           class="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent-soft hover:text-accent-soft"
         >
           YouTube
-        </a>-->
+        </a>*/}
       </div>
     </div>
   </div>
