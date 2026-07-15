@@ -4,6 +4,7 @@ blurb: Prototype mobile marketing product for early attempt start-up, Brandfluen
 tags:
   - React
 href: https://bfaero.mattwhitaker.name
+hrefLabel: "View demo"
 thumbnail: /images/bfaero.png
 ---
 
