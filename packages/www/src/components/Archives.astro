@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import ContentCard from './ContentCard.astro';
+
+const archives = await getCollection('archives');
+---
+
+<section id="archives" data-archives class="px-6 py-24">
+  <div class="mx-auto max-w-5xl">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent">The Archives</p>
+    <h2 class="mt-2 font-display text-4xl font-bold text-ink">Other, less public work</h2>
+    <p class="mt-4 max-w-2xl text-ink/80">
+      Some of what I've built and the problems I've solved have more nuanced accessibility, either because they are internal
+      solutions, or are no longer accessible in their form that I contributed to.
+    </p>
+
+    <div data-archive-grid class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {archives.map((archive) => (
+        <ContentCard item={archive.data} attr="data-archive-card" href={'/archives/' + archive.id} />
+      ))}
+    </div>
+  </div>
+</section>
