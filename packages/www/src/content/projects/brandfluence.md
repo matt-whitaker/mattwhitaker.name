@@ -16,6 +16,6 @@ The app is a simple workflow, with most of the focus on branding and flash, to a
 receive a coupon code (driven by AI analysis), and have it sent to their email address.
 
 If you want to demo it, click the button below. The whole things is faked, so nothing is actually sent anywhere. For the
-Instagram URL, just use "https://instagram.com/p/test".
+Instagram URL, just use <input style="width: 13rem; text-align: center;" value="https://instagram.com/p/test" />.
 
 **Best viewed on mobile, app is width-pinned on desktop**
