@@ -11,6 +11,7 @@ const contentCard = z.object({
   blurb: z.string(),
   tags: z.array(z.string()),
   href: z.string().url(),
+  hrefLabel: z.string().optional(),
   thumbnail: z.string(),
 });
 

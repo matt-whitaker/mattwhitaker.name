@@ -14,8 +14,8 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, blurb, tags, href, thumbnail } = project.data;
-const externalHost = new URL(href).host;
+const { title, blurb, tags, href, hrefLabel, thumbnail } = project.data;
+const hrefText = hrefLabel ? hrefLabel : `Visit ${new URL(href).host}`;
 ---
 
 <Layout title={title + ' — Matt Whitaker'} description={blurb} image={thumbnail}>
@@ -49,7 +49,7 @@ const externalHost = new URL(href).host;
         target="_blank"
         class="mt-10 inline-block rounded-full bg-accent px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-accent-soft"
       >
-        Visit {externalHost} &rarr;
+        {hrefText} &rarr;
       </a>
     </article>
   </main>
