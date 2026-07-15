@@ -16,8 +16,8 @@ export default {
     { href: '/#intro', label: 'Intro' },
     { href: '/#career', label: 'Career' },
     { href: '/#music', label: 'Music' },
-    //{ href: '/#case-studies', label: 'Case Studies' },
     { href: '/#projects', label: 'Projects' },
+    { href: '/#archives', label: 'Archive' },
     { href: '/#contact', label: 'Contact' }
   ]
 };

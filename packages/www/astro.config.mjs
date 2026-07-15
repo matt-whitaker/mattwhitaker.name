@@ -11,7 +11,10 @@ export default defineConfig({
     sitemap({
       customPages: [],
       filter: page => {
-        return !['/projects/brandfluence'].some(exclude => page.includes(exclude))
+        return ![
+          '/projects/brandfluence',
+          '/archives/pay-i'
+        ].some(exclude => page.includes(exclude))
       }
     }),
   ],

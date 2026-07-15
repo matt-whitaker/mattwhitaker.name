@@ -5,16 +5,16 @@ import Nav from '../../components/Nav.astro';
 import SocialFooter from '../../components/SocialFooter.astro';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
-  return projects.map((project) => ({
-    params: { id: project.id },
-    props: { project },
+  const archives = await getCollection('archives');
+  return archives.map((archive) => ({
+    params: { id: archive.id },
+    props: { archive },
   }));
 }
 
-const { project } = Astro.props;
-const { Content } = await render(project);
-const { title, blurb, tags, href, thumbnail } = project.data;
+const { archive } = Astro.props;
+const { Content } = await render(archive);
+const { title, blurb, tags, href, thumbnail } = archive.data;
 const externalHost = new URL(href).host;
 ---
 
@@ -23,8 +23,8 @@ const externalHost = new URL(href).host;
 
   <main class="px-6 pt-32 pb-24">
     <article class="mx-auto max-w-3xl">
-      <a href="/#projects" class="text-sm font-semibold text-accent transition-colors hover:text-accent-soft">
-        &larr; Back to Projects
+      <a href="/#archives" class="text-sm font-semibold text-accent transition-colors hover:text-accent-soft">
+        &larr; Back to The Archives
       </a>
 
       <h1 class="mt-4 font-display text-5xl font-light tracking-tight text-ink">{title}</h1>

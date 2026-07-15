@@ -177,50 +177,51 @@ html {
     @apply flex-1 min-w-0.5 max-w-2.5 rounded-t-xs bg-accent-soft origin-bottom will-change-transform;
   }
 
-  /* Rendered markdown body on project detail pages — the output HTML
-     carries no classes, so element selectors it is. Follows the /80
-     body-copy opacity convention documented at the top of this file. */
-  .project-body {
+  /* Rendered markdown body, shared by the project and archive detail
+     pages — the output HTML carries no classes, so element selectors
+     it is. Follows the /80 body-copy opacity convention documented at
+     the top of this file. */
+  .rich-text {
     @apply text-ink/80;
   }
 
-  .project-body h2 {
+  .rich-text h2 {
     @apply mt-8 font-display text-2xl font-bold text-ink;
   }
 
-  .project-body h3 {
+  .rich-text h3 {
     @apply mt-6 font-display text-xl font-semibold text-ink;
   }
 
-  .project-body p {
+  .rich-text p {
     @apply mt-4;
   }
 
-  .project-body ul {
+  .rich-text ul {
     @apply mt-4 list-disc pl-6;
   }
 
-  .project-body ol {
+  .rich-text ol {
     @apply mt-4 list-decimal pl-6;
   }
 
-  .project-body li {
+  .rich-text li {
     @apply mt-1;
   }
 
-  .project-body a {
+  .rich-text a {
     @apply font-semibold text-accent underline underline-offset-2 transition-colors hover:text-accent-soft;
   }
 
-  .project-body strong {
+  .rich-text strong {
     @apply font-semibold text-ink;
   }
 
-  .project-body code {
+  .rich-text code {
     @apply rounded bg-ink/5 px-1.5 py-0.5 text-sm;
   }
 
-  .project-body blockquote {
+  .rich-text blockquote {
     @apply mt-4 border-l-2 border-accent/40 pl-4 text-ink/60;
   }
 }

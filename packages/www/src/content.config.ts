@@ -22,9 +22,9 @@ const projects = defineCollection({
   schema: contentCard,
 });
 
-const caseStudies = defineCollection({
-  loader: glob({ pattern: '**/*.yaml', base: './src/content/case-studies' }),
+const archives = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/archives' }),
   schema: contentCard,
 });
 
-export const collections = { projects, 'case-studies': caseStudies };
+export const collections = { projects, archives };
