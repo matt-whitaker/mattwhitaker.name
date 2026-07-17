@@ -1,5 +1,5 @@
 ---
-title: Brewdocs
+title: BrewDocs
 blurb: A digital handbook, toolkit, and brew day application for homebrewers.
 tags:
   - React
