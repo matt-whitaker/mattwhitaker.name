@@ -6,6 +6,7 @@ tags:
   - Tanstack
   - Daisy UI
   - Tailwind
+  - Astro
 href: https://brewdocs.beer
 thumbnail: /images/brewdocs.png
 ---
