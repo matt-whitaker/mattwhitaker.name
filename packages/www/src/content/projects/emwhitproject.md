@@ -7,3 +7,5 @@ tags:
 href: https://emwhitproject.com
 thumbnail: /images/emwhit-headshot.jpg
 ---
+
+Just a quick, minimalist website for my music project.
