@@ -177,6 +177,87 @@ html {
     @apply flex-1 min-w-0.5 max-w-2.5 rounded-t-xs bg-accent-soft origin-bottom will-change-transform;
   }
 
+  /* Stack — the radial micro-stack wheel.
+     Mobile baseline is a plain vertical list in normal flow; the
+     desktop branch below promotes each node to absolute using the
+     --x/--y custom properties Stack.astro computes at build time.
+     Those properties are simply unused at mobile, so there's no
+     positioning to unwind. Absolute nodes resolve against
+     [data-stack-wheel] (position: relative) — the same box the
+     connector SVG's 0 0 100 100 viewBox maps onto, which is what keeps
+     spokes and nodes in the same coordinate space. */
+  .stack-node {
+    @apply flex flex-col items-start gap-2 text-left;
+  }
+
+  .stack-node__icons {
+    @apply flex items-center gap-3 text-2xl text-paper;
+  }
+
+  .stack-node__label {
+    @apply font-display font-semibold text-paper;
+  }
+
+  .stack-node__blurb {
+    @apply text-sm text-paper/70;
+  }
+
+  /* Hub placeholder — sized in the same container-query units as the
+     nodes so the whole composition scales as one. */
+  .stack-hub {
+    @apply flex items-center justify-center rounded-full border border-dashed border-paper/30 text-center font-semibold uppercase tracking-widest text-paper/60;
+    @apply h-24 w-24 text-2xs;
+  }
+
+  @media (min-width: 880px) {
+    /* Everything inside the wheel is sized in cqw (1% of the wheel's
+       own width, via `@container` on [data-stack-wheel]) rather than a
+       fixed rem. The wheel's diameter is fluid — min(65% column, 58vh)
+       — so fixed-rem nodes crowd each other on a short viewport and
+       look undersized on a large monitor.
+
+       34cqw is the ceiling for node width: with N nodes the tightest
+       pair sits 2·r·sin(π/N) apart, which at N=5 and RADIUS=33 works
+       out to ~0.39 × diameter. Raise RADIUS or drop a node and there's
+       room for more. Every value is clamped at both ends so text stays
+       legible at the extremes rather than scaling without limit.
+
+       Keep the width floor low. The horizontal-extreme nodes sit at
+       x = 81.4%, so a node overflows the wheel once it passes
+       0.372 × diameter — and a floor stops scaling by definition, so
+       too high a one bleeds off-canvas on short viewports (where 58vh,
+       not the column, is what's sizing the wheel). */
+    .stack-node {
+      @apply absolute items-center text-center;
+      left: var(--x);
+      top: var(--y);
+      transform: translate(-50%, -50%);
+      width: clamp(7rem, 34cqw, 13rem);
+      gap: clamp(0.25rem, 1.4cqw, 0.5rem);
+    }
+
+    .stack-node__icons {
+      @apply justify-center;
+      font-size: clamp(1.1rem, 4.6cqw, 1.75rem);
+      gap: clamp(0.5rem, 2cqw, 0.85rem);
+    }
+
+    .stack-node__label {
+      font-size: clamp(0.85rem, 3cqw, 1.05rem);
+    }
+
+    .stack-node__blurb {
+      font-size: clamp(0.72rem, 2.4cqw, 0.85rem);
+      line-height: 1.45;
+    }
+
+    .stack-hub {
+      height: clamp(4rem, 17cqw, 6.5rem);
+      width: clamp(4rem, 17cqw, 6.5rem);
+      font-size: clamp(0.6rem, 2.2cqw, 0.6875rem);
+    }
+  }
+
   /* Rendered markdown body, shared by the project and archive detail
      pages — the output HTML carries no classes, so element selectors
      it is. Follows the /80 body-copy opacity convention documented at

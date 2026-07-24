@@ -1,0 +1,132 @@
+---
+import { stackGroups } from '../data/stack.js';
+
+// Radial placement is plain trigonometry resolved at build time — no
+// charting library. Nothing here is a quantitative encoding (no scales,
+// no axes, no values), so a chart lib would only add a canvas renderer
+// that can't read our CSS tokens. Positions come out as percentages of
+// the square container and ride on CSS custom properties, which the
+// desktop branch of `.stack-node` consumes; below the breakpoint they're
+// simply ignored and the nodes fall back into normal document flow.
+const RADIUS = 45; // % from center to each node's center
+const SPOKE_END = 23; // % where a connector stops, short of its node
+
+const angleFor = (i) => (i / stackGroups.length) * Math.PI * 2 - Math.PI / 2; // -90° puts node 0 at 12 o'clock
+
+const nodes = stackGroups.map((group, i) => {
+  const angle = angleFor(i);
+  const cos = Math.cos(angle);
+  const sin = Math.sin(angle);
+  return {
+    ...group,
+    x: (50 + RADIUS * cos).toFixed(2),
+    y: (50 + RADIUS * sin).toFixed(2),
+    spokeX: (50 + SPOKE_END * cos).toFixed(2),
+    spokeY: (50 + SPOKE_END * sin).toFixed(2),
+  };
+});
+---
+
+{/*
+  Centering lives on the section (like Emwhit) rather than on an inner
+  min-h-[inherit] wrapper: inheriting 100vh into a child of a py-24
+  section stacks the padding on top of a full viewport, making the whole
+  thing ~12rem taller than the screen for no reason.
+*/}
+<section
+  id="stack"
+  data-stack
+  class="flex min-h-screen flex-col justify-center bg-accent px-6 py-24 text-paper"
+>
+  {/*
+    flex-col-reverse on mobile puts the intro copy above the wheel (it
+    reads as the lede); the desktop grid then lays them out in DOM
+    order — wheel 65%, copy 35%.
+  */}
+  <div
+    {/*
+      minmax(0, …) rather than a bare 65fr/35fr: an fr track's implicit
+      minimum is min-content, so a column can refuse to shrink and push
+      the grid wider than its container. The explicit 0 floor lets both
+      columns actually shrink.
+    */}
+    class="mx-auto flex w-full max-w-6xl flex-col-reverse gap-14 min-[880px]:grid min-[880px]:grid-cols-[minmax(0,65fr)_minmax(0,35fr)] min-[880px]:items-center min-[880px]:gap-10"
+  >
+    {/*
+      Three-way min(), and each term earns its place:
+        100%  — never exceed the grid column.
+        46vw  — the term that makes the wheel track window *width*.
+                Without it the height cap always won (a 65% column on a
+                wide screen is ~870px, taller than any viewport), so a
+                horizontal resize moved nothing at all.
+        62vh  — never outgrow the screen vertically, section padding
+                included.
+      Width binds from ~880px to ~1400px; above that a square simply
+      can't use the column's height and it goes back to height-bound.
+    */}
+    <div
+      data-stack-wheel
+      class="@container relative w-full min-[880px]:mx-auto min-[880px]:aspect-square min-[880px]:w-[min(100%,46vw,62vh)]"
+    >
+      {/*
+        Connectors sit behind the nodes. The container is square at
+        desktop, so a 0 0 100 100 viewBox maps 1:1 onto the same
+        percentage space the nodes use. Decorative — the relationships
+        are already carried by the text.
+      */}
+      <svg
+        viewBox="0 0 100 100"
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 hidden h-full w-full min-[880px]:block"
+      >
+        {nodes.map((node) => (
+          <line
+            data-stack-spoke
+            x1="50"
+            y1="50"
+            x2={node.spokeX}
+            y2={node.spokeY}
+            stroke="currentColor"
+            stroke-width="0.25"
+            class="text-paper/25"
+          />
+        ))}
+      </svg>
+
+      {/* TODO: hub placeholder — swap for a mark/monogram when ready. */}
+      <div
+        data-stack-hub
+        class="mb-10 flex justify-center min-[880px]:absolute min-[880px]:top-1/2 min-[880px]:left-1/2 min-[880px]:mb-0 min-[880px]:-translate-x-1/2 min-[880px]:-translate-y-1/2"
+      >
+        <div class="stack-hub">Hub</div>
+      </div>
+
+      <ul class="flex flex-col gap-8 min-[880px]:block">
+        {nodes.map((node) => (
+          <li class="stack-node" style={`--x: ${node.x}%; --y: ${node.y}%`} data-stack-node>
+            <ul class="stack-node__icons">
+              {node.icons.map((icon) => (
+                <li>
+                  <i class={icon.className} aria-hidden="true"></i>
+                  <span class="sr-only">{icon.name}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="stack-node__label">{node.label}</p>
+            <p class="stack-node__blurb">{node.blurb}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-widest text-paper/70">Stack</p>
+      <h2 class="mt-2 font-display text-4xl font-bold">What I reach for.</h2>
+      <p class="mt-4 text-paper/80">
+        Preferences, not dogma. These are the tools I'm fastest and most opinionated in — the
+        combinations I've shipped enough times to know their edges. I'll happily work outside them
+        when a codebase or a team already has its own gravity.
+      </p>
+    </div>
+  </div>
+</section>
