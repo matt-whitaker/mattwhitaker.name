@@ -23,10 +23,11 @@ export const stackGroups = [
     label: 'Style & Design',
     blurb: 'A token-first approach to styling, adaptable across ecosystems.',
     icons: [
-      // Simple Icons (via astro-icon) — FA has no Tailwind brand glyph.
+      // Simple Icons (via astro-icon) — FA has neither Tailwind nor Storybook.
       { name: 'Tailwind CSS', icon: 'simple-icons:tailwindcss' },
       { name: 'Bootstrap', className: 'fa-brands fa-bootstrap' },
       { name: 'Figma', className: 'fa-brands fa-figma' },
+      { name: 'Storybook', icon: 'simple-icons:storybook' },
     ],
   },
   {
