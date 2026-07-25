@@ -10,25 +10,27 @@
 export const stackGroups = [
   {
     label: 'Interface',
-    blurb: 'React and TypeScript, composed so the seams still read a year later.',
+    blurb: 'A decade of React-based interfaces.',
     icons: [
       { name: 'React', className: 'fa-brands fa-react' },
-      { name: 'JavaScript', className: 'fa-brands fa-js' },
-      { name: 'HTML5', className: 'fa-brands fa-html5' },
+      // Simple Icons (via astro-icon) — FA carries none of these.
+      { name: 'TypeScript', icon: 'simple-icons:typescript' },
+      { name: 'Redux', icon: 'simple-icons:redux' },
+      { name: 'TanStack', icon: 'simple-icons:tanstack' },
     ],
   },
   {
-    label: 'Styling',
-    blurb: 'Tailwind tokens over bespoke CSS — systems that survive the handoff.',
+    label: 'Style & Design',
+    blurb: 'A token-first approach to styling, adaptable across ecosystems.',
     icons: [
-      { name: 'CSS3', className: 'fa-brands fa-css3-alt' },
-      { name: 'Sass', className: 'fa-brands fa-sass' },
+      // Simple Icons (via astro-icon) — FA has no Tailwind brand glyph.
+      { name: 'Tailwind CSS', icon: 'simple-icons:tailwindcss' },
       { name: 'Figma', className: 'fa-brands fa-figma' },
     ],
   },
   {
     label: 'Services',
-    blurb: 'Node for orchestration; Python or Java where the domain already lives.',
+    blurb: 'Experience across a wide variety of server-side languages.',
     icons: [
       { name: 'Node.js', className: 'fa-brands fa-node-js' },
       { name: 'Python', className: 'fa-brands fa-python' },
@@ -36,21 +38,22 @@ export const stackGroups = [
     ],
   },
   {
-    label: 'Edge & Cloud',
-    blurb: 'Serverless first at the edge, containers when state earns them.',
+    label: 'Cloud',
+    blurb: 'Serverless and containerized applications.',
     icons: [
       { name: 'AWS', className: 'fa-brands fa-aws' },
       { name: 'Docker', className: 'fa-brands fa-docker' },
-      { name: 'Linux', className: 'fa-brands fa-linux' },
+      // Simple Icons (via astro-icon) — FA has no Terraform brand glyph.
+      { name: 'Terraform', icon: 'simple-icons:terraform' },
     ],
   },
   {
     label: 'Workflow',
-    blurb: 'Small PRs, trunk-based, and CI that fails loudly before users do.',
+    blurb: 'Clean pipelines, automation, and AI agents just make the job easier.',
     icons: [
-      { name: 'Git', className: 'fa-brands fa-git-alt' },
       { name: 'GitHub', className: 'fa-brands fa-github' },
-      { name: 'npm', className: 'fa-brands fa-npm' },
+      // Simple Icons (via astro-icon) — FA has no Claude Code glyph.
+      { name: 'Claude Code', icon: 'simple-icons:claudecode' },
     ],
   },
 ];

@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import { stackGroups } from '../data/stack.js';
 
 // Radial placement is plain trigonometry resolved at build time — no
@@ -106,8 +107,15 @@ const nodes = stackGroups.map((group, i) => {
           <li class="stack-node" style={`--x: ${node.x}%; --y: ${node.y}%`} data-stack-node>
             <ul class="stack-node__icons">
               {node.icons.map((icon) => (
-                <li>
-                  <i class={icon.className} aria-hidden="true"></i>
+                <li title={icon.name}>
+                  {/* Font Awesome glyph by default; an `icon` field opts
+                      a slot into an astro-icon (Simple Icons) SVG for
+                      brands FA doesn't carry. title on the <li> gives a
+                      hover tooltip uniformly for both, so a reader can
+                      hover an unfamiliar glyph for its name. */}
+                  {icon.icon
+                    ? <Icon name={icon.icon} aria-hidden="true" />
+                    : <i class={icon.className} aria-hidden="true"></i>}
                   <span class="sr-only">{icon.name}</span>
                 </li>
               ))}
