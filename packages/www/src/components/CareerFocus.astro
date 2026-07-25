@@ -1,0 +1,25 @@
+---
+import { careerFocus } from '../data/career-focus.js';
+
+// The left half of a career layer, mirroring SkillBars on the right.
+// `accent` flags the Frontend layer (accent background, paper text) so
+// chips and markers use their paper-on-dark variants.
+const { area, accent = false } = Astro.props;
+const { lede, roles, archetypes } = careerFocus[area];
+---
+
+<div class:list={['career-focus flex h-full flex-col', accent && 'career-focus--accent']}>
+  <p class:list={['career-focus__lede', accent ? 'text-paper' : 'text-ink']}>{lede}</p>
+
+  <ul class:list={['career-focus__list', accent ? 'text-paper/80' : 'text-ink/80']}>
+    {archetypes.map((item) => <li>{item}</li>)}
+  </ul>
+
+  {/* mt-auto anchors the role chips to the bottom of the left column,
+      which stretches to the panel's content height. */}
+  <ul class="career-focus__roles">
+    {roles.map((role) => (
+      <li class:list={['chip', accent && 'chip--accent']}>{role}</li>
+    ))}
+  </ul>
+</div>

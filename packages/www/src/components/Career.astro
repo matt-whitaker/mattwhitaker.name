@@ -1,5 +1,6 @@
 ---
 import SkillBars from './SkillBars.astro';
+import CareerFocus from './CareerFocus.astro';
 import { careerSkills } from '../data/career-skills.js';
 ---
 
@@ -18,23 +19,14 @@ import { careerSkills } from '../data/career-skills.js';
           <button type="button" data-layer-tab class="career-layer__tab">
             <span class="career-layer__tab-index">01</span>
             <span class="career-layer__tab-text">
-              <span class="career-layer__tab-eyebrow">Expertise</span>
               <span class="career-layer__tab-name">Frontend</span>
             </span>
           </button>
         </h3>
         <div class="career-layer__body">
-          <div class="grid grid-cols-1 gap-8 md:grid-cols-5">
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-5 min-[880px]:min-h-full">
             <div class="md:col-span-3">
-              <p class="mt-3 max-w-2xl text-paper/80">
-                Frontend has been the throughline of my career. Nearly every role I've held touched it, most often with me acting as the de facto SME or lead. I've worked as a UX facilitator bridging design and implementation, advocated for best practices, contributed to frontend architecture and development, helped level up my peers, and led small teams building greenfield application spaces.
-              </p>
-              <p class="mt-3 max-w-2xl text-paper/80">
-                I enjoy sharing that experience and supporting everyone from juniors to seniors, while still doing the strongest individual work I can.
-              </p>
-              <p class="mt-3 max-w-2xl text-paper/80">
-                My frontend experience spans splash pages, charting and analytics platforms, component libraries, and complex administrative interfaces, including work on accessibility, internationalization, and web performance.
-              </p>
+              <CareerFocus area="frontend" accent />
             </div>
             <div class="md:col-span-2">
               <SkillBars skills={careerSkills.frontend} accent={true} />
@@ -54,14 +46,9 @@ import { careerSkills } from '../data/career-skills.js';
           </button>
         </h3>
         <div class="career-layer__body">
-          <div class="grid grid-cols-1 gap-8 md:grid-cols-5">
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-5 min-[880px]:min-h-full">
             <div class="md:col-span-3">
-              <p class="mt-3 max-w-2xl text-ink/80">
-                Backend has been part of the picture for most of my career. Since every frontend needs something behind it, I've worked as a fullstack engineer across most of my roles, with my hands in each layer. That work spans standard web services, MVC applications in .NET or Spring, client-supporting orchestration services (including serverless), and distributed microservice systems built with Node or Python, along with some earlier work on CMS platforms.
-              </p>
-              <p class="mt-3 max-w-2xl text-ink/80">
-                Working across that range of stacks has given me more than general knowledge of backend patterns. It's given me a broad vocabulary I can apply as standards evolve and as I move between projects and teams. I can pick up most web-focused backend systems fairly quickly, whether they lean on object-oriented, functional, or event-driven approaches.
-              </p>
+              <CareerFocus area="backend" />
             </div>
             <div class="md:col-span-2">
               <SkillBars skills={careerSkills.backend} accent={false} />
@@ -81,14 +68,9 @@ import { careerSkills } from '../data/career-skills.js';
           </button>
         </h3>
         <div class="career-layer__body">
-          <div class="grid grid-cols-1 gap-8 md:grid-cols-5">
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-5 min-[880px]:min-h-full">
             <div class="md:col-span-3">
-              <p class="mt-3 max-w-2xl text-ink/80">
-                I studied data systems in college, so thinking about how data is stored, represented, and queried has been part of my approach from the start. In my fullstack roles that's shown up as ordinary data work: modeling domains, designing schemas, and shaping how data flows from storage to the client.
-              </p>
-              <p class="mt-3 max-w-2xl text-ink/80">
-                Most of that has been in the relational space, where I'm comfortable with normalization, query design, and the tradeoffs of schema evolution. I've also used NoSQL where the data's shape and access patterns called for it.
-              </p>
+              <CareerFocus area="data" />
             </div>
             <div class="md:col-span-2">
               <SkillBars skills={careerSkills.data} accent={false} />
@@ -108,11 +90,9 @@ import { careerSkills } from '../data/career-skills.js';
           </button>
         </h3>
         <div class="career-layer__body">
-          <div class="grid grid-cols-1 gap-8 md:grid-cols-5">
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-5 min-[880px]:min-h-full">
             <div class="md:col-span-3">
-              <p class="mt-3 max-w-2xl text-ink/80">
-                Infrastructure sits at the core of every web system. It's not my focus, and I have less hands-on experience than dedicated backend or site-reliability engineers, but I've had plenty of chances to think like one. My experience centers on the "edge," where the frontend meets orchestration, including hands-on work with serverless architectures. Beyond that, I'm familiar with platforms like Kubernetes, and I can reason about systems architecture even where my hands-on experience is lighter.
-              </p>
+              <CareerFocus area="infra" />
             </div>
             <div class="md:col-span-2">
               <SkillBars skills={careerSkills.infra} accent={false} />
