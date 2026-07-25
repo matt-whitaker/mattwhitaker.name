@@ -111,16 +111,32 @@ html {
     @apply flex flex-col leading-tight;
   }
 
-  .career-layer__tab-eyebrow {
-    @apply text-2xs uppercase tracking-widest opacity-60;
-  }
-
   .career-layer__tab-name {
     @apply font-display font-semibold;
   }
 
   .career-layer__body {
     @apply flex-1 px-6 pb-8 overflow-y-auto;
+  }
+
+  /* Bottom-anchored role chips (see .career-focus__roles) vs. the pinned
+     folder's clipping: on desktop career.js translates each layer down
+     by one tab-height (h-14 = 3.5rem) per index, and [data-career-stack]
+     is overflow-hidden, so every layer below the first loses that much
+     off its bottom. Pad each one's body bottom by its own clip amount so
+     the chips land ~2rem above the visible edge instead of in the
+     clipped zone. Frontend (nth-child 1) isn't translated — it keeps the
+     plain pb-8. Mobile has no translate/clip, so this is desktop-only. */
+  @media (min-width: 880px) {
+    [data-layer]:nth-child(2) .career-layer__body {
+      padding-bottom: calc(2rem + 3.5rem);
+    }
+    [data-layer]:nth-child(3) .career-layer__body {
+      padding-bottom: calc(2rem + 7rem);
+    }
+    [data-layer]:nth-child(4) .career-layer__body {
+      padding-bottom: calc(2rem + 10.5rem);
+    }
   }
 
   /* Chip — used for career tech tags and project tags alike. */
@@ -256,6 +272,36 @@ html {
       width: clamp(4rem, 17cqw, 6.5rem);
       font-size: clamp(0.6rem, 2.2cqw, 0.6875rem);
     }
+  }
+
+  /* Career focus — the left column of each career layer: a one-line
+     lede, a role-chip row, and a compact two-column archetype list.
+     Text color is inherited from the layer via utilities the component
+     sets (paper on the accent Frontend layer, ink elsewhere); only the
+     accent bullet flips, via the --accent modifier. */
+  .career-focus__lede {
+    @apply max-w-2xl text-lg font-medium;
+  }
+
+  .career-focus__roles {
+    @apply mt-auto flex flex-wrap gap-2 pt-8;
+  }
+
+  .career-focus__list {
+    @apply mt-6 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2;
+  }
+
+  .career-focus__list li {
+    @apply relative pl-5 text-sm leading-snug;
+  }
+
+  .career-focus__list li::before {
+    content: "";
+    @apply absolute left-0 top-[0.45em] h-1.5 w-1.5 rounded-full bg-accent;
+  }
+
+  .career-focus--accent .career-focus__list li::before {
+    @apply bg-paper/80;
   }
 
   /* Rendered markdown body, shared by the project and archive detail
