@@ -66,8 +66,15 @@ const personSchema = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={site.url + image} />
 
-    {/* The headshot is only above the fold on the homepage's hero. */}
-    {isHome && <link rel="preload" href="/images/headshot.jpg" as="image" />}
+    {/* Homepage-only image preloads: the headshot (above the fold in the
+        hero) and the PNW b-roll (used by its scroll parallax, which needs
+        the image ready before the section reaches the viewport). */}
+    {isHome && (
+      <>
+        <link rel="preload" href="/images/headshot.jpg" as="image" />
+        <link rel="preload" href="/images/b-roll.jpg" as="image" />
+      </>
+    )}
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/favicon/favicon.ico" />
