@@ -25,6 +25,7 @@ export const stackGroups = [
     icons: [
       // Simple Icons (via astro-icon) — FA has no Tailwind brand glyph.
       { name: 'Tailwind CSS', icon: 'simple-icons:tailwindcss' },
+      { name: 'Bootstrap', className: 'fa-brands fa-bootstrap' },
       { name: 'Figma', className: 'fa-brands fa-figma' },
     ],
   },
@@ -52,7 +53,8 @@ export const stackGroups = [
     blurb: 'Clean pipelines, automation, and AI agents just make the job easier.',
     icons: [
       { name: 'GitHub', className: 'fa-brands fa-github' },
-      // Simple Icons (via astro-icon) — FA has no Claude Code glyph.
+      // Simple Icons (via astro-icon) — FA has neither Vite nor Claude Code.
+      { name: 'Vite', icon: 'simple-icons:vite' },
       { name: 'Claude Code', icon: 'simple-icons:claudecode' },
     ],
   },

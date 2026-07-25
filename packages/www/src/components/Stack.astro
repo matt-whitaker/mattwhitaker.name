@@ -94,12 +94,15 @@ const nodes = stackGroups.map((group, i) => {
         ))}
       </svg>
 
-      {/* TODO: hub placeholder — swap for a mark/monogram when ready. */}
+      {/* Monogram hub — echoes the nav wordmark and anchors the spokes at
+          the wheel's center (compass rose, not lines pointing at nothing).
+          The wrapper owns the desktop centering transform; GSAP only
+          fades it, never writes transform (see motion/stack.js). */}
       <div
         data-stack-hub
         class="mb-10 flex justify-center min-[880px]:absolute min-[880px]:top-1/2 min-[880px]:left-1/2 min-[880px]:mb-0 min-[880px]:-translate-x-1/2 min-[880px]:-translate-y-1/2"
       >
-        <div class="stack-hub">Hub</div>
+        <span class="stack-hub" aria-hidden="true">MW</span>
       </div>
 
       <ul class="flex flex-col gap-8 min-[880px]:block">
@@ -129,11 +132,10 @@ const nodes = stackGroups.map((group, i) => {
 
     <div>
       <p class="text-sm font-semibold uppercase tracking-widest text-paper/70">Stack</p>
-      <h2 class="mt-2 font-display text-4xl font-bold">What I reach for.</h2>
+      <h2 class="mt-2 font-display text-4xl font-bold">A rough picture of me.</h2>
       <p class="mt-4 text-paper/80">
-        Preferences, not dogma. These are the tools I'm fastest and most opinionated in — the
-        combinations I've shipped enough times to know their edges. I'll happily work outside them
-        when a codebase or a team already has its own gravity.
+        A general look at the kinds of technology I have worked with, showcasing stronger
+        experience. I'm always interested in learning new things and trying new technology.
       </p>
     </div>
   </div>
