@@ -7,7 +7,7 @@
 // tidiest.
 export const careerFocus = {
   frontend: {
-    lede: "My core discipline, usually the team's frontend lead or SME.",
+    lede: "My core discipline, much of my career as a SME and mentor",
     roles: ['Technical Lead', 'Frontend Architect', 'Design Systems', 'Browser Performance'],
     archetypes: [
       'Design systems & component libraries',

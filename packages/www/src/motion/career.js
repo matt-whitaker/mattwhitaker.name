@@ -191,12 +191,14 @@ export function initCareer() {
   // nothing is left invisible on desktop.
   mm.add(MOBILE_QUERY, () => {
     layers.forEach((layer) => {
-      // The layer's heading + copy fades up as the layer enters,
-      // matching the card reveal used by Projects/Case Studies. The
-      // text sits at the top of the layer, so triggering on the layer
-      // itself lines the fade up with when that text appears.
+      // The CareerFocus blocks (lede, archetype list, role chips) fade
+      // up as the layer enters, matching the card reveal used by
+      // Projects/Archives. Selecting the block children rather than just
+      // <p> is what includes the bulleted list and chip row — the old
+      // `.career-layer__body p` selector missed them, so they snapped in
+      // while the lede faded.
       const textEls = [
-        ...layer.querySelectorAll('.career-layer__body p'),
+        ...layer.querySelectorAll('.career-focus > *'),
       ].filter(Boolean);
       if (textEls.length) {
         gsap.from(textEls, {
