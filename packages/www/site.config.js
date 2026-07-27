@@ -14,7 +14,8 @@ export default {
   // hash links.
   navLinks: [
     { href: '/#intro', label: 'Intro' },
-    { href: '/#stack', label: 'Career' },
+    { href: '/#stack', label: 'Stack' },
+    { href: '/#career', label: 'Career' },
     { href: '/#life', label: 'Life' },
     { href: '/#music', label: 'Music' },
     { href: '/#projects', label: 'Projects' },
