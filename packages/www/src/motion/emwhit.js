@@ -7,6 +7,10 @@ const STICK_QUERY = '(min-width: 880px) and (prefers-reduced-motion: no-preferen
 const STICK_VH = 0.8; // how long the section holds in place, in viewport-height units of scroll -- matched to the career folder's hang duration (LAYER_VH's hangUnits, ~0.9) so the two beats feel similar
 const BAR_SPEED = 0.7; // equalizer phase advances at 70% of scroll progress, so it lags 30% behind actual scroll speed
 
+// Dark-background regions the nav should invert its text over as it
+// scrolls past them. Add a selector here to add a region.
+const NAV_INVERT_REGIONS = ['[data-stack]', '[data-emwhit]'];
+
 export function initEmwhit() {
   const section = document.querySelector('[data-emwhit]');
   const bars = gsap.utils.toArray('[data-emwhit-bar]');
@@ -18,23 +22,26 @@ export function initEmwhit() {
   const mm = gsap.matchMedia();
 
   // Inverts the nav's logo/links (desktop) and hamburger (mobile) to
-  // paper-white while the fixed nav visually overlaps this section's
-  // dark background. Uses IntersectionObserver rather than a
+  // paper-white while the fixed nav visually overlaps any dark-background
+  // region (NAV_INVERT_REGIONS). Uses IntersectionObserver rather than a
   // ScrollTrigger start/end range: those are precomputed scroll-pixel
-  // values, and this section's own pin (below) holds it fixed on
-  // screen for a span of scroll — the precomputed range and the pin's
-  // actual visual behavior kept drifting out of sync (inverting while
-  // still over white, un-inverting right as the pin released).
-  // IntersectionObserver instead reads live, current rendered geometry
-  // every time, so it can't go stale relative to the pin. rootMargin
-  // shrinks the observed root down to just the nav's own height as a
-  // strip at the top of the viewport, so "intersecting" means exactly
-  // "this section is currently under the nav" — recreated on resize
-  // since rootMargin can't be updated on an existing observer.
+  // values, and emwhit's own pin (below) holds it fixed on screen for a
+  // span of scroll — the precomputed range and the pin's actual visual
+  // behavior kept drifting out of sync (inverting while still over white,
+  // un-inverting right as the pin released). IntersectionObserver instead
+  // reads live, current rendered geometry every time, so it can't go
+  // stale relative to the pin. rootMargin shrinks the observed root down
+  // to just the nav's own height as a strip at the top of the viewport,
+  // so "intersecting" means exactly "this region is currently under the
+  // nav." A Set tracks how many regions are under it at once, so the nav
+  // inverts if any is — recreated on resize since rootMargin can't be
+  // updated on an existing observer.
   const invertTargets = document.querySelectorAll('[data-nav-invert]');
-  if (invertTargets.length) {
+  const regions = NAV_INVERT_REGIONS.map((sel) => document.querySelector(sel)).filter(Boolean);
+  if (invertTargets.length && regions.length) {
     let observer;
     let resizeTimer;
+    const active = new Set();
 
     const setInverted = (inverted) => {
       invertTargets.forEach((el) => {
@@ -45,11 +52,18 @@ export function initEmwhit() {
 
     const createObserver = () => {
       observer?.disconnect();
+      active.clear();
       observer = new IntersectionObserver(
-        ([entry]) => setInverted(entry.isIntersecting),
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) active.add(entry.target);
+            else active.delete(entry.target);
+          }
+          setInverted(active.size > 0);
+        },
         { rootMargin: `0px 0px -${window.innerHeight - navHeight()}px 0px` },
       );
-      observer.observe(section);
+      regions.forEach((el) => observer.observe(el));
     };
 
     createObserver();
