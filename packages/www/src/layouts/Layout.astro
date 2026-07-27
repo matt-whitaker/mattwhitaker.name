@@ -6,9 +6,9 @@ import { careerSkills } from '../data/career-skills.js';
 // Subpages (project detail pages) override these; the defaults keep
 // the homepage exactly as before.
 const {
-  title = 'Matt Whitaker — Senior Frontend Engineer',
+  title = site.title,
   description = site.description,
-  image = '/images/headshot.jpg',
+  image = site.headshot,
 } = Astro.props;
 const canonical = site.url + Astro.url.pathname;
 const isHome = Astro.url.pathname === '/';
@@ -21,8 +21,8 @@ const personSchema = {
   '@type': 'Person',
   name: 'Matt Whitaker',
   url: site.url,
-  image: site.url + '/images/headshot.jpg',
-  jobTitle: 'Senior Frontend Engineer',
+  image: site.url + site.headshot,
+  jobTitle: site.jobtitle,
   description: site.description,
   sameAs: [site.linkedin, site.github, site.emwhit],
   knowsAbout,
