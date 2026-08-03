@@ -22,14 +22,16 @@ export function initStack() {
   if (!nodes.length) return;
 
   gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    // Kept fast and started early (top 90%) so it finishes well before the
+    // wheel scrolls to center — a slower/later reveal was easy to outrun.
     const tl = gsap.timeline({
       defaults: { ease: 'power2.out' },
-      scrollTrigger: { trigger: section, start: 'top 70%', once: true },
+      scrollTrigger: { trigger: section, start: 'top 90%', once: true },
     });
 
-    if (hub) tl.from(hub, { opacity: 0, duration: 0.4 }, 0);
-    if (spokes.length) tl.from(spokes, { opacity: 0, duration: 0.4, stagger: 0.05 }, 0.15);
-    tl.from(nodes, { opacity: 0, duration: 0.45, stagger: 0.09 }, 0.25);
-    tl.from(iconRows, { y: 10, duration: 0.45, stagger: 0.09 }, 0.25);
+    if (hub) tl.from(hub, { opacity: 0, duration: 0.2 }, 0);
+    if (spokes.length) tl.from(spokes, { opacity: 0, duration: 0.2, stagger: 0.02 }, 0.05);
+    tl.from(nodes, { opacity: 0, duration: 0.25, stagger: 0.04 }, 0.06);
+    tl.from(iconRows, { y: 10, duration: 0.25, stagger: 0.04 }, 0.06);
   });
 }
