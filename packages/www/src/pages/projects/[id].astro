@@ -19,7 +19,7 @@ const hrefText = hrefLabel ? hrefLabel : `Visit ${new URL(href).host}`;
 ---
 
 <Layout title={title + ' — Matt Whitaker'} description={blurb} image={thumbnail}>
-  <Nav />
+  <Nav slot="nav" />
 
   <main class="px-6 pt-32 pb-24">
     <article class="mx-auto max-w-3xl">

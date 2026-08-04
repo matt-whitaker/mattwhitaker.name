@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
 
 import { initNav } from './motion/nav.js';
 import { initHero } from './motion/hero.js';
@@ -12,7 +13,25 @@ import { initArchives } from './motion/archive.js';
 import { initContactCopy } from './motion/contact.js';
 import { initHashSync } from './motion/hash-sync.js';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+// Site-wide smooth scrolling. Created before the section inits so their
+// pinned ScrollTriggers register against the smoother's proxied scroll.
+// Gated on the wrapper existing and motion being allowed — reduced-motion
+// users keep native scroll (hijacked scroll is an a11y concern), and the
+// `effects` flag enables data-speed/data-lag parallax if we want it.
+if (
+  document.getElementById('smooth-wrapper') &&
+  window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+) {
+  ScrollSmoother.create({
+    wrapper: '#smooth-wrapper',
+    content: '#smooth-content',
+    smooth: 0.6,
+    effects: true,
+    smoothTouch: 0.1,
+  });
+}
 
 initNav();
 initHero();

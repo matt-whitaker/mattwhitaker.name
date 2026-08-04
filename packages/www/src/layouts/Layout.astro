@@ -89,7 +89,18 @@ const personSchema = {
     <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
   </head>
   <body class="bg-paper font-body text-ink">
-    <slot />
+    {/*
+      The fixed nav lives OUTSIDE #smooth-wrapper: ScrollSmoother transforms
+      #smooth-content, which would make a position:fixed descendant scroll
+      with the content instead of staying pinned to the viewport. Pages put
+      their <Nav> in the "nav" named slot.
+    */}
+    <slot name="nav" />
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <slot />
+      </div>
+    </div>
     {/*
       Bundled as a deferred module — same timing as the old
       end-of-body type="module" script tag. All motion init lives in
