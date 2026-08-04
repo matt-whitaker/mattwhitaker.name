@@ -218,15 +218,15 @@ html {
     @apply text-sm text-paper/70;
   }
 
-  /* Monogram hub at the wheel's center — an opaque paper disc with the
-     accent-colored monogram, echoing the nav wordmark as a badge. The
-     solid fill masks where the spokes converge, so they read as
-     terminating at its edge rather than crossing the letters. Desktop
-     sizes disc + text in cqw so it scales with the wheel (see the media
-     query below); mobile shows it as a plain badge above the list. */
+  /* Hub at the wheel's center — a faint outline ring framing the headshot
+     silhouette, avatar-style, with no fill (so the spokes show through
+     behind it). Bottom-aligned + overflow-hidden so the shoulders crop to
+     the circle; desktop sizes the disc in cqw so it scales with the wheel
+     (see the media query below). Mobile hides the hub (wrapper is
+     `hidden`). */
   .stack-hub {
-    @apply flex items-center justify-center rounded-full bg-paper font-display font-semibold text-accent;
-    @apply h-16 w-16 text-2xl;
+    @apply flex items-end justify-center overflow-hidden rounded-full border border-paper/10;
+    @apply h-16 w-16;
   }
 
   @media (min-width: 880px) {
@@ -274,7 +274,6 @@ html {
     .stack-hub {
       height: clamp(3rem, 13cqw, 5rem);
       width: clamp(3rem, 13cqw, 5rem);
-      font-size: clamp(1.1rem, 5cqw, 2rem);
     }
   }
 
