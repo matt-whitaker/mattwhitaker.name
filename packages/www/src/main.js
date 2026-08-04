@@ -29,7 +29,7 @@ if (
     content: '#smooth-content',
     smooth: 0.6,
     effects: true,
-    smoothTouch: 0.1,
+    smoothTouch: false, // native scroll on touch devices — the smoothing felt off on mobile
   });
 }
 
