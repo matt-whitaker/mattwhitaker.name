@@ -16,7 +16,7 @@ const DESKTOP_QUERY = '(min-width: 880px) and (prefers-reduced-motion: no-prefer
 const START_VH = 50; // where the content panel starts, in vh from the stage top — 50 = it comes in over the lower half alongside the b-roll (rather than the photo showing alone first)
 const CONTENT_VH = 55; // content panel height, in vh
 const SLIDE_VH = 1; // scroll spent on the content slide itself, in viewport-height units
-const BUFFER_VH = 0.6; // held (pinned, nothing moving) before AND after the slide, so the pin/unpin don't feel abrupt
+const BUFFER_VH = 0.3; // held (pinned, nothing moving) before AND after the slide, so the pin/unpin don't feel abrupt
 
 export function initPnw() {
   const section = document.querySelector('[data-pnw]');
