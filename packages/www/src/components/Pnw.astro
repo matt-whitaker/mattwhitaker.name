@@ -1,70 +1,50 @@
 ---
-// PNW section — a pinned two-photo parallax reveal.
-//
-// Desktop (min-width 880px, motion/pnw.js): the stage fills the viewport
-// with the TOP photo up top and the BOTTOM photo below it. The "born and
-// raised" content panel comes in over the lower half and slides up over
-// the pin — covering the top photo and uncovering the bottom photo (a
-// DIFFERENT picture). Once it reaches the top the pin releases and the
-// whole thing scrolls on into Music.
-//
-// Below the breakpoint (or reduced-motion) it's a plain stacked column in
-// normal flow: top photo, content, bottom photo. motion/pnw.js sets the
-// desktop positioning, so the markup here stays a clean mobile baseline.
-// Decorative images → aria-hidden.
-//
-// The bottom photo is a PLACEHOLDER (same file as the top for now) — swap
-// its src for the second picture once chosen.
+// PNW section — a simple parallax "peek": a half-page b-roll image at the
+// top that pans slightly slower than the scroll (motion/pnw.js), above a
+// white content pane that fills the rest of the viewport. min-h-screen
+// flex column so peek + content read as one screen. The <img> is oversized
+// (h-[160%], pulled up with top-[-30%]) to give the pan headroom; `top` is
+// a position offset, not a transform, so GSAP's yPercent owns the
+// transform cleanly. Decorative image → aria-hidden.
 ---
 
-<section id="life" data-pnw class="relative">
-  <div data-pnw-stage class="relative overflow-hidden">
-    {/* Top photo — shown first, covered as the content rises. */}
+<section id="life" data-pnw class="flex min-h-screen flex-col bg-paper">
+  {/* Image peek — pans slightly slower than the scroll. */}
+  <div data-broll aria-hidden="true" class="relative h-[42vh] shrink-0 overflow-hidden md:h-[45vh]">
     <img
-      data-broll-top
+      data-broll-img
       src="/images/b-roll.jpg"
       alt=""
-      aria-hidden="true"
       decoding="async"
-      class="block h-[55vh] w-full object-cover object-[50%_20%]"
+      class="absolute left-0 top-[-30%] h-[160%] w-full object-cover object-[50%_10%]"
     />
+  </div>
 
-    <div data-pnw-content class="relative z-10 flex items-center bg-paper px-6 py-14">
-      <div class="mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-12 md:grid-cols-2">
-        <div>
-          <p class="text-sm font-semibold uppercase tracking-widest text-accent">Pacific Northwest</p>
-          <h2 class="mt-2 font-display text-4xl font-bold text-ink">born and raised</h2>
-          <p class="mt-4 max-w-xl text-ink/80">
-            I grew up on the coast of Pacific Northwest and went to school at the
-            University of Washington. These days I'm on the eastside, in the shadow of the
-            Cascades.
-          </p>
-        </div>
-
-        {/* Two askew portrait photo frames — matted white with a thin black keyline. */}
-        <figure class="mx-auto">
-          <div class="relative mx-auto h-64 w-[18rem]">
-            <div class="absolute left-0 top-0 w-40 rotate-[-6deg] bg-white p-3 shadow-xl">
-              <img class="aspect-[3/4] w-full border border-ink/80" src="/images/doggy1.jpg" />
-            </div>
-            <div class="absolute right-0 top-8 w-40 rotate-[5deg] bg-white p-3 shadow-xl">
-              <img class="aspect-[3/4] w-full border border-ink/80" src="/images/doggy2.jpg" />
-            </div>
-          </div>
-          <!--<figcaption class="mt-4 text-center text-sm italic text-ink/60">Corgis!</figcaption>-->
-        </figure>
+  {/* White content — fills the rest of the viewport below the peek. */}
+  <div class="flex flex-1 items-center px-6 py-16">
+    <div data-pnw-content class="mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-12 md:grid-cols-2">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-widest text-accent">Pacific Northwest</p>
+        <h2 class="mt-2 font-display text-4xl font-bold text-ink">born and raised</h2>
+        <p class="mt-4 max-w-xl text-ink/80">
+          I grew up on the coast of Pacific Northwest and went to school at the
+          University of Washington. These days I'm on the eastside, in the shadow of the
+          Cascades.
+        </p>
       </div>
-    </div>
 
-    {/* Bottom photo — revealed as the content rises. PLACEHOLDER src; swap
-        for the second picture. */}
-    <img
-      data-broll-bottom
-      src="/images/b-roll.jpg"
-      alt=""
-      aria-hidden="true"
-      decoding="async"
-      class="block h-[55vh] w-full object-cover object-[50%_80%]"
-    />
+      {/* Two askew portrait photo frames — matted white with a thin black keyline. */}
+      <figure class="mx-auto">
+        <div class="relative mx-auto h-64 w-[18rem]">
+          <div class="absolute left-0 top-0 w-40 rotate-[-6deg] bg-white p-3 shadow-xl">
+            <img class="aspect-[3/4] w-full border border-ink/80" src="/images/doggy1.jpg" />
+          </div>
+          <div class="absolute right-0 top-8 w-40 rotate-[5deg] bg-white p-3 shadow-xl">
+            <img class="aspect-[3/4] w-full border border-ink/80" src="/images/doggy2.jpg" />
+          </div>
+        </div>
+        <!--<figcaption class="mt-4 text-center text-sm italic text-ink/60">Corgis!</figcaption>-->
+      </figure>
+    </div>
   </div>
 </section>
