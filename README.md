@@ -1,8 +1,22 @@
-Packages for building out my personal website
+# Matt Whitaker (.name)
 
-- [www](packages/www) - Generates core website files
-- [blog](packages/blog) - Generates blog subsite files
-- [core](packages/core) - common re-usable tools
-- [assets](packages/assets) - common assets
+My personal landing page and maybe other things.
 
-See packages for more details
+## Packages
+
+| Package | Role |
+|---                                      |--- |
+| [`core`](/packages/core)                | Shared types, helpers, and config |
+| [`www`](/packages/www)                  | Personal Landing Page |
+
+## Stack
+
+### Website (mattwhitaker.name)
+- [Astro](https://astro.build/)
+- [GSAP](https://gsap.com/)
+
+## Claude Code
+
+### CLAUDE.md
+
+See [Claude.md](/CLAUDE.md)
