@@ -107,7 +107,13 @@ const nodes = stackGroups.map((group, i) => {
         </span>
       </div>
 
-      <ul class="flex flex-col gap-8 min-[880px]:block">
+      {/*
+        .stack-list carries the mobile axis (rail + ticks) along with the
+        column layout — see style.css. It deliberately stays unpositioned
+        so the desktop branch's absolute nodes keep resolving against
+        [data-stack-wheel].
+      */}
+      <ul class="stack-list">
         {nodes.map((node) => (
           <li class="stack-node" style={`--x: ${node.x}%; --y: ${node.y}%`} data-stack-node>
             <ul class="stack-node__icons">

@@ -201,13 +201,83 @@ html {
      positioning to unwind. Absolute nodes resolve against
      [data-stack-wheel] (position: relative) — the same box the
      connector SVG's 0 0 100 100 viewBox maps onto, which is what keeps
-     spokes and nodes in the same coordinate space. */
+     spokes and nodes in the same coordinate space.
+
+     At mobile the list also draws an "axis": a hairline rail down its
+     left with a short tick reaching inward at each micro-stack, so the
+     collapsed column reads as something charted rather than a plain
+     stack of text. The wheel's spokes do that job at desktop, which
+     unsets the whole thing.
+
+     The axis is built from pseudo-elements on the *nodes*, never on the
+     <ul>: per the paragraph above, position on .stack-list would capture
+     the desktop branch's absolute nodes and pull them out of the
+     connector SVG's coordinate space. It stays unpositioned on purpose. */
+  .stack-list {
+    /* The rail-segment height reads --stack-gap, so the gap lives here
+       rather than as a `gap-8` utility in the markup — one value, no
+       chance of the two drifting apart. */
+    --stack-gap: 2rem;
+    --stack-indent: 1.4rem; /* rail's offset left of the node's text */
+    --stack-tick: 0.7rem; /* length of the inward dash */
+    /* Where a tick sits, measured down from the node's top. The icon row
+       is pinned to twice this (see .stack-node__icons below), so a tick
+       lands on that row's exact center by construction.
+
+       The row needs pinning because its natural height isn't stable: the
+       Font Awesome kit swaps each <i> for an inline-block <svg> that
+       fills the full 2rem line box, while astro-icon's inline SVGs are
+       display:block and only 1em tall. So the row measures 1.5rem until
+       the kit's script lands and 2rem after — and a group built purely
+       from Simple Icons would never grow at all. A floor makes all three
+       cases identical. */
+    --stack-tick-y: 1rem;
+
+    @apply flex flex-col;
+    gap: var(--stack-gap);
+    padding-left: var(--stack-indent);
+  }
+
   .stack-node {
-    @apply flex flex-col items-start gap-2 text-left;
+    @apply relative flex flex-col items-start gap-2 text-left;
+  }
+
+  .stack-node::before,
+  .stack-node::after {
+    @apply pointer-events-none absolute;
+    content: '';
+    left: calc(-1 * var(--stack-indent));
+  }
+
+  /* Rail: each node draws the segment from its own tick down to the
+     *next* node's tick — `100%` is the node's own rendered height, so a
+     blurb wrapping to a second line can't put the rail out of step.
+     :last-child draws none, which lands the rail's end exactly on the
+     final tick instead of dangling past it. */
+  .stack-node::before {
+    @apply w-px bg-paper/20;
+    top: var(--stack-tick-y);
+    height: calc(100% + var(--stack-gap));
+  }
+
+  .stack-node:last-child::before {
+    content: none;
+  }
+
+  /* Tick: shares --stack-tick-y with the rail, so the two meet by
+     construction rather than by two numbers kept in sync by hand. */
+  .stack-node::after {
+    @apply h-px bg-paper/40;
+    top: var(--stack-tick-y);
+    width: var(--stack-tick);
   }
 
   .stack-node__icons {
     @apply flex items-center gap-3 text-2xl text-paper;
+    /* Holds the row at the tick's diameter so the two stay centered on
+       each other however the glyphs happen to measure. Also steadies the
+       small reflow when the Font Awesome kit swaps in its SVGs. */
+    min-height: calc(2 * var(--stack-tick-y));
   }
 
   .stack-node__label {
@@ -230,6 +300,19 @@ html {
   }
 
   @media (min-width: 880px) {
+    /* Wheel mode: the nodes go absolute and place themselves, so the
+       column layout and the axis indent come off, and the rail and ticks
+       give way to the connector spokes. */
+    .stack-list {
+      @apply block;
+      padding-left: 0;
+    }
+
+    .stack-node::before,
+    .stack-node::after {
+      content: none;
+    }
+
     /* Everything inside the wheel is sized in cqw (1% of the wheel's
        own width, via `@container` on [data-stack-wheel]) rather than a
        fixed rem. The wheel's diameter is fluid — min(65% column, 58vh)
@@ -260,6 +343,9 @@ html {
       @apply justify-center;
       font-size: clamp(1.1rem, 4.6cqw, 1.75rem);
       gap: clamp(0.5rem, 2cqw, 0.85rem);
+      /* No ticks up here, and the row's font-size is fluid — a fixed
+         floor would inflate the row on a short viewport. */
+      min-height: 0;
     }
 
     .stack-node__label {
