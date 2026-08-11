@@ -7,7 +7,7 @@
 // tidiest.
 export const careerFocus = {
   frontend: {
-    lede: "My core discipline, much of my career as a SME and mentor",
+    lede: "Front-end is my strength, in any role, across various stacks, it's been the most consistent.",
     roles: ['Technical Lead', 'Frontend Architect', 'Design Systems', 'Browser Performance'],
     archetypes: [
       'Design systems & component libraries',
@@ -19,7 +19,7 @@ export const careerFocus = {
     ],
   },
   backend: {
-    lede: 'A genuine fullstack reach, at home across every layer behind the UI.',
+    lede: 'Wide array of experience on different backend stacks. Adaptable, bringing a first principles mindset to cross languages seamlessly.',
     roles: ['Fullstack Engineer', 'API & Service Design', 'Distributed Architecture'],
     archetypes: [
       'RESTful API design',
@@ -31,7 +31,7 @@ export const careerFocus = {
     ],
   },
   data: {
-    lede: 'Years of modeling, storing, and moving data alongside the fullstack work.',
+    lede: 'Plenty of opportunities to think about data design and architecture for databases, but not my forte',
     roles: ['Data Modeling', 'Schema Design'],
     archetypes: [
       'Relational modeling & schema design',
@@ -41,7 +41,7 @@ export const careerFocus = {
     ],
   },
   infra: {
-    lede: 'A supporting role, but I have some experience maintaining IaC codebases and am familiar with many AWS products.',
+    lede: 'I have some experience maintaining IaC codebases and am familiar with many AWS products, focus is more on architecture',
     roles: ['Systems Design', 'Serverless orchestration', 'IaC'],
     archetypes: [
       'Edge architecture & orchestration',
