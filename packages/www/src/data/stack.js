@@ -51,7 +51,7 @@ export const stackGroups = [
   },
   {
     label: 'Workflow',
-    blurb: 'Clean pipelines, automation, and AI agents just make the job easier.',
+    blurb: 'Automation, AI workflows, integrated CI/CD',
     icons: [
       { name: 'GitHub', className: 'fa-brands fa-github' },
       // Simple Icons (via astro-icon) — FA has neither Vite nor Claude Code.
