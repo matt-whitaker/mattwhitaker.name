@@ -220,18 +220,32 @@ html {
     --stack-gap: 2rem;
     --stack-indent: 1.4rem; /* rail's offset left of the node's text */
     --stack-tick: 0.7rem; /* length of the inward dash */
-    /* Where a tick sits, measured down from the node's top. The icon row
-       is pinned to twice this (see .stack-node__icons below), so a tick
-       lands on that row's exact center by construction.
 
-       The row needs pinning because its natural height isn't stable: the
-       Font Awesome kit swaps each <i> for an inline-block <svg> that
+    /* A tick lines up with its micro-stack's *label*, not the icon row
+       above it — the label is the thing being pointed at. Rather than
+       hardcode that offset, derive it from the three boxes stacked above
+       the label's midline, each of which is pinned to the token below so
+       the sum can't go stale:
+
+         icon row  →  .stack-node__icons min-height
+         node gap  →  .stack-node gap
+         half the label's own line box
+
+       Each is pinned rather than left to compute naturally because none
+       of them is stable on its own. The icon row's height moves under it:
+       the Font Awesome kit swaps each <i> for an inline-block <svg> that
        fills the full 2rem line box, while astro-icon's inline SVGs are
-       display:block and only 1em tall. So the row measures 1.5rem until
-       the kit's script lands and 2rem after — and a group built purely
-       from Simple Icons would never grow at all. A floor makes all three
-       cases identical. */
-    --stack-tick-y: 1rem;
+       display:block and only 1em tall — so the row measures 1.5rem until
+       the kit's script lands and 2rem after, and a group built purely
+       from Simple Icons would never grow at all. The label's line box is
+       a 1.5 ratio inherited from <html>, which a stray text-* utility on
+       the label would quietly change. */
+    --stack-icon-row: 2rem;
+    --stack-node-gap: 0.5rem;
+    --stack-label-line: 1.5rem;
+    --stack-tick-y: calc(
+      var(--stack-icon-row) + var(--stack-node-gap) + var(--stack-label-line) / 2
+    );
 
     @apply flex flex-col;
     gap: var(--stack-gap);
@@ -239,7 +253,8 @@ html {
   }
 
   .stack-node {
-    @apply relative flex flex-col items-start gap-2 text-left;
+    @apply relative flex flex-col items-start text-left;
+    gap: var(--stack-node-gap);
   }
 
   .stack-node::before,
@@ -274,14 +289,16 @@ html {
 
   .stack-node__icons {
     @apply flex items-center gap-3 text-2xl text-paper;
-    /* Holds the row at the tick's diameter so the two stay centered on
-       each other however the glyphs happen to measure. Also steadies the
-       small reflow when the Font Awesome kit swaps in its SVGs. */
-    min-height: calc(2 * var(--stack-tick-y));
+    /* Pinned so --stack-tick-y can count on it; also steadies the small
+       reflow when the Font Awesome kit swaps in its SVGs. */
+    min-height: var(--stack-icon-row);
   }
 
   .stack-node__label {
     @apply font-display font-semibold text-paper;
+    /* Same 1.5 ratio it inherits from <html> at this font-size — stated
+       as a length so --stack-tick-y can halve it. */
+    line-height: var(--stack-label-line);
   }
 
   .stack-node__blurb {
@@ -350,6 +367,9 @@ html {
 
     .stack-node__label {
       font-size: clamp(0.85rem, 3cqw, 1.05rem);
+      /* Back to the inherited ratio — no tick to line up with here, and
+         the mobile length would fix the leading against a fluid size. */
+      line-height: 1.5;
     }
 
     .stack-node__blurb {
