@@ -91,7 +91,7 @@ html {
   }
 
   .career-layer--frontend {
-    @apply bg-accent text-paper;
+    @apply bg-ink text-paper;
   }
 
   .career-layer--neutral {
@@ -115,8 +115,37 @@ html {
     @apply font-display font-semibold;
   }
 
+  /* On desktop a layer is a fixed box (career.js gives it inset-0 inside
+     the pinned folder), so tall content has to go somewhere. It goes in
+     the skills column alone: the body itself never scrolls, which keeps
+     the lede, archetype list and role chips on the left put — they read
+     as the layer's frame, and a scrollbar that moved them would make the
+     folder feel like a document rather than a panel.
+
+     min-h-0 is what makes that possible: this is a flex child, and a
+     flex item's automatic minimum size is its content, so without it the
+     body would grow past the layer and take the whole folder with it
+     instead of letting the column inside scroll. */
   .career-layer__body {
-    @apply flex-1 px-6 pb-8 overflow-y-auto;
+    @apply flex-1 min-h-0 px-6 pb-8;
+  }
+
+  .career-layer__skills {
+    @apply min-w-0;
+  }
+
+  @media (min-width: 880px) {
+    .career-layer__body {
+      @apply overflow-hidden;
+    }
+
+    /* Same automatic-minimum-size story as the body, one level down:
+       a grid item also floors at its content height without min-h-0,
+       and would simply overflow rather than scroll. */
+    .career-layer__skills {
+      @apply min-h-0 overflow-y-auto;
+      scrollbar-width: thin;
+    }
   }
 
   /* Bottom-anchored role chips (see .career-focus__roles) vs. the pinned
