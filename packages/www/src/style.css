@@ -149,9 +149,7 @@ html {
   }
 
   /* Skill bars — the career layer's skill display. Bar length encodes
-     years of experience; fill opacity encodes self-assessed strength,
-     paired with an explicit text label elsewhere (.skill-bar__detail)
-     since opacity alone isn't an accessible way to convey a tier.
+     years of experience; fill opacity encodes self-assessed strength.
      --accent variants are for use inside the accent-colored Frontend
      panel, mirroring .chip/.chip--accent. */
   .skill-bars {
