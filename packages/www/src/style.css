@@ -18,19 +18,8 @@
   --aspect-card: 3 / 2;
 }
 
-/*
-  The global responsive lever. Tailwind's entire scale — --spacing,
-  every --text-*, --container-* — is defined in rem, which is always
-  relative to this element's font-size. Scaling it fluidly here means
-  spacing, type, and container widths across the whole site grow
-  together continuously with viewport width, instead of needing a
-  lg:/xl: step added to every element by hand.
-
-  Bounds: 1rem (today's baseline, browser default — respects the
-  user's own font-size/zoom preference) at <=400px viewport, up to
-  1.25rem (125%) at >=1536px (the 2xl breakpoint). Tune the two rem
-  values below to make the whole site scale more or less aggressively.
-*/
+/* The global responsive lever — see CLAUDE.md. Scales 1rem at <=400px
+   to 1.25rem at >=1536px; tune the two rem values to change the rate. */
 html {
   font-size: clamp(1rem, 0.912rem + 0.352vw, 1.25rem);
 }
@@ -62,11 +51,9 @@ html {
     font-family: var(--font-display);
   }
 
-  /* Pre-hide state for the hero's load-in (src/motion/hero.js). Applied
-     via the .js-motion class, added by a blocking script in <head>
-     before body content paints — see index.html — so the elements are
-     never visible-then-hidden-then-faded-in (a flash). Must stay in
-     sync with the gsap.to() values in hero.js. */
+  /* Pre-hide state for the hero's load-in (src/motion/hero.js). Must
+     stay in sync with the gsap.to() values there — see Layout.astro's
+     anti-flash script for why. */
   .js-motion [data-hero-item] {
     opacity: 0;
     transform: translateY(16px);
@@ -80,11 +67,8 @@ html {
 }
 
 @layer components {
-  /* Career — the tabbed-folder stack.
-     Layout (flex column / gap) is the mobile baseline: full, uniform
-     blocks in normal flow. src/motion/career.js promotes each
-     [data-layer] to position:absolute above the desktop breakpoint and
-     reverts it on teardown, so no desktop-only rules live here. */
+  /* Career — mobile-baseline flex column; src/motion/career.js promotes
+     each [data-layer] to absolute above the desktop breakpoint. */
 
   .career-layer {
     @apply flex flex-col;
@@ -193,30 +177,16 @@ html {
     @apply flex-1 min-w-0.5 max-w-2.5 rounded-t-xs bg-accent-soft origin-bottom will-change-transform;
   }
 
-  /* Stack — the radial micro-stack wheel.
-     Mobile baseline is a plain vertical list in normal flow; the
-     desktop branch below promotes each node to absolute using the
-     --x/--y custom properties Stack.astro computes at build time.
-     Those properties are simply unused at mobile, so there's no
-     positioning to unwind. Absolute nodes resolve against
-     [data-stack-wheel] (position: relative) — the same box the
-     connector SVG's 0 0 100 100 viewBox maps onto, which is what keeps
-     spokes and nodes in the same coordinate space.
-
-     At mobile the list also draws an "axis": a hairline rail down its
-     left with a short tick reaching inward at each micro-stack, so the
-     collapsed column reads as something charted rather than a plain
-     stack of text. The wheel's spokes do that job at desktop, which
-     unsets the whole thing.
-
-     The axis is built from pseudo-elements on the *nodes*, never on the
-     <ul>: per the paragraph above, position on .stack-list would capture
-     the desktop branch's absolute nodes and pull them out of the
-     connector SVG's coordinate space. It stays unpositioned on purpose. */
+  /* Stack — mobile baseline is a vertical list with a hairline "axis"
+     (rail + inward tick per node), reading as charted rather than plain
+     text; the wheel's spokes take over that job at desktop. The axis is
+     built from pseudo-elements on the *nodes*, not the <ul> — position
+     on .stack-list would capture the desktop branch's absolute nodes
+     (--x/--y, computed by Stack.astro at build time) and pull them out
+     of the connector SVG's coordinate space, so it stays unpositioned. */
   .stack-list {
-    /* The rail-segment height reads --stack-gap, so the gap lives here
-       rather than as a `gap-8` utility in the markup — one value, no
-       chance of the two drifting apart. */
+    /* Reads --stack-gap rather than a `gap-8` utility so the rail-segment
+       height can't drift from the actual gap. */
     --stack-gap: 2rem;
     --stack-indent: 1.4rem; /* rail's offset left of the node's text */
     --stack-tick: 0.7rem; /* length of the inward dash */
@@ -305,21 +275,14 @@ html {
     @apply text-sm text-paper/70;
   }
 
-  /* Hub at the wheel's center — a faint outline ring framing the headshot
-     silhouette, avatar-style, with no fill (so the spokes show through
-     behind it). Bottom-aligned + overflow-hidden so the shoulders crop to
-     the circle; desktop sizes the disc in cqw so it scales with the wheel
-     (see the media query below). Mobile hides the hub (wrapper is
-     `hidden`). */
+  /* Bottom-aligned + overflow-hidden crops the headshot's shoulders to
+     the circle; no fill, so the connector spokes show through behind it. */
   .stack-hub {
     @apply flex items-end justify-center overflow-hidden rounded-full border border-paper/10;
     @apply h-16 w-16;
   }
 
   @media (min-width: 880px) {
-    /* Wheel mode: the nodes go absolute and place themselves, so the
-       column layout and the axis indent come off, and the rail and ticks
-       give way to the connector spokes. */
     .stack-list {
       @apply block;
       padding-left: 0;
@@ -330,23 +293,12 @@ html {
       content: none;
     }
 
-    /* Everything inside the wheel is sized in cqw (1% of the wheel's
-       own width, via `@container` on [data-stack-wheel]) rather than a
-       fixed rem. The wheel's diameter is fluid — min(65% column, 58vh)
-       — so fixed-rem nodes crowd each other on a short viewport and
-       look undersized on a large monitor.
-
-       34cqw is the ceiling for node width: with N nodes the tightest
-       pair sits 2·r·sin(π/N) apart, which at N=5 and RADIUS=33 works
-       out to ~0.39 × diameter. Raise RADIUS or drop a node and there's
-       room for more. Every value is clamped at both ends so text stays
-       legible at the extremes rather than scaling without limit.
-
-       Keep the width floor low. The horizontal-extreme nodes sit at
-       x = 81.4%, so a node overflows the wheel once it passes
-       0.372 × diameter — and a floor stops scaling by definition, so
-       too high a one bleeds off-canvas on short viewports (where 58vh,
-       not the column, is what's sizing the wheel). */
+    /* Sized in cqw (of [data-stack-wheel]'s own width) since the wheel's
+       diameter is fluid — a fixed rem would crowd on a short viewport
+       and look undersized on a large one. 34cqw ceiling: with N=5 nodes
+       and RADIUS=33 the tightest pair sits ~0.39 × diameter apart.
+       Width floor stays low: horizontal-extreme nodes sit at x=81.4%,
+       so a node overflows once it passes 0.372 × diameter. */
     .stack-node {
       @apply absolute items-center text-center;
       left: var(--x);

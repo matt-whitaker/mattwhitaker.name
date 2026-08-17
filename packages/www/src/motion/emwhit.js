@@ -4,8 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Same breakpoint as the career folder — pinning is a desktop-scroll
 // pattern, and this is where things stop feeling cramped/touch-scrolly.
 const STICK_QUERY = '(min-width: 880px) and (prefers-reduced-motion: no-preference)';
-const STICK_VH = 0.8; // how long the section holds in place, in viewport-height units of scroll -- matched to the career folder's hang duration (LAYER_VH's hangUnits, ~0.9) so the two beats feel similar
-const BAR_SPEED = 0.7; // equalizer phase advances at 70% of scroll progress, so it lags 30% behind actual scroll speed
+const STICK_VH = 0.8; // matched to the career folder's hang duration (~0.9) so the two beats feel similar
+const BAR_SPEED = 0.7; // equalizer phase lags 30% behind actual scroll speed
 
 // Dark-background regions the nav should invert its text over as it
 // scrolls past them. Add a selector here to add a region.
@@ -21,21 +21,11 @@ export function initEmwhit() {
 
   const mm = gsap.matchMedia();
 
-  // Inverts the nav's logo/links (desktop) and hamburger (mobile) to
-  // paper-white while the fixed nav visually overlaps any dark-background
-  // region (NAV_INVERT_REGIONS). Uses IntersectionObserver rather than a
-  // ScrollTrigger start/end range: those are precomputed scroll-pixel
-  // values, and emwhit's own pin (below) holds it fixed on screen for a
-  // span of scroll — the precomputed range and the pin's actual visual
-  // behavior kept drifting out of sync (inverting while still over white,
-  // un-inverting right as the pin released). IntersectionObserver instead
-  // reads live, current rendered geometry every time, so it can't go
-  // stale relative to the pin. rootMargin shrinks the observed root down
-  // to just the nav's own height as a strip at the top of the viewport,
-  // so "intersecting" means exactly "this region is currently under the
-  // nav." A Set tracks how many regions are under it at once, so the nav
-  // inverts if any is — recreated on resize since rootMargin can't be
-  // updated on an existing observer.
+  // rootMargin shrinks the observed root to a strip the nav's own height
+  // at the top of the viewport, so "intersecting" means exactly "this
+  // region is under the nav." A Set tracks how many regions are under it
+  // at once; the observer is recreated on resize since rootMargin can't
+  // be updated on an existing one.
   const invertTargets = document.querySelectorAll('[data-nav-invert]');
   const regions = NAV_INVERT_REGIONS.map((sel) => document.querySelector(sel)).filter(Boolean);
   if (invertTargets.length && regions.length) {

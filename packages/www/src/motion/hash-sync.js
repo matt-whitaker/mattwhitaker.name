@@ -1,26 +1,13 @@
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Keeps the URL hash "live" against scroll position, in both directions:
-//
-//  - Scrollspy: as a section reaches (or pins across) the viewport's
-//    vertical center, the hash updates to it via replaceState — no
-//    history spam, no scroll side effects. Back at the top (first
-//    section), the hash is stripped so the resting URL stays clean.
-//  - Deep links: loading /#music native-jumps before the career pin's
-//    multi-viewport spacer exists, so the browser lands in the wrong
-//    place once GSAP shifts the layout. After full load (pins built,
-//    images sized), we re-scroll to where the target actually ended up.
-//
-// Section detection is an IntersectionObserver against the viewport
-// center line, not a ScrollTrigger start/end range — same reasoning as
-// the nav invert in emwhit.js: precomputed scroll-pixel ranges drift
-// out of sync with pinned layout, live geometry can't. Exactly one
-// section sits under the center line at a time, and a pinned section
-// keeps covering it for its whole pinned span, which is precisely the
-// "reached or pinned" semantic we want.
+// Keeps the URL hash live against scroll position (scrollspy), and
+// re-scrolls to a deep link's actual landing spot once pins are built
+// (a native /#music jump happens before the career pin's spacer exists).
+// Section detection uses IntersectionObserver rather than a ScrollTrigger
+// range, for the same drift reason as the nav invert in emwhit.js.
 export function initHashSync() {
-  // Homepage only — detail pages share components (SocialFooter's
-  // #contact section) but shouldn't grow hashes while scrolling.
+  // Homepage only — detail pages share components (e.g. SocialFooter's
+  // #contact) but shouldn't grow hashes while scrolling.
   const hero = document.querySelector('[data-hero]');
   const sections = Array.from(document.querySelectorAll('section[id]'));
   if (!hero || !sections.length) return;
@@ -42,11 +29,9 @@ export function initHashSync() {
         if (entry.isIntersecting) setHash(entry.target.id);
       }
     },
-    // Collapse the observation root to a single line 30% down the
-    // viewport — an incoming section claims the hash once it crosses
-    // the upper third, which reads quicker than waiting for center.
-    // The two percentages must sum to 100 so it stays a line (exactly
-    // one section active at a time, no overlap or dead zones).
+    // Collapses the observation root to a single line 30% down the
+    // viewport (percentages sum to 100, so exactly one section is ever
+    // active — no overlap or dead zones).
     { rootMargin: '-30% 0px -70% 0px' },
   );
   sections.forEach((section) => observer.observe(section));

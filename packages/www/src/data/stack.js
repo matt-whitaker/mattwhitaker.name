@@ -13,7 +13,6 @@ export const stackGroups = [
     blurb: 'A decade of React-based interfaces.',
     icons: [
       { name: 'React', className: 'fa-brands fa-react' },
-      // Simple Icons (via astro-icon) — FA carries none of these.
       { name: 'TypeScript', icon: 'simple-icons:typescript' },
       { name: 'Redux', icon: 'simple-icons:redux' },
       { name: 'TanStack', icon: 'simple-icons:tanstack' },
@@ -23,7 +22,6 @@ export const stackGroups = [
     label: 'Style & Design',
     blurb: 'A token-first approach to styling, adaptable across ecosystems.',
     icons: [
-      // Simple Icons (via astro-icon) — FA has neither Tailwind nor Storybook.
       { name: 'Tailwind CSS', icon: 'simple-icons:tailwindcss' },
       { name: 'Bootstrap', className: 'fa-brands fa-bootstrap' },
       { name: 'Figma', className: 'fa-brands fa-figma' },
@@ -45,7 +43,6 @@ export const stackGroups = [
     icons: [
       { name: 'AWS', className: 'fa-brands fa-aws' },
       { name: 'Docker', className: 'fa-brands fa-docker' },
-      // Simple Icons (via astro-icon) — FA has no Terraform brand glyph.
       { name: 'Terraform', icon: 'simple-icons:terraform' },
     ],
   },
@@ -54,7 +51,6 @@ export const stackGroups = [
     blurb: 'Automation, AI workflows, integrated CI/CD',
     icons: [
       { name: 'GitHub', className: 'fa-brands fa-github' },
-      // Simple Icons (via astro-icon) — FA has neither Vite nor Claude Code.
       { name: 'Vite', icon: 'simple-icons:vite' },
       { name: 'Claude Code', icon: 'simple-icons:claudecode' },
     ],

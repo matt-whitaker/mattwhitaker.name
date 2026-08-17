@@ -33,15 +33,9 @@ const personSchema = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {/*
-      Must stay is:inline (blocking, unbundled) so it runs and paints
-      before the hero markup below does — a bundled/module script never
-      can, since modules are always deferred. Without this, the hero
-      briefly shows at full opacity, then GSAP's initial state snaps it
-      to opacity:0 once main.js finally runs, then fades it back in: a
-      visible flash. The .js-motion CSS rule (src/style.css) hides
-      [data-hero-item] up front instead, so there's nothing to flash.
-    */}
+    {/* Must stay is:inline — a bundled/module script is always deferred
+        and would run after the hero paints, causing a visible flash
+        (see .js-motion in style.css). */}
     <script is:inline>
       if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
         document.documentElement.classList.add('js-motion');
@@ -66,13 +60,14 @@ const personSchema = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={site.url + image} />
 
-    {/* Homepage-only image preloads: the headshot (above the fold in the
-        hero) and the PNW b-roll (used by its scroll parallax, which needs
-        the image ready before the section reaches the viewport). */}
+    {/* Homepage-only: images below the fold that would otherwise
+        visibly pop in as their section scrolls into view. */}
     {isHome && (
       <>
         <link rel="preload" href="/images/headshot.jpg" as="image" />
         <link rel="preload" href="/images/b-roll.jpg" as="image" />
+        <link rel="preload" href="/images/doggy1.jpg" as="image" />
+        <link rel="preload" href="/images/doggy2.jpg" as="image" />
       </>
     )}
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
@@ -90,11 +85,6 @@ const personSchema = {
   </head>
   <body class="bg-paper font-body text-ink">
     <slot />
-    {/*
-      Bundled as a deferred module — same timing as the old
-      end-of-body type="module" script tag. All motion init lives in
-      main.js; nothing animation-related belongs in components.
-    */}
     <script>
       import '../main.js';
     </script>

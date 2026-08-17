@@ -1,12 +1,8 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Subtle parallax for the b-roll peek: the oversized image drifts within
-// its overflow-hidden window as the peek scrolls through the viewport, so
-// it reads as moving slightly slower than the page. yPercent only — the
-// image's centering is a `top` offset, not a transform, so GSAP owns the
-// transform cleanly. Plus a one-shot fade-up for the content. Reduced-
-// motion leaves everything static (peek still fully covers its window).
+// yPercent only — the image's centering is a `top` offset, not a
+// transform, so GSAP owns the transform cleanly.
 const PAN = 14; // yPercent travel each way; kept under the image's overhang so no edge shows
 
 export function initPnw() {

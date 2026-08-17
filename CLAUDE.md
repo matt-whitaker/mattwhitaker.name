@@ -19,6 +19,10 @@ Root-level scripts (`npm run build`, `npm run pack`) build the www workspace and
 
 **Dev-server gotcha worth knowing up front**: adding or removing a module import (or an npm dependency) *while `npm run dev` is running* can leave Vite serving stale optimized-dependency URLs. It surfaces as `Failed to fetch dynamically imported module` in the browser console, and because nearly every section imports GSAP, the whole `main.js` chain silently dies — the clearest symptom is the hero never un-hiding (stuck at `opacity: 0`). Console is otherwise clean, so it's easy to misdiagnose as a code bug. The fix is a clean restart: `rm -rf node_modules/.vite && npm run dev`. `npm run build` is unaffected, so **build to sanity-check code, restart dev to actually view it.**
 
+## Comments
+
+Keep code decluttered — default to no comments. A comment earns its place only when it captures something the code itself can't: a top-level export's purpose/contract, or an extreme, non-obvious detail (a timing dependency, a workaround for a specific bug, an invariant that isn't visible from the code around it — the kind of thing this file's own "Things worth knowing" notes exist for). Don't comment what a well-named function, component, or block already says; don't narrate steps; don't leave changelog-style notes about what used to be there.
+
 ## Architecture
 
 ### Astro: pages, layout, components

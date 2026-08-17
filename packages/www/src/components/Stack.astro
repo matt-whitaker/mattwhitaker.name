@@ -2,13 +2,9 @@
 import { Icon } from 'astro-icon/components';
 import { stackGroups } from '../data/stack.js';
 
-// Radial placement is plain trigonometry resolved at build time — no
-// charting library. Nothing here is a quantitative encoding (no scales,
-// no axes, no values), so a chart lib would only add a canvas renderer
-// that can't read our CSS tokens. Positions come out as percentages of
-// the square container and ride on CSS custom properties, which the
-// desktop branch of `.stack-node` consumes; below the breakpoint they're
-// simply ignored and the nodes fall back into normal document flow.
+// Radial placement is plain trigonometry resolved at build time, output
+// as percentages of the square container onto CSS custom properties that
+// the desktop branch of `.stack-node` consumes.
 const RADIUS = 45; // % from center to each node's center
 const SPOKE_END = 23; // % where a connector stops, short of its node
 
@@ -28,53 +24,32 @@ const nodes = stackGroups.map((group, i) => {
 });
 ---
 
-{/*
-  Centering lives on the section (like Emwhit) rather than on an inner
-  min-h-[inherit] wrapper: inheriting 100vh into a child of a py-24
-  section stacks the padding on top of a full viewport, making the whole
-  thing ~12rem taller than the screen for no reason.
-*/}
+{/* Centering lives on the section (like Emwhit), not an inner
+    min-h-[inherit] wrapper — that would inherit 100vh into a child of a
+    py-24 section, stacking the padding on top of a full viewport. */}
 <section
   id="stack"
   data-stack
   class="flex min-h-screen flex-col justify-center bg-accent px-6 py-24 text-paper"
 >
-  {/*
-    flex-col-reverse on mobile puts the intro copy above the wheel (it
-    reads as the lede); the desktop grid then lays them out in DOM
-    order — wheel 65%, copy 35%.
-  */}
+  {/* flex-col-reverse on mobile puts the intro copy above the wheel (it
+      reads as the lede); the desktop grid lays them out in DOM order. */}
   <div
-    {/*
-      minmax(0, …) rather than a bare 65fr/35fr: an fr track's implicit
-      minimum is min-content, so a column can refuse to shrink and push
-      the grid wider than its container. The explicit 0 floor lets both
-      columns actually shrink.
-    */}
+    {/* minmax(0, …) rather than a bare 65fr/35fr — an fr track's implicit
+        min-content minimum can otherwise refuse to shrink and push the
+        grid wider than its container. */}
     class="mx-auto flex w-full max-w-6xl flex-col-reverse gap-14 min-[880px]:grid min-[880px]:grid-cols-[minmax(0,65fr)_minmax(0,35fr)] min-[880px]:items-center min-[880px]:gap-10"
   >
-    {/*
-      Three-way min(), and each term earns its place:
-        100%  — never exceed the grid column.
-        46vw  — the term that makes the wheel track window *width*.
-                Without it the height cap always won (a 65% column on a
-                wide screen is ~870px, taller than any viewport), so a
-                horizontal resize moved nothing at all.
-        62vh  — never outgrow the screen vertically, section padding
-                included.
-      Width binds from ~880px to ~1400px; above that a square simply
-      can't use the column's height and it goes back to height-bound.
-    */}
+    {/* min(100%, 46vw, 62vh): 46vw is what makes the wheel track window
+        *width* — without it the height cap always wins (a 65% column on
+        a wide screen is ~870px, taller than any viewport). 62vh caps it
+        vertically. Width binds ~880-1400px; above that it's height-bound. */}
     <div
       data-stack-wheel
       class="@container relative w-full min-[880px]:mx-auto min-[880px]:aspect-square min-[880px]:w-[min(100%,46vw,62vh)]"
     >
-      {/*
-        Connectors sit behind the nodes. The container is square at
-        desktop, so a 0 0 100 100 viewBox maps 1:1 onto the same
-        percentage space the nodes use. Decorative — the relationships
-        are already carried by the text.
-      */}
+      {/* 0 0 100 100 viewBox maps 1:1 onto the square container's
+          percentage space, matching the nodes'. Decorative. */}
       <svg
         viewBox="0 0 100 100"
         aria-hidden="true"
@@ -94,10 +69,8 @@ const nodes = stackGroups.map((group, i) => {
         ))}
       </svg>
 
-      {/* Monogram hub — echoes the nav wordmark and anchors the spokes at
-          the wheel's center (compass rose, not lines pointing at nothing).
-          The wrapper owns the desktop centering transform; GSAP only
-          fades it, never writes transform (see motion/stack.js). */}
+      {/* Wrapper owns the desktop centering transform; GSAP only fades
+          the hub, never writes transform (see motion/stack.js). */}
       <div
         data-stack-hub
         class="hidden justify-center min-[880px]:absolute min-[880px]:top-1/2 min-[880px]:left-1/2 min-[880px]:flex min-[880px]:-translate-x-1/2 min-[880px]:-translate-y-1/2"
@@ -107,23 +80,14 @@ const nodes = stackGroups.map((group, i) => {
         </span>
       </div>
 
-      {/*
-        .stack-list carries the mobile axis (rail + ticks) along with the
-        column layout — see style.css. It deliberately stays unpositioned
-        so the desktop branch's absolute nodes keep resolving against
-        [data-stack-wheel].
-      */}
       <ul class="stack-list">
         {nodes.map((node) => (
           <li class="stack-node" style={`--x: ${node.x}%; --y: ${node.y}%`} data-stack-node>
             <ul class="stack-node__icons">
               {node.icons.map((icon) => (
                 <li title={icon.name}>
-                  {/* Font Awesome glyph by default; an `icon` field opts
-                      a slot into an astro-icon (Simple Icons) SVG for
-                      brands FA doesn't carry. title on the <li> gives a
-                      hover tooltip uniformly for both, so a reader can
-                      hover an unfamiliar glyph for its name. */}
+                  {/* title on the <li> gives a uniform hover tooltip for
+                      both icon.icon (astro-icon) and the FA fallback. */}
                   {icon.icon
                     ? <Icon name={icon.icon} aria-hidden="true" />
                     : <i class={icon.className} aria-hidden="true"></i>}

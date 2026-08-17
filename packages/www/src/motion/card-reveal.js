@@ -2,9 +2,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Shared staggered fade/slide-up reveal for card-grid sections
-// (Projects, Case Studies) as their cards enter the viewport. Runs on
-// all viewports; only reduced-motion turns it off, leaving cards
-// visible at rest.
+// (Projects, Archives) as their cards enter the viewport.
 export function initCardGridReveal(selector) {
   const cards = gsap.utils.toArray(selector);
   if (!cards.length) return;

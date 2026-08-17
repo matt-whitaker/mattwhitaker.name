@@ -1,12 +1,9 @@
 ---
 import site from '../../site.config.js';
 
-// Three stacked sine waves instead of a modulo-based pseudo-random
-// sequence: a slow one for the broad "clumps" a spectrum tends to
-// have (a couple of dominant bands, not uniform noise), a medium
-// one for shape within those clumps, and a fast/low-amplitude one
-// for fine jitter so it doesn't look perfectly smooth. Weights sum
-// to 1 so the envelope stays within roughly ±1 before scaling.
+// Three stacked sine waves (slow/broad, medium, fast/low-amplitude) read
+// as spectrum-like "clumps" rather than uniform noise. Weights sum to 1
+// so the envelope stays within roughly ±1 before scaling.
 const barCount = 28;
 const barHeights = Array.from({ length: barCount }, (_, i) => {
   const t = i / (barCount - 1);
@@ -58,24 +55,6 @@ const barHeights = Array.from({ length: barCount }, (_, i) => {
         >
           Website
         </a>
-        {/*<a
-          href="#"
-          class="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent-soft hover:text-accent-soft"
-        >
-          Spotify
-        </a>*/}
-        {/*<a
-          href="#"
-          class="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent-soft hover:text-accent-soft"
-        >
-          Bandcamp
-        </a>*/}
-        {/*<a
-          href="#"
-          class="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent-soft hover:text-accent-soft"
-        >
-          YouTube
-        </a>*/}
       </div>
     </div>
   </div>

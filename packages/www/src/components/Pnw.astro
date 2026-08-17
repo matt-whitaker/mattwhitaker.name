@@ -1,15 +1,10 @@
 ---
-// PNW section — a simple parallax "peek": a half-page b-roll image at the
-// top that pans slightly slower than the scroll (motion/pnw.js), above a
-// white content pane that fills the rest of the viewport. min-h-screen
-// flex column so peek + content read as one screen. The <img> is oversized
-// (h-[160%], pulled up with top-[-30%]) to give the pan headroom; `top` is
-// a position offset, not a transform, so GSAP's yPercent owns the
-// transform cleanly. Decorative image → aria-hidden.
+// The <img> is oversized (h-[160%], pulled up with top-[-30%]) to give
+// motion/pnw.js's parallax pan headroom; `top` is a position offset, not
+// a transform, so GSAP's yPercent owns the transform cleanly.
 ---
 
 <section id="life" data-pnw class="flex min-h-screen flex-col bg-paper">
-  {/* Image peek — pans slightly slower than the scroll. */}
   <div data-broll aria-hidden="true" class="relative h-[42vh] shrink-0 overflow-hidden md:h-[45vh]">
     <img
       data-broll-img
@@ -20,7 +15,6 @@
     />
   </div>
 
-  {/* White content — fills the rest of the viewport below the peek. */}
   <div class="flex flex-1 items-center px-6 py-16">
     <div data-pnw-content class="mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-12 md:grid-cols-2">
       <div>
@@ -33,7 +27,6 @@
         </p>
       </div>
 
-      {/* Two askew portrait photo frames — matted white with a thin black keyline. */}
       <figure class="mx-auto">
         <div class="relative mx-auto h-64 w-[18rem]">
           <div class="absolute left-0 top-0 w-40 rotate-[-6deg] bg-white p-3 shadow-xl">
@@ -43,7 +36,6 @@
             <img class="aspect-[3/4] w-full border border-ink/80" src="/images/doggy2.jpg" />
           </div>
         </div>
-        <!--<figcaption class="mt-4 text-center text-sm italic text-ink/60">Corgis!</figcaption>-->
       </figure>
     </div>
   </div>
