@@ -9,10 +9,9 @@ const { skills, accent = false } = Astro.props;
     <li>
       <div class="skill-bar__meta">
         <span class="skill-bar__name">{skill.name}</span>
-        {/* Years are deliberately not printed — they only drive the bar's
-            width (below). Strength stays as text because the fill opacity
-            alone can't convey a tier accessibly. */}
-        <span class="skill-bar__detail">{strengthLabels[skill.strength]}</span>
+        <span class="skill-bar__detail">
+          {skill.years} yr{skill.years === 1 ? '' : 's'}
+        </span>
       </div>
       <div class:list={['skill-bar__track', accent && 'skill-bar__track--accent']} aria-hidden="true">
         <div
