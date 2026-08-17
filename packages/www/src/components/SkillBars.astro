@@ -10,7 +10,7 @@ const { skills, accent = false } = Astro.props;
       <div class="skill-bar__meta">
         <span class="skill-bar__name">{skill.name}</span>
         <span class="skill-bar__detail">
-          {skill.years} yr{skill.years === 1 ? '' : 's'} · {strengthLabels[skill.strength]}
+          {skill.years} yr{skill.years === 1 ? '' : 's'}
         </span>
       </div>
       <div class:list={['skill-bar__track', accent && 'skill-bar__track--accent']} aria-hidden="true">
