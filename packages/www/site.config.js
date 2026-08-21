@@ -1,6 +1,6 @@
 export default {
-  title: "React-based Full-stack Engineer",
-  jobtitle: "React-based Full-stack Engineer",
+  title: "React Full-stack Engineer",
+  jobtitle: "React Full-stack Engineer",
   headshot: '/images/headshot.jpg',
   url: 'https://mattwhitaker.name',
   description: 'Matt Whitaker is a senior full-stack engineer with over a decade of experience building React-based full-stack applications and microsystems across a variety of stacks. Also makes music as The Emwhit Project.',
@@ -12,9 +12,6 @@ export default {
   fonts: {
     urbanist: 'https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap'
   },
-  // Root-relative (/#x, not #x) so they work from project detail
-  // pages too; on the homepage they behave identically to plain
-  // hash links.
   navLinks: [
     { href: '/#intro', label: 'Intro' },
     { href: '/#stack', label: 'Stack' },
