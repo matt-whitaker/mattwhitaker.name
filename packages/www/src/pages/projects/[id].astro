@@ -16,9 +16,20 @@ const { project } = Astro.props;
 const { Content } = await render(project);
 const { title, blurb, tags, href, hrefLabel, thumbnail } = project.data;
 const hrefText = hrefLabel ? hrefLabel : `Visit ${new URL(href).host}`;
+const breadcrumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Projects', path: '/#projects' },
+  { name: title, path: Astro.url.pathname },
+];
 ---
 
-<Layout title={title + ' — Matt Whitaker'} description={blurb} image={thumbnail}>
+<Layout
+  title={title + ' — Matt Whitaker'}
+  description={blurb}
+  image={thumbnail}
+  ogType="article"
+  breadcrumbs={breadcrumbs}
+>
   <Nav />
 
   <main class="px-6 pt-32 pb-24">
@@ -47,6 +58,7 @@ const hrefText = hrefLabel ? hrefLabel : `Visit ${new URL(href).host}`;
       <a
         href={href}
         target="_blank"
+        rel="noopener"
         class="mt-10 inline-block rounded-full bg-accent px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-accent-soft"
       >
         {hrefText} &rarr;

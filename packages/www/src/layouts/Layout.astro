@@ -1,4 +1,6 @@
 ---
+import sharp from 'sharp';
+import { fileURLToPath } from 'node:url';
 import '../style.css';
 import site from '../../site.config.js';
 import { careerSkills } from '../data/career-skills.js';
@@ -9,9 +11,17 @@ const {
   title = site.title,
   description = site.description,
   image = site.headshot,
+  ogType = 'website',
+  breadcrumbs = [],
 } = Astro.props;
 const canonical = site.url + Astro.url.pathname;
 const isHome = Astro.url.pathname === '/';
+
+// Read at build time from the file in public/ so a new thumbnail never
+// needs its dimensions restated by hand — and a missing one fails the build.
+const { width: imageWidth, height: imageHeight } = await sharp(
+  fileURLToPath(new URL('../../public' + image, import.meta.url))
+).metadata();
 
 const knowsAbout = Object.values(careerSkills)
   .flat()
@@ -26,6 +36,26 @@ const personSchema = {
   description: site.description,
   sameAs: [site.linkedin, site.github, site.emwhit],
   knowsAbout,
+};
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Matt Whitaker',
+  alternateName: site.title,
+  url: site.url,
+  description: site.description,
+  inLanguage: 'en-US',
+  author: { '@type': 'Person', name: 'Matt Whitaker', url: site.url },
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbs.map((crumb, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: crumb.name,
+    item: site.url + crumb.path,
+  })),
 };
 ---
 
@@ -47,12 +77,14 @@ const personSchema = {
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Matt Whitaker" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={site.url + image} />
+    <meta property="og:image:width" content={imageWidth} />
+    <meta property="og:image:height" content={imageHeight} />
     <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -82,6 +114,12 @@ const personSchema = {
     <script is:inline src={site.fontawesome} crossorigin="anonymous"></script>
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+    {isHome && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
+    )}
+    {breadcrumbs.length > 0 && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+    )}
   </head>
   <body class="bg-paper font-body text-ink">
     <slot />
