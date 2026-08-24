@@ -55,7 +55,7 @@ jobs:
     uses: matt-whitaker/claude-team/.github/workflows/team.yml@v2
     with:
       project_owner: matt-whitaker
-      project_number: "0"
+      project_number: "12"
       allowed_bots: ""
       node: true
       browser: false
