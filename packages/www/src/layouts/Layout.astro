@@ -13,6 +13,7 @@ const {
   image = site.headshot,
   ogType = 'website',
   breadcrumbs = [],
+  robots = 'index, follow',
 } = Astro.props;
 const canonical = site.url + Astro.url.pathname;
 const isHome = Astro.url.pathname === '/';
@@ -74,7 +75,7 @@ const breadcrumbSchema = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Matt Whitaker" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
 
     <meta property="og:type" content={ogType} />

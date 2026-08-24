@@ -6,6 +6,7 @@ tags:
 href: https://bfaero.mattwhitaker.name
 hrefLabel: "View demo"
 thumbnail: /images/bfaero.png
+noindex: true
 ---
 
 Built a prototype mobile webapp for a small, prospective AI-scene startup. Working with their temporary designer, rapidly

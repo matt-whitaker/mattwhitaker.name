@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, blurb, tags, href, hrefLabel, thumbnail } = project.data;
+const { title, blurb, tags, href, hrefLabel, thumbnail, noindex } = project.data;
 const hrefText = hrefLabel ? hrefLabel : `Visit ${new URL(href).host}`;
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -29,6 +29,7 @@ const breadcrumbs = [
   image={thumbnail}
   ogType="article"
   breadcrumbs={breadcrumbs}
+  robots={noindex ? 'noindex, follow' : 'index, follow'}
 >
   <Nav />
 

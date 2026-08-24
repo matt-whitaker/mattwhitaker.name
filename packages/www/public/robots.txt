@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /projects/brandfluence
-Disallow: /archives/pay-i
 Sitemap: https://mattwhitaker.name/sitemap-index.xml

@@ -8,6 +8,7 @@ tags:
 href: https://web.archive.org/web/20250522002340/https://pay-i.com/
 hrefLabel: View on Wayback
 thumbnail: /images/pay-i-wayback-screenshot.png
+noindex: true
 ---
 
 At Pay-i, I was tasked with building a brand-new landing page for the company from scratch. The design called for a

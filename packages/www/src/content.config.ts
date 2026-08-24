@@ -11,6 +11,11 @@ const contentCard = z.object({
   href: z.string().url(),
   hrefLabel: z.string().optional(),
   thumbnail: z.string(),
+  // Keeps the entry out of the index: the detail page renders
+  // `noindex, follow` and the sitemap filter in astro.config.mjs drops it.
+  // Never pair this with a robots.txt Disallow — a blocked crawler never
+  // reads the meta tag.
+  noindex: z.boolean().default(false),
 });
 
 const projects = defineCollection({
