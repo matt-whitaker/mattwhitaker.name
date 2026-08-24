@@ -12,8 +12,10 @@ alt: "The Pay-i landing page: the headline \"Transform GenAI Spend to Business V
 noindex: true
 ---
 
-At Pay-i, I was tasked with building a brand-new landing page for the company from scratch. The design called for a
-heavily animated, presentation-style parallax page, with nearly every section driven by scroll-based movement—pinning,
+At Pay-i, I was tasked with building a brand-new landing page for the company from scratch. Pay-i's product is spend
+management for generative AI usage — turning GenAI spend into business value, as the page's own headline put it — and
+the landing page's job was to sell that pitch in the first few seconds of a scroll. The design called for a heavily
+animated, presentation-style parallax page, with nearly every section driven by scroll-based movement—pinning,
 transitions, and general animation throughout. Working closely with the designer, I fleshed out corner cases and mobile
 behavior for these effects.
 
@@ -21,6 +23,14 @@ The challenge was compounded by rapid design iterations, a tight timeline, and t
 like this before. I had to think on my feet to handle both the bespoke nature of the work and the constantly shifting scope.
 Much of it came down to old-school trial and error and rapid iteration—this was built when AI tools were just starting to mature—but
 I delivered the MVP in under two weeks from start to finish.
+
+Technically, the page leaned on Tailwind for styling and GSAP for the animation and scroll orchestration — the same
+combination behind the motion on this personal site, and for similar reasons: GSAP's timeline and ScrollTrigger tooling
+make it practical to choreograph pinning and scrubbed transitions precisely, instead of hand-rolling scroll-position math.
+With that many sections pinned and animating in sequence, the harder part wasn't any single effect but making the whole
+page hold together — keeping transitions readable at different scroll speeds and making sure the mobile experience,
+without the luxury of a wide viewport to stage transitions across, still felt intentional rather than like a stripped-down
+fallback.
 
 The site is no longer publicly available, so I've dug up a Wayback Machine snapshot to show it off. I'm proud of what I
 accomplished here and the learnings I took away from it.
