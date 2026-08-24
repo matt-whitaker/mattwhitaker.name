@@ -56,7 +56,7 @@ jobs:
     with:
       project_owner: matt-whitaker
       project_number: "12"
-      allowed_bots: ""
+      allowed_bots: mattwhitaker-claude
       node: true
       browser: false
       # The commands an authoring role may run, so it can execute THIS repo's gate.
