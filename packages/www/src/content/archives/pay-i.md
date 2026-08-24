@@ -8,6 +8,7 @@ tags:
 href: https://web.archive.org/web/20250522002340/https://pay-i.com/
 hrefLabel: View on Wayback
 thumbnail: /images/pay-i-wayback-screenshot.png
+alt: "The Pay-i landing page: the headline \"Transform GenAI Spend to Business Value\" above a screenshot of the product's spend dashboard"
 noindex: true
 ---
 

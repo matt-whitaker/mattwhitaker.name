@@ -6,6 +6,7 @@ tags:
 href: https://bfaero.mattwhitaker.name
 hrefLabel: "View demo"
 thumbnail: /images/bfaero.png
+alt: "The Brandfluence demo's opening screen: three friends carrying a canoe, headlined \"Hey Bestie, Time to Show Off Your New Look!\" above a Submit your photo button"
 noindex: true
 ---
 

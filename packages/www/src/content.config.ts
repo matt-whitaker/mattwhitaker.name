@@ -11,6 +11,9 @@ const contentCard = z.object({
   href: z.string().url(),
   hrefLabel: z.string().optional(),
   thumbnail: z.string(),
+  // Alt text for `thumbnail`; the card and the detail page fall back to
+  // `title` when it's absent.
+  alt: z.string().optional(),
   // Keeps the entry out of the index: the detail page renders
   // `noindex, follow` and the sitemap filter in astro.config.mjs drops it.
   // Never pair this with a robots.txt Disallow — a blocked crawler never

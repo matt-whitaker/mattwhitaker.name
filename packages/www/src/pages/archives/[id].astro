@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
 const { archive } = Astro.props;
 const { Content } = await render(archive);
-const { title, blurb, tags, href, hrefLabel, thumbnail, noindex } = archive.data;
+const { title, blurb, tags, href, hrefLabel, thumbnail, alt, noindex } = archive.data;
 const hrefText = hrefLabel ? hrefLabel : `Visit ${new URL(href).host}`;
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -49,7 +49,7 @@ const breadcrumbs = [
       </ul>
 
       <div class="mt-8 overflow-hidden rounded-2xl border border-ink/10 shadow-sm">
-        <img src={thumbnail} alt="" width="1200" height="800" class="w-full object-cover" />
+        <img src={thumbnail} alt={alt ?? title} width="1200" height="800" class="w-full object-cover" />
       </div>
 
       <div class="rich-text mt-10">

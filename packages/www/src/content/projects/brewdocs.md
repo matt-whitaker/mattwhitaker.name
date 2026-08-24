@@ -9,6 +9,7 @@ tags:
   - Astro
 href: https://brewdocs.beer
 thumbnail: /images/brewdocs.png
+alt: The BrewDocs wordmark in black on a slate blue background
 ---
 
 BrewDocs is a digital homebrewing brew day application and a side project of mine. It's still in progress, but deployed

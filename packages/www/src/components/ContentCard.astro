@@ -16,7 +16,7 @@ const isExternal = href.startsWith('http');
   <div class="aspect-card overflow-hidden">
     <img
       src={item.thumbnail}
-      alt=""
+      alt={item.alt ?? item.title}
       width="600"
       height="400"
       loading="lazy"
