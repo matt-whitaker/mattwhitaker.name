@@ -15,7 +15,7 @@ This is the `mattwhitaker.name` monorepo:
 
 Root-level scripts (`npm run build`, `npm run pack`) build the www workspace and `rsync` its `dist/` into a combined root `dist/` for deployment; CI (`.github/workflows/`) builds on every push and deploys to S3/CloudFront on `mainline`. Day-to-day: `cd packages/www && npm run dev` (Astro dev server at `localhost:4321`). There's no test suite or linter configured yet.
 
-**Node version**: the repo's `.nvmrc` pins `18.18.2`, but run `nvm use 20` (or newer) for anything in `packages/www` — that's what CI uses, and Astro's tooling assumes it.
+**Node version**: CI pins Node `24` (`NODE_VERSION`, set in both workflows) and there is no `.nvmrc` — run 24 locally for anything in `packages/www`.
 
 **Dev-server gotcha worth knowing up front**: adding or removing a module import (or an npm dependency) *while `npm run dev` is running* can leave Vite serving stale optimized-dependency URLs. It surfaces as `Failed to fetch dynamically imported module` in the browser console, and because nearly every section imports GSAP, the whole `main.js` chain silently dies — the clearest symptom is the hero never un-hiding (stuck at `opacity: 0`). Console is otherwise clean, so it's easy to misdiagnose as a code bug. The fix is a clean restart: `rm -rf node_modules/.vite && npm run dev`. `npm run build` is unaffected, so **build to sanity-check code, restart dev to actually view it.**
 
