@@ -14,10 +14,11 @@ const contentCard = z.object({
   // Alt text for `thumbnail`; the card and the detail page fall back to
   // `title` when it's absent.
   alt: z.string().optional(),
-  // Keeps the entry out of the index: the detail page renders
-  // `noindex, follow` and the sitemap filter in astro.config.mjs drops it.
-  // Never pair this with a robots.txt Disallow — a blocked crawler never
-  // reads the meta tag.
+  // Keeps the entry undiscoverable. The one flag drives all three signals,
+  // derived through noindex-routes.js: a robots.txt Disallow, omission from
+  // the sitemap, and `noindex, follow` on the detail page. The meta tag is
+  // unreachable behind the Disallow and kept only so the page stays out of
+  // the index if that rule is ever lifted.
   noindex: z.boolean().default(false),
 });
 
