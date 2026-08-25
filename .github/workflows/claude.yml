@@ -52,11 +52,13 @@ jobs:
       pull-requests: write
       actions: read
       id-token: write
-    uses: matt-whitaker/claude-team/.github/workflows/team.yml@v3
+    uses: matt-whitaker/claude-team/.github/workflows/team.yml@v4
     with:
       project_owner: matt-whitaker
       project_number: "12"
       allowed_bots: mattwhitaker-claude
+      # Session-driven by default; set the repo variable CLAUDE_TEAM_DRIVER to `cascade` to opt in.
+      driver: ${{ vars.CLAUDE_TEAM_DRIVER }}
       node: true
       browser: false
       # The commands an authoring role may run, so it can execute THIS repo's gate.
