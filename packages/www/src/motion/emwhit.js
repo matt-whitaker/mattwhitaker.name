@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // pattern, and this is where things stop feeling cramped/touch-scrolly.
 const STICK_QUERY = '(min-width: 880px) and (prefers-reduced-motion: no-preference)';
 const STICK_VH = 0.8; // matched to the career folder's hang duration (~0.9) so the two beats feel similar
+const STICK_ENABLED = false; // pin off: the section scrolls in normal flow. Flip to re-enable.
 const BAR_SPEED = 0.7; // equalizer phase lags 30% behind actual scroll speed
 
 // Dark-background regions the nav should invert its text over as it
@@ -86,7 +87,7 @@ export function initEmwhit() {
     });
   });
 
-  mm.add(STICK_QUERY, () => {
+  if (STICK_ENABLED) mm.add(STICK_QUERY, () => {
     gsap.set(section, { height: section.getBoundingClientRect().height });
 
     // Pins flush at the very top of the viewport (not offset by
