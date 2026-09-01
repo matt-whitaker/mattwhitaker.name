@@ -2,7 +2,7 @@
 export const stackGroups = [
   {
     label: 'Interface',
-    blurb: 'A decade of React-based interfaces.',
+    blurb: 'Over a decade of React-based interfaces.',
     icons: [
       { name: 'React', className: 'fa-brands fa-react' },
       { name: 'TypeScript', icon: 'simple-icons:typescript' },
@@ -12,7 +12,7 @@ export const stackGroups = [
   },
   {
     label: 'Style & Design',
-    blurb: 'A token-first approach to styling, adaptable across ecosystems.',
+    blurb: 'Token-first approach to styling, adaptable across ecosystems.',
     icons: [
       { name: 'Tailwind CSS', icon: 'simple-icons:tailwindcss' },
       { name: 'Bootstrap', className: 'fa-brands fa-bootstrap' },
@@ -22,7 +22,7 @@ export const stackGroups = [
   },
   {
     label: 'Services',
-    blurb: 'Experience across a wide variety of server-side languages.',
+    blurb: 'Multiple server-side languages.',
     icons: [
       { name: 'Node.js', className: 'fa-brands fa-node-js' },
       { name: 'Python', className: 'fa-brands fa-python' },

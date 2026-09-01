@@ -1,4 +1,6 @@
 ---
+import sharp from 'sharp';
+import { fileURLToPath } from 'node:url';
 import '../style.css';
 import site from '../../site.config.js';
 import { careerSkills } from '../data/career-skills.js';
@@ -9,9 +11,18 @@ const {
   title = site.title,
   description = site.description,
   image = site.headshot,
+  ogType = 'website',
+  breadcrumbs = [],
+  robots = 'index, follow',
 } = Astro.props;
 const canonical = site.url + Astro.url.pathname;
 const isHome = Astro.url.pathname === '/';
+
+// Read at build time from the file in public/ so a new thumbnail never
+// needs its dimensions restated by hand — and a missing one fails the build.
+const { width: imageWidth, height: imageHeight } = await sharp(
+  fileURLToPath(new URL('../../public' + image, import.meta.url))
+).metadata();
 
 const knowsAbout = Object.values(careerSkills)
   .flat()
@@ -26,6 +37,26 @@ const personSchema = {
   description: site.description,
   sameAs: [site.linkedin, site.github, site.emwhit],
   knowsAbout,
+};
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Matt Whitaker',
+  alternateName: site.title,
+  url: site.url,
+  description: site.description,
+  inLanguage: 'en-US',
+  author: { '@type': 'Person', name: 'Matt Whitaker', url: site.url },
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbs.map((crumb, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: crumb.name,
+    item: site.url + crumb.path,
+  })),
 };
 ---
 
@@ -44,15 +75,17 @@ const personSchema = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Matt Whitaker" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Matt Whitaker" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={site.url + image} />
+    <meta property="og:image:width" content={imageWidth} />
+    <meta property="og:image:height" content={imageHeight} />
     <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -60,15 +93,11 @@ const personSchema = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={site.url + image} />
 
-    {/* Homepage-only: images below the fold that would otherwise
-        visibly pop in as their section scrolls into view. */}
+    {/* The hero headshot is the LCP element, and it is the only image that
+        belongs here — everything below the fold is `loading="lazy"` instead,
+        so preloading it would just contend with the render path. */}
     {isHome && (
-      <>
-        <link rel="preload" href="/images/headshot.jpg" as="image" />
-        <link rel="preload" href="/images/b-roll.jpg" as="image" />
-        <link rel="preload" href="/images/doggy1.jpg" as="image" />
-        <link rel="preload" href="/images/doggy2.jpg" as="image" />
-      </>
+      <link rel="preload" href="/images/headshot.jpg" as="image" fetchpriority="high" />
     )}
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
@@ -79,9 +108,15 @@ const personSchema = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href={site.fonts.urbanist} rel="stylesheet" />
-    <script is:inline src={site.fontawesome} crossorigin="anonymous"></script>
+    <script is:inline defer src={site.fontawesome} crossorigin="anonymous"></script>
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+    {isHome && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
+    )}
+    {breadcrumbs.length > 0 && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+    )}
   </head>
   <body class="bg-paper font-body text-ink">
     <slot />

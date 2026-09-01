@@ -11,6 +11,15 @@ const contentCard = z.object({
   href: z.string().url(),
   hrefLabel: z.string().optional(),
   thumbnail: z.string(),
+  // Alt text for `thumbnail`; the card and the detail page fall back to
+  // `title` when it's absent.
+  alt: z.string().optional(),
+  // Keeps the entry undiscoverable. The one flag drives all three signals,
+  // derived through noindex-routes.js: a robots.txt Disallow, omission from
+  // the sitemap, and `noindex, follow` on the detail page. The meta tag is
+  // unreachable behind the Disallow and kept only so the page stays out of
+  // the index if that rule is ever lifted.
+  noindex: z.boolean().default(false),
 });
 
 const projects = defineCollection({

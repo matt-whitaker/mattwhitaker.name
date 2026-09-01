@@ -1,5 +1,5 @@
 export default {
-  title: "React Full-stack Engineer",
+  title: "Matt Whitaker — React Full-stack Engineer",
   jobtitle: "React Full-stack Engineer",
   headshot: '/images/headshot.jpg',
   url: 'https://mattwhitaker.name',

@@ -14,11 +14,23 @@ export async function getStaticPaths() {
 
 const { archive } = Astro.props;
 const { Content } = await render(archive);
-const { title, blurb, tags, href, hrefLabel, thumbnail } = archive.data;
+const { title, blurb, tags, href, hrefLabel, thumbnail, alt, noindex } = archive.data;
 const hrefText = hrefLabel ? hrefLabel : `Visit ${new URL(href).host}`;
+const breadcrumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Archives', path: '/#archives' },
+  { name: title, path: Astro.url.pathname },
+];
 ---
 
-<Layout title={title + ' — Matt Whitaker'} description={blurb} image={thumbnail}>
+<Layout
+  title={title + ' — Matt Whitaker'}
+  description={blurb}
+  image={thumbnail}
+  ogType="article"
+  breadcrumbs={breadcrumbs}
+  robots={noindex ? 'noindex, follow' : 'index, follow'}
+>
   <Nav />
 
   <main class="px-6 pt-32 pb-24">
@@ -37,7 +49,7 @@ const hrefText = hrefLabel ? hrefLabel : `Visit ${new URL(href).host}`;
       </ul>
 
       <div class="mt-8 overflow-hidden rounded-2xl border border-ink/10 shadow-sm">
-        <img src={thumbnail} alt="" width="1200" height="800" class="w-full object-cover" />
+        <img src={thumbnail} alt={alt ?? title} width="1200" height="800" class="w-full object-cover" />
       </div>
 
       <div class="rich-text mt-10">
@@ -47,6 +59,7 @@ const hrefText = hrefLabel ? hrefLabel : `Visit ${new URL(href).host}`;
       <a
         href={href}
         target="_blank"
+        rel="noopener"
         class="mt-10 inline-block rounded-full bg-accent px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-accent-soft"
       >
         {hrefText} &rarr;
