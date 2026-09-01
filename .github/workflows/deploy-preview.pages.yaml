@@ -9,6 +9,7 @@ on:
 
 env:
   NODE_VERSION: 24
+  PREVIEW_DOMAIN: preview.mattwhitaker.name
 
 permissions:
   contents: read
@@ -37,12 +38,13 @@ jobs:
 
       - run: npm ci
 
-      # Not `npm run build:www`: the Pages URL has to reach `astro build` as
+      # Not `npm run build:www`: the URL has to reach `astro build` as
       # --site/--base, and the root script cannot forward arguments through
-      # its workspace indirection.
-      - name: Build www for the Pages URL
+      # its workspace indirection. Base is `/` because a custom domain serves
+      # at its own root.
+      - name: Build www for the preview domain
         working-directory: packages/www
-        run: npx astro build --site "${{ steps.pages.outputs.origin }}" --base "${{ steps.pages.outputs.base_path }}"
+        run: npx astro build --site "https://$PREVIEW_DOMAIN" --base "/"
 
       # A preview of the real site is duplicate content; keep it unindexed
       # so it cannot compete with mattwhitaker.name in search results.
