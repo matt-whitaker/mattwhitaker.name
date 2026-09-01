@@ -1,0 +1,68 @@
+name: Deploy Preview (GitHub Pages)
+run-name: "Deploy Preview (GitHub Pages) · ${{ github.ref_name }}"
+
+# Manual only — never fires on its own. Pick any branch from the Actions tab,
+# including a pull request's head branch. GitHub Pages serves one site per
+# repo, so each run replaces whatever preview is currently published.
+on:
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: 24
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two Pages deploys race; queue instead of cancelling so a
+# deploy that is already publishing is not left half-applied.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      # Resolves the repo's actual Pages URL, so the build targets wherever
+      # Pages is really served — repo subpath or a custom domain at the root.
+      - id: pages
+        uses: actions/configure-pages@v5
+
+      - run: npm ci
+
+      # Not `npm run build:www`: the Pages URL has to reach `astro build` as
+      # --site/--base, and the root script cannot forward arguments through
+      # its workspace indirection.
+      - name: Build www for the Pages URL
+        working-directory: packages/www
+        run: npx astro build --site "${{ steps.pages.outputs.origin }}" --base "${{ steps.pages.outputs.base_path }}"
+
+      # A preview of the real site is duplicate content; keep it unindexed
+      # so it cannot compete with mattwhitaker.name in search results.
+      - name: Keep the preview out of search results
+        run: |
+          printf 'User-agent: *\nDisallow: /\n' > packages/www/dist/robots.txt
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: packages/www/dist
+
+  Deploy:
+    needs: ["Build"]
+    runs-on: ubuntu-latest
+    # Adding required reviewers to this environment turns the deploy into a
+    # job that waits for a human approval click — GitHub's only mechanism for
+    # a manual job, and it needs no change here.
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
