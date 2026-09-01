@@ -9,6 +9,10 @@ on:
 
 env:
   NODE_VERSION: 24
+  # The preview is served here, and the build is pinned to it. Resolving the
+  # URL from the Pages API instead produced a github.io subpath and shipped a
+  # site whose every asset 404'd at this domain.
+  PREVIEW_DOMAIN: preview.mattwhitaker.name
 
 permissions:
   contents: read
@@ -37,12 +41,41 @@ jobs:
 
       - run: npm ci
 
-      # Not `npm run build:www`: the Pages URL has to reach `astro build` as
+      # Pages must agree that PREVIEW_DOMAIN is this site, or it serves at the
+      # github.io subpath and every asset built below 404s. A DNS record alone
+      # does not do that — the domain has to be set in Settings > Pages.
+      - name: Require the custom domain to be registered
+        run: |
+          resolved=$(printf '%s' "${{ steps.pages.outputs.origin }}" | sed -E 's#^https?://##; s#/$##')
+          if [ "$resolved" != "$PREVIEW_DOMAIN" ]; then
+            echo "::error::Pages resolves to '$resolved', not '$PREVIEW_DOMAIN'. Set Settings > Pages > Custom domain to $PREVIEW_DOMAIN; a DNS CNAME alone is not enough. Deploying now would publish a site whose assets 404."
+            exit 1
+          fi
+          echo "Pages resolves to $resolved."
+
+      # Not `npm run build:www`: the URL has to reach `astro build` as
       # --site/--base, and the root script cannot forward arguments through
-      # its workspace indirection.
-      - name: Build www for the Pages URL
+      # its workspace indirection. Base is `/` because a custom domain serves
+      # at its own root.
+      - name: Build www for the preview domain
         working-directory: packages/www
-        run: npx astro build --site "${{ steps.pages.outputs.origin }}" --base "${{ steps.pages.outputs.base_path }}"
+        run: npx astro build --site "https://$PREVIEW_DOMAIN" --base "/"
+
+      # The exact failure this workflow shipped once: assets built for a
+      # subpath, served from the root.
+      - name: Assert assets are root-relative
+        working-directory: packages/www
+        run: |
+          if grep -qE '(href|src)="/[^"]*/_astro/' dist/index.html; then
+            echo "::error::Built assets carry a path prefix; they will 404 at the domain root."
+            grep -oE '(href|src)="[^"]*_astro[^"]*"' dist/index.html | sort -u
+            exit 1
+          fi
+          grep -oE '(href|src)="/_astro/[^"]*"' dist/index.html | sort -u
+
+      # Keeps the custom domain attached to what this workflow publishes.
+      - name: Write the CNAME
+        run: echo "$PREVIEW_DOMAIN" > packages/www/dist/CNAME
 
       # A preview of the real site is duplicate content; keep it unindexed
       # so it cannot compete with mattwhitaker.name in search results.
