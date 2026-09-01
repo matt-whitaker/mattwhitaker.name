@@ -27,6 +27,7 @@ export const stackGroups = [
       { name: 'Node.js', className: 'fa-brands fa-node-js' },
       { name: 'Python', className: 'fa-brands fa-python' },
       { name: 'Java', className: 'fa-brands fa-java' },
+      { name: 'MySQL', icon: 'simple-icons:mysql' }
     ],
   },
   {
