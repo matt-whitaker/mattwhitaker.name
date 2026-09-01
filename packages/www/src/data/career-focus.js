@@ -1,10 +1,4 @@
-// Left-column content for each career layer — a one-line lede, a row of
-// role chips, and a list of work archetypes (categories of systems
-// I've built or contributed to, deliberately not named projects).
-// Keyed by the same area names as careerSkills so a layer pulls both
-// halves from one key. Order of `archetypes` is display order; the list
-// renders in two columns above the sm breakpoint, so even counts read
-// tidiest.
+
 export const careerFocus = {
   frontend: {
     lede: "My focus has always been front-facing applications and interface concerns. It's what I'm strongest at",
@@ -26,16 +20,17 @@ export const careerFocus = {
       'Backend-for-frontend & orchestration',
       'Distributed microservices',
       'Serverless & event-driven workloads',
-      'MVC applications (.NET, Spring)',
-      'CMS & content pipelines',
+      'Email & SMS communications',
+      'In-product PUSH service',
+      'Content management systems',
     ],
   },
   data: {
     lede: 'Plenty of opportunities to think about data design.',
     roles: ['Data Modeling', 'Schema Design'],
     archetypes: [
-      'Relational Database Design',
-      'Cache modeling',
+      'Complex relational databases',
+      'Multi-stage cache modeling',
       'NoSQL and tail-end stores',
       'Failover and recovery', 
       'Scale and performance optimization',
@@ -45,7 +40,7 @@ export const careerFocus = {
     lede: 'My experience is largely in the AWS space, but I\'ve worked on a number of infrastructures.',
     roles: ['Systems Design', 'Serverless orchestration', 'IaC'],
     archetypes: [
-      'Edge architecture & orchestration',
+      'Gateway & orchestration',
       'Serverless infrastructure',
       'CI/CD & deployment pipelines',
       'Container platforms (Kubernetes)',
