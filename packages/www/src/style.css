@@ -20,9 +20,11 @@
   /* Corner radius, at half Tailwind's default scale. The whole scale is
      restated rather than only the steps in use, so a `rounded-lg` added
      later inherits the same halving instead of silently landing at the
-     stock value. `rounded-full` is unaffected — it resolves to an
-     effectively infinite radius, not a step on this scale, so pills and
-     circles stay pills and circles. */
+     stock value. `rounded-full` is not a step on this scale — it resolves
+     to an effectively infinite radius — so anything still using it is
+     opting out: the avatar and the nav toggle, both square boxes meant to
+     read as circles. Buttons take `rounded-3xl` rather than a pill, which
+     is where the halving lands for a control of their height. */
   --radius-xs: 0.0625rem;
   --radius-sm: 0.125rem;
   --radius-md: 0.1875rem;
