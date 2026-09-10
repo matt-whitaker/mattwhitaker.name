@@ -103,13 +103,12 @@ html {
     @apply flex-1 px-6 pb-8 overflow-y-auto;
   }
 
-  /* Bottom-anchored role chips (see .career-focus__roles) vs. the pinned
-     folder's clipping: on desktop career.js translates each layer down
-     by one tab-height (h-14 = 3.5rem) per index, and [data-career-stack]
-     is overflow-hidden, so every layer below the first loses that much
-     off its bottom. Pad each one's body bottom by its own clip amount so
-     the chips land ~2rem above the visible edge instead of in the
-     clipped zone. Frontend (nth-child 1) isn't translated — it keeps the
+  /* The pinned folder clips its lower layers: on desktop career.js
+     translates each layer down by one tab-height (h-14 = 3.5rem) per
+     index, and [data-career-stack] is overflow-hidden, so every layer
+     below the first loses that much off its bottom. Pad each one's body
+     bottom by its own clip amount so its last line of content lands
+     ~2rem above the visible edge instead of in the clipped zone. Frontend (nth-child 1) isn't translated — it keeps the
      plain pb-8. Mobile has no translate/clip, so this is desktop-only. */
   @media (min-width: 880px) {
     [data-layer]:nth-child(2) .career-layer__body {
@@ -123,19 +122,15 @@ html {
     }
   }
 
-  /* Chip — used for career tech tags and project tags alike. */
+  /* Chip — used for content, archive and project tags. */
   .chip {
     @apply rounded-full px-3 py-1 text-xs font-medium bg-ink/6 text-ink;
-  }
-
-  .chip--accent {
-    @apply bg-paper/20 text-paper;
   }
 
   /* Skill bars — the career layer's skill display. Bar length encodes
      years of experience; fill opacity encodes self-assessed strength.
      --accent variants are for use inside the accent-colored Frontend
-     panel, mirroring .chip/.chip--accent. */
+     panel. */
   .skill-bars {
     @apply flex flex-col gap-4;
   }
@@ -334,16 +329,12 @@ html {
   }
 
   /* Career focus — the left column of each career layer: a one-line
-     lede, a role-chip row, and a compact two-column archetype list.
+     lede and a compact two-column archetype list.
      Text color is inherited from the layer via utilities the component
      sets (paper on the accent Frontend layer, ink elsewhere); only the
      accent bullet flips, via the --accent modifier. */
   .career-focus__lede {
     @apply max-w-2xl text-lg font-medium;
-  }
-
-  .career-focus__roles {
-    @apply mt-auto flex flex-wrap gap-2 pt-8;
   }
 
   .career-focus__list {

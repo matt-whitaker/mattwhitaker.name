@@ -2,7 +2,6 @@
 export const careerFocus = {
   frontend: {
     lede: "My focus has always been front-facing applications and interface concerns. It's what I'm strongest at",
-    roles: ['Technical Lead', 'Frontend Architect', 'Design Systems', 'Browser Performance'],
     archetypes: [
       'Design systems & component libraries',
       'Data-dense dashboards & analytics',
@@ -14,7 +13,6 @@ export const careerFocus = {
   },
   backend: {
     lede: `I've had opportunities to work on a diverse range of stacks.`,
-    roles: ['Fullstack Engineer', 'API & Service Design', 'Distributed Architecture'],
     archetypes: [
       'RESTful API design',
       'Backend-for-frontend & orchestration',
@@ -27,7 +25,6 @@ export const careerFocus = {
   },
   data: {
     lede: 'Plenty of opportunities to think about data design.',
-    roles: ['Data Modeling', 'Schema Design'],
     archetypes: [
       'Complex relational databases',
       'Multi-stage cache modeling',
@@ -38,7 +35,6 @@ export const careerFocus = {
   },
   infra: {
     lede: 'My experience is largely in the AWS space, but I\'ve worked on a number of infrastructures.',
-    roles: ['Systems Design', 'Serverless orchestration', 'IaC'],
     archetypes: [
       'Gateway & orchestration',
       'Serverless infrastructure',
