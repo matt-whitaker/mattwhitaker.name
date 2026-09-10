@@ -16,6 +16,21 @@
   --text-2xs--line-height: 1rem;
 
   --aspect-card: 3 / 2;
+
+  /* Corner radius, at half Tailwind's default scale. The whole scale is
+     restated rather than only the steps in use, so a `rounded-lg` added
+     later inherits the same halving instead of silently landing at the
+     stock value. `rounded-full` is unaffected — it resolves to an
+     effectively infinite radius, not a step on this scale, so pills and
+     circles stay pills and circles. */
+  --radius-xs: 0.0625rem;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.1875rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.375rem;
+  --radius-2xl: 0.5rem;
+  --radius-3xl: 0.75rem;
+  --radius-4xl: 1rem;
 }
 
 /* The global responsive lever — see CLAUDE.md. Scales 1rem at <=400px
@@ -404,7 +419,7 @@ html {
   }
 
   .rich-text code {
-    @apply rounded bg-ink/5 px-1.5 py-0.5 text-sm;
+    @apply rounded-sm bg-ink/5 px-1.5 py-0.5 text-sm;
   }
 
   .rich-text blockquote {
