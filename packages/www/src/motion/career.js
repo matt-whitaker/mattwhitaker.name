@@ -11,8 +11,8 @@ const MOBILE_QUERY = '(max-width: 879.98px) and (prefers-reduced-motion: no-pref
 // of the hang; Frontend has no transition, so its segment is hang-only.
 // TRANSITION_UNITS is fixed rather than a share of LAYER_VH so bumping
 // LAYER_VH only adds hang time, leaving the slide itself untouched.
-const LAYER_VH = 1.3;
-const TRANSITION_UNITS = 0.4;
+const LAYER_VH = 0.65;
+const TRANSITION_UNITS = 0.2;
 
 const EASE = 'none'; // linear, so trackpad/wheel deltas track exactly
 
