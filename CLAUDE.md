@@ -69,7 +69,7 @@ Changing the site's whole look is meant to be a one-line edit to `--color-accent
 
 **The fluid root lever**: `html { font-size: clamp(...) }` scales from 100% to 125% between 400px and 1536px viewports. Because Tailwind's entire scale (`--spacing`, every `--text-*`, `--container-*`) is rem-based, this one rule grows spacing/type/container-widths together continuously with viewport width, instead of needing `lg:`/`xl:` steps added to every element by hand. Prefer this over adding manual breakpoint variants for pure size growth; breakpoints are still the right tool for genuine layout-mode changes (flex-direction switches, grid column counts).
 
-Reusable multi-property patterns live under `@layer components`, built from `@apply`'d utilities/theme tokens: `.chip`/`.chip--accent`, `.skill-bar__*`, `.career-layer__*`, `.career-focus__*`, `.stack-node__*`/`.stack-hub`, `.emwhit-bar`, and `.rich-text` (the shared markdown-body style for detail pages). One-off layout stays as Tailwind classes inline in the markup. A documented (comment-only — Tailwind can't enforce it) opacity convention sits at the top of the file: `/80` for body copy, `/60` for secondary text, `/50` for footer-only chrome; `/10` for structural borders, `/20` for interactive borders on dark backgrounds.
+Reusable multi-property patterns live under `@layer components`, built from `@apply`'d utilities/theme tokens: `.chip`, `.skill-bar__*`, `.career-layer__*`, `.career-focus__*`, `.stack-node__*`/`.stack-hub`, `.emwhit-bar`, and `.rich-text` (the shared markdown-body style for detail pages). One-off layout stays as Tailwind classes inline in the markup. A documented (comment-only — Tailwind can't enforce it) opacity convention sits at the top of the file: `/80` for body copy, `/60` for secondary text, `/50` for footer-only chrome; `/10` for structural borders, `/20` for interactive borders on dark backgrounds.
 
 Classes toggled from JS (e.g. `text-paper`/`text-ink` in the nav invert) are picked up because Tailwind scans `src/motion/*.js` too — don't build class names by string concatenation or they won't be generated.
 
@@ -77,13 +77,13 @@ Classes toggled from JS (e.g. `text-paper`/`text-ink` in the nav invert) are pic
 
 `src/components/Career.astro` + `src/motion/career.js` implement a pinned, scroll-scrubbed "tabbed folder" — four layers (Frontend/Backend/Data/Infra) that stack into accumulating tab headers as you scroll, above a `min-width: 880px` breakpoint (`DESKTOP_QUERY`). Below it, or with `prefers-reduced-motion`, the identical markup instead renders as plain stacked blocks in normal flow (`MOBILE_QUERY`) — there's no separate mobile markup, just different JS behavior applied to the same DOM.
 
-Each layer's content is two columns: `CareerFocus.astro` on the left (a one-line lede, a row of `.chip` role tags, and a two-column archetype list, all from `src/data/career-focus.js`) and `SkillBars.astro` on the right (from `src/data/career-skills.js`).
+Each layer's content is two columns: `CareerFocus.astro` on the left (a one-line lede and a two-column archetype list, both from `src/data/career-focus.js`) and `SkillBars.astro` on the right (from `src/data/career-skills.js`).
 
 Things worth knowing before touching the motion file:
 - Each layer is set to `position: absolute; inset: 0` (only in the desktop branch, via JS), which requires `[data-career-stack]` to have `position: relative`. Without it, the layers size themselves against the next positioned ancestor up the tree (`section`, much bigger) instead of the folder's own box — this has broken more than once; if the folder's content looks too wide or misaligned with the rest of the page, check this first.
 - The pin's `start` reserves the fixed nav's *actual measured height* (`navEl.getBoundingClientRect().height`), not a hardcoded value — otherwise the first tab renders behind the nav.
 - Per-layer skill-bar reveals are triggered via `tl.call()` at the same scroll positions driving the slide-in tweens — a plain auto-playing tween once fired, not scrubbed to scroll position. This went through several iterations (see the comments in the file): scrubbing the reveal directly let the tab-click handler's instant `scrollTo` jump freeze it mid-tween, and a two-phase lead-in/finish version created a visible stutter from chaining two eased tweens back-to-back.
-- The **mobile** branch fades up `.career-focus > *` (the lede, archetype list, and chip row) — selecting the block children rather than just `<p>` is deliberate, so the bulleted list and chips animate in too.
+- The **mobile** branch fades up `.career-focus > *` (the lede and archetype list) — selecting the block children rather than just `<p>` is deliberate, so the bulleted list animate in too.
 - `LAYER_VH` / `TRANSITION_UNITS` control pacing and are intentionally decoupled — bumping `LAYER_VH` only adds hang time, since the slide-in duration no longer scales with it.
 
 ### The Stack section: a radial "wheel"

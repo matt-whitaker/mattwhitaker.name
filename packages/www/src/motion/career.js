@@ -151,8 +151,8 @@ export function initCareer() {
   // breakpoint, so nothing is left invisible on desktop.
   mm.add(MOBILE_QUERY, () => {
     layers.forEach((layer) => {
-      // Block children, not just <p>, so the archetype list and chip row
-      // fade in too (a `.career-layer__body p` selector missed them).
+      // Block children, not just <p>, so the archetype list fades in
+      // too (a `.career-layer__body p` selector missed it).
       const textEls = [...layer.querySelectorAll('.career-focus > *')].filter(Boolean);
       if (textEls.length) {
         gsap.from(textEls, {
