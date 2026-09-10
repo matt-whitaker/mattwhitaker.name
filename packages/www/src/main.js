@@ -8,7 +8,6 @@ import { initCareer } from './motion/career.js';
 import { initPnw } from './motion/pnw.js';
 import { initEmwhit } from './motion/emwhit.js';
 import { initProjects } from './motion/projects.js';
-import { initArchives } from './motion/archive.js';
 import { initContactCopy } from './motion/contact.js';
 import { initHashSync } from './motion/hash-sync.js';
 
@@ -21,7 +20,6 @@ initCareer();
 initPnw();
 initEmwhit();
 initProjects();
-initArchives();
 initContactCopy();
 // Last: its deep-link jump reads pin positions the inits above create.
 initHashSync();

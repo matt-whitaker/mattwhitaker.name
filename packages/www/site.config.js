@@ -17,7 +17,6 @@ export default {
     { href: '/#stack', label: 'Stack' },
     { href: '/#career', label: 'Career' },
     { href: '/#projects', label: 'Projects' },
-    { href: '/#archives', label: 'Archives' },
     { href: '/#life', label: 'Life' },
     { href: '/#music', label: 'Music' },
     { href: '/#contact', label: 'Contact' }
