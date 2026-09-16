@@ -1,6 +1,6 @@
 export default {
-  title: "React Full-stack Engineer",
-  jobtitle: "React Full-stack Engineer",
+  title: "Senior Full-stack Engineer",
+  jobtitle: "Senior Full-stack Engineer",
   headshot: '/images/headshot.jpg',
   url: 'https://mattwhitaker.name',
   description: 'Matt Whitaker is a senior full-stack engineer with over a decade of experience building React-based full-stack applications and microsystems across a variety of stacks. Also makes music as The Emwhit Project.',
